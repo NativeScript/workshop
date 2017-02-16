@@ -1,8 +1,40 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
+layout: default
 ---
 
-Hi!
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter0.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter1.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter2.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter3.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter4.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter5.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter6.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter7.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>
+<div class="chapter">
+  {% capture content %}{% include_relative /chapters/chapter8.md %}{% endcapture %}
+  {{ content | markdownify }}
+</div>

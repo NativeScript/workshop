@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>NativeScript Workshop</title>
+
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="container">
+	<div id="header">
+		<a href="#" class="menu header-btn" id="toggle-toc"></a>
+		<h1>NativeScript Workshop</h1>
+		<a href="https://github.com/nativescript/workshop" class="github header-btn"></a>
+	</div>
+
+	<div id="content-container">
+		<div id="toc">
+			<div class="toc-heading">Table of Contents</div>
+			<div id="toc-padding"></div>
+		</div>
+		<div id="book">
+			{{ content }}
+		</div>
+	</div>
+</div>
+
+<script src="scripts/prism.js"></script>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/app.js"></script>
+
+</body>
+</html>
