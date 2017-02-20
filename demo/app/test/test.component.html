@@ -1,0 +1,62 @@
+<TabView>
+  <StackLayout *tabItem="{title: 'Breeds'}">
+    <Button text="Search Dog Breeds" (tap)="searchBreedList('dog')" class="btn btn-primary"></Button>
+    <Button text="Search Small Furry Breeds" (tap)="searchBreedList('smallfurry')" class="btn btn-primary"></Button>
+    <Button text="Search Pig Breeds" (tap)="searchBreedList('pig')" class="btn btn-primary"></Button>
+    <Button text="Search Barnyard Breeds" (tap)="searchBreedList('barnyard')" class="btn btn-primary"></Button>
+
+    <ListView [items]="breeds" class="list-group">
+        <template let-item="item">
+            <Label [text]="item" class="list-group-item"></Label>
+        </template>
+    </ListView>
+  </StackLayout>
+  <StackLayout *tabItem="{title: 'Pet'}">
+    <Button text="Get Random Pet" (tap)="getRandomPet()" class="btn btn-primary"></Button>
+    <Button text="Get Pet: 36796635" (tap)="getPet()" class="btn btn-primary"></Button>
+    <Button text="Find Pets at location (display first)" (tap)="findPets()" class="btn btn-primary"></Button>
+    <Button text="Get Shelter Pets (display first)" (tap)="findShelterPets()" class="btn btn-primary"></Button>
+
+    <StackLayout orientation="horizontal">
+      <Label text="Address:" class="text-primary"></Label>
+      <TextField hint="location" [(ngModel)]="location"></TextField>
+    </StackLayout>
+
+    <Label [text]="'id:'   + pet?.id" class="text-center" class="btn btn-outline"></Label>
+    <Label [text]="'name:'   + pet?.name" class="text-center" class="btn btn-outline"></Label>
+    <Label [text]="'animal:' + pet?.animal" class="text-center" class="btn btn-outline"></Label>
+
+    <Label [text]="'Breeds: (mix:' + pet?.mix + ')' " class="btn btn-outline"></Label>
+    <ListView [items]="pet?.breeds" class="list-group">
+        <template let-item="item">
+            <Label [text]="item" class="list-group-item"></Label>
+        </template>
+    </ListView>
+
+    <!--<Image src="http://photos.petfinder.com/photos/pets/37187420/3/?bust=1484869727"></Image>-->
+    <!--<ListView [items]="pet?.media.getImages(4)" class="list-group">
+      <template let-item="item">
+        <StackLayout orientation="horizontal">
+          <Image [src]="item"></Image>
+          <Label [text]="item" class="list-group-item"></Label>
+        </StackLayout>
+      </template>
+    </ListView>-->
+  </StackLayout>
+  <StackLayout *tabItem="{title: 'Shelter'}">
+    <Button text="Find Shelters at location (display first)" (tap)="findShelters()" class="btn btn-primary"></Button>
+    <Button text="Get Shelter CA607" (tap)="getShelter()" class="btn btn-primary"></Button>
+    <Button text="List Shelters by Breed at location (display first)" (tap)="findSheltersByBreed()" class="btn btn-primary"></Button>
+    
+    <StackLayout orientation="horizontal">
+      <Label text="Address:" class="text-primary"></Label>
+      <TextField hint="location" [(ngModel)]="location"></TextField>
+    </StackLayout>
+
+    <Label [text]="'id:'   + shelter?.id" class="text-center" class="btn btn-outline"></Label>
+    <Label [text]="'name:'   + shelter?.name" class="text-center" class="btn btn-outline"></Label>
+    <Label [text]="'email:' + shelter?.email" class="text-center" class="btn btn-outline"></Label>
+    <Label [text]="'city:' + shelter?.city" class="text-center" class="btn btn-outline"></Label>
+
+  </StackLayout>
+</TabView>

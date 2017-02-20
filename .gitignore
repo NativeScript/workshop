@@ -1,0 +1,5 @@
+demo/node_modules
+demo/platforms
+demo/hooks
+
+demo/app/**/*.js
