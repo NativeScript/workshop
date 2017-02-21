@@ -11,11 +11,13 @@ import { PetFinderService } from '../pet-finder.service';
     templateUrl: './test/test.component.html'
 })
 export class TestComponent implements OnInit{
-  location: string = 'Boston, MA';
+  location: string = 'San Francisco, CA';
 
   breeds: Array<string> = [];
   pet: Pet;
   shelter: Shelter;
+
+  shelters: Array<Shelter> = [];
 
   constructor(private petFinder: PetFinderService, private zone: NgZone) {
 
@@ -52,18 +54,15 @@ export class TestComponent implements OnInit{
       location: this.location
     })
     .then((pet: Pet) => {
-      // console.log(JSON.stringify(pet, null, 2));
+      console.log(JSON.stringify(pet, null, 2));
       this.pet = pet;
-
-      console.log(JSON.stringify( pet.breeds, null, 2));
-
     }, err => {
       console.log(err.message);
     })
   }
 
   getPet() {
-    this.petFinder.getPet('36796635')
+    this.petFinder.getPet('37173495')
     .then((pet: Pet) => {
       console.log(JSON.stringify(pet, null, 2));
       this.pet = pet;
@@ -93,13 +92,14 @@ export class TestComponent implements OnInit{
       console.log(JSON.stringify(shelters, null, 2));
 
       this.shelter = shelters[0];
+      this.shelters = shelters;
     }, err => {
       console.log(err.message);
     })
   }
 
-  getShelter() {
-    this.petFinder.getShelter('CA607')
+  getShelter(id: string | number) {
+    this.petFinder.getShelter(id)
     .then((shelter: Shelter) => {
       console.log(JSON.stringify(shelter, null, 2));
 
@@ -126,9 +126,14 @@ export class TestComponent implements OnInit{
       console.log(JSON.stringify(shelters, null, 2));
 
       this.shelter = shelters[0];
+      this.shelters = shelters;
     }, err => {
       console.log(err.message);
     })
+  }
+
+  onShelterTap(event) {
+    this.shelter = this.shelters[event.index];
   }
 
 }
