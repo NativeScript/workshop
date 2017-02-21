@@ -5,8 +5,14 @@ import { AppComponent } from "./app.component";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
-import { TestComponent } from './test/test.component';
+// import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 
+import { TestComponent } from './test/test.component';
+import { SelectModalComponent } from './select-modal/select-modal.component';
+import { PetSearchComponent } from './pet-search/pet-search.component';
+import { PetDetailsComponent } from './pet-details/pet-details.component';
+
+import { SelectModalService } from './select-modal.service';
 import { PetFinderService } from './pet-finder.service';
 
 @NgModule({
@@ -17,13 +23,20 @@ import { PetFinderService } from './pet-finder.service';
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptHttpModule,
-        NativeScriptFormsModule,
+        NativeScriptFormsModule
     ],
     declarations: [
         AppComponent,
-        TestComponent
+        SelectModalComponent,
+        TestComponent,
+        PetSearchComponent,
+        PetDetailsComponent
+    ],
+    entryComponents: [
+        SelectModalComponent
     ],
     providers: [
+        SelectModalService,
         PetFinderService
     ],
     schemas: [
