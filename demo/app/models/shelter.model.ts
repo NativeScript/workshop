@@ -1,4 +1,4 @@
-import { PetFinderModel, Contact, Media } from '.';
+import { PetFinderModel, Contact, Media } from './';
 
 export class Shelter extends PetFinderModel {
 

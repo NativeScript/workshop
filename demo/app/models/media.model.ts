@@ -1,4 +1,4 @@
-import { PetFinderModel } from '.';
+import { PetFinderModel } from './';
 
 export class Media extends PetFinderModel {
   private photos: Array<any>;

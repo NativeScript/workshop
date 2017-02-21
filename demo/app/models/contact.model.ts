@@ -1,4 +1,4 @@
-import { PetFinderModel } from '.';
+import { PetFinderModel } from './';
 
 export class Contact extends PetFinderModel {
   constructor(contact: any) {
