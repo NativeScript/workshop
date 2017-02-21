@@ -19,6 +19,12 @@ export class Media extends PetFinderModel {
       })
       .map(item => item.$t);
   }
+
+  getFirstImage(size: ImageSize, defaultUrl: string) {
+    const images = this.getImages(size);
+
+    return (images.length > 0) ? images[0] : defaultUrl;
+  }
 }
 
 export enum ImageSize {
