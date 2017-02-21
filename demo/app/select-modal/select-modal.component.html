@@ -1,0 +1,12 @@
+<GridLayout rows="*, auto, *" columns="*" class="page">
+  <!--<ScrollView>-->
+    <StackLayout row="1" class="m-10 p-10">
+      <Button *ngFor="let option of options"
+        [text]="option" (tap)="close(option)"
+        class="btn btn-primary">
+      </Button>
+
+      <Button text="None" (tap)="close('')" class="btn btn-outline"></Button>
+    </StackLayout>     
+  <!--</ScrollView>-->
+</GridLayout>
