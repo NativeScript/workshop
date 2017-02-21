@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -19,7 +19,7 @@ export class TestComponent implements OnInit{
 
   shelters: Array<Shelter> = [];
 
-  constructor(private petFinder: PetFinderService, private zone: NgZone) {
+  constructor(private petFinder: PetFinderService) {
 
   }
 
