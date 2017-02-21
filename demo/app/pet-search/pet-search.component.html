@@ -1,0 +1,23 @@
+<StackLayout>
+  <Button [text]="'Animal Type:' + animal" (tap)="selectAnimal()" class="btn btn-outline"></Button>
+  <Button *ngIf="animalSelected()" [text]="'Breed:' + breed" (tap)="selectBreed()" class="btn btn-outline"></Button>
+  <Button [text]="'Age:' + age" (tap)="selectAge()" class="btn btn-outline"></Button>
+  <Button [text]="'Sex:' + sex" (tap)="selectSex()" class="btn btn-outline"></Button>
+  <Button [text]="'Size:' + size" (tap)="selectSize()" class="btn btn-outline"></Button>
+
+  <DockLayout orientation="horizontal">
+    <Label dock="left" text="Address:" class="text-primary"></Label>
+    <TextField hint="location" [(ngModel)]="location"></TextField>
+  </DockLayout>
+
+  <Button text="Search" (tap)="findPets()" class="btn btn-primary"></Button>
+  <!--(itemTap)="onItemTap(event)"-->
+  <ListView [items]="pets" class="list-group" (itemTap)="onPetSelect($event)">
+    <template let-item="item">
+      <GridLayout rows="100" columns="100, *">
+        <Image col="0" [src]="item.media.getFirstImage(2, 'res://icon')" stretch="aspectFill"></Image>
+        <Label col="1" [text]="'name:'   + item?.name"></Label>
+      </GridLayout>
+    </template>
+  </ListView>
+</StackLayout>
