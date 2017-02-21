@@ -1,4 +1,9 @@
 export class Options {
+  static ageArray: Array<string> = ['Baby', 'Young', 'Adult', 'Senior'];
+  static animalArray: Array<string> = ['barnyard', 'bird', 'cat', 'dog', 'horse', 'pig', 'reptile', 'smallfurry']
+  static sexArray: Array<string> = ['M', 'F'];
+  static sizeArray: Array<string> = ['S', 'M', 'L', 'XL'];
+
   /** age of the animal (Baby, Young, Adult, Senior) */
   static age = {
     baby: 'Baby',
