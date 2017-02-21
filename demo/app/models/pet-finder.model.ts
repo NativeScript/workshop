@@ -1,5 +1,5 @@
 export class PetFinderModel {
-  constructor(public model: any) {
+  constructor(protected model: any) {
   }
 
   // get(param: string, defaultValue = undefined) {
@@ -11,7 +11,7 @@ export class PetFinderModel {
   //   return item;
   // }
 
-  get(key, defaultValue = undefined) {
+  protected get(key, defaultValue = undefined) {
     // split the path into key elements. i.e key -> 'home.pets.pet'
     const keys: Array<string> = key.split(".")
 
@@ -25,7 +25,7 @@ export class PetFinderModel {
     return (val) ? val : defaultValue;
   }
 
-  getArray(key: string): Array<any> {
+  protected getArray(key: string): Array<any> {
     // const item = this.model[param][array];
     const item = this.get(key, []);
     
