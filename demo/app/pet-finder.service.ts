@@ -37,7 +37,7 @@ export class PetFinderService {
   public getPet(id: string | number): Promise<Pet> {
     return this.callPetFinder('pet.get', {id})
     .map(result => new Pet(result.pet))
-    .toPromise()
+    .toPromise();
   }
 
   /**
