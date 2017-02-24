@@ -1,5 +1,9 @@
 demo/node_modules
 demo/platforms
 demo/hooks
-
 demo/app/**/*.js
+
+warmup/node_modules
+warmup/platforms
+warmup/hooks
+warmup/app/**/*.js
