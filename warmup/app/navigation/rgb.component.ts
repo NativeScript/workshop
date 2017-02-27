@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions, PageRoute } from 'nativescript-angular'
+import { RouterExtensions, PageRoute } from 'nativescript-angular';
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'my-color-paletter',
