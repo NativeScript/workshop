@@ -22,8 +22,8 @@ export class RedComponent {
     });
   }
 
-  goPink() {
-    this.router.navigate(['/color', '#ff0088'], {
+  goGray() {
+    this.router.navigate(['/color', 'gray'], {
       transition: {
         name: "fade",
         duration: 1000
