@@ -24,7 +24,6 @@ export class RGBComponent implements OnInit{
 
   goBlue() {
     this.router.navigate(['/color/blue'], {
-    // this.router.navigate(['/color', '#00f'], {
       transition: {
         name: "slideLeft", // see http://docs.nativescript.org/api-reference/interfaces/_ui_frame_.navigationtransition.html#name
         duration: 2000,
@@ -35,7 +34,6 @@ export class RGBComponent implements OnInit{
 
   goRed() {
     this.router.navigate(['/color/red'], {
-    // this.router.navigate(['/color', '#f00'], {
       transition: {
         name: "slideTop",
         duration: 2000,
@@ -44,7 +42,7 @@ export class RGBComponent implements OnInit{
     });
   }
 
-  goRandom() {
+  changeToRandom() {
     this.router.navigate(['/color', this.getRandomColor()]);
   }
 
