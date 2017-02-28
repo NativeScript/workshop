@@ -171,10 +171,12 @@ export class PetFinderService {
     let searchParams: URLSearchParams = this.buildSearchParams(params, options);
 
     return this.http.get(
-      `${this.baseUrl}${method}`,
+      // `${this.baseUrl}${method}`,
+      this.baseUrl + method,
       { search: searchParams }
     )
-    .map((data: any) => data._body.petfinder)
+    .map(response => response.json())
+    .map((data: any) => data.petfinder)
     .do(result => {
       const status = result.header.status;
       if (status.code.$t !== '100') {
