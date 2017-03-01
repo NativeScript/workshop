@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
 import { RouterExtensions, PageRoute } from 'nativescript-angular';
 import 'rxjs/add/operator/switchMap';
 
@@ -11,11 +12,14 @@ export class RGBComponent implements OnInit{
   rgb: string = '#bad';
 
   constructor(
+    // private route: ActivatedRoute,
     private pageRoute: PageRoute,
     private router: RouterExtensions) {
   }
 
   ngOnInit() {
+    // this.rgb = this.route.params['rgb'];
+
     this.pageRoute.activatedRoute
       .switchMap(activatedRoute => activatedRoute.params)
       .forEach(params => this.rgb = params['rgb']);
