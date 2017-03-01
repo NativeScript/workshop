@@ -1,5 +1,5 @@
 export interface Competition {
-  competitionId: number;
+  id: number;
   caption: string;
   league: string;
   year: string;

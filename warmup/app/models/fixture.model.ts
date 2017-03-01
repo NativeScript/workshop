@@ -3,7 +3,7 @@ export interface Fixture {
   competitionId: number;
   homeTeamId: number;
   awayTeamId: number;
-  date: Date;
+  date: string;
   status: string;
   matchday: number;
   homeTeamName: string;
