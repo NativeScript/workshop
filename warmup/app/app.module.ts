@@ -11,8 +11,16 @@ import { ProfileComponent } from './profile/profile.component';
 //Lesson 2
 import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './navigation'
 
-import { TestComponent } from './test/test.component';
+// Lesson 3
+import { TablesComponent } from './football/tables.component';
+import { LeagueTableComponent } from './football/league-table.component';
+import { CompetitionFixturesComponent } from './football/competition-fixtures.component';
+import { FixtureComponent } from './football/fixture.component';
+import { TeamComponent } from './football/team.component';
 import { FootballService } from './football.service';
+
+
+import { TestComponent } from './test/test.component';
 
 @NgModule({
     bootstrap: [
@@ -38,6 +46,11 @@ import { FootballService } from './football.service';
         RGBComponent,
 
         //Lesson 3
+        TablesComponent,
+        LeagueTableComponent,
+        CompetitionFixturesComponent,
+        FixtureComponent,
+        TeamComponent
     ],
     providers: [
         FootballService

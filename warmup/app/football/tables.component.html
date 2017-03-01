@@ -1,0 +1,62 @@
+<ActionBar title="Football Leagues" icon="" class="action-bar">
+</ActionBar>
+
+<!--<StackLayout>-->
+  <!--<my-league-table [competitionId]="427"></my-league-table>-->
+<!--</StackLayout>-->
+
+<TabView selectedColor="#FF0000" class="m-l-5 m-r-5">
+  <StackLayout *tabItem="{title: 'Premier League'}">
+    <Button
+      text="View Fixtures"
+      [nsRouterLink]="['/football/fixtures/', PremierLeagueId, 'Premier League']"
+      class="btn btn-primary">
+    </Button>
+    <my-league-table [competitionId]="PremierLeagueId"></my-league-table>
+  </StackLayout>
+
+  <StackLayout *tabItem="{title: 'Primera Division'}">
+    <Button
+      text="View Fixtures"
+      [nsRouterLink]="['/football/fixtures/', PrimeraDivisionId, 'Primera Division']"
+      class="btn btn-primary">
+    </Button>
+  <my-league-table [competitionId]="PrimeraDivisionId"></my-league-table>
+</StackLayout>
+
+  <StackLayout *tabItem="{title: 'Bundesliga'}">
+    <Button
+      text="View Fixtures"
+      [nsRouterLink]="['/football/fixtures/', BundesligaId, 'Bundesliga']"
+      class="btn btn-primary">
+    </Button>
+    <my-league-table [competitionId]="BundesligaId"></my-league-table>
+  </StackLayout>
+
+  <StackLayout *tabItem="{title: 'Serie A'}">
+    <Button
+      text="View Fixtures"
+      [nsRouterLink]="['/football/fixtures/', SerieAId, 'Serie A']"
+      class="btn btn-primary">
+    </Button>
+    <my-league-table [competitionId]="SerieAId"></my-league-table>
+  </StackLayout>
+
+  <!--<StackLayout *tabItem="{title: 'Ligue 1'}">
+    <Button
+      text="View Fixtures"
+      [nsRouterLink]="['/football/fixtures/', Ligue1Id, 'Ligue 1']"
+      class="btn btn-primary">
+    </Button>
+    <my-league-table [competitionId]="Ligue1Id"></my-league-table>
+  </StackLayout>
+
+  <StackLayout *tabItem="{title: 'Eredivisie'}">
+    <Button
+      text="View Fixtures"
+      [nsRouterLink]="['/football/fixtures/', EredivisieId, 'Eredivisie']"
+      class="btn btn-primary">
+    </Button>
+    <my-league-table [competitionId]="EredivisieId"></my-league-table>
+  </StackLayout>-->
+</TabView>

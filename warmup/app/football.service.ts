@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams, Headers } from '@angular/http';
-import { Competition, LeagueTable, Standing, Team, Player, Fixture } from './models';
+import { Competition, LeagueTable, Standing, Team, Player, Fixture, FixtureSearchOptions } from './models';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/do';
@@ -49,7 +49,7 @@ export class FootballService {
     .toPromise();
   }
 
-  private getTeam(teamId: number): Promise<Team> {
+  public getTeam(teamId: number): Promise<Team> {
     return this.callFootballService(`teams/${teamId}`)
     .do(
       (team: Team) => this.appendTeamId(team)
@@ -63,8 +63,8 @@ export class FootballService {
     .toPromise();
   }
 
-  public getFixtures(competitionId: number) {
-    return this.callFootballService(`competitions/${competitionId}/fixtures`)
+  public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): Promise<Fixture[]> {
+    return this.callFootballService(`competitions/${competitionId}/fixtures`, options)
     .map(result => result.fixtures)
     .do(
       (fixtures: Array<Fixture>) => 
@@ -118,17 +118,16 @@ export class FootballService {
   /**
    * Performs the http get from the api.petfinder.com and returns the object containing the response.
    * @param method the name of the api method to call
-   * @param params an object containing the required parameters
-   * @param options an object containing optional parameters
+   * @param params an object containing parameters
    */
-  private callFootballService(method: string, params: any = {}, options: any = {}): Observable<any> {
+  private callFootballService(method: string, params: any = {}): Observable<any> {
     const header = this.prepareHeader();
-    // const searchParams: URLSearchParams = this.buildSearchParams(params, options);
+    const searchParams: URLSearchParams = this.buildSearchParams(params);
 
     return this.http.get(
       this.baseUrl + method,
       { 
-        // search: searchParams,
+        search: searchParams,
         headers: this.header
       }
     )
@@ -136,10 +135,8 @@ export class FootballService {
       if (!result.ok) {
         throw new Error(result.statusText);
       }
-
-      // console.log(JSON.stringify(result._body[0], null, 2));
     })
-    .map((result: any) => result._body);
+    .map(result => result.json());
   }
 
   private prepareHeader() {
@@ -150,23 +147,15 @@ export class FootballService {
   }
 
   /**
-   * Constructs an http ready set of parameters based on the provided required and optional parameters.
-   * @param params an object containing the required parameters
-   * @param options an object containing optional parameters
+   * Constructs an http ready set of parameters based on the provided parameters.
+   * @param params an object containing parameters
    */
-  private buildSearchParams(params: any, options: any) {
+  private buildSearchParams(params: any) {
     let searchParams: URLSearchParams = new URLSearchParams();
-    searchParams.set('key', this.apiKey);
-    // searchParams.set('format', 'json');
 
     for (let key in params) {
       searchParams.set(key, params[key]);
     }
-
-    for (let key in options)  {
-      searchParams.set(key, options[key]);
-    }
-
     return searchParams;
   }
 }
