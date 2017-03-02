@@ -18,9 +18,7 @@ import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
   templateUrl: './plugins/wizard-profile.component.html'
 })
 export class WizardProfileComponent implements OnInit{
-
   public name: string = 'Sebastian';
-  public twitter: string = '@sebawita';
 
   public powers: Power[] = [
     { name: 'Cosmic Manipulation', level: 1, description: 'The power to manipulate all cosmic forces.'},
