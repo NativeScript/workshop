@@ -46,7 +46,7 @@ export class WizardProfileComponent implements OnInit{
   }
 
   share() {
-    const messageBody = `name: ${this.name}, twitter: ${this.twitter}, powers: ${JSON.stringify(this.powers)}`;
+    const messageBody = `name: ${this.name}, powers: ${JSON.stringify(this.powers)}`;
 
     SocialShare.shareText(messageBody);
   }
