@@ -19,6 +19,8 @@ import { FixtureComponent } from './football/fixture.component';
 import { TeamComponent } from './football/team.component';
 import { FootballService } from './football.service';
 
+// Lesson 4
+import { WizardProfileComponent } from './plugins/wizard-profile.component';
 
 import { TestComponent } from './test/test.component';
 
@@ -50,7 +52,10 @@ import { TestComponent } from './test/test.component';
         LeagueTableComponent,
         CompetitionFixturesComponent,
         FixtureComponent,
-        TeamComponent
+        TeamComponent,
+
+        //Lesson 4
+        WizardProfileComponent
     ],
     providers: [
         FootballService

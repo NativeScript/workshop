@@ -16,10 +16,14 @@ import { CompetitionFixturesComponent } from './football/competition-fixtures.co
 import { LeagueTableComponent } from './football/league-table.component';
 import { TeamComponent } from './football/team.component';
 
+// Lesson 4
+import { WizardProfileComponent } from './plugins/wizard-profile.component';
+
 const routes: Routes = [
     // { path: '', redirectTo: '/profile', pathMatch: 'full' },
     // { path: '', redirectTo: '/color', pathMatch: 'full' },
-    { path: '', redirectTo: '/football', pathMatch: 'full' },
+    // { path: '', redirectTo: '/football', pathMatch: 'full' },
+    { path: '', redirectTo: '/plugins', pathMatch: 'full' },
     { path: 'test', component: TestComponent },
 
     // Lesson 1
@@ -39,7 +43,10 @@ const routes: Routes = [
         { path: '', component: TablesComponent },
         { path: 'fixtures/:competitionId/:competitionName', component: CompetitionFixturesComponent },
         { path: 'team/:teamId', component: TeamComponent }
-    ]}
+    ]},
+
+    // Lesson 4
+    { path: 'plugins', component: WizardProfileComponent }
 ];
 
 @NgModule({
