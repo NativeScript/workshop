@@ -9,20 +9,20 @@ Let’s take a look at what at NativeScript is using the slides linked to below.
 Now that you have the basics down, let’s look at how to actually build NativeScript apps.
 
 <h4 class="exercise-start">
-    <b>Exercise</b>: Creating an app
+    <b>Exercise 1</b>: Creating an app
 </h4>
 
 Navigate to a folder you’d like to store apps in as you go through this workshop, and then run the following two commands.
 
 ```
-tns create HelloWorld
+tns create HelloWorld --ng
 cd HelloWorld
 ```
 
 <div class="exercise-end"></div>
 
 <h4 class="exercise-start">
-    <b>Exercise</b>: Running your app
+    <b>Exercise 2</b>: Running your app
 </h4>
 
 You use the `tns run` command to run NativeScript apps. If you’d like to complete this workshop on iOS, run the following command.
@@ -36,6 +36,14 @@ And if you’d like to complete this workshop on Android, run the following comm
 ```
 tns run android
 ```
+
+<div class="exercise-end"></div>
+
+<h4 class="exercise-start">
+    <b>Exercise 3</b>: Making some changes
+</h4>
+
+Open your `app/item/item.component.html` file and change the `title` attribute of the `<ActionBar>`.
 
 <div class="exercise-end"></div>
 
