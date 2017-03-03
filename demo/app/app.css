@@ -68,12 +68,3 @@ TabView {
 .submit {
     background-color: #DD2AF3;
 }
-
-.animalCard {
-    background-color: #303772;
-    width: 70%;
-    color: white;
-    padding: 10;
-    margin: 10;
-    border-radius: 3;
-}

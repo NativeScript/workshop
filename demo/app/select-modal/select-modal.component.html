@@ -2,8 +2,8 @@
   <StackLayout textAlignment="center">
     <Button text="None" (tap)="close('')" class="btn btn-outline"></Button>
     <StackLayout (tap)="close(option)" class="animalCard" *ngFor="let option of options" verticalAlignment="center" horizontalAlignment="center">
-      <Image horizontalAlignment="center" [src]="'~/assets/'+option+'.png'" stretch="none"></Image>
-      <Label textAlignment="center" [text]="option"></Label>
+      <Image class="animalImage" horizontalAlignment="center" [src]="'~/assets/'+option+'.png'" stretch="none"></Image>
+      <Label class="animalLabel" textAlignment="center" [text]="option"></Label>
     </StackLayout>
   </StackLayout>     
 </ScrollView>

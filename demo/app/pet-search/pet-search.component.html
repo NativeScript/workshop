@@ -6,7 +6,13 @@
 
 <StackLayout>
   <Label class="h1" text="Find Your Forever Friend"></Label>
-  <Button class="button" [text]="'I\'m looking for a: ' + animal" (tap)="selectAnimal()"></Button>
+  
+  <!--<GridLayout rows="auto" columns="*,*">
+    <Button row="0" col="0" class="button" [text]="'I\'m looking for a:'" (tap)="selectAnimal()"></Button>
+    <Image row="0" col="1" class="animalImage" horizontalAlignment="center" [src]="'~/assets/'+animal+'.png'" stretch="none"></Image>
+  </GridLayout>-->
+  
+  <Button class="button" [text]="'I\'m looking for a: '+animal" (tap)="selectAnimal()"></Button>
   <Button class="button" *ngIf="animalSelected()" [text]="'Breed:' + breed" (tap)="selectBreed()"></Button>
   <Button class="button" [text]="'About this old: ' + age" (tap)="selectAge()"></Button>
   <Button class="button" [text]="'Male or female? ' + sex" (tap)="selectSex()"></Button>
