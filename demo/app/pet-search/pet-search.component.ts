@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular';
-
+import { Router } from '@angular/router';
 import { Pet, Shelter, Options } from '../models';
 import { PetFinderService } from '../pet-finder.service';
+import { Observable } from 'rxjs/observable';
 
 import { SelectModalService } from '../select-modal.service';
 import { SelectModalComponent } from '../select-modal/select-modal.component';
+import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
   selector: 'my-pet-search',
@@ -21,12 +23,14 @@ export class PetSearchComponent implements OnInit{
   public size: string = '';
   
   public pets: Array<Pet> = [];
+  public pet$: Observable<any>;
 
   constructor(
     private petFinder: PetFinderService,
     private modal: SelectModalService,
     private vcRef: ViewContainerRef,
-    private router: RouterExtensions) {
+    private router: RouterExtensions,
+    private fonticon: TNSFontIconService) {
   }
 
   ngOnInit() {
@@ -78,12 +82,11 @@ export class PetSearchComponent implements OnInit{
       sex: this.sex,
       size: this.size
     })
-    .then(pets => this.pets = pets);
-  }
+    .then(pets => this.pets = pets)
+    this.router.navigate(['petresults']);
+  } 
 
-  onPetSelect(event) {
-    const selectedPet = this.pets[event.index];
-
-    this.router.navigate(['petsearch', selectedPet.id]);
-  }
+  myFavorites(){
+    
+  } 
 }

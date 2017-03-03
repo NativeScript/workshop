@@ -1,23 +1,23 @@
-<StackLayout>
-  <Button [text]="'Animal Type:' + animal" (tap)="selectAnimal()" class="btn btn-outline"></Button>
-  <Button *ngIf="animalSelected()" [text]="'Breed:' + breed" (tap)="selectBreed()" class="btn btn-outline"></Button>
-  <Button [text]="'Age:' + age" (tap)="selectAge()" class="btn btn-outline"></Button>
-  <Button [text]="'Sex:' + sex" (tap)="selectSex()" class="btn btn-outline"></Button>
-  <Button [text]="'Size:' + size" (tap)="selectSize()" class="btn btn-outline"></Button>
+<ActionBar title="FurFriendster">
+    <ActionItem (tap)="myFavorites()" ios.position="right">
+        <Button [text]="'fa-heart' | fonticon" class="fa"></Button>
+    </ActionItem>
+</ActionBar>
 
-  <DockLayout orientation="horizontal">
-    <Label dock="left" text="Address:" class="text-primary"></Label>
+<StackLayout>
+  <Label class="h1" text="Find Your Forever Friend"></Label>
+  <Button class="button" [text]="'I\'m looking for a: ' + animal" (tap)="selectAnimal()"></Button>
+  <Button class="button" *ngIf="animalSelected()" [text]="'Breed:' + breed" (tap)="selectBreed()"></Button>
+  <Button class="button" [text]="'About this old: ' + age" (tap)="selectAge()"></Button>
+  <Button class="button" [text]="'Male or female? ' + sex" (tap)="selectSex()"></Button>
+  <Button class="button" [text]="'About this large: ' + size" (tap)="selectSize()"></Button>
+
+  <DockLayout orientation="horizontal" horizontalAlignment="center">
+    <Label dock="left" text="In the general vicinity of " class="text-primary"></Label>
     <TextField hint="location" [(ngModel)]="location"></TextField>
   </DockLayout>
+  
+  <Button class="submit" text="Find!" (tap)="findPets()"></Button>
 
-  <Button text="Search" (tap)="findPets()" class="btn btn-primary"></Button>
-  <!--(itemTap)="onItemTap(event)"-->
-  <ListView [items]="pets" class="list-group" (itemTap)="onPetSelect($event)">
-    <template let-item="item">
-      <GridLayout rows="100" columns="100, *">
-        <Image col="0" [src]="item.media.getFirstImage(2, 'res://icon')" stretch="aspectFill"></Image>
-        <Label col="1" [text]="'name:'   + item?.name"></Label>
-      </GridLayout>
-    </template>
-  </ListView>
+  <Image src="~/assets/pets.png" style="opacity:.75"></Image>
 </StackLayout>

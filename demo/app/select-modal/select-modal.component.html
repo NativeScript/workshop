@@ -1,9 +1,9 @@
 <ScrollView>
-  <StackLayout row="1" class="m-10 p-10" verticalAlignment="center">
+  <StackLayout textAlignment="center">
     <Button text="None" (tap)="close('')" class="btn btn-outline"></Button>
-    <Button *ngFor="let option of options"
-      [text]="option" (tap)="close(option)"
-      class="btn btn-primary">
-    </Button>
+    <StackLayout (tap)="close(option)" class="animalCard" *ngFor="let option of options" verticalAlignment="center" horizontalAlignment="center">
+      <Image horizontalAlignment="center" [src]="'~/assets/'+option+'.png'" stretch="none"></Image>
+      <Label textAlignment="center" [text]="option"></Label>
+    </StackLayout>
   </StackLayout>     
 </ScrollView>

@@ -1,0 +1,10 @@
+ <ScrollView>
+    <ListView [items]="pets" class="list-group" (itemTap)="onPetSelect($event)">
+        <template let-item="item">
+        <GridLayout rows="100" columns="100, *">
+            <Image col="0" [src]="item.media.getFirstImage(2, 'res://icon')" stretch="aspectFill"></Image>
+            <Label col="1" [text]="'name:'   + item?.name"></Label>
+        </GridLayout>
+        </template>
+    </ListView>
+</ScrollView>

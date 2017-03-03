@@ -11,9 +11,13 @@ import { TestComponent } from './test/test.component';
 import { SelectModalComponent } from './select-modal/select-modal.component';
 import { PetSearchComponent } from './pet-search/pet-search.component';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
+import { PetResultsComponent } from './pet-results/pet-results.component';
 
 import { SelectModalService } from './select-modal.service';
 import { PetFinderService } from './pet-finder.service';
+
+//fonts
+import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPurePipe} from 'nativescript-ngx-fonticon';
 
 @NgModule({
     bootstrap: [
@@ -21,6 +25,9 @@ import { PetFinderService } from './pet-finder.service';
     ],
     imports: [
         NativeScriptModule,
+        TNSFontIconModule.forRoot({
+            'fa': 'fonts/font-awesome.css'
+        }),
         AppRoutingModule,
         NativeScriptHttpModule,
         NativeScriptFormsModule
@@ -30,7 +37,8 @@ import { PetFinderService } from './pet-finder.service';
         SelectModalComponent,
         TestComponent,
         PetSearchComponent,
-        PetDetailsComponent
+        PetDetailsComponent,
+        PetResultsComponent
     ],
     entryComponents: [
         SelectModalComponent
