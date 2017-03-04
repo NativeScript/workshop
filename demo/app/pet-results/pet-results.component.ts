@@ -5,7 +5,8 @@ import { PetFinderService } from '../pet-finder.service';
 
 @Component({
   selector: 'my-pet-search-results',
-  templateUrl: './pet-results/pet-results.component.html'
+  templateUrl: './pet-results/pet-results.component.html',
+  styleUrls: ['./pet-results/pet-results.component.css']
 })
 export class PetResultsComponent implements OnInit{
 
@@ -40,9 +41,8 @@ export class PetResultsComponent implements OnInit{
             breed: this.breed,
             sex: this.sex,
             size: this.size
-            })
-            .then(pets => this.pets = pets)
-       
+        })
+      .then(pets => this.pets = pets)
     }
 
     onPetSelect(event) {

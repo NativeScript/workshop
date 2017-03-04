@@ -1,0 +1,9 @@
+ListView {
+    border-radius: 5;
+    margin: 5;
+}
+
+.petLabel {
+    color: black;
+    padding-left: 10;
+}
