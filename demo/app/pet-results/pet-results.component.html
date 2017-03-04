@@ -1,4 +1,5 @@
- <ScrollView>
+<ActionBar title="Fur Friends"></ActionBar>
+<ScrollView>
     <ListView [items]="pets" class="list-group" (itemTap)="onPetSelect($event)">
         <template let-item="item">
         <GridLayout rows="100" columns="100, *">

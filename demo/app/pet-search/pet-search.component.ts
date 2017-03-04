@@ -3,7 +3,6 @@ import { RouterExtensions } from 'nativescript-angular';
 import { Router } from '@angular/router';
 import { Pet, Shelter, Options } from '../models';
 import { PetFinderService } from '../pet-finder.service';
-import { Observable } from 'rxjs/observable';
 
 import { SelectModalService } from '../select-modal.service';
 import { SelectModalComponent } from '../select-modal/select-modal.component';
@@ -22,8 +21,6 @@ export class PetSearchComponent implements OnInit{
   public sex: string = '';
   public size: string = '';
   
-  public pets: Array<Pet> = [];
-  public pet$: Observable<any>;
 
   constructor(
     private petFinder: PetFinderService,
@@ -75,15 +72,10 @@ export class PetSearchComponent implements OnInit{
   }
 
   findPets() {
-    this.petFinder.findPets(this.location, {
-      age: this.age,
-      animal: this.animal,
-      breed: this.breed,
-      sex: this.sex,
-      size: this.size
-    })
-    .then(pets => this.pets = pets)
-    this.router.navigate(['petresults']);
+    let navigationExtras = {
+      queryParams: { 'location': this.location, 'age': this.age, 'animal': this.animal, 'breed': this.breed, 'sex': this.sex, 'size': this.size }
+    }
+    this.router.navigate(['petresults'], navigationExtras);
   } 
 
   myFavorites(){
