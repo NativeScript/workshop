@@ -1,47 +1,28 @@
 <ActionBar [title]="pet?.name" class="action-bar"></ActionBar>
 
 <ScrollView>
+
+  <StackLayout>
+
+
+    <Image class="petBackground" height="300" [src]="pet?.media.getFirstImage(3, 'res://icon')" stretch="aspectFill"></Image>
+
+    <AbsoluteLayout>
+      
+      <Image top="-100" left="100" width="200" height="200" class="petImage" [src]="pet?.media.getSecondImage(4, 'res://icon')"
+        stretch="aspectFill"></Image>
     
-  <StackLayout class="m-10">
-    <Label [text]="'age:' + pet?.age" class="text-primary"></Label>
-    <Label [text]="'animal:' + pet?.animal" class="text-primary"></Label>
-    <Label [text]="'id:' + pet?.id" class="text-primary"></Label>
-    <Label [text]="'lastUpdate:' + pet?.lastUpdate" class="text-primary"></Label>
-    <Label [text]="'mix:' + pet?.mix" class="text-primary"></Label>
-    <Label [text]="'name:' + pet?.name" class="text-primary"></Label>
-    <Label [text]="'sex:' + pet?.sex" class="text-primary"></Label>
-    <Label [text]="'shelterId:' + pet?.shelterId" class="text-primary"></Label>
-    <Label [text]="'shelterPetId:' + pet?.shelterPetId" class="text-primary"></Label>
-    <Label [text]="'size:' + pet?.size" class="text-primary"></Label>
-    <Label [text]="'status:' + pet?.status" class="text-primary"></Label>
+    </AbsoluteLayout>
 
-    <Label text="Breeds:" class="text-primary"></Label>
-    <ListView row="2" [items]="pet?.breeds" class="list-group">
-      <template let-item="item">
-        <Label [text]="item" class="list-group-item"></Label>
-      </template>
-    </ListView>
+    <Label class="h1" [text]="pet?.age + ' ' +  pet?.breeds"></Label>
 
-    <Label text="Pictures:" class="text-primary"></Label>
-    <ScrollView>
-      <WrapLayout orientation="horizontal" itemHeight="200">
-        <Image *ngFor="let item of pet?.media.getImages(3)" [src]="item" stretch="aspectFit"></Image>
-      </WrapLayout>
-    </ScrollView>
+    <GridLayout columns="*,*">
+      <Button col="0" row="0" [text]="'fa-heart' | fonticon" class="fa like"></Button>
+      <Button col="1" row="0" [text]="'fa-share-square-o' | fonticon" class="fa share"></Button>
+    </GridLayout>
 
-    <Label text="Options:" class="text-primary"></Label>
-    <ListView row="2" [items]="pet?.options" class="list-group">
-      <template let-item="item">
-        <Label [text]="item" class="list-group-item"></Label>
-      </template>
-    </ListView>
-
-    <Label text="Contact:" class="text-primary"></Label>
-    <Label [text]="pet?.contact | json" textWrap="true" class="text-primary btn-outline"></Label>
+    <Label [text]="pet?.description" class="petDescription" textWrap="true"></Label>
 
 
-    <Label text="Description:" class="text-primary"></Label>
-    <Label [text]="pet?.description" class="text-primary btn-outline" textWrap="true"></Label>
-    
   </StackLayout>
 </ScrollView>

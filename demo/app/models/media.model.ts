@@ -25,6 +25,11 @@ export class Media extends PetFinderModel {
 
     return (images.length > 0) ? images[0] : defaultUrl;
   }
+  getSecondImage(size: ImageSize, defaultUrl: string) {
+    const images = this.getImages(size);
+
+    return (images.length > 0) ? images[1] : defaultUrl;
+  }
 }
 
 export enum ImageSize {

@@ -1,0 +1,12 @@
+.petBackground {
+    opacity: .75;
+}
+.petImage { 
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.petDescription {
+    padding: 10;
+}
+.fa {
+    font-size: 40;
+}

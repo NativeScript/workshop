@@ -37,16 +37,23 @@ Textfield {
     border-radius: 3;
 }
 
-TabView {
+/*TabView {
     tab-text-color: #262626;
     tab-background-color: #F9584A;
     selected-tab-text-color: white;
     android-selected-tab-highlight-color: #F9584A;
-}
+}*/
 
 .fa {
   font-family: FontAwesome, fontawesome-webfont;
-  color: pink;
+}
+
+.like {
+    color: pink;
+}
+
+.share {
+    color: lightgray;
 }
 
 .h1 {
@@ -61,9 +68,9 @@ TabView {
    background-color: #3EA0C0;
 }
 
-.tab {
+/*.tab {
     background-color: #3EA0C0;
-}
+}*/
 
 .submit {
     background-color: #DD2AF3;
