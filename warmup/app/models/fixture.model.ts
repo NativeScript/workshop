@@ -1,21 +1,21 @@
 export interface Fixture {
-  fixtureId: number;
-  competitionId: number;
-  homeTeamId: number;
-  awayTeamId: number;
+  fixtureId?: number;
+  competitionId?: number;
+  homeTeamId?: number;
+  awayTeamId?: number;
   date: string;
   status: string;
   matchday: number;
   homeTeamName: string;
   awayTeamName: string;
-  result: Result;
+  result?: Result;
   odds: Odds;
 }
 
 export interface Result {
   goalsHomeTeam?: number;
   goalsAwayTeam?: number;
-  halfTime: HalfTime;
+  halfTime?: HalfTime;
 }
 
 export interface Odds {
