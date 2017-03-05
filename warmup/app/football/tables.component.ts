@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Competition, LeagueTable } from '../models';
-import { FootballService } from '../football.service';
 
 @Component({
   selector: 'my-tables',
   templateUrl: './football/tables.component.html'
 })
-export class TablesComponent implements OnInit{
+export class TablesComponent {
   public competitions: Competition[] = [];
 
   public PremierLeagueId: number = 426;
@@ -18,19 +17,7 @@ export class TablesComponent implements OnInit{
   public Ligue1Id: number = 434;
   public EredivisieId: number = 433;
 
-  constructor(private footballService: FootballService) {//, private router: Router) {
-
-  }
-
-  ngOnInit() {
-    this.footballService.getCompetitions()
-      .then(competitions => {
-        this.competitions = competitions.filter(this.isLeague);
-      });
-  }
-
-  private isLeague(competition: Competition) {
-    return (competition.numberOfTeams-1)*2 === competition.numberOfMatchdays;
+  constructor() {
   }
 
   private onTeamTap(teamId: number) {
