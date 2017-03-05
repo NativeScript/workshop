@@ -10,8 +10,8 @@ export class ProfileComponent {
 
   constructor() {
     this.profile = {
-      name: '',
-      password: '',
+      name: 'Joe',
+      password: 'bl0gs',
       angularPro: false,
       dob: new Date(),
       codingPower: 1
