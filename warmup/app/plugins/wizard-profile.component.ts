@@ -52,7 +52,9 @@ export class WizardProfileComponent implements OnInit{
   }
 
   sharePicture() {
-    SocialShare.shareImage(this.profilePicture);
+    if(this.profilePicture) {
+      SocialShare.shareImage(this.profilePicture);
+    }
   }
 
   takeProfilePicture() {
