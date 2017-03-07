@@ -1,4 +1,3 @@
-export * from './pet-finder.model';
 export * from './pet.model';
 export * from './contact.model';
 export * from './media.model';

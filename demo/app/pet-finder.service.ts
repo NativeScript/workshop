@@ -122,7 +122,7 @@ export class PetFinderService {
         return [];
       }
 
-      return result.shelters.shelter.map(shelter => new Shelter(shelter));
+      return result.shelters.shelter.map(shelter => PetFinderFactory.shelterFromRaw(shelter));
     })
     .toPromise();
   }
@@ -135,7 +135,7 @@ export class PetFinderService {
     const requiredParams = { id };
 
     return this.callPetFinder('shelter.get', requiredParams)
-    .map(result => new Shelter(result.shelter))
+    .map(result => PetFinderFactory.shelterFromRaw(result.shelter))
     .toPromise();
   }
 
@@ -155,7 +155,7 @@ export class PetFinderService {
         return [];
       }
 
-      return result.shelters.shelter.map(shelter => new Shelter(shelter));
+      return result.shelters.shelter.map(shelter =>  PetFinderFactory.shelterFromRaw(shelter));
     })
     .toPromise();
   }

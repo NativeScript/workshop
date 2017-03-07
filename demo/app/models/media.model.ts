@@ -1,5 +1,3 @@
-import { PetFinderModel } from './';
-
 export class Media {
 
   constructor(private photos: Array<any>) {
