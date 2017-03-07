@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
-import { Pet, Shelter, RandomSearchOptions, PetSearchOptions, ShelterSearchOptions, ShelterPetSearchOptions, ShelterSearchByBreedOptions, Options } from './models';
+import { PetFactory, Pet, Shelter, RandomSearchOptions, PetSearchOptions, ShelterSearchOptions, ShelterPetSearchOptions, ShelterSearchByBreedOptions, Options } from './models';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/do';
@@ -36,7 +36,7 @@ export class PetFinderService {
    */
   public getPet(id: string | number): Promise<Pet> {
     return this.callPetFinder('pet.get', {id})
-    .map(result => new Pet(result.pet))
+    .map(result => PetFactory.fromPetFinderAPI(result.pet))
     .toPromise();
   }
 
@@ -65,7 +65,7 @@ export class PetFinderService {
     };
 
     return this.callPetFinder('pet.getRandom', requiredParams, options)
-    .map(result => new Pet (result.pet))
+    .map(result =>  PetFactory.fromPetFinderAPI(result.pet))
     .toPromise();
   }
 
@@ -84,8 +84,7 @@ export class PetFinderService {
       if (result.pets === undefined) {
         return [];
       }
-
-      return result.pets.pet.map(pet => new Pet(pet));
+      return result.pets.pet.map(pet => PetFactory.fromPetFinderAPI(pet));
     })
     .toPromise();
   }
@@ -104,7 +103,7 @@ export class PetFinderService {
         return [];
       }
 
-      return result.pets.pet.map(pet => new Pet(pet));
+      return result.pets.pet.map(pet => PetFactory.fromPetFinderAPI(pet));
     })
     .toPromise();
   }
