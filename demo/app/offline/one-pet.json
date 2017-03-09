@@ -1,0 +1,137 @@
+{
+  "@encoding": "iso-8859-1",
+  "@version": "1.0",
+  "petfinder": {
+    "pet": {
+      "options": {
+        "option": [
+          {
+            "$t": "hasShots"
+          },
+          {
+            "$t": "noDogs"
+          },
+          {
+            "$t": "altered"
+          },
+          {
+            "$t": "noCats"
+          }
+        ]
+      },
+      "status": {
+        "$t": "A"
+      },
+      "contact": {
+        "phone": {
+          "$t": "787-313-5653"
+        },
+        "state": {
+          "$t": "MA"
+        },
+        "address2": {},
+        "email": {
+          "$t": "amigosdelosanimalespr@mail.com"
+        },
+        "city": {
+          "$t": "Boston"
+        },
+        "zip": {
+          "$t": "02201"
+        },
+        "fax": {},
+        "address1": {}
+      },
+      "age": {
+        "$t": "Adult"
+      },
+      "size": {
+        "$t": "L"
+      },
+      "media": {
+        "photos": {
+          "photo": [
+            {
+              "@size": "pnt",
+              "$t": "~/offline/pug-placeholder.jpg",
+              "@id": "1"
+            },
+            {
+              "@size": "fpm",
+              "$t": "~/offline/pug-placeholder.jpg",
+              "@id": "1"
+            },
+            {
+              "@size": "x",
+              "$t": "~/offline/pug-placeholder.jpg",
+              "@id": "1"
+            },
+            {
+              "@size": "pn",
+              "$t": "~/offline/pug-placeholder.jpg",
+              "@id": "1"
+            },
+            {
+              "@size": "t",
+              "$t": "~/offline/pug-placeholder.jpg",
+              "@id": "1"
+            }
+          ]
+        }
+      },
+      "id": {
+        "$t": "30711434"
+      },
+      "shelterPetId": {
+        "$t": "Cholito"
+      },
+      "breeds": {
+        "breed": [
+          {
+            "$t": "Shar Pei"
+          },
+          {
+            "$t": "Labrador Retriever"
+          }
+        ]
+      },
+      "name": {
+        "$t": "Cholito"
+      },
+      "sex": {
+        "$t": "M"
+      },
+      "description": {
+        "$t": "**This dog is located in Amigos de los Animales Shelter**\n\nCholito is a sweet four year old boy and loyal friend to man.  He does not get along with other dogs or cats though.  He's great with older kids ands adults and would be a GREAT hiking partner.  He is fully vetted and ready for his new home with you.\n\nAdoptions for adult dogs is $100 and for Pups and pure bred, $150.  The fee is waved when you live in the states and you pay for transport.\n\nPlease email  amigosdelosanimalespr@mail.com for more information and an application!\n\nWhat is a Sato you might ask?\n\nA Sato is a street dog from Puerto Rico. No two Satos look exactly alike and they all have unique stories, but despite their often rough start in life, Satos are some of the best rescue dogs out there (in our opinion anyway, maybe we are a little biased!) They are the most lovable dogs you will ever rescue and one thing we do know for sure about Satos, people who have adopted Satos LOVE them and agree with us, Satos are the best!!"
+      },
+      "mix": {
+        "$t": "yes"
+      },
+      "shelterId": {
+        "$t": "PR17"
+      },
+      "lastUpdate": {
+        "$t": "2015-11-07T11:37:59Z"
+      },
+      "animal": {
+        "$t": "Dog"
+      }
+    },
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "header": {
+      "timestamp": {
+        "$t": "2017-03-08T10:23:21Z"
+      },
+      "status": {
+        "message": {},
+        "code": {
+          "$t": "100"
+        }
+      },
+      "version": {
+        "$t": "0.1"
+      }
+    },
+    "@xsi:noNamespaceSchemaLocation": "http://api.petfinder.com/schemas/0.9/petfinder.xsd"
+  }
+}

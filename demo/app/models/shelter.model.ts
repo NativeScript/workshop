@@ -1,92 +1,18 @@
-import { PetFinderModel, Contact, Media } from './';
+export class Shelter {
 
-export class Shelter extends PetFinderModel {
+  constructor(
+    public id:string,
+    public name: string,
+    public address1: string,
+    public address2: string,
+    public city: string,
+    public state: string,
+    public country: string,
+    public latitude: number,
+    public longitude: number,
+    public phone: string,
+    public fax: string,
+    public email: string
+  ) {}
 
-  constructor(model: any) {
-    super(model);
-  }
-
-  /**
-   * Shelter id
-   */
-  get id(): string {
-    return this.get('id.$t', '');
-  }
-
-  /**
-   * Shelter name
-   */
-  get name(): string {
-    return this.get('name.$t', '');
-  }
-
-  /**
-   * Shelter address1
-   */
-  get address1(): string {
-    return this.get('address1.$t', '');
-  }
-
-  /**
-   * Shelter address2
-   */
-  get address2(): string {
-    return this.get('address2.$t', '');
-  }
-
-  /**
-   * Shelter city
-   */
-  get city(): string {
-    return this.get('city.$t', '');
-  }
-
-  /**
-   * Shelter state
-   */
-  get state(): string {
-    return this.get('state.$t', '');
-  }
-
-  /**
-   * Shelter country
-   */
-  get country(): string {
-    return this.get('country.$t', '');
-  }
-
-  /**
-   * Shelter latitude
-   */
-  get latitude(): number {
-    return +this.get('latitude.$t', 0);
-  }
-
-  /**
-   * Shelter longitude
-   */
-  get longitude(): number {
-    return +this.get('longitude.$t', 0);
-  }
-
-  /**
-   * Shelter phone
-   */
-  get phone(): string {
-    return this.get('phone.$t', '');
-  }
-
-  /**
-   * Shelter fax
-   */
-  get fax(): string {
-    return this.get('fax.$t', '');
-  }
-
-  /**
-   * Shelter email
-   */
-  get email(): string {
-    return this.get('email.$t', '');
-  }
 }

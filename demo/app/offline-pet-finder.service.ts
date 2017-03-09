@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise'
 @Injectable()
 export class PetFinderService {
   private apiKey = '3b3fe2619dfd3c4e94c2d7efd24592e1';
-  private baseUrl = 'https://api.petfinder.com/';
+  private baseUrl = '~/offline/';
 
   constructor(private http: Http) {
   }
@@ -20,14 +20,7 @@ export class PetFinderService {
    * @param animal type of animal (barnyard, bird, cat, dog, horse, pig, reptile, smallfurry): for a safe list values use Options.animal
    */
   public breedList(animal: string): Promise<Array<string>> {
-    const requiredParams = { animal };
-
-    return this.callPetFinder('breed.list', requiredParams)
-    .map(petfinder => 
-      petfinder.breeds.breed
-      .map(breed => breed.$t)
-    )
-    .toPromise();
+    throw new Error('not implemented for offline');
   }
 
   /**
@@ -35,7 +28,7 @@ export class PetFinderService {
    * @param id 
    */
   public getPet(id: string | number): Promise<Pet> {
-    return this.callPetFinder('pet.get', {id})
+    return this.callPetFinder('one-pet.json')
     .map(result => PetFinderFactory.petFromRaw(result.pet))
     .toPromise();
   }
@@ -45,13 +38,7 @@ export class PetFinderService {
    * @param options a set of Random Search Options, which include: animal, breed, location, sex, shelterId, size
    */
   public getRandomPetId(options: RandomSearchOptions = {}): Promise<number> {
-    const requiredParams = { 
-      output: Options.output.id 
-    };
-
-    return this.callPetFinder('pet.getRandom', requiredParams, options)
-    .map(result => result.petIds.id.$t)
-    .toPromise();
+    return new Promise((resolve, reject) => { return 42; });
   }
 
   /**
@@ -60,12 +47,8 @@ export class PetFinderService {
    * @param provideDescription determines whether the pet description should be provided
    */
   public getRandomPet(options: RandomSearchOptions = {}, provideDescription: boolean = true): Promise<Pet> {
-    const requiredParams = {
-      output: (provideDescription) ? Options.output.full : Options.output.basic
-    };
-
-    return this.callPetFinder('pet.getRandom', requiredParams, options)
-    .map(result =>  PetFinderFactory.petFromRaw(result.pet))
+    return this.callPetFinder('one-pet.json')
+    .map(result => PetFinderFactory.petFromRaw(result.pet))
     .toPromise();
   }
 
@@ -79,7 +62,7 @@ export class PetFinderService {
   public findPets(location: string, options: PetSearchOptions): Promise<Array<Pet>> {
     const requiredParams = { location };
 
-    return this.callPetFinder('pet.find', requiredParams, options)
+    return this.callPetFinder( 'pets-boston.json')
     .map(result => {
       if (result.pets === undefined) {
         return [];
@@ -95,14 +78,14 @@ export class PetFinderService {
    * @param options a set of Search Options, which include: count, offset, output, status
    */
   public findShelterPets(id: string | number, options: ShelterPetSearchOptions = {}): Promise<Array<Pet>> {
-    const requiredParams = { id };
+    const requiredParams = { location };
 
-    return this.callPetFinder('shelter.getPets', requiredParams, options)
+    //test offline mode:
+    return this.callPetFinder('pets-boston.json')
     .map(result => {
       if (result.pets === undefined) {
         return [];
       }
-
       return result.pets.pet.map(pet => PetFinderFactory.petFromRaw(pet));
     })
     .toPromise();
@@ -114,17 +97,7 @@ export class PetFinderService {
    * @param options a set of Search Options, which include: count, name, offset
    */
   public findShelters(location: string, options: ShelterSearchOptions = {}): Promise<Array<Shelter>> {
-    const requiredParams = { location };
-
-    return this.callPetFinder('shelter.find', requiredParams, options)
-    .map(result => {
-      if (result.shelters === undefined) {
-        return [];
-      }
-
-      return result.shelters.shelter.map(shelter => PetFinderFactory.shelterFromRaw(shelter));
-    })
-    .toPromise();
+    throw new Error('not implemented for offline');
   }
 
   /**
@@ -132,11 +105,7 @@ export class PetFinderService {
    * @param id shelter ID (e.g. NJ94)
    */
   public getShelter(id: string | number): Promise<Shelter> {
-    const requiredParams = { id };
-
-    return this.callPetFinder('shelter.get', requiredParams)
-    .map(result => PetFinderFactory.shelterFromRaw(result.shelter))
-    .toPromise();
+    throw new Error('not implemented for offline');
   }
 
   /**
@@ -147,17 +116,7 @@ export class PetFinderService {
    * @param options a set of Search Options, which include: count, offset 
    */
   public findSheltersByBreed(animal:string, breed: string, options: ShelterSearchByBreedOptions = {}): Promise<Array<Shelter>> {
-    const requiredParams = { animal, breed };
-
-    return this.callPetFinder('shelter.listByBreed', requiredParams, options)
-    .map(result => {
-      if (result.shelters === undefined) {
-        return [];
-      }
-
-      return result.shelters.shelter.map(shelter =>  PetFinderFactory.shelterFromRaw(shelter));
-    })
-    .toPromise();
+      throw new Error('not implemented for offline');
   }
 
   /**
@@ -169,9 +128,7 @@ export class PetFinderService {
   private callPetFinder(method: string, params: any = {}, options: any = {}): Observable<any> {
     let searchParams: URLSearchParams = this.buildSearchParams(params, options);
     return this.http.get(
-      // `${this.baseUrl}${method}`,
-      this.baseUrl + method,
-      { search: searchParams }
+      this.baseUrl + method
     )
     .map(response => response.json())
     .map((data: any) => data.petfinder)

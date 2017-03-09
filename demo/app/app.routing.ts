@@ -10,6 +10,8 @@ import { PetResultsComponent } from './pet-results/pet-results.component';
 const routes: Routes = [
     { path: '', component: PetSearchComponent, pathMatch: 'full'},
     { path: 'test', component: TestComponent },
+    //{ path: '', component: TestComponent, pathMatch: 'full' },
+    
     { path: 'petresults', children: [
         { path: '', component: PetResultsComponent },
         { path: ':id', component: PetDetailsComponent }

@@ -1,11 +1,6 @@
-import { PetFinderModel } from './';
+export class Media {
 
-export class Media extends PetFinderModel {
-  private photos: Array<any>;
-  constructor(media: any) {
-    super(media);
-
-    this.photos = this.get('photos.photo', []);
+  constructor(private photos: Array<any>) {
   }
 
   /**
