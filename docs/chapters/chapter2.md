@@ -123,7 +123,7 @@ Each of the input components you used a moment ago, allows you to use `[(ngModel
 <Slider [(ngModel)]="size" [minValue]="0" [maxValue]="10"></Slider>
 ```
 
-However before you use `[(ngModel)]` in your app, you need to `NativeScriptFormsModule` to `@NgModulde` => `imports`
+However before you use `[(ngModel)]` in your app, you need to `NativeScriptFormsModule` to `@NgModule` => `imports`
 
 
 <h4 class="exercise-start">
