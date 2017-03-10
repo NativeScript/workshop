@@ -1,3 +1,3 @@
-## The user interface
+## Lesson 2 - Navigation
 
 ...
