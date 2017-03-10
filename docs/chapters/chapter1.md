@@ -49,4 +49,4 @@ Open your `app/item/item.component.html` file and change the `title` attribute o
 
 ### Debugging NativeScript apps
 
-Walk people through setting up the VS Code debugging process.
+Together we’ll go through [the instructions to debug NativeScript apps in Visual Studio Code](https://docs.nativescript.org/tooling/visual-studio-code-extension#debugging).
