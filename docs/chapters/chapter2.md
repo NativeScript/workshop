@@ -1,12 +1,10 @@
-## Warm up
-
-
 ### Project set up
 `Instructions on how to clone the application.`
 
 `Instructions how to run the project.`
 
-### Lesson 1 - UI
+
+## Lesson 1 - UI
 
 In this lesson we are going to familiarise ourselves with some of the most commonly used UI components in NativeScript.
 
@@ -25,7 +23,7 @@ Here are some examples of UI components:
 <Button text="Do Something" (tap)="clear()"></Button>
 ```
 
-#### Attribute binding
+### Attribute binding
 
 The above example uses hardcoded values, but you can also use one way binding (with `[]` around the attribute you want to bind to) to display the values in the profile.
 
@@ -36,7 +34,7 @@ For example:
 <TextField [text]="profile.name" hint="name"></TextField>
 ```
 
-#### Events
+### Events
 
 Also to attach to a component's event like: `tab`, `doubleTap`, `pinch`, `pan`, `swipe`, `rotation`, `longPress`, `touch`, just use the `(eventName)` notation.
 
@@ -215,11 +213,13 @@ Test it with clear() and save() to see what happens.
 <!--#### Changing themes and using theme attributes-->
 <!--#### Basic css animations-->
 
+### Theme
+
 Now that we have the profile page doing something `sort of` useful ;)
 Let's make it look a little bit better.
 
 The good news is that NativeScript comes with a buncho of built in `Themes`.
-![Picture with all the themes from the docs]()
+![Color Schemes](http://docs.nativescript.org/img/theme/color-schemes-all.png)
 
 Most of the standard UI components come with styles that you can use for a really quick styling improvements.
 
@@ -252,7 +252,11 @@ For example:
 <Button text="Rounded Grey" class="btn btn-primary btn-grey btn-rounded-sm"></Button>
 ```
 
-#### Other can use
+<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-theme-01.png?raw=true)-->
+![Recreate UI](http://127.0.0.1:4000/images/warmup-theme-01.png?raw=true)
+
+
+#### Other components can use
 
  * `action` - for the default `<Slider>` styling
  * `slider` - for the default `<Slider>` styling
@@ -367,7 +371,7 @@ Open `app.css` and change the imported style to each of the values below and see
 <div class="exercise-end"></div>
 
 
---- Animation Go Here --- 
+### Animations 
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Animations
@@ -417,48 +421,11 @@ Instruction of the exercise
 
 
 
-#### Create your own theme ???
-(Bonus exercise)
+### Create your own theme ???
+(Bonus exercise) - This to be covered by Jen
 Build your own theme at [NativeScript theme builder](http://www.nativescriptthemebuilder.com/#)
 
 --- Do we need instructions on how to do this? ---
 
-### Lesson 2 - Navigation
-
-
-### Lesson 3 - Components and Services
-
-
-### Lesson 4 - Plugins
-
-
-
-
-<h4 class="exercise-start">
-    <b>Exercise</b>: Example of a challenge
-</h4>
-
-This is the text you want to show
-
-<div class="solution-start"></div>
-
-And this is the text you want to hide.
-
-<div class="solution-end"></div>
-
-<div class="exercise-end"></div>
-
-
-<h4 class="exercise-start">
-    <b>Exercise</b>: Example of a copy-paste exercise
-</h4>
-
-Any code blocks in the exercises automatically get a copy button.
-
-```
-tns create WorkshopOne --ng
-```
-
-<div class="exercise-end"></div>
 
 
