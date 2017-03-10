@@ -9,7 +9,7 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 
 //Lesson 2
-import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './navigation'
+import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './color'
 
 // Lesson 3
 import { TablesComponent } from './football/tables.component';
