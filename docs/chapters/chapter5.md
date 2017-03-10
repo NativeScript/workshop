@@ -1,3 +1,3 @@
-## Extensibility and plugins
+## Lesson 4 - Plugins
 
 ...
