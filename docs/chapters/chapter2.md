@@ -1,10 +1,11 @@
-### Project set up
+## Project setup
+
 `Instructions on how to clone the application.`
 
 `Instructions how to run the project.`
 
 
-## Lesson 1 - UI
+### Lesson 1 - UI
 
 In this lesson we are going to familiarise ourselves with some of the most commonly used UI components in NativeScript.
 
