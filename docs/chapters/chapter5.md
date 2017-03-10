@@ -1,18 +1,16 @@
-## Lesson 4 - Plugins
+## Lesson 3 - Components and Services
 
 
 
 
-JS/TS plugins 
-  moment.js
-npm for nativescript plugins
-  Clear and rebuild when adding native plugins
-Few examples of some core plugins
-  Social share: https://www.npmjs.com/package/nativescript-social-share
-  Camera: https://www.npmjs.com/package/nativescript-camera
-  Pull to refresh: https://www.npmjs.com/package/nativescript-pulltorefresh
-  Fancy Alert: https://www.npmjs.com/package/nativescript-fancyalert
-  Performance monitor: https://www.npmjs.com/package/nativescript-performance-monitor
-  Snackbar: https://www.npmjs.com/package/nativescript-snackbar
+Creating a service
+Adding the service to app.modules.ts
+Using http service
+Injecting services
+Adding components to app.modules.ts
+Smart vs dumb components
+Using @Input
+Using @Output
+Creating your own ngModel ?
 
 ...

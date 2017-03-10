@@ -1,11 +1,18 @@
-## App Challenge Part 4 - EXTRA BONUS TIME
+## App Challenge Part 3 - Setting up a Form
 
-Have you completed all requirements of the app challenge and still have time left? Good news! There’s still more fun to be had.
+With a master/detail interface complete, your app is almost ready to go. Your next step is to remove your hardcoded data, and let users filter and find exactly the pet they’re looking for.
 
-Take whatever time you have left and implement a new feature for FurFriendster. Use your imagination! What feature does the best pet finding app on the market really need?
+### What you’re building
 
-If you’re having trouble coming up with good ideas, we have a few suggestions.
+Show a screenshot of the wizard screen, and explain what it’s doing in detail.
 
-### Adding favorites
+### Building the form
 
-Show screenshots of what the app might look like if you allowed users to favorite pets and view them on a separate screen. Give hints on how they might accomplish that.
+Talk to the reader a bit about the problem they need to solve.
+
+Give the reader the hard requirements of the chapter. List all form fields they must offer the reader, and what values to accept for each.
+
+Give a couple of hints. Like:
+
+* Adding the appropriate configuration in your app’s main NgModule.
+* Pointing readers at the UI components they’ll need.

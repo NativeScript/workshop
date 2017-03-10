@@ -1,9 +1,11 @@
-## Where to go from here?
+## App Challenge Part 4 - EXTRA BONUS TIME
 
-Congratulations! You’ve completed the NativeScript workshop 🎉
+Have you completed all requirements of the app challenge and still have time left? Good news! There’s still more fun to be had.
 
-Regardless of what you choose to do with NativeScript, joining the NativeScript community is a great way to keep up with the latest and greatest in the NativeScript world. Here are some ways you can get involved:
+Take whatever time you have left and implement a new feature for FurFriendster. Use your imagination! What feature does the best pet finding app on the market really need?
 
-- **Join the [NativeScript Community Slack](http://developer.telerik.com/wp-login.php?action=slack-invitation)**. The community Slack is a great place to ask questions, and chat with others in the NativeScript community.
-- **Follow [@nativescript](https://twitter.com/nativescript) on Twitter** for updates on all things NativeScript.
-- **Sign up for the [NativeScript newsletter](https://www.nativescript.org/nativescript-newsletter)**. The newsletter will deliver NativeScript articles, news, plugin updates, and more straight to your inbox.
+If you’re having trouble coming up with good ideas, we have a few suggestions.
+
+### Adding favorites
+
+Show screenshots of what the app might look like if you allowed users to favorite pets and view them on a separate screen. Give hints on how they might accomplish that.

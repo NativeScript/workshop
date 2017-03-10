@@ -1,18 +1,18 @@
-## App Challenge Part 3 - Setting up a Form
+## App Challenge Part 2 - Master/Detail Pages
 
-With a master/detail interface complete, your app is almost ready to go. Your next step is to remove your hardcoded data, and let users filter and find exactly the pet they’re looking for.
+With your basic list complete, your next test is to turn your list of pets into a functional master/detail interface. That is, after you complete this challenge, readers should be able to tap items on the master list, and navigate to a second screen where they can see details about the pet they’re interested in.
 
 ### What you’re building
 
-Show a screenshot of the wizard screen, and explain what it’s doing in detail.
+Show a screenshot of the details screen and talk about in, wait for it, detail.
 
-### Building the form
+### Building the page
 
-Talk to the reader a bit about the problem they need to solve.
+Talk a little bit about how to approach the problem. Maybe even list the various files the reader will have to touch in order to implement a new route.
 
-Give the reader the hard requirements of the chapter. List all form fields they must offer the reader, and what values to accept for each.
+List the hard requirements of this challenge. I think we’ll want to tell the reader that they must use at least social share. They must display certain information. That sort of thing.
 
 Give a couple of hints. Like:
 
-* Adding the appropriate configuration in your app’s main NgModule.
-* Pointing readers at the UI components they’ll need.
+* Links to the navigation docs.
+* Information on how to build that diamond UI with clip-path

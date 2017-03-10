@@ -1,52 +1,201 @@
-## Lesson 2 - Navigation
+## Lesson 1 - UI
 
-### Intro
+In this lesson we are going to familiarise ourselves with some of the most commonly used UI components in NativeScript.
 
-In this lesson we are going to familiarise ourselves with navigation techniques.
+For this exercise we will use the contents of the `app/profile` folder, which already contains some pieces of the app that we need.
 
-For this exercise we will use the contents of the `app/color` folder, which already contains some pieces of the app that we need.
+If you open `profile.component.ts` you will notice that our component has an attribute `profile` with some populated values. In the next few steps we will create a screen that will allow us to display and edit these values.
 
-### Routing configuration
+Here are some examples of UI components:
 
-<!--implementation of app.rounting.ts and color.component.html component -->
-<!--Configuration of app.routing.ts
-  Children
-  Params-->
+``` html
+<Label text="name"></Label>
+<TextField hint="your name here" text="Jack"></TextField>
+<Switch checked="true"></Switch>
+<DatePicker [day]="2" [month]="2" [year]="2002"></DatePicker>
+<Slider [minValue]="0" [maxValue]="10" [value]="3"></Slider>
+<Button text="Do Something" (tap)="clear()"></Button>
+```
 
+### Attribute binding
 
+The above example uses hardcoded values, but you can also use one way binding (with `[]` around the attribute you want to bind to) to display the values in the profile.
 
+For example:
 
-### Exercise: Routing configuration
+``` html
+<Label [text]="profile.name"></Label>
+<TextField [text]="profile.name" hint="name"></TextField>
+```
+
+### Events
+
+Also to attach to a component's event like: `tab`, `doubleTap`, `pinch`, `pan`, `swipe`, `rotation`, `longPress`, `touch`, just use the `(eventName)` notation.
+
+For example:
+
+``` html
+<StackLayout (longPress)="clearForm()">
+  <Label text="Action:" (swipe)="printDirection($event)"></Label>
+  <Button text="Do Something" (tap)="doSomething()"></Button>
+</StackLayout>
+```
+
 <h4 class="exercise-start">
-  <b>Exercise</b>: Routing configuration
+  <b>Exercise</b>: Use Label, TextField, Switch, DatePicker, Slider, Button
+</h4>
+
+Recreate the below UI and bind the input components to the profile attributes.
+Additionally, make sure that the two buttons call `save()` and `clear()` respectively.
+
+<b>HINT</b> To make a TextField password friendly just use `secure="true"`.
+
+
+<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-01.png?raw=true)-->
+![Recreate UI](http://127.0.0.1:4000/images/warmup-01.png?raw=true)
+
+Edit `profile.component.html` and have fun.
+
+<div class="solution-start"></div>
+
+``` html
+<ActionBar title="Profile" class="action-bar">
+</ActionBar>
+
+<StackLayout>
+  <Label text="Name:"></Label>
+  <TextField
+    [text]="profile.name"
+    hint="name">
+  </TextField>
+
+  <Label text="Password:"></Label>
+  <TextField
+    [text]="profile.password"
+    hint="password"
+    secure="true">
+  </TextField>
+
+  <Label text="Angular Pro:"></Label>
+  <Switch
+    [checked]="profile.angularPro"
+    class="switch">
+  </Switch>
+
+  <Label text="Date of Birth:"></Label>
+  <DatePicker 
+    [day]="profile.dob.getDate()"
+    [month]="profile.dob.getMonth()+1"
+    [year]="profile.dob.getYear() + 1900">
+  </DatePicker>
+  
+  <Label text="Coding power:"></Label>
+  <Slider
+    [value]="profile.codingPower"
+    [minValue]="0"
+    [maxValue]="10"
+    class="slider">
+  </Slider>
+
+  <Button text="Save" (tap)="save()"></Button>
+  <Button text="Clear" (tap)="clear()"></Button>
+</StackLayout>
+```
+
+<div class="solution-end"></div>
+
+<div class="exercise-end"></div>
+
+<!--#### Two way binding with [(ngModel)]=”name” -> including the required changes to app.module.ts-->
+One way binding is not particularly useful for input forms. This is where `[(ngModel)]` comes in handy.
+Each of the input components you used a moment ago, allows you to use `[(ngModel)]` to configure two-way binding. Just like this:
+
+``` html
+<TextField [(ngModel)]="email" hint="your name here"></TextField>
+<Switch [(ngModel)]="optIn"></Switch>
+<DatePicker [(ngModel)]="dob"></DatePicker>
+<Slider [(ngModel)]="size" [minValue]="0" [maxValue]="10"></Slider>
+```
+
+However before you use `[(ngModel)]` in your app, you need to `NativeScriptFormsModule` to `@NgModule` => `imports`
+
+
+<h4 class="exercise-start">
+    <b>Exercise</b>: Two-way binding
 </h4>
 
 #### Step 1
 
-Open `app.routing.ts` and change the `redirectTo` of the default route to `'/color'`
+Open `app.modules.ts` and import `NativeScriptFormsModule`
 
-<div class="solution-start"></div>
-``` XML
-{ path: '', redirectTo: '/color', pathMatch: 'full' },
+``` html
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 ```
-<div class="solution-end"></div>
+
+Then add it to `@NgModule` imports:
+
+``` html
+    imports: [
+        NativeScriptModule,
+        AppRoutingModule,
+        NativeScriptHttpModule,
+        NativeScriptFormsModule
+    ],
+```
+
 
 #### Step 2
 
-Now it is time to add routes for the `Red` and `RGB` components.
-Update the childern of the `color` route, so that:
+Update all input components to use two-way binding.
+Test it with clear() and save() to see what happens.
 
- * `'color/red'` path will navigate to `RedComponent` - you can see how this is done for the `blue` example,
- * `'color/rgb'` + `<rgb param>` path will navigate to `RGBComponent` while passing the `rgb` parameter
+<b>HINT</b> To keep an eye on the slider value, just print it in the label above it, like:
+
+``` html
+<Label [text]="'Coding power:' + profile.codingPower"></Label>
+```
 
 <div class="solution-start"></div>
-``` XML
-{ path: 'color', children: [
-  { path: '', component: ColorComponent },
-  { path: 'blue', component: BlueComponent },
-  { path: 'red', component: RedComponent },
-  { path: 'rgb/:rgb', component: RGBComponent },
-]},
+
+``` html
+<ActionBar title="Profile" class="action-bar">
+</ActionBar>
+
+<StackLayout>
+  <Label text="Name:"></Label>
+  <TextField
+    [(ngModel)]="profile.name"
+    hint="name">
+  </TextField>
+
+  <Label text="Password:"></Label>
+  <TextField
+    [text]="profile.password"
+    hint="password"
+    secure="true">
+  </TextField>
+
+  <Label [text]="'Angular Pro: ' + ((profile.angularPro) ? 'Yes': 'No')"></Label>
+  <Switch
+    [(ngModel)]="profile.angularPro"
+    class="switch">
+  </Switch>
+
+  <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()"></Label>
+  <DatePicker
+    [(ngModel)]="profile.dob">
+  </DatePicker>
+  
+  <Label [text]="'Coding power:' + profile.codingPower"></Label>
+  <Slider
+    [(ngModel)]="profile.codingPower"
+    [minValue]="0"
+    [maxValue]="10">
+  </Slider>
+  
+  <Button text="Save" (tap)="save()"></Button>
+  <Button text="Clear" (tap)="clear()"></Button>
+</StackLayout>
 ```
 
 <div class="solution-end"></div>
@@ -54,248 +203,223 @@ Update the childern of the `color` route, so that:
 <div class="exercise-end"></div>
 
 
-### Navigation with nsRouterLink
-<!--Navigation with ngRouterLink-->
 
-#### Relative path
+<!--#### Changing themes and using theme attributes-->
+<!--#### Basic css animations-->
 
-``` XML
-[nsRouterLink]="['/absolute']"
-<!--Navigate to parent-->
-[nsRouterLink]="['..']"
-[nsRouterLink]="['../sibling']"
-[nsRouterLink]="['./child']"     // or
-[nsRouterLink]="['child']" 
+### Theme
+
+Now that we have the profile page doing something `sort of` useful ;)
+Let's make it look a little bit better.
+
+The good news is that NativeScript comes with a buncho of built in `Themes`.
+![Color Schemes](http://docs.nativescript.org/img/theme/color-schemes-all.png)
+
+Most of the standard UI components come with styles that you can use for a really quick styling improvements.
+
+
+#### Text based components can use:
+
+ * `text-primary`, `text-muted`, `text-danger` to change the text color,
+ * `text-center`, `text-left`, `text-right` to change the alignment of the text,
+ * `text-lowercase`, `text-uppercase`, `text-capitalize` to apply text transformation
+
+For example:
+
+``` html
+<Label text="Name" class="text-primary text-right"></Label>
+<Label text="Email" class="text-danger"></Label>
 ```
 
-### Exercise: Navigation with nsRouterLink
+#### Buttons can use:
 
-<h4 class="exercise-start">
-  <b>Exercise</b>: Navigation with nsRouterLink
-</h4>
+ * `btn`, `btn-primary`, `btn-outline`, `btn-active` - to change the general style
+ * `btn-rounded-sm` and `btn-rounded-lg` - to make the buttons rounded
+ * `btn-blue`, `btn-brown`, `btn-forest`, `btn-grey`, `btn-lemon`, `btn-lime`, `btn-ruby`, `btn-sky` - to change the primary color (this only works in conjunction with `btn-primary`) 
 
-Open `color.component.html` and update `[nsRouterLink]` for each button, so that:
+For example:
 
- * `Blue` button navigates to the `BlueComponent`
- * `Red` button navigates to the `RedComponent`
- * `Pink` button navigates to the `RGBComponent` with `'#ff0088'` as the parameter
- * `Gray` button navigates to the `RGBComponent` with `'gray'` as the parameter
- * `Lavender` button navigates to the `RGBComponent` with `'#bad'` as the parameter
-
-<div class="solution-start"></div>
-
-Here is the configuration for each: 
-
- * `Blue` => `[nsRouterLink]="['/color/blue']"` OR `[nsRouterLink]="['blue']"`
- * `Red` => `[nsRouterLink]="['/color/red']"` OR `[nsRouterLink]="['red']"`
- * `Pink` => `[nsRouterLink]="['/color/rgb', '#ff0088']"` OR  `[nsRouterLink]="['rgb', '#ff0088']"`
- * `Gray` => `[nsRouterLink]="['/color/rgb', 'gray']"` OR  `[nsRouterLink]="['rgb', 'gray']"`
- * `Lavender` => `[nsRouterLink]="['/color/rgb', '#bad']"` OR  `[nsRouterLink]="['rgb', '#bad']"`
-
-<div class="solution-end"></div>
-
-<div class="exercise-end"></div>
-
-
-### Navigation with code
-<!--Navigation with with code: router
-  Router from ‘@angular/router’
-  RouterExtensions from ‘nativescript-angular/router’
-  Navigating with params
-  Navigating back
-  Navigating home (clearHistory)-->
-
-<!-- router back vs back to previous page -->
-    this.router.back();
-    this.router.backToPreviousPage();
-
-
-#### Relative path
-
-<!--this.router.navigate('../../parent', {relativeTo: this.route});-->
-``` javascript
-this.router.navigate(['/absolute/path']);
-
-<!--navigate to parent-->
-this.router.navigate('..',   {relativeTo: this.route});
-
-this.router.navigate('../sibling',   {relativeTo: this.route});
-this.router.navigate('./child',      {relativeTo: this.route}); // or
-this.router.navigate('child',        {relativeTo: this.route});
+``` html
+<Button text="Primary" class="btn btn-primary"></Button>
+<Button text="Outline" class="btn btn-outline"></Button>
+<Button text="Orange" class="btn btn-primary btn-ornage"></Button>
+<Button text="Rounded Grey" class="btn btn-primary btn-grey btn-rounded-sm"></Button>
 ```
 
-
-### Exercise: Navigation with code
-
-<h4 class="exercise-start">
-  <b>Exercise</b>: Navigation with code
-</h4>
-
-In this exercise we will play with the `blue` component.
-`blue.component.html` already contains 4 buttons, each calling a different function.
-
-Your task is to implement the empty functions, so that:
-
- * goRed() navigates to the `Red` page
- * goPink() navigates to the `RGB` page with `this.pink` as the parameter
- * goBack() navigates back
- * goHome() navigates home whilst clearing the navigation history
+<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-theme-01.png?raw=true)-->
+![Recreate UI](http://127.0.0.1:4000/images/warmup-theme-01.png?raw=true)
 
 
-<div class="solution-start"></div>
+#### Other components can use
 
- * goRed (Absolute Solution) => <br />
- `this.router.navigate(['/color/red']);`
- * goRed (Relative Solution) => <br />
- `this.router.navigate(['../red'], { relativeTo: this.route });`
- * goPink (Absolute Solution) => <br />
- `this.router.navigate(['/color/rgb', this.pink]);`
- * goPink (Relative Solution) => <br />
- `this.router.navigate(['../rgb', this.pink], { relativeTo: this.route });`
- * goBack => <br />
- `this.router.back();`
- * goHome => <br />
- `this.router.navigate(['/color'], { clearHistory: true });`
+ * `action` - for the default `<Slider>` styling
+ * `slider` - for the default `<Slider>` styling
+ * `action-bar` - for the default `<ActionBar>` styling
 
-<div class="solution-end"></div>
+#### Margins and padding
 
+You can use predefined styles for margins and padding.
+Use `m` for margin and `p` for padding. Then optionaly add:
 
-<div class="exercise-end"></div>
+ * `-t`: top
+ * `-b`: bottom
+ * `-l`: left
+ * `-r`: right
+ * `-x`: horizontal (i.e. both left and right)
+ * `-y`: vertical (i.e. both top and bottom)
 
-### Receiving parameters
+Finally add the size: `0`, `2`, `4`, `5`, `8`, `10`, `12`, `15`, `16`, `20`, `24`, `25`, `28`, `30`
 
-``` javascript
-import { ActivatedRoute } from '@angular/router';
+For example:
+
+``` html
+<StackLayout class="m-x-10 p-5">
+  <Label text="name" class="m-l-10"></Label>
+  <Button text="Go" class="btn btn-primary p-20"></Button>
+</StackLayout>
 ```
 
-``` javascript
-constructor(private route: ActivatedRoute) {
-}
-```
-
-``` javascript
-ngOnInit() {
-  this.route.params
-    .forEach(params => this.paramValue = params['param_name']);
-}
-```
-
-### Exercise: Receiving parameters
-
+#### To read more about themes
+Go to [NativeScript theme docs](https://docs.nativescript.org/ui/theme)
 
 
 <h4 class="exercise-start">
-  <b>Exercise</b>: Receiving parameters
+  <b>Exercise</b>: NativeScript Theme
 </h4>
-
-In this exercise we will play with the `rgb` component.
-Currently every time you navigate to rgb the input parameters are getting ignored.
-Your task is to intercept the 'rgb' parameter and update `this.rgb`.
-
-<div class="solution-start"></div>
-
-``` javascript
-  ngOnInit() {
-    this.route.params
-      .forEach(params => this.rgb = params['rgb']);
-  }
-```
-
-<div class="solution-end"></div>
-
-<div class="exercise-end"></div>
-
-### Page Transitions
-
-
-[Here is a list of all available navigation transitions](http://docs.nativescript.org/api-reference/interfaces/_ui_frame_.navigationtransition.html)
-
-[Here is a list of all available animation curves](http://docs.nativescript.org/api-reference/modules/_ui_enums_.animationcurve.html)
-
-#### Transition via html
-
-
-Example of page transition:
-
-``` XML
-<Button
-  text="Open Path"
-  [nsRouterLink]="['/path']"
-  pageTransition="slideBottom">
-</Button>
-```
-
-#### Transition via code
-
-Example of page transition:
-
-``` javascript
-this.router.navigate(['/relative/path'], {
-  transition: {
-    name: 'slideBottom',
-    duration: 500,
-    curve: 'linear'
-  }
-});
-```
-
-### Exercise: Page Transitions
-
-<h4 class="exercise-start">
-  <b>Exercise</b>: Page Transitions
-</h4>
-
-In this exercise we will play with the `color` and `red` components.
 
 #### Step 1
 
-Your task is to update the buttons in `color.component.html`, so that:
+Update the UI to make it look more like the one in the picture below.
 
- * The `Blue` button triggers `curl` transition
- * The `Red` button triggers the `explode` transition
- * The `Pink`, `Gray` and `#bad` buttons trigger the `flip` transition
+<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-02.png?raw=true)-->
+![Recreate UI](http://127.0.0.1:4000/images/warmup-02.png?raw=true)
 
+<b>HINT</b> You may need to update the margin on the `StackLayout`, so that the UI components don't stay too close to the edge of the screen.
 
 <div class="solution-start"></div>
 
- * `Blue` => `pageTransition="curl"`
- * `Red` => `pageTransition="explode"`
- * `Pink`, `Gray` and `#bad` => `pageTransition="flip"`
+``` html
+<ActionBar title="Profile" class="action-bar">
+</ActionBar>
+  
+<StackLayout class="form m-l-5">
+  <Label text="Name:" class="text-primary"></Label>
+  <TextField
+    [(ngModel)]="profile.name"
+    hint="name">
+  </TextField>
+
+  <Label text="Password:" class="text-primary"></Label>
+  <TextField
+    [text]="profile.password"
+    hint="password"
+    secure="true">
+  </TextField>
+
+  <Label [text]="'Angular Pro: ' + ((profile.angularPro) ? 'Yes': 'No')" class="text-primary"></Label>
+  <Switch
+    [(ngModel)]="profile.angularPro"
+    class="switch"
+    horizontalAlignment="left">
+  </Switch>
+
+  <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()" class="text-primary"></Label>
+  <DatePicker
+    [(ngModel)]="profile.dob">
+  </DatePicker>
+  
+  <Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.zoom]="profile.codingPower > 7"></Label>
+  <Slider
+    [(ngModel)]="profile.codingPower"
+    [minValue]="0"
+    [maxValue]="10"
+    class="slider"
+    [class.danger-slider]="profile.codingPower > 7">
+  </Slider>
+
+  <Button text="Save" (tap)="save()" class="btn btn-primary"></Button>
+  <Button text="Clear" (tap)="clear()" class="btn btn-outline"></Button>
+</StackLayout>
+```
 
 <div class="solution-end"></div>
-
 
 #### Step 2
 
-`red.component.html` already contains 4 buttons, each calling a different function.
+Open `app.css` and change the imported style to each of the values below and see which one you like the most:
 
-Your task is to implement the empty functions, so that:
-
- * goBlue() navigates to the `Blue` page with page transition `slideTop`, duration `2 seconds` and curve `spring`,
- * goGray() navigates to the `RGB` page with `gray` as the parameter and page transition `fade` and duration `1 second`
- * goBack() navigates back
- * goHome() navigates home whilst clearing the navigation history
-
-
-<div class="solution-start"></div>
-
- * goBlue (Absolute Solution) => <br />
-
- `this.router.navigate(['/color/red']);`
- * goGray (Relative Solution) => <br />
- `this.router.navigate(['../red'], { relativeTo: this.route });`
-
- * goBack => <br />
- `this.router.back();`
- * goHome => <br />
- `this.router.navigate(['/color'], { clearHistory: true });`
-
-<div class="solution-end"></div>
-
+ * `aqua.css`
+ * `blue.css`
+ * `brown.css`
+ * `core.dark.css`
+ * `core.light.css`
+ * `forest.css`
+ * `grey.css`
+ * `lemon.css`
+ * `lime.css`
+ * `orange.css`
+ * `purple.css`
+ * `ruby.css`
+ * `sky.css`
 
 <div class="exercise-end"></div>
 
- <!--(do I need it? it seems that PageRoute is redunant now)-->
-<!--### Navigating to self-->
 
-<!--### Exercise: Navigating to self-->
+### Animations 
+
+<h4 class="exercise-start">
+  <b>Exercise</b>: Animations
+</h4>
+Instruction of the exercise
+
+<div class="solution-start"></div>
+
+
+``` html
+  <Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.zoom]="profile.codingPower > 7"></Label>
+  <Slider
+    [(ngModel)]="profile.codingPower"
+    [minValue]="0"
+    [maxValue]="10"
+    class="slider"
+    [class.danger-slider]="profile.codingPower > 7">
+  </Slider>
+```
+
+``` css
+.danger-slider {
+  background-color: red;
+}
+
+.zoom {
+  animation-name: zoom;
+  animation-duration: 2s;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.5, 0.5) }
+  40% { transform: scale(1.6, 1.6) }
+  to {  transform: scale(1.0,1.0) }
+}
+
+@keyframes spin {
+  from { transform: rotate(-30) }
+  40% { transform: rotate(420) }
+  to {  transform: rotate(0)}
+}
+```
+
+<div class="solution-end"></div>
+
+<div class="exercise-end"></div>
+
+
+
+### Create your own theme ???
+(Bonus exercise) - This to be covered by Jen
+Build your own theme at [NativeScript theme builder](http://www.nativescriptthemebuilder.com/#)
+
+--- Do we need instructions on how to do this? ---
+
+
+

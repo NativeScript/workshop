@@ -1,18 +1,24 @@
-## App Challenge Part 2 - Master/Detail Pages
+## App Challenge Part 1 - Build a List
 
-With your basic list complete, your next test is to turn your list of pets into a functional master/detail interface. That is, after you complete this challenge, readers should be able to tap items on the master list, and navigate to a second screen where they can see details about the pet they’re interested in.
+Now that you’ve got the NativeScript basics down, it’s time to put your skills to the test. Your task in the next three chapters is to build an entire NativeScript app from scratch.
 
 ### What you’re building
 
-Show a screenshot of the details screen and talk about in, wait for it, detail.
+Explain what the user will be building—the whole app.
 
-### Building the page
+Show a screenshot of the final list screen specifically and talk about it in a bit of detail.
 
-Talk a little bit about how to approach the problem. Maybe even list the various files the reader will have to touch in order to implement a new route.
+### Building the list
 
-List the hard requirements of this challenge. I think we’ll want to tell the reader that they must use at least social share. They must display certain information. That sort of thing.
+Tell readers about the backend service we’ve provided, and tell them what method to call in the provided service to get that data they need. Tell the reader to hardcode the data they pass to the service for now, and give them some options for hardcoding.
+
+(This would also be a good idea to give instructions for the offline fallback, in case the internet died down too.)
+
+List the hard requirements of this challenge. Should be pretty simple for this one. Build a list and show the pet’s name? Anything else?
+
+Remind readers how to start new NativeScript apps.
 
 Give a couple of hints. Like:
 
-* Links to the navigation docs.
-* Information on how to build that diamond UI with clip-path
+* Links to the ListView docs
+* Make sure to register the new service in your NgModule.
