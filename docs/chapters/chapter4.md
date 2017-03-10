@@ -1,3 +1,3 @@
-## Beyond the basics
+## Lesson 3 - Components and Services
 
 ...
