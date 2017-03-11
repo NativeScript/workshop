@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switchMap';
 export class RGBComponent implements OnInit{
   rgb: string = 'black';
 
-  constructor(private route: ActivatedRoute, private router: RouterExtensions) {
+  constructor(private router: RouterExtensions, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
