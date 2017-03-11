@@ -6,6 +6,10 @@ export class FootballFactory {
     return rawCompetition;
   }
 
+  static competitionsFromRaw(rawCompetitions: any[]): Competition[] {
+    return rawCompetitions;
+  }
+
   static leagueTableFromRaw(rawLeagueTable: any): LeagueTable {
     // If table for a leage (not a tournament with groups), then append teamId for each standing.
     // This doesn't apply to tournaments, as tournament teams already contain the teamId value

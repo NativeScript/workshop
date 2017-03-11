@@ -19,11 +19,13 @@ export class FootballService {
 
   public getCompetitions(): Promise<Competition[]> {
     return this.callFootballService('competitions')
-      .toPromise();
+    .map(competitions => FootballFactory.competitionsFromRaw(competitions))
+    .toPromise();
   }
 
   public getCompetition(competitionId: number): Promise<Competition> {
     return this.callFootballService(`competitions/${competitionId}`)
+    .map(competition => FootballFactory.competitionFromRaw(competition))
     .toPromise();
   }
 
