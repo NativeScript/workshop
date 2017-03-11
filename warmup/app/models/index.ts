@@ -4,3 +4,4 @@ export * from './team.model';
 export * from './player.model';
 export * from './fixture.model';
 export * from './search-options';
+export * from './football-factory';
