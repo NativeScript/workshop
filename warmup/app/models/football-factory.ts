@@ -7,15 +7,20 @@ export class FootballFactory {
   }
 
   static competitionsFromRaw(rawCompetitions: any[]): Competition[] {
-    return rawCompetitions;
+    return rawCompetitions.map(
+      rawCompetition => this.competitionFromRaw(rawCompetition)
+    );
   }
 
   static leagueTableFromRaw(rawLeagueTable: any): LeagueTable {
     // If table for a leage (not a tournament with groups), then append teamId for each standing.
     // This doesn't apply to tournaments, as tournament teams already contain the teamId value
     if (rawLeagueTable.standing) {
-      rawLeagueTable.standing.forEach(standing => this.appendStandingTeamId(standing))
+      rawLeagueTable.standing.forEach(
+        standing => this.appendStandingTeamId(standing)
+      );
     }
+
     return rawLeagueTable;
   }
 
@@ -25,11 +30,9 @@ export class FootballFactory {
   }
 
   static teamsFromRaw(rawTeams: any[]): Team[] {
-    rawTeams.forEach(
-      team => this.appendTeamId(team)
+    return rawTeams.map(
+      rawTeam => this.teamFromRaw(rawTeam)
     );
-
-    return rawTeams;
   }
 
   static fixtureFromRaw(rawFixture: any): Fixture {
@@ -38,15 +41,19 @@ export class FootballFactory {
   }
 
   static fixturesFromRaw(rawFixtures: any[]): Fixture[] {
-    rawFixtures.forEach(
-      fixture => this.appendFixtureIds(fixture)
+    return rawFixtures.map(
+      rawFixture => this.fixtureFromRaw(rawFixture)
     );
-
-    return rawFixtures;
   }
 
   static playerFromRaw(rawPlayer: any): Player {
     return rawPlayer;
+  }
+
+  static playersFromRaw(rawPlayers: any[]): Player[] {
+    return rawPlayers.map(
+      rawPlayer => this.playerFromRaw(rawPlayer)
+    );
   }
 
   static standingFromRaw(rawStanding: any): Standing {
