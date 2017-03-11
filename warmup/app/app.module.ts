@@ -22,7 +22,7 @@ import { FootballService } from './football.service';
 // Lesson 4
 import { WizardProfileComponent } from './plugins/wizard-profile.component';
 
-import { TestComponent } from './test/test.component';
+import { ServiceTestComponent } from './service-test/service-test.component';
 
 @NgModule({
     bootstrap: [
@@ -36,7 +36,6 @@ import { TestComponent } from './test/test.component';
     ],
     declarations: [
         AppComponent,
-        TestComponent,
 
         //Lesson 1
         ProfileComponent,
@@ -48,6 +47,7 @@ import { TestComponent } from './test/test.component';
         RGBComponent,
 
         //Lesson 3
+        ServiceTestComponent,
         TablesComponent,
         LeagueTableComponent,
         CompetitionFixturesComponent,
