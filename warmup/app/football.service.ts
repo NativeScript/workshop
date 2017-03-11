@@ -49,7 +49,7 @@ export class FootballService {
 
   public getPlayers(teamId: number): Promise<Player[]> {
     return this.callFootballService(`teams/${teamId}/players`)
-    .map(result => result.players)
+    .map(result => FootballFactory.playersFromRaw(result.players))
     .toPromise();
   }
 
