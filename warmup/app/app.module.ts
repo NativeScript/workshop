@@ -47,7 +47,9 @@ import { ServiceTestComponent } from './service-test/service-test.component';
         RGBComponent,
 
         //Lesson 3
+        // Services
         ServiceTestComponent,
+        // Components
         TablesComponent,
         LeagueTableComponent,
         CompetitionFixturesComponent,
@@ -58,6 +60,7 @@ import { ServiceTestComponent } from './service-test/service-test.component';
         WizardProfileComponent
     ],
     providers: [
+        //Lesson 3
         FootballService
     ],
     schemas: [

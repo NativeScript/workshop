@@ -14,10 +14,7 @@ export class ServiceTestComponent {
 
   getCompetitions() {
     this.footballService.getCompetitions()
-    .then(competitions => {
-      const temp = competitions;
-      this.print(temp);
-    })
+    .then(competitions => this.print(competitions));
   }
 
   getPLCompetition() {
