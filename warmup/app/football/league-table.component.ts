@@ -20,7 +20,9 @@ export class LeagueTableComponent {
   constructor(private footballService: FootballService) {
   }
 
-  /** Get both teams and table info. Teams contains short name for each team */
+  /** 
+   * Get both teams and table info. Teams contains short name for each team
+   */
   private loadTeamsAndTable() {
     this.footballService.getTeams(this.id)
       .then(teams => {

@@ -13,12 +13,12 @@ export class FixtureComponent {
   constructor() {
   }
 
-  displayScore() {
+  public displayScore(): boolean {
     return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY';
     // other values TIMED, SCHEDULED
   }
 
-  inPlay() {
+  public inPlay(): boolean {
     return this.fixture.status === 'IN_PLAY';
   }
 

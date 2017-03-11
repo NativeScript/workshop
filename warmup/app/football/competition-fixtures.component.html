@@ -3,21 +3,10 @@
 
 <DockLayout stretchLastChild="true">
   <ListView [items]="fixtures" class="list-group">
-      <template let-item="item" let-odd="odd" let-even="even">
+      <template let-fixture="item">
         <StackLayout class="list-group-item">
-          <my-fixture [fixture]="item" (teamTap)="teamSelected($event)"></my-fixture>
+          <my-fixture [fixture]="fixture" (teamTap)="teamSelected($event)"></my-fixture>
         </StackLayout>
       </template>
   </ListView>
 </DockLayout>
-
-<!--<DockLayout stretchLastChild="true">
-  <ListView [items]="days" class="list-group">
-      <template let-item="item" let-odd="odd" let-even="even">
-        <StackLayout>
-            <Label [text]="item[0].date | date:'longDate'" class="h2 text-center action-bar"></Label>
-            <my-fixture *ngFor="let fixture of item" [fixture]="fixture"></my-fixture>
-        </StackLayout>
-      </template>
-  </ListView> 
-</DockLayout>-->
