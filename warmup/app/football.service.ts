@@ -17,77 +17,87 @@ export class FootballService {
     this.header = this.prepareHeader();
   }
 
+  /**
+   * List all available competitions.
+   * URL Structure: https://api.football-data.org/v1/competitions
+   */
   public getCompetitions(): Promise<Competition[]> {
     return this.callFootballService('competitions')
     .map(competitions => FootballFactory.competitionsFromRaw(competitions))
     .toPromise();
   }
 
+  /**
+   * Show one competition.
+   * URL Structure: https://api.football-data.org/v1/competitions/{competitionId}
+   * @param competitionId: id of the competition
+   */
   public getCompetition(competitionId: number): Promise<Competition> {
-    return this.callFootballService(`competitions/${competitionId}`)
-    .map(competition => FootballFactory.competitionFromRaw(competition))
-    .toPromise();
+    return this.notImplemented('getCompetition');
   }
 
+  /**
+   * Show League Table / current standing.	
+   * URL Structure: https://api.football-data.org/v1/competitions/{competitionId}/leagueTable
+   * @param matchday 
+   */
   public getLeagueTable(competitionId: number, matchday: number = null): Promise<LeagueTable> {
-    return this.callFootballService(`competitions/${competitionId}/leagueTable`, { matchday })
-    .map(table => FootballFactory.leagueTableFromRaw(table))
-    .toPromise();
+    return this.notImplemented('getLeagueTable');
   }
 
+  /**
+   * List all teams for a certain competition.
+   * URL Structure: https://api.football-data.org/v1/competitions/{competitionId}/teams
+   */
   public getTeams(competitionId: number): Promise<Team[]> {
-    return this.callFootballService(`competitions/${competitionId}/teams`)
-    .map(result => FootballFactory.teamsFromRaw(result.teams))
-    .toPromise();
+    return this.notImplemented('getTeams');
   }
 
+  /**
+   * Show one team.
+   * URL Structure: https://api.football-data.org/v1/teams/{teamId}
+   */
   public getTeam(teamId: number): Promise<Team> {
-    return this.callFootballService(`teams/${teamId}`)
-    .map(team => FootballFactory.teamFromRaw(team))
-    .toPromise();
+    return this.notImplemented('getTeam');
   }
 
+  /**
+   * Show all players for a certain team.
+   * URL Structure: https://api.football-data.org/v1/teams/{teamId}/players
+   */
   public getPlayers(teamId: number): Promise<Player[]> {
-    return this.callFootballService(`teams/${teamId}/players`)
-    .map(result => FootballFactory.playersFromRaw(result.players))
-    .toPromise();
+    return this.notImplemented('getPlayers');
   }
 
+  /**
+   * List all fixtures for a certain competition.	
+   * URL Structure: https://api.football-data.org/v1/competitions/{competitionId}/fixtures
+   * @param options: FixtureSearchOptions which allows to specify either a matchday or timeframe
+   */
   public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): Promise<Fixture[]> {
-    return this.callFootballService(`competitions/${competitionId}/fixtures`, options)
-    .map(result => FootballFactory.fixturesFromRaw(result.fixtures))
-    .toPromise();
+    return this.notImplemented('getFixtures');
   }
 
+  /**
+   * Show all fixtures for a certain team.
+   * URL Structure: https://api.football-data.org/v1/teams/{teamId}/fixtures
+   */
   public getTeamFixtures(teamId: number): Promise<Fixture[]> {
-    return this.callFootballService(`teams/${teamId}/fixtures`)
-    .map(result => FootballFactory.fixturesFromRaw(result.fixtures))
-    .toPromise();
+    return this.notImplemented('getTeamFixtures');
   }
 
   /**
    * Performs the http get from the api.petfinder.com and returns the object containing the response.
    * @param method the name of the api method to call
-   * @param params an object containing parameters
+   * @param queryParams an object containing parameters
    */
-  private callFootballService(method: string, params: any = {}): Observable<any> {
-    const searchParams: URLSearchParams = this.buildSearchParams(params);
-
-    return this.http.get(
-      this.baseUrl + method,
-      { 
-        search: searchParams,
-        headers: this.header
-      }
-    )
-    .do((result : any) => {
-      if (!result.ok) {
-        throw new Error(result.statusText);
-      }
-    })
-    .map(result => result.json());
+  private callFootballService(method: string, queryParams: any = {}): Observable<any> {
+    return Observable.fromPromise(this.notImplemented('callFootballService'));
   }
 
+  /** 
+   * Prepares a header with the API KEY
+   */
   private prepareHeader() {
     const headers = new Headers();
     headers.append('X-Auth-Token', this.apiKey);
@@ -97,14 +107,32 @@ export class FootballService {
 
   /**
    * Constructs an http ready set of parameters based on the provided parameters.
-   * @param params an object containing parameters
+   * @param queryParams an object containing query parameters i.e. { matchday: 5 }
    */
-  private buildSearchParams(params: any) {
+  private buildSearchParams(queryParams: any) {
     let searchParams: URLSearchParams = new URLSearchParams();
 
-    for (let key in params) {
-      searchParams.set(key, params[key]);
+    for (let key in queryParams) {
+      searchParams.set(key, queryParams[key]);
     }
     return searchParams;
+  }
+
+  /**
+   * Checks if the response from the http service is successful.
+   * Result is expected to have an ok flag set to true.
+   * @param result result from the http service
+   */
+  private validateResults(result) {
+    if (!result.ok) {
+      throw new Error(result.statusText);
+    }
+  }
+
+  private notImplemented(fname: string): Promise<any> {
+    return new Promise( 
+      (resolve, reject) =>
+        reject('Function Not Implemented: ' + fname)
+    );
   }
 }
