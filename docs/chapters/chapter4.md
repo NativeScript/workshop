@@ -86,11 +86,20 @@ Open `color.component.html` and update `[nsRouterLink]` for each button, so that
 
 Here is the configuration for each: 
 
- * `Blue` => `[nsRouterLink]="['/color/blue']"` OR `[nsRouterLink]="['blue']"`
- * `Red` => `[nsRouterLink]="['/color/red']"` OR `[nsRouterLink]="['red']"`
- * `Pink` => `[nsRouterLink]="['/color/rgb', '#ff0088']"` OR  `[nsRouterLink]="['rgb', '#ff0088']"`
- * `Gray` => `[nsRouterLink]="['/color/rgb', 'gray']"` OR  `[nsRouterLink]="['rgb', 'gray']"`
- * `Lavender` => `[nsRouterLink]="['/color/rgb', '#bad']"` OR  `[nsRouterLink]="['rgb', '#bad']"`
+#### Blue
+`[nsRouterLink]="['/color/blue']"` OR `[nsRouterLink]="['blue']"`
+
+#### Red
+`[nsRouterLink]="['/color/red']"` OR `[nsRouterLink]="['red']"`
+
+#### Pink
+`[nsRouterLink]="['/color/rgb', '#ff0088']"` OR  `[nsRouterLink]="['rgb', '#ff0088']"`
+
+#### Gray
+`[nsRouterLink]="['/color/rgb', 'gray']"` OR  `[nsRouterLink]="['rgb', 'gray']"`
+
+#### Lavender
+`[nsRouterLink]="['/color/rgb', '#bad']"` OR  `[nsRouterLink]="['rgb', '#bad']"`
 
 <div class="solution-end"></div>
 
@@ -144,17 +153,27 @@ Your task is to implement the empty functions, so that:
 
 <div class="solution-start"></div>
 
- * goRed (Absolute Solution) => <br />
+#### goRed (Absolute Solution)
  `this.router.navigate(['/color/red']);`
- * goRed (Relative Solution) => <br />
+
+#### goRed (Relative Solution)
+
  `this.router.navigate(['../red'], { relativeTo: this.route });`
- * goPink (Absolute Solution) => <br />
+
+#### goPink (Absolute Solution)
+
  `this.router.navigate(['/color/rgb', this.pink]);`
- * goPink (Relative Solution) => <br />
+
+#### goPink (Relative Solution)
+
  `this.router.navigate(['../rgb', this.pink], { relativeTo: this.route });`
- * goBack => <br />
+
+#### goBack
+
  `this.router.back();`
- * goHome => <br />
+
+#### goHome
+
  `this.router.navigate(['/color'], { clearHistory: true });`
 
 <div class="solution-end"></div>
@@ -279,15 +298,16 @@ Your task is to implement the empty functions, so that:
 
 <div class="solution-start"></div>
 
- * goBlue (Absolute Solution) => <br />
-
+#### goBlue (Absolute Solution)
  `this.router.navigate(['/color/red']);`
- * goGray (Relative Solution) => <br />
+
+#### goGray (Relative Solution)
  `this.router.navigate(['../red'], { relativeTo: this.route });`
 
- * goBack => <br />
+#### goBack
  `this.router.back();`
- * goHome => <br />
+
+#### goHome
  `this.router.navigate(['/color'], { clearHistory: true });`
 
 <div class="solution-end"></div>
