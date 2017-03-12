@@ -13,11 +13,11 @@ Using http service
 
 
 
-exercise to be performed on the service-test.component.ts and `football.service.ts`, which will contain empty functions that call `this.callFootballService` and implemnted `callFootballService` and all the functions below it. 
-
-The service won't be injected out of the box !!! Make sure that this is reflected in the starting point of the app.
 
 ### Exercise: Football Service
+<!--exercise to be performed on the service-test.component.ts and `football.service.ts`, which will contain empty functions that call `this.callFootballService` and implemnted `callFootballService` and all the functions below it. -->
+
+<!--The service won't be injected out of the box !!! Make sure that this is reflected in the starting point of the app.-->
 
 For this exercise we will use `ServiceTestComponent` located in `service-test` folder and `FootballService`, which you can find in `football.service.ts`.
 
@@ -25,8 +25,7 @@ For this exercise we will use `ServiceTestComponent` located in `service-test` f
 
 The football service is based on [football-data.org API](http://api.football-data.org/documentation)
 
-<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-service-test.png?raw=true)-->
-![Recreate UI](http://127.0.0.1:4000/images/warmup-service-test.png?raw=true)
+![Test Service](images/warmup-service-test.png?raw=true)
 
 
 <h4 class="exercise-start">
@@ -43,7 +42,6 @@ Like this:
 If you try to run the application, it will fail with the following error: `Error: No provider for FootballService!` 
 
 You task is to add the `FootballService` to `app.module.ts`.
-
 
 <b>HINT</b> Remember that this should be added to the providers.
 
@@ -209,8 +207,6 @@ return this.callFootballService(`teams/${teamId}/fixtures`)
 
 <div class="exercise-end"></div>
 
-
-
 <h4 class="exercise-start">
   <b>Exercise</b>: Adding Query parameters
 </h4>
@@ -255,29 +251,301 @@ private callFootballService(method: string, queryParams: any = {}): Observable<a
 <div class="exercise-end"></div>
 
 
-### Components
+### Components with custom attributes
 
-Creating components
+Use `LeagueTableComponent` as an example.
 
-Adding components to app.modules.ts
+HERE EXPLAIN WHAT A COMPONENT IS MADE OF
 
-Smart vs dumb components
+HERE EXPLAIN HOW TO USE @Input
 
-Using @Input
+HERE EXPLAIN HOW TO ADD COMPONENT TO app.modules.ts
 
-Using @Output
-
-Creating your own ngModel ?
+HERE EXPLAIN Smart VS Dumb
 
 
-########## EXERCISES
+### Exercise: Creating a dumb component with @Input
 
-Update Competition component, so that it uses a dumb component to display fixtures
-- Create fixture component with `@Input` for `fixture` and `@Output` for `teamTap`
+For this part of the exercise we will be using all components in the `football` folder.
+
+Change the `default route` to:
+
+``` javascript
+{ path: '', redirectTo: '/football', pathMatch: 'full' },
+```
+
+And run the application. You should get a view displaying a league table and a tab bar for navigation.
+When you press the `View Fixtures` button, you will get a list of fixtures.
+
+![League Table](images/warmup-league-table.png?raw=true)
+![Fixtures](images/warmup-fixtures.png?raw=true)
 
 
-Update Team component, so that it uses a dumb component to display fixtures (or maybe even players as a bonus task)
-- Create player component
+Your task is to encapsulate the fixture template into a `FixtureComponent` and use it in `CompetitionFixturesComponent` instead of the current fixture teamplate.
 
 
-...
+<h4 class="exercise-start">
+  <b>Exercise</b>: Create FixtureComponent with @Input
+</h4>
+
+#### Step 1 - Replace current fixture template in Competition Fixtures 
+
+The initial structure for `FixtureComponent` is already in place (see `fixture.component.ts`) and added to declarations in `app.module.ts`.
+
+Open `competition-fixtures.component.html`, comment out the `GridLayout` and then add `<my-fixture [fixture]="fixture"></my-fixture>` in its place.
+You will notice that `my-fixture` expects a `[fixture]` attribute. This will be added in the next exercise.
+
+<b>HINT</b> Make sure to keep a copy of the `GridLayout`.
+
+<div class="solution-start"></div>
+
+The template in `competition-fixtures.component.html` should look like this:
+
+``` XML
+<template let-fixture="item">
+  <StackLayout class="list-group-item">
+    <!-- Fixture Template -->
+    <my-fixture [fixture]="fixture"></my-fixture>
+  </StackLayout>
+</template>
+```
+
+<div class="solution-end"></div>
+
+Now if you reload the app and go to `View Fixtures` you should get something like this:
+
+![Fixtures](images/warmup-custom-fixtures.png?raw=true)
+
+#### Step 2 - Update FixtureComponent and add @Input for fixture
+
+Move the `GridLayout` from `competition-fixtures.component.html` and it's content into `fixture.component.html`.
+
+Then add `fixture` input attribute to `FixtureComponent`
+
+<div class="solution-start"></div>
+
+`FixtureComponent` should look like this:
+
+``` javascript
+export class FixtureComponent {
+  @Input() fixture: Fixture;
+
+  public displayScore(): boolean {
+    return undefined;
+  }
+
+  public inPlay(): boolean {
+    return undefined;
+  }
+
+  public homeTeamTap() {
+    
+  }
+
+  public awayTeamTap() {
+
+  }
+}
+```
+
+<div class="solution-end"></div>
+
+Reload the app. Now the fixtures should be displayed correctly again.
+
+#### Step 3 (Bonus) - Convert inline styling conditions to functions
+
+The middle `StackLayout` in `fixture.component.html` has some logic embeded in `*ngIf` and `[class.in-play]`.
+Your task is to move this logic into two functions in `fixture.component.ts` and then call these functions:
+
+ * `*ngIf` => `displayScore()`
+ * `[class.in-play]` => `inPlay()`
+
+
+<div class="solution-start"></div>
+
+The middle `StackLayout` should like this:
+
+``` XML
+<StackLayout col="1"  horizontalAlignment="center" class="p-l-10 p-r-10 h3">
+  <StackLayout *ngIf="displayScore()"  orientation="horizontal">
+    <Label [text]="fixture.result.goalsHomeTeam" class="score m-r-5" [class.in-play]="inPlay()"></Label>
+    <Label [text]="fixture.result.goalsAwayTeam" class="score" [class.in-play]="inPlay()"></Label>
+  </StackLayout>
+
+  <StackLayout *ngIf="!displayScore()" class="text-center text-muted h5">
+    <Label [text]="fixture.date | date:'H:m'"></Label>
+    <Label [text]="fixture.date | date:'dd-MMM'" textWrap="true"></Label>
+  </StackLayout>
+</StackLayout>
+```
+
+#### displayScore
+``` javascript
+public displayScore(): boolean {
+  return this.fixture.status === 'FINISHED' 
+      || this.fixture.status === 'IN_PLAY';
+}
+```
+
+#### inPlay
+``` javascript
+public inPlay(): boolean {
+  return this.fixture.status === 'IN_PLAY';
+}
+```
+
+<div class="solution-end"></div>
+
+<div class="exercise-end"></div>
+
+
+### Components with custom events
+
+Adding a custom event to a component is really easy. Let's have a look at `LeagueTableComponent` as an example.
+
+To make it work we need first to create an `EventEmitter`:
+
+``` javascript
+@Output() teamSelected: EventEmitter<number> = new EventEmitter<number>();
+```
+
+Note that this is made of 3 parts:
+
+ * @Output - decorator
+ * teamSelected - eventName
+ * EventEmitter<number> - EventEmitter with the type of output
+
+Then every time we want to trigger the event, we can call `emit(value)` on `this.teamSelected`. Just like this:
+
+``` javascript
+onTeamSelect(event) {
+  const selectedTeamId = this.table.standing[event.index].teamId;
+  console.log('::LeagueTableComponent::onTeamSelect::' + selectedTeamId);
+  this.teamSelected.emit(selectedTeamId);
+}
+```
+
+Obviously there must be something that actually triggers `onTeamSelect`. In this case this is done by the `<ListView>`
+
+``` XML
+<ListView [items]="table?.standing" class="list-group" (itemTap)="onTeamSelect($event)">
+```
+
+All this means that everywhere we use `<my-league-table>` we can now add a handler for `teamSelected` like this (see `tables.component.html`):
+
+``` XML
+<my-league-table [competitionId]="PremierLeagueId" (teamSelected)="onTeamTap($event)"></my-league-table>
+```
+
+Note that `$event` will contain the value passed into `emit`, in this case this will be a `teamId`.
+
+### Exercise: Creating a dumb component with @Output
+
+In this exercise we need to update the app, so that if the user clicks on a team in the fixture, the app should navigate to `TeamComponent` with `teamId` of that team.
+
+Even though you could make it happen by adding `[nsRouterLink]` on each fixture team name `Label`. We want the navigation logic to be delegated to the parent component, so it should be `CompetitionFixturesComponent` that should trigger navigation.
+
+
+<h4 class="exercise-start">
+  <b>Exercise</b>: Update FixtureComponent with @Output
+</h4>
+
+#### Step 1
+
+Add customer event called `teamTap` to `FixtureComponent`.
+
+Do it just like it was done in `LeagueTableComponent`.
+
+<div class="solution-start"></div>
+``` javascript
+@Output() teamTap: EventEmitter<number> = new EventEmitter<number>();
+```
+<div class="solution-end"></div>
+
+#### Step 2
+
+Update `homeTeamTap` and `awayTeamTap`, so that they `emit` either `homeTeamId` or `awayTeamId`.
+
+<div class="solution-start"></div>
+
+#### homeTeamTap
+``` javascript
+public homeTeamTap() {
+  console.log('::FixtureComponent::homeTeamTap::' + this.fixture.homeTeamId);
+  this.teamTap.emit(this.fixture.homeTeamId);
+}
+```
+
+#### awayTeamTap
+``` javascript
+public awayTeamTap() {
+  console.log('::FixtureComponent::awayTeamTap::' + this.fixture.awayTeamId);
+  this.teamTap.emit(this.fixture.awayTeamId);
+}
+```
+<div class="solution-end"></div>
+
+#### Step 3
+
+Update the home and away team labels in `fixture.component.html`, so that a `tap` will trigger either `homeTeamTap` or `awayTeamTap`
+
+<div class="solution-start"></div>
+
+#### home label
+``` XML
+<Label
+  col="0"
+  [text]="fixture.homeTeamName"
+  (tap)="homeTeamTap()"
+  class="h4 text-right">
+</Label>
+```
+
+#### away label
+``` XML
+<Label
+  col="2"
+  [text]="fixture.awayTeamName"
+  (tap)="awayTeamTap()"
+  class="h4">
+</Label>
+```
+<div class="solution-end"></div>
+
+
+#### Step 4
+Now the `FixtureComponent` is ready to emit the if of the tapped team through `teamTap`.
+Let's use it in `CompetitionFixturesComponent` to navigate to the tapped team.
+
+Update `teamSelected` function in `competition-fixtures.component.ts` to navigate to the team with the provided `teamId`.
+You might need to inspect `app.routing.ts` to find out what is the correct route.
+
+<div class="solution-start"></div>
+``` javascript
+teamSelected(teamId: number) {
+  console.log('::CompetitionFixturesComponent::teamSelected::' + teamId);
+  this.router.navigate(['/football/team', teamId]);
+}
+```
+<div class="solution-end"></div>
+
+#### Step 5
+
+Update `my-fixture` in `competition-fixtures.component.html` so that it binds to `teamTap` and call `teamSelected` (that you implemented in step 4).
+
+<b>HINT:</b> Don't forget to pass `$event` to `teamSelected`.
+
+<div class="solution-start"></div>
+``` XML
+<my-fixture [fixture]="fixture" (teamTap)="teamSelected($event)"></my-fixture>
+```
+<div class="solution-end"></div>
+
+Now upon tapping in a team in the fixture you should be redirected to a team view, which should display fixtures for that given team.
+
+<div class="exercise-end"></div>
+
+### Bonus Exercise:
+
+Create a `PlayerComponent`, which will display player details like: name, position, jerseyNumber and nationality.
+Then add a list of players to the `Team` screen. 
