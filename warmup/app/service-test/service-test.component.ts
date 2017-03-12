@@ -14,42 +14,50 @@ export class ServiceTestComponent {
 
   getCompetitions() {
     this.footballService.getCompetitions()
-    .then(competitions => this.print(competitions));
+    .then(competitions => this.print(competitions))
+    .catch(this.printError);
   }
 
   getPLCompetition() {
     this.footballService.getCompetition(426)
-    .then(this.print);
+    .then(this.print)
+    .catch(this.printError);
   }
 
   getPLTable() {
     this.footballService.getLeagueTable(426)
-    .then(this.print);
+    .then(this.print)
+    .catch(this.printError);
   }
 
   getPLTeams() {
     this.footballService.getTeams(426)
-    .then(this.print);
+    .then(this.print)
+    .catch(this.printError);
   }
 
   getPLFixtures() {
-    this.footballService.getFixtures(426)
-    .then(this.print);
+    this.footballService.getFixtures(426, { timeFrame: 'n7' })
+    .then(this.print)
+    .catch(this.printError);
   }
 
   getLiverpool() {
     this.footballService.getTeam(64)
-    .then(this.print);
+    .then(this.print)
+    .catch(this.printError);
   }
 
   getLiverpoolPlayers() {
     this.footballService.getPlayers(64)
-    .then(this.print);
+    .then(this.print)
+    .catch(this.printError);
   }
 
   getLiverpoolFixtures() {
     this.footballService.getTeamFixtures(64)
-    .then(this.print);
+    .then(this.print)
+    .catch(this.printError);
   }
 
   getChampionsLeagueTables() {
@@ -62,9 +70,14 @@ export class ServiceTestComponent {
         this.print(group);
       }
     })
+    .catch(this.printError);
   }
 
   print(item) {
     console.log(JSON.stringify(item, null, 2));
+  }
+
+  printError(error) {
+    alert(JSON.stringify(error, null, 2));
   }
 }
