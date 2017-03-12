@@ -215,9 +215,6 @@ return this.callFootballService(`teams/${teamId}/fixtures`)
   <b>Exercise</b>: Adding Query parameters
 </h4>
 
-
-¬¬¬¬¬¬¬ You will be able to test this functionality with `Get PL Fixtures` button. ¬¬¬¬¬¬¬
-
 Some of the api functions allow to pass query parameters.
 For example to get fixtures for the next 7 days, you can use `timeFrame=n7`, like:  
 
@@ -231,11 +228,13 @@ Or to get fixtures for the previous 10 days, call it like:
 https://api.football-data.org/v1/competitions/426/fixtures?timeFrame=p10
 ```
 
+In `FootballService` functions: `getLeagueTable` and `getFixtures` take an additional parameter and pass it into `callFootballService`.
+
 To pass query parameters into `get` you need to construct a `URLSearchParams` object and add it to `RequestOptionsArgs`, as `search`, like `{ search: <URL Search Params here>}`.
 
 Luckilly for you the `FootballService` already contains `buildSearchParams` function that can construct a `URLSearchParams` from an object.
 
-Update `RequestOptionsArgs` and add constructed `URLSearchParams` as `search`.
+Your task is to update `RequestOptionsArgs` when calling `get` and add the constructed `URLSearchParams` as `search`.
 
 <div class="solution-start"></div>
 
