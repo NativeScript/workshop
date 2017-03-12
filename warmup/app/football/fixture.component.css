@@ -8,10 +8,5 @@
 }
 
 .in-play {
-  border-color: blue;
   color: red;
-  border-width:1;
-  width: 20;
-  text-align: center;
-  padding: 2;
 }
