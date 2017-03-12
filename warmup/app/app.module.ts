@@ -12,17 +12,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './color'
 
 // Lesson 3
+import { FootballService } from './football.service';
+import { ServiceTestComponent } from './service-test/service-test.component';
 import { TablesComponent } from './football/tables.component';
 import { LeagueTableComponent } from './football/league-table.component';
 import { CompetitionFixturesComponent } from './football/competition-fixtures.component';
 import { FixtureComponent } from './football/fixture.component';
 import { TeamComponent } from './football/team.component';
-import { FootballService } from './football.service';
 
 // Lesson 4
 import { WizardProfileComponent } from './plugins/wizard-profile.component';
 
-import { ServiceTestComponent } from './service-test/service-test.component';
 
 @NgModule({
     bootstrap: [
