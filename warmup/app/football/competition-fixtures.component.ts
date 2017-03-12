@@ -7,10 +7,12 @@ import { FootballService } from '../football.service';
 
 @Component({
   selector: 'my-fixtures',
-  templateUrl: './football/competition-fixtures.component.html'
+  templateUrl: './football/competition-fixtures.component.html',
+  styleUrls: ['./football/fixture.component.css']
 })
 export class CompetitionFixturesComponent implements OnInit{
   public fixtures: Fixture[] = [];
+  public competitionId: number;
   public competitionName: string = '';
 
   constructor(
@@ -20,10 +22,10 @@ export class CompetitionFixturesComponent implements OnInit{
   }
 
   ngOnInit() {
-    const competitionId = +this.route.snapshot.params['competitionId'];
+    this.competitionId = +this.route.snapshot.params['competitionId'];
     this.competitionName = this.route.snapshot.params['competitionName'];
 
-    this.footballService.getFixtures(competitionId, { timeFrame: 'n7'})
+    this.footballService.getFixtures(this.competitionId)
       .then(fixtures => this.fixtures = fixtures);
   }
 
