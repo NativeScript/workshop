@@ -50,9 +50,7 @@ Additionally, make sure that the two buttons call `save()` and `clear()` respect
 
 <b>HINT</b> To make a TextField password friendly just use `secure="true"`.
 
-
-<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-01.png?raw=true)-->
-![Recreate UI](http://127.0.0.1:4000/images/warmup-01.png?raw=true)
+![Recreate UI](images/warmup-01.png?raw=true)
 
 Edit `profile.component.html` and have fun.
 
@@ -135,12 +133,12 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 Then add it to `@NgModule` imports:
 
 ``` html
-    imports: [
-        NativeScriptModule,
-        AppRoutingModule,
-        NativeScriptHttpModule,
-        NativeScriptFormsModule
-    ],
+imports: [
+  NativeScriptModule,
+  AppRoutingModule,
+  NativeScriptHttpModule,
+  NativeScriptFormsModule
+],
 ```
 
 
@@ -246,8 +244,7 @@ For example:
 <Button text="Rounded Grey" class="btn btn-primary btn-grey btn-rounded-sm"></Button>
 ```
 
-<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-theme-01.png?raw=true)-->
-![Recreate UI](http://127.0.0.1:4000/images/warmup-theme-01.png?raw=true)
+![Recreate UI](images/warmup-theme-01.png?raw=true)
 
 
 #### Other components can use
@@ -291,8 +288,7 @@ Go to [NativeScript theme docs](https://docs.nativescript.org/ui/theme)
 
 Update the UI to make it look more like the one in the picture below.
 
-<!--![Recreate UI](https://github.com/NativeScript/workshop/blob/gh-pages/images/warmup-02.png?raw=true)-->
-![Recreate UI](http://127.0.0.1:4000/images/warmup-02.png?raw=true)
+![Recreate UI](images/warmup-02.png?raw=true)
 
 <b>HINT</b> You may need to update the margin on the `StackLayout`, so that the UI components don't stay too close to the edge of the screen.
 
@@ -376,14 +372,14 @@ Instruction of the exercise
 
 
 ``` html
-  <Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.zoom]="profile.codingPower > 7"></Label>
-  <Slider
-    [(ngModel)]="profile.codingPower"
-    [minValue]="0"
-    [maxValue]="10"
-    class="slider"
-    [class.danger-slider]="profile.codingPower > 7">
-  </Slider>
+<Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.zoom]="profile.codingPower > 7"></Label>
+<Slider
+  [(ngModel)]="profile.codingPower"
+  [minValue]="0"
+  [maxValue]="10"
+  class="slider"
+  [class.danger-slider]="profile.codingPower > 7">
+</Slider>
 ```
 
 ``` css
