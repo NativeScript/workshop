@@ -1,18 +1,205 @@
 ## Lesson 3 - Components and Services
 
 ### Services
+<!-- Should we add a link to the Angular docs? https://angular.io/docs/ts/latest/tutorial/toh-pt4.html-->
 
-Creating a service
+Services are JavaScript functions that are responsible for doing a specific task only. Angular services are injected using Dependency Injection mechanism and include the value, function or feature which is required by the application. There nothing much about service in Angular and there is no ServiceBase class, but still services can be treated as fundamental to Angular application.
 
-Adding the service to app.modules.ts
+#### Creating a service
 
-Injecting services
+Creating a `Service` is really simple.
+You need to import `Injectable` function and apply it as the `@Injectable` decorator.
+Then we need to create a class for our service and `export` it.
 
-Using http service
+Just like this:
+
+``` javascript
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class MyHappyService {
+  
+  public doSomethingFun() {
+    console.log('I am a happy bunny... hop, hop, hop');
+  }
+}
+```
+
+#### Naming convention
+Following the naming convention in Angular, the above service should be placed in a file called: `my-happy.service.ts`.
+Which basically is the name of the class in lower case, each word (excluding word `Service`) separated with `-` and followed by `.serviece.ts`.
+
+The same convention applies to naming all files in an Angular app like: `currency.pipe.ts`, `navigation-menu.component.ts`, `login.model.ts`.
+
+#### Adding the service to app.modules.ts
+In order to make our service available in the app, you need to add to `providers` in the `@NgModule`.
+The global `@NgModule` is located in `app.module.ts`.
+
+``` javascript
+import { MyHappyService } from './my-happy.service';
+
+@NgModule({
+  bootstrap: [
+    AppComponent
+  ],
+  imports: [
+    NativeScriptModule,
+    AppRoutingModule,
+    NativeScriptHttpModule,
+    NativeScriptFormsModule
+  ],
+  declarations: [
+    AppComponent,
+    ProfileComponent
+  ],
+  providers: [
+    MyHappyService
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
+})
+export class AppModule { }
+```
+
+#### Injecting services
+<!--Angular docs: https://angular.io/docs/ts/latest/guide/dependency-injection.html-->
+In order to use a service in a component, we need to inject it in the component's `constructor`.
+Please note that you can also inject services into other services or pipes.
+
+This is done like this:
+
+``` javascript
+constructor(private myHappyService: MyHappyService) {
+  //constructor code
+}
+```
+
+Here is how you inject and then use a service:
+
+``` javascript
+import { MyHappyService } from '../my-happy.service';
+
+@Component({
+  selector: 'app-mood',
+  templateUrl: './mood/mood.component.html'
+})
+export class MoodComponent {
+
+  constructor(private myHappyService: MyHappyService) {
+  }
+
+  showYourMood() {
+    this.myHappyService.doSomethingFun();
+  }
+}
+```
+
+#### Http: Intro ???
 
 
+#### Http: adding the module to the app
+
+In order to use `Http` module you need to add it to `@NgModule` `imports` first.
+
+``` javascript
+import { NativeScriptHttpModule } from 'nativescript-angular/http';
+```
+
+``` javascript
+imports: [
+  ...
+  NativeScriptHttpModule,
+],
+```
+
+#### Http: Injecting the service
+
+Then you can `import` and `Inject` the `Http` module where you are planning to use it.
+
+``` javascript
+import { Http } from '@angular/http';
+```
+
+``` javascript
+constructor(private http: Http) {
+}
+```
+
+#### Http: calling the service
+
+The http module has a bunch of useful functions like, `get`, `post`, `put`, `delete` and other.
+Each takes a `url` as a parameter and optional `options`, then they return an `Observable` with a `Response`.
+
+``` javascript
+get(url: string, options?: RequestOptionsArgs): Observable<Response>
+```
+
+Example of how to call `get` and `subscribe` to the `Observable` result:
+Please note that you should always convert the response to json()
+
+``` javascript
+doSomething() {
+  this.http.get('http://api.someopendata.org/cities') // make the call
+  .map(response => response.json())                   // convert the result to json()
+  .map(result => result.cities)                       // map the result to the object we need to return
+  .subscribe(                                         // subscribe and do something with the result
+    cities => console.log(cities),
+    error => console.error('Error: ' + err),
+    () => console.log('Completed!')
+  )
+}
+```
+
+Example of how to call `get` and convert the `Observable` to a `Promise`:
+
+``` javascript
+doSomething() {
+  this.http.get('http://api.someopendata.org/cities') // make the call
+  .map(response => response.json())                   // convert the result to json()
+  .map(result => result.cities)                       // map the result to the object we need to return
+  .toPromise()                                        // convert the observable to a promise
+  .then(                                              // then do something with the result
+    cities => console.log(cities),
+    error => console.error('Error: ' + err)
+  )
+}
+```
+
+#### Http: Adding Headers to http calls
+
+If you need to pass headers into a `http` call, you can construct it by using `Headers` class, append data and then add it to `options?: RequestOptionsArgs`.
+
+``` javascript
+import { Http, Headers } from '@angular/http';
+```
+
+``` javascript
+let myHeaders = new Headers();
+myHeaders.appen('key', 'value');
+
+this.http.get('http://api.someopendata.org/cities', 
+  { headers: myHeaders })
+```
+
+#### Http: Constructing URL search params
+
+If you need to pass query parameters (like service?mood='happy'&face='round') into a `http` call, you can construct it by using `URLSearchParams` class, append query params and then add it to `options?: RequestOptionsArgs`.
 
 
+``` javascript
+import { Http, Headers, URLSearchParams } from '@angular/http';
+```
+
+``` javascript
+let searchParams: URLSearchParams = new URLSearchParams();
+searchParams.set('mood', 'happy');
+searchParams.set('face', 'round');
+
+
+this.http.get('http://api.someopendata.org/cities', 
+  { headers: myHeaders, search: searchParams })
+```
 
 ### Exercise: Football Service
 <!--exercise to be performed on the service-test.component.ts and `football.service.ts`, which will contain empty functions that call `this.callFootballService` and implemnted `callFootballService` and all the functions below it. -->
@@ -545,7 +732,17 @@ Now upon tapping in a team in the fixture you should be redirected to a team vie
 
 <div class="exercise-end"></div>
 
-### Bonus Exercise:
+### Bonus Service Exercise:
+
+When requesting fixtures from `api.football-data.org` it allows you to set the timeframe to # of days before (`p7`) or after (`n7`) the current date. However it is not possilbe to get fixtures for before and after in one call.
+
+Update `FootballService` to add a function which would:
+
+ * take two parameters: `before` and `after`
+ * call football service twice, once with the value of before and once with the value of after
+ * return merged results
+
+### Bonus Component Exercise:
 
 Create a `PlayerComponent`, which will display player details like: name, position, jerseyNumber and nationality.
 Then add a list of players to the `Team` screen. 
