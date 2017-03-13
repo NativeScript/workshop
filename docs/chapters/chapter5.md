@@ -1,7 +1,7 @@
 ## Lesson 3 - Components and Services
 
 ### Services
-<!-- Should we add a link to the Angular docs? https://angular.io/docs/ts/latest/tutorial/toh-pt4.html-->
+<!-- https://angular.io/docs/ts/latest/tutorial/toh-pt4.html-->
 
 Services are JavaScript functions that are responsible for doing a specific task only. Angular services are injected using Dependency Injection mechanism and include the value, function or feature which is required by the application. There nothing much about service in Angular and there is no ServiceBase class, but still services can be treated as fundamental to Angular application.
 
@@ -95,12 +95,16 @@ export class MoodComponent {
 }
 ```
 
-#### Http: Intro ???
+### Http
+<!--https://medium.com/google-developer-experts/angular-2-introduction-to-new-http-module-1278499db2a0#.nh7b07pjg-->
 
+NativeScript comes with it's own implementation of the `Http` module, which uses `Android` and `iOS` native functionality to perform the calls.
+This is exposed as `NativeScriptHttpModule`, which implements the same interface as the web `Http` module.
 
 #### Http: adding the module to the app
+This means that all you have to do is declare our NativeScript wrapper in the respective module file and Dependency Injection will take care of the rest.
 
-In order to use `Http` module you need to add it to `@NgModule` `imports` first.
+This is done by adding `NativeScriptHttpModule` to `@NgModule` `imports`.
 
 ``` javascript
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
@@ -112,6 +116,12 @@ imports: [
   NativeScriptHttpModule,
 ],
 ```
+
+From this point onwards the code that uses the `Http` module is `exactly the same` as the code you would write for a `web application`.
+
+This gives us a high level Angular `Http` module that is capable of performing various request natively for `Android`, `iOS` and `Web`.
+
+![Http](images/warmup-http.png?raw=true)
 
 #### Http: Injecting the service
 
@@ -196,15 +206,11 @@ let searchParams: URLSearchParams = new URLSearchParams();
 searchParams.set('mood', 'happy');
 searchParams.set('face', 'round');
 
-
 this.http.get('http://api.someopendata.org/cities', 
   { headers: myHeaders, search: searchParams })
 ```
 
 ### Exercise: Football Service
-<!--exercise to be performed on the service-test.component.ts and `football.service.ts`, which will contain empty functions that call `this.callFootballService` and implemnted `callFootballService` and all the functions below it. -->
-
-<!--The service won't be injected out of the box !!! Make sure that this is reflected in the starting point of the app.-->
 
 For this exercise we will use `ServiceTestComponent` located in `service-test` folder and `FootballService`, which you can find in `football.service.ts`.
 
@@ -310,11 +316,7 @@ private callFootballService(method: string, queryParams: any = {}): Observable<a
 
 <div class="solution-end"></div>
 
-
-
 <div class="exercise-end"></div>
-
-
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Implement the remaining functions
@@ -438,20 +440,111 @@ private callFootballService(method: string, queryParams: any = {}): Observable<a
 <div class="exercise-end"></div>
 
 
-### Components with custom attributes
+### Components 
+<!--with custom attributes-->
 
-Use `LeagueTableComponent` as an example.
+The component is a controller class with a template which mainly deals with a view of the application and logic on the page. It is a bit of code can be used throughout an application. The component knows how to render itself and configure dependency injection.
 
-HERE EXPLAIN WHAT A COMPONENT IS MADE OF
+The component contains two important things; one is view and another one is some logic.
 
-HERE EXPLAIN HOW TO USE @Input
+<!--A good example of a component is a `LeagueTableComponent` as an example.-->
 
-HERE EXPLAIN HOW TO ADD COMPONENT TO app.modules.ts
+A component is usually made of a `@Component` decorator, which contains:
 
-HERE EXPLAIN Smart VS Dumb
+ * `selector` - html tag that should be used for this component
+ * `templateUrl` - a location of the file that contains the html code (view) - you can also use `template` to provide the html code inline, but this is not a great idea
+ * `styleUrls` - a location of the file that contains the css
 
+Then we need a Component Class that will encapsulate all the logic.
 
-### Exercise: Creating a dumb component with @Input
+Here is an example:
+
+#### blue.component.ts
+
+``` javascript
+@Component({
+  selector: 'my-blue',
+  templateUrl: './color/blue.component.html',
+  styleUrls: ['./color/color.component.css']
+})
+export class BlueComponent{
+  private pink: string = '#ff0088';
+
+  constructor(private router: RouterExtensions, private route: ActivatedRoute) {
+  }
+
+  // other functions
+}
+```
+
+#### blue.component.ts
+
+``` XML
+<ActionBar title="BLUE" color="white" backgroundColor="blue">
+</ActionBar>
+
+<StackLayout>
+  <Button text="Go Red" (tap)="goRed()" class="btn red"></Button>
+  <Button text="Go Pink" (tap)="goPink()" class="btn pink"></Button>
+  <Button text="Go Home" (tap)="goHome()" class="btn btn-primary"></Button>
+  <Button text="Go Back" (tap)="goBack()" class="btn btn-outline"></Button>
+</StackLayout>
+```
+
+#### Adding your component to the app
+If you try to use your module straight after creating it, you will get an error like this: `Component BlueComponent is not part of any NgModule or the module has not been imported into your module.` 
+
+Solution: 
+
+All components should be added to `@NgModule` `declarations`. By default each should be added to `app.modules.ts`:
+
+``` javascript
+declarations: [
+  AppComponent,
+  ProfileComponent,
+  ColorComponent,
+  BlueComponent,
+  RedComponent,
+  RGBComponent,
+]
+```
+
+#### Smart VS Presentation components
+<!--http://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/-->
+Components can be divided into two categories:
+
+ * smart - those contain the business logic of your application. Like a `LoginComponent` that contains the logic of how to log in and where to redirect after user successfully logs in,
+ * presentation - those are used to encapsulate something that we want to show on the screen. Like a `LogoComponent`, which contains the `img` tag with your logo, which you can paste everywhere you need to display your logo. However when you need to change the logo, you can do it all in one place (the definition of the component).
+
+#### Components with custom input (one way-binding)
+
+Just like `<label>` can take `text` attribute, so your components can have their own custom attributes.
+
+Adding custom attributes to a component is really easy.
+Just add an `@Input()` decorator in front of your attribute or property `set` and you are ready to go.
+
+``` javascript
+@Component({
+  selector: 'my-calendar',
+  templateUrl: './calendar/calendar.component.html'
+})
+export class LeagueTableComponent {
+  @Input() day: number;
+  @Input() month: number;
+
+  private _year: number;
+  @Input() set(year: number) {
+    this._year = (year > 100) ? year : year + 2000; 
+  }
+```
+
+Now you can use it like this:
+
+``` XML
+<my-calendar day="12" month="11" year="10"></my-calendar>
+```
+
+### Exercise: Creating a presentation component with @Input
 
 For this part of the exercise we will be using all components in the `football` folder.
 
@@ -626,7 +719,7 @@ All this means that everywhere we use `<my-league-table>` we can now add a handl
 
 Note that `$event` will contain the value passed into `emit`, in this case this will be a `teamId`.
 
-### Exercise: Creating a dumb component with @Output
+### Exercise: Creating a presentation component with @Output
 
 In this exercise we need to update the app, so that if the user clicks on a team in the fixture, the app should navigate to `TeamComponent` with `teamId` of that team.
 
@@ -731,6 +824,46 @@ Update `my-fixture` in `competition-fixtures.component.html` so that it binds to
 Now upon tapping in a team in the fixture you should be redirected to a team view, which should display fixtures for that given team.
 
 <div class="exercise-end"></div>
+
+
+### Components with custom input (two way-binding)
+<!--https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html#creating-custom-two-way-data-bindings-->
+To create a custom attribute that is capable of both taking data as an input, but also updating it we need to use `two-way binding`.
+
+To do that we need to combine the power of `@Input` and `@Output`.
+
+Let's imagine we are working on a `ColorPicker` component, which should take a `color`, as an input, but when the user selects a different color, it should provide with an updated value.
+
+First we need to create a property `@Input color`
+
+Then we need to add a custom event, which is called `propertyNameChange`, so in our case it should be called `@Output() colorChange`
+
+Finally we need to emit the new value `colorChange.emit(newColor);`
+
+Here is the full code:
+
+``` javascript
+@Component({
+  selector: 'color-picker',
+  templateUrl: './color-picker/color-picker.component.html'
+})
+export class ColorPickerComponent {
+  @Input color: string;
+  @Output() colorChange = new EventEmitter<string>();
+
+  onColorPick(newColor: string) {
+    colorChange.emit(newColor);
+  }
+}
+```
+
+Please note that `@Input` could be also used with a `getter` and `setter`.
+
+Now you can use the `ColorPickerComponent` like this:
+
+``` XML
+<color-picker [(color)]="selectedColorFromParentClass"></color-picker>
+```
 
 ### Bonus Service Exercise:
 
