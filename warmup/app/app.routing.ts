@@ -21,22 +21,20 @@ import { TeamComponent } from './football/team.component';
 import { WizardProfileComponent } from './plugins/wizard-profile.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/profile', pathMatch: 'full' },
+  { path: '', redirectTo: '/profile', pathMatch: 'full' },
   // { path: '', redirectTo: '/color', pathMatch: 'full' },
-  { path: '', redirectTo: '/service-test', pathMatch: 'full' },
+  // { path: '', redirectTo: '/service-test', pathMatch: 'full' },
   // { path: '', redirectTo: '/football', pathMatch: 'full' },
   // { path: '', redirectTo: '/plugins', pathMatch: 'full' },
 
     // Lesson 1
-  // { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
 
   // Lesson 2
   { path: 'color', children: [
     { path: '', component: ColorComponent },
     { path: 'blue', component: BlueComponent },
-    // exercise
-    { path: 'red', component: RedComponent },
-    { path: 'rgb/:rgb', component: RGBComponent },
+    //.. add red and rgb routes here
   ]},
 
   // Lesson 3
