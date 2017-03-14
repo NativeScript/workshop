@@ -12,7 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './color'
 
 // Lesson 3
-import { FootballService } from './football.service';
+// import { FootballService } from './football.service';
 import { ServiceTestComponent } from './service-test/service-test.component';
 import { TablesComponent } from './football/tables.component';
 import { LeagueTableComponent } from './football/league-table.component';
@@ -25,46 +25,46 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
 
 
 @NgModule({
-    bootstrap: [
-        AppComponent
-    ],
-    imports: [
-        NativeScriptModule,
-        AppRoutingModule,
-        NativeScriptHttpModule,
-        NativeScriptFormsModule
-    ],
-    declarations: [
-        AppComponent,
+  bootstrap: [
+    AppComponent
+  ],
+  imports: [
+    NativeScriptModule,
+    AppRoutingModule,
+    NativeScriptHttpModule,
+    NativeScriptFormsModule
+  ],
+  declarations: [
+    AppComponent,
 
-        //Lesson 1
-        ProfileComponent,
+    //Lesson 1
+    ProfileComponent,
 
-        //Lesson 2
-        ColorComponent,
-        BlueComponent,
-        RedComponent,
-        RGBComponent,
+    //Lesson 2
+    ColorComponent,
+    BlueComponent,
+    RedComponent,
+    RGBComponent,
 
-        //Lesson 3
-        // Services
-        ServiceTestComponent,
-        // Components
-        TablesComponent,
-        LeagueTableComponent,
-        CompetitionFixturesComponent,
-        FixtureComponent,
-        TeamComponent,
+    //Lesson 3
+    // Services
+    ServiceTestComponent,
+    // Components
+    TablesComponent,
+    LeagueTableComponent,
+    CompetitionFixturesComponent,
+    FixtureComponent,
+    TeamComponent,
 
-        //Lesson 4
-        WizardProfileComponent
-    ],
-    providers: [
-        //Lesson 3
-        FootballService
-    ],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ]
+    //Lesson 4
+    WizardProfileComponent
+  ],
+  providers: [
+    //Lesson 3
+    // FootballService
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }
