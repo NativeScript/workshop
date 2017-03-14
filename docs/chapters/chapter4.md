@@ -4,15 +4,54 @@
 
 In this lesson we are going to familiarise ourselves with navigation techniques.
 
-For this exercise we will use the contents of the `app/color` folder, which already contains some pieces of the app that we need.
 
 ### Routing configuration
 
-<!--implementation of app.rounting.ts and color.component.html component -->
-<!--Configuration of app.routing.ts
-  Children
-  Params-->
+The Angular Router enables navigation from one view to the next as users perform application tasks.
 
+A routed Angular application has one singleton instance of the Router service. When the app's URL changes, that router looks for a corresponding Route from which it can determine the component to display.
+
+When you create a brand new {N} app, you will straight away get a sample `Routes` configuration, which should look like this:
+
+``` javascript
+const routes: Routes = [
+    { path: "", redirectTo: "/items", pathMatch: "full" },
+    { path: "items", component: ItemsComponent },
+    { path: "item/:id", component: ItemDetailComponent },
+];
+```
+
+This tells us 3 things:
+
+ * When the app starts, it should automatically redirect to `items` path,
+ * If you navigate to `'items'`, you will be provided with `ItemsComponent`,
+ * If you navivate to `'items/somevalue'` you will be provided with `ItemDetailComponent`, which additionally will receive `somevalue` as `id`
+
+As your application grows, so will your list of routes. One way to manage them is to group them into related `parent<->children` groups like this
+
+``` javascript
+const routes: Routes = [
+  { path: '', redirectTo: '/articles', pathMatch: 'full' },
+  { path: 'items', children: [
+    { path: '', component: ItemsComponent },
+    { path: ":id", component: ItemDetailComponent },
+  ]},
+  { path: 'articles', children: [
+    { path: '', component: ArticlesComponent },
+    { path: "read/:id", component: ArticleComponent },
+    { path: "edit/:id", component: EditArticleComponent },
+    { path: "search/:tech/:keyword", component: ArticleSearchResultsComponent },
+  ]},
+];
+```
+
+This time:
+
+ * The default path is for `articles`,
+ * `items` and `items/:id` are grouped together, which means that would could change `items` to something else in just one place,
+ * we can also navigate to `articles`, `articles/read/5`, `articles/edit/5` and `articles/search/angular/navigation` (this will translate to `tech='angular'` and `keyword='navigation'`) 
+
+There is a lot more you can do in here, which is out of scope for this workshop. See [Angular docs](https://angular.io/docs/ts/latest/guide/router.html) for more info on the subject.
 
 
 
@@ -23,13 +62,13 @@ For this exercise we will use the contents of the `app/color` folder, which alre
 
 #### Step 1
 
+For this exercise we will use the contents of the `app/color` folder, which already contains some pieces of the app that we need.
+
 Open `app.routing.ts` and change the `redirectTo` of the default route to `'/color'`
 
-<div class="solution-start"></div>
 ``` XML
 { path: '', redirectTo: '/color', pathMatch: 'full' },
 ```
-<div class="solution-end"></div>
 
 #### Step 2
 
@@ -37,10 +76,10 @@ Now it is time to add routes for the `Red` and `RGB` components.
 Update the childern of the `color` route, so that:
 
  * `'color/red'` path will navigate to `RedComponent` - you can see how this is done for the `blue` example,
- * `'color/rgb'` + `<rgb param>` path will navigate to `RGBComponent` while passing the `rgb` parameter
+ * `'color/rgb'` + `rgb` (as a parameter) path will navigate to `RGBComponent` while passing the `rgb` parameter
 
 <div class="solution-start"></div>
-``` XML
+``` javascript
 { path: 'color', children: [
   { path: '', component: ColorComponent },
   { path: 'blue', component: BlueComponent },
@@ -54,18 +93,75 @@ Update the childern of the `color` route, so that:
 <div class="exercise-end"></div>
 
 
-### Navigation with nsRouterLink
-<!--Navigation with ngRouterLink-->
+### Navigation from template
+One way to add navigation in `html` is with the `nsRouterLink` directive.
+It is similar to `routerLink` (which is used in the web), but works with NativeScript navigation.
 
-#### Relative path
+`nsRouterLink` expects an array of parameters, which can be matched to one of the routes defined in `app.routes.ts`.
+For example, if we want a label that should navigate to the reading page of article 5 or based on a value stored in the component. We can achieve this by providing an `absolute path`, like this:
+
+``` XML
+<Label text="Angular Navigation" [nsRouterLink]="['/articles/read', '5']"></Label>
+<Label text="Angular Navigation" [nsRouterLink]="['/articles/read', navigationId]"></Label>
+```
+
+#### Relative Paths
+
+We can also use relative paths. Where you provide the path based on the page you are currently at.
+
+#### Children
+
+If you are in the articles page (path '/articles') and want to navigate to the same pages as in the previous example. You can use `'./child_path'` or `'child_path'`, like this:
+
+``` XML
+<!--With an embeded param-->
+<Label text="Angular Navigation" [nsRouterLink]="['./read', '5']"></Label>
+<!--with a param provided separately-->
+<Label text="Angular Navigation" [nsRouterLink]="['./read', navigationId]"></Label>
+```
+
+OR
+
+``` XML
+<Label text="Angular Navigation" [nsRouterLink]="['read', '5']"></Label>
+<Label text="Angular Navigation" [nsRouterLink]="['read', navigationId]"></Label>
+```
+
+#### Parent
+
+If you are in the `'articles/read/5'` and you want to provide a relative path back to the parent. You can use `'..'`, like this:
+
+``` XML
+<Label text="Articles" [nsRouterLink]="['..']"></Label>
+```
+
+#### Siblings
+
+If you are in the `'articles/read/5'` and you want to provide a relative path to the edit page or search page. You can use `'../sibling_path'`, like this:
+
+``` XML
+<Label text="Articles" [nsRouterLink]="['../edit', 5]"></Label>
+<Label text="Articles" [nsRouterLink]="['../search', 'angular', 'navigation']"></Label>
+```
+
+#### Cheat sheet
 
 ``` XML
 [nsRouterLink]="['/absolute']"
 <!--Navigate to parent-->
 [nsRouterLink]="['..']"
+
 [nsRouterLink]="['../sibling']"
-[nsRouterLink]="['./child']"     // or
+
+[nsRouterLink]="['./child']" // or
 [nsRouterLink]="['child']" 
+```
+
+#### Clear History
+Also if you add a `clearHistory` flag, you can clear the navigation stack. Which means that there won't be a back button displayed on iOS, or pressing back on Android will not take you back to this page again.
+
+``` XML
+<Label text="Back to Articles" [nsRouterLink]="['..']" clearHistory="true"></Label>
 ```
 
 ### Exercise: Navigation with nsRouterLink
@@ -107,32 +203,115 @@ Here is the configuration for each:
 
 
 ### Navigation with code
-<!--Navigation with with code: router
-  Router from ‘@angular/router’
-  RouterExtensions from ‘nativescript-angular/router’
-  Navigating with params
-  Navigating back
-  Navigating home (clearHistory)-->
+Navigation can also be done with JavaScript.
 
-<!-- router back vs back to previous page -->
-    this.router.back();
-    this.router.backToPreviousPage();
+For that you will either need the standard `Router` from `@angular/router`, or `RouterExtensions` from `nativescript-angular/router`, which comes with additional functionality: to `clearHistory`, choose a page `transition` or navigate `back`.
 
+If you are working on a project where you need to share the code between web and mobile, then you might want to use the standard Angular `Router`.
+However if your project is Mobile only, then you should stick with `RouterExtensions`.
 
-#### Relative path
+#### Navigation: how to
+Once you choose which Router to use, navigation is really easy: 
 
-<!--this.router.navigate('../../parent', {relativeTo: this.route});-->
+ * import the router you need,
+ * inject the router in the constructor,
+ * call navigate - just like you did with nsRouterLink
+
 ``` javascript
-this.router.navigate(['/absolute/path']);
+import { Router } from '@angular/router';
+// or
+import { RouterExtensions } from 'nativescript-angular';
 
-<!--navigate to parent-->
-this.router.navigate('..',   {relativeTo: this.route});
+@Component({
+  selector: 'my-articles',
+  templateUrl: './articles/articles.component.html',
+})
+export class ArticlesComponent {
+  constructor(private router: RouterExtensions) {
+  }
 
-this.router.navigate('../sibling',   {relativeTo: this.route});
-this.router.navigate('./child',      {relativeTo: this.route}); // or
-this.router.navigate('child',        {relativeTo: this.route});
+  readArticle(id: number) {
+    this.router.navigate(['/articles/read', id]);
+  }
+}
 ```
 
+#### Relative path
+To use a relative path you need to:
+
+ * import `ActivatedRoute`, which can be used as the `relative point`,
+ * inject it in the constructor
+ * provide it as a parameter for `navigate`, as `relativeTo`
+
+``` javascript
+import { Router } from '@angular/router';
+// or
+import { RouterExtensions } from 'nativescript-angular';
+
+@Component({
+  selector: 'my-articles',
+  templateUrl: './articles/articles.component.html',
+})
+export class ArticlesComponent {
+  constructor(
+    private router: RouterExtensions,
+    private route: ActivatedRoute) {
+  }
+
+  readArticle(id: number) {
+    this.router.navigate(['./read', id], { relativeTo: this.route });
+  }
+}
+```
+
+
+#### Cheat sheet
+
+``` javascript
+this.router.navigate(['/absolute/path']);
+//navigate to parent
+this.router.navigate(['..'],         {relativeTo: this.route});
+
+this.router.navigate(['../sibling'], {relativeTo: this.route});
+
+this.router.navigate(['./child'],    {relativeTo: this.route}); // or
+this.router.navigate(['child'],      {relativeTo: this.route});
+```
+
+#### Clear History
+To clear history just provide `clearHistory` into `navigate`, like this:
+
+``` javascript
+this.router.navigate(['/articles', { clearHistory: true }]);
+```
+
+Please note, that you must used `RouterExtensions`, for this to work.
+Also `clearHistory` works only with `page-router-outlet`, this does't work with `router-outlet`.
+
+#### Navigating back
+To navigate back, you can use `RouterExtensions` functionality to call either:
+
+ * `this.router.back()` - always takes us to back the previous view from the navigation stack,
+ * `this.router.backToPreviousPage()` - always takes us back to the previous page from the navigation stack, skipping navigation stack items on the same page.
+
+What is the difference?
+Let's imagine you navigated through a number of paths in this order.
+
+ * navigate `/articles`
+ * navigate `/articles/read/1`
+ * navigate `/articles/read/2`
+ * navigate `/articles/edit/3`
+
+So now we are at `/articles/edit/3`.
+
+Calling `back` or `backToPreviousPage`, will both result in navigating to:
+`/articles/read/2`.
+
+Now calling `back` would take us to `/articles/read/1`, which is another article in the same page.
+However calling `backToPreviousPage` from `/articles/read/2`, would take us to `/articles`.
+
+#### Default iOS and Android back operations
+The default `back` button which appreas in the iOS `action bar` performs `backToPreviousPage`, while the Android back button performs `back`.
 
 ### Exercise: Navigation with code
 
@@ -178,46 +357,74 @@ Your task is to implement the empty functions, so that:
 
 <div class="solution-end"></div>
 
-
 <div class="exercise-end"></div>
 
 ### Receiving parameters
+For components that are expected to receive parameters from the route navigation, you need to use `ActivatedRoute`
 
+You just have to go through the usual drill of:
+
+#### Import
 ``` javascript
 import { ActivatedRoute } from '@angular/router';
 ```
 
+#### Inject
 ``` javascript
-constructor(private route: ActivatedRoute) {
+export class ArticleSearchResultsComponent {
+  constructor(private route: ActivatedRoute) {
+  }
 }
 ```
+
+#### Use
+Here we have two options.
+
+Take a snapshot, which will be triggered only when we navigate to this page from another page.
+
+``` javascript
+ngOnInit() {
+  this.tech = this.route.snapshot.params['tech'];
+  this.keyword = this.route.snapshot.params['keyword'];
+
+  this.searchArticles(this.tech, this.keyword);
+}
+```
+
+#### Navigate to self
+
+However using a snapshot will not work if we were try to navigate from the search to itself, but with different parameters.
+To make this work, we need to use `params.forEach` instead.
 
 ``` javascript
 ngOnInit() {
   this.route.params
-    .forEach(params => this.paramValue = params['param_name']);
+    .forEach(params => {
+      this.tech = this.route.snapshot.params['tech'];
+      this.keyword = this.route.snapshot.params['keyword'];
+
+      this.searchArticles(this.tech, this.keyword);
+    });
 }
 ```
 
 ### Exercise: Receiving parameters
 
-
-
 <h4 class="exercise-start">
   <b>Exercise</b>: Receiving parameters
 </h4>
 
-In this exercise we will play with the `rgb` component.
+In this exercise we will play with the `rgb` component: `rgb.component.ts`.
 Currently every time you navigate to rgb the input parameters are getting ignored.
 Your task is to intercept the 'rgb' parameter and update `this.rgb`.
 
 <div class="solution-start"></div>
 
 ``` javascript
-  ngOnInit() {
-    this.route.params
-      .forEach(params => this.rgb = params['rgb']);
-  }
+ngOnInit() {
+  this.route.params
+    .forEach(params => this.rgb = params['rgb']);
+}
 ```
 
 <div class="solution-end"></div>
@@ -225,16 +432,13 @@ Your task is to intercept the 'rgb' parameter and update `this.rgb`.
 <div class="exercise-end"></div>
 
 ### Page Transitions
-
+One of the great things about NativeScript is it's ability to use native animations and page transitions with very little effort.
 
 [Here is a list of all available navigation transitions](http://docs.nativescript.org/api-reference/interfaces/_ui_frame_.navigationtransition.html)
-
 [Here is a list of all available animation curves](http://docs.nativescript.org/api-reference/modules/_ui_enums_.animationcurve.html)
 
 #### Transition via html
-
-
-Example of page transition:
+To add pageTransition in html, just add `pageTransition` with a name of the transition you need. Just like this:
 
 ``` XML
 <Button
@@ -245,8 +449,7 @@ Example of page transition:
 ```
 
 #### Transition via code
-
-Example of page transition:
+To add page transition in JavaScript, just add a transition object to the `navigate` options. Just like this:
 
 ``` javascript
 this.router.navigate(['/relative/path'], {
@@ -312,10 +515,4 @@ Your task is to implement the empty functions, so that:
 
 <div class="solution-end"></div>
 
-
 <div class="exercise-end"></div>
-
- <!--(do I need it? it seems that PageRoute is redunant now)-->
-<!--### Navigating to self-->
-
-<!--### Exercise: Navigating to self-->
