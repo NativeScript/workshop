@@ -15,7 +15,7 @@ export class PetFinderFactory {
             Array.isArray(rawPet.options.option) ? rawPet.options.option.map(option => option.$t) : rawPet.options.option !== undefined ? [rawPet.options.option.$t] : undefined ,
             rawPet.status.$t !== undefined ? rawPet.status.$t : undefined,
             rawPet.lastUpdate.$t !== undefined ? new Date(rawPet.lastUpdate.$t) : undefined,
-            rawPet.media.photos !== undefined ? PetFinderFactory.mediaFromRaw(rawPet.media) : undefined,
+            rawPet.media.photos !== undefined ? PetFinderFactory.mediaFromRaw(rawPet.media) : PetFinderFactory.mediaFromEmpty(),
             rawPet.contact !== undefined ? PetFinderFactory.contactFromRaw(rawPet.contact) : undefined,
             rawPet.shelterId.$t !== undefined ? rawPet.shelterId.$t : undefined,
             rawPet.shelterPetId.$t !== undefined ? rawPet.shelterPetId.$t : undefined,
@@ -39,6 +39,10 @@ export class PetFinderFactory {
         return new Media(
             rawMedia.photos.photo
         );
+    }
+
+    static mediaFromEmpty(): Media {
+        return new Media([]);
     }
 
     static shelterFromRaw(rawShelter: any): Shelter {
