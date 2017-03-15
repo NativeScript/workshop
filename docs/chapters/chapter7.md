@@ -46,18 +46,39 @@ Create a file somewhere in your app named `pet-finder.service.ts`, and copy-and-
 
 <div class="exercise-end"></div>
 
-Eventually in this workshop you’ll allow users to filter which types of pets they’d like to see on the list page, but for now you’ll need to hardcode some data.
+Eventually in this workshop you’ll allow users to filter which types of pets they’d like to see on the list page, but for now you’ll need to hardcode some really basic animal data.
 
+On your list page you’ll need to call your new service’s `findPets()` method. Here is some data you can pass in for testing.
 
-Tell readers about the backend service we’ve provided, and tell them what method to call in the provided service to get that data they need. Tell the reader to hardcode the data they pass to the service for now, and give them some options for hardcoding.
+```
+findPets("10001", {    // 10001 is the US zip code for New York City
+  age: "",
+  animal: "bird",      // you can replace this with "cat", "dog", etc
+  breed: "",
+  sex: "",
+  size: ""
+});
+```
 
-(This would also be a good idea to give instructions for the offline fallback, in case the internet died down too.)
+So now it’s time to get building. Here are your requirements for this part of the workshop.
 
-List the hard requirements of this challenge. Should be pretty simple for this one. Build a list and show the pet’s name? Anything else?
+### Requirements
 
-Remind readers how to start new NativeScript apps.
+* **1**: Show the list of pets returned from `findPets` using a `<ListView>` UI component.
+* **2**: Each entry in the `<ListView>` should display the pet’s name and its image.
 
-Give a couple of hints. Like:
+From there it’s up to you. Feel free to implement the design we show in this section’s screenshots, or to build something unique. If you get stuck here are a few tips you can refer to.
 
-* Links to the ListView docs
-* Make sure to register the new service in your NgModule.
+### Tips
+
+#### Tip #1: ListView
+
+The NativeScript ListView documentation is available at <https://docs.nativescript.org/angular/ui/list-view.html>.
+
+#### Tip #2: Images
+
+Our service provides a convenience method for accessing the appropriate pet images. You can bind an `<Image>` tag using the following code.
+
+```
+[src]="item.media.getFirstImage(2, 'res://icon')"
+```
