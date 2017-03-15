@@ -3,15 +3,11 @@
 ### Services
 <!-- https://angular.io/docs/ts/latest/tutorial/toh-pt4.html-->
 
-Services are JavaScript functions that are responsible for doing a specific task only. Angular services are injected using Dependency Injection mechanism and include the value, function or feature which is required by the application. There nothing much about service in Angular and there is no ServiceBase class, but still services can be treated as fundamental to Angular application.
+Services are JavaScript functions that are responsible for doing a specific task. Angular services are injected using Dependency Injection mechanism and include the value, function or feature that is required by the application. There nothing specially related to Services in Angular--there is no ServiceBase class--but still services can be treated as fundamental to Angular applications.
 
 #### Creating a service
 
-Creating a `Service` is really simple.
-You need to import `Injectable` function and apply it as the `@Injectable` decorator.
-Then we need to create a class for our service and `export` it.
-
-Just like this:
+Creating a `Service` is really simple. You need to import `Injectable` function and apply it as the `@Injectable` decorator. Then we need to create a class for our service and `export` it:
 
 ``` javascript
 import { Injectable } from '@angular/core';
@@ -26,12 +22,13 @@ export class MyHappyService {
 ```
 
 #### Naming convention
-Following the naming convention in Angular, the above service should be placed in a file called: `my-happy.service.ts`.
-Which basically is the name of the class in lower case, each word (excluding word `Service`) separated with `-` and followed by `.serviece.ts`.
 
-The same convention applies to naming all files in an Angular app like: `currency.pipe.ts`, `navigation-menu.component.ts`, `login.model.ts`.
+Following the naming convention in Angular, the above service should be placed in a file called: `my-happy.service.ts`. This is basically the name of the class in lower case, each word (excluding the word `service`) separated with `-` and followed by `.service.ts`.
+
+The same naming convention applies to all files in an Angular app like: `currency.pipe.ts`, `navigation-menu.component.ts`, `login.model.ts`.
 
 #### Adding the service to app.modules.ts
+
 In order to make our service available in the app, you need to add to `providers` in the `@NgModule`.
 The global `@NgModule` is located in `app.module.ts`.
 
@@ -63,9 +60,11 @@ export class AppModule { }
 ```
 
 #### Injecting services
+
 <!--Angular docs: https://angular.io/docs/ts/latest/guide/dependency-injection.html-->
 In order to use a service in a component, we need to inject it in the component's `constructor`.
-Please note that you can also inject services into other services or pipes.
+
+> Note: You can also inject services into other services or pipes.
 
 This is done like this:
 
@@ -98,10 +97,12 @@ export class MoodComponent {
 ### Http
 <!--https://medium.com/google-developer-experts/angular-2-introduction-to-new-http-module-1278499db2a0#.nh7b07pjg-->
 
-NativeScript comes with it's own implementation of the `Http` module, which uses `Android` and `iOS` native functionality to perform the calls.
+NativeScript comes with its own implementation of the `Http` module, which uses `Android` and `iOS` native functionality to perform the calls.
+
 This is exposed as `NativeScriptHttpModule`, which implements the same interface as the web `Http` module.
 
 #### Http: adding the module to the app
+
 This means that all you have to do is declare our NativeScript wrapper in the respective module file and Dependency Injection will take care of the rest.
 
 This is done by adding `NativeScriptHttpModule` to `@NgModule` `imports`.
@@ -138,8 +139,8 @@ constructor(private http: Http) {
 
 #### Http: calling the service
 
-The http module has a bunch of useful functions like, `get`, `post`, `put`, `delete` and other.
-Each takes a `url` as a parameter and optional `options`, then they return an `Observable` with a `Response`.
+The http module has a bunch of useful functions like, `get`, `post`, `put`, `delete` and others.
+Each takes a `url` as a parameter and optional `options`, and then they return an `Observable` with a `Response`.
 
 ``` javascript
 get(url: string, options?: RequestOptionsArgs): Observable<Response>
@@ -214,7 +215,7 @@ this.http.get('http://api.someopendata.org/cities',
 
 For this exercise we will use `ServiceTestComponent` located in `service-test` folder and `FootballService`, which you can find in `football.service.ts`.
 
-`ServiceTestComponent` has a bunch of buttons, each designed to test a function of the `FootballService` that you will be constructing in this exercise. 
+`ServiceTestComponent` has several buttons, each designed to test a function of the `FootballService` that you will be constructing in this exercise. 
 
 The football service is based on [football-data.org API](http://api.football-data.org/documentation)
 
@@ -225,8 +226,7 @@ The football service is based on [football-data.org API](http://api.football-dat
   <b>Exercise</b>: Injecting football service
 </h4>
 
-Let's start with changing the default route in `app.routing.ts` to `'/service-test'`.
-Like this:
+Let's start with changing the default route in `app.routing.ts` to `'/service-test'`:
 
 ``` javascript
 { path: '', redirectTo: '/service-test', pathMatch: 'full' },
@@ -234,7 +234,7 @@ Like this:
 
 If you try to run the application, it will fail with the following error: `Error: No provider for FootballService!` 
 
-You task is to add the `FootballService` to `app.module.ts`.
+You need to add the `FootballService` to `app.module.ts`.
 
 <b>HINT</b> Remember that this should be added to the providers.
 
@@ -268,8 +268,7 @@ For your convenience the `http` service is already injected into `FootballServic
 
 #### Step 1 - Make it work
 
-In this exercise you need to implement `callFootballService` function, which should use the `http` to `get` data.
-`get` returns an observable, which is the result that we are after.
+In this exercise you need to implement `callFootballService` function, which should use the `http` to `get` data. `get` returns an observable, which is the result that we are after.
 
 Just construct a full `url` using `baseUrl` (class attribute) and `method` (passed in as a parameter).
 Call `http.get`, and `map` the `result` to `result.json()`.
@@ -295,11 +294,9 @@ Use [this link](http://api.football-data.org/register) to get your own API KEY.
 
 This API requires the key to be added in the header. For your convenience the header is already constructed with `prepareHeader` and stored in `this.header`.
 
-In order to add a header, `get` takes a second parameter of type `RequestOptionsArgs`, with `headers` as one of the options.
-Update the `get` function with `{ headers: <your header here>}` as the second parameter.
+In order to add a header, `get` takes a second parameter of type `RequestOptionsArgs`, with `headers` as one of the options. Update the `get` function with `{ headers: <your header here>}` as the second parameter.
 
-
-Now test app. It should still let you call the API with a much more generous API call limit `(50 requests per minute)`.
+Now test the app. It should still let you call the API with a much more generous API call limit `(50 requests per minute)`.
 
 <div class="solution-start"></div>
 
@@ -322,7 +319,7 @@ private callFootballService(method: string, queryParams: any = {}): Observable<a
   <b>Exercise</b>: Implement the remaining functions
 </h4>
 
-Now it is time to implement the remaining functions of the `FootballService`.
+Now it's time to implement the remaining functions of the `FootballService`.
 
 Update the implementation of:
 
@@ -400,8 +397,7 @@ return this.callFootballService(`teams/${teamId}/fixtures`)
   <b>Exercise</b>: Adding Query parameters
 </h4>
 
-Some of the api functions allow to pass query parameters.
-For example to get fixtures for the next 7 days, you can use `timeFrame=n7`, like:  
+Some of the api functions allow to pass query parameters. For example to get fixtures for the next 7 days, you can use `timeFrame=n7`, like:  
 
 ```
 https://api.football-data.org/v1/competitions/426/fixtures?timeFrame=n7
@@ -417,7 +413,7 @@ In `FootballService` functions: `getLeagueTable` and `getFixtures` take an addit
 
 To pass query parameters into `get` you need to construct a `URLSearchParams` object and add it to `RequestOptionsArgs`, as `search`, like `{ search: <URL Search Params here>}`.
 
-Luckilly for you the `FootballService` already contains `buildSearchParams` function that can construct a `URLSearchParams` from an object.
+Luckily for you the `FootballService` already contains `buildSearchParams` function that can construct a `URLSearchParams` from an object.
 
 Your task is to update `RequestOptionsArgs` when calling `get` and add the constructed `URLSearchParams` as `search`.
 
@@ -445,7 +441,7 @@ private callFootballService(method: string, queryParams: any = {}): Observable<a
 
 The component is a controller class with a template which mainly deals with a view of the application and logic on the page. It is a bit of code can be used throughout an application. The component knows how to render itself and configure dependency injection.
 
-The component contains two important things; one is view and another one is some logic.
+The component contains two important things; one is a view and another contains some logic.
 
 <!--A good example of a component is a `LeagueTableComponent` as an example.-->
 
@@ -513,7 +509,7 @@ declarations: [
 <!--http://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/-->
 Components can be divided into two categories:
 
- * smart - those contain the business logic of your application. Like a `LoginComponent` that contains the logic of how to log in and where to redirect after user successfully logs in,
+ * smart - those contain the business logic of your application. Like a `LoginComponent` that contains the logic of how to log in and where to redirect after user successfully logs in
  * presentation - those are used to encapsulate something that we want to show on the screen. Like a `LogoComponent`, which contains the `img` tag with your logo, which you can paste everywhere you need to display your logo. However when you need to change the logo, you can do it all in one place (the definition of the component).
 
 #### Components with custom input (one way-binding)
@@ -560,9 +556,7 @@ When you press the `View Fixtures` button, you will get a list of fixtures.
 ![League Table](images/warmup-league-table.png?raw=true)
 ![Fixtures](images/warmup-fixtures.png?raw=true)
 
-
-Your task is to encapsulate the fixture template into a `FixtureComponent` and use it in `CompetitionFixturesComponent` instead of the current fixture teamplate.
-
+Your task is to encapsulate the fixture template into a `FixtureComponent` and use it in `CompetitionFixturesComponent` instead of the current fixture template.
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Create FixtureComponent with @Input
@@ -573,6 +567,7 @@ Your task is to encapsulate the fixture template into a `FixtureComponent` and u
 The initial structure for `FixtureComponent` is already in place (see `fixture.component.ts`) and added to declarations in `app.module.ts`.
 
 Open `competition-fixtures.component.html`, comment out the `GridLayout` and then add `<my-fixture [fixture]="fixture"></my-fixture>` in its place.
+
 You will notice that `my-fixture` expects a `[fixture]` attribute. This will be added in the next exercise.
 
 <b>HINT</b> Make sure to keep a copy of the `GridLayout`.
@@ -598,9 +593,9 @@ Now if you reload the app and go to `View Fixtures` you should get something lik
 
 #### Step 2 - Update FixtureComponent and add @Input for fixture
 
-Move the `GridLayout` from `competition-fixtures.component.html` and it's content into `fixture.component.html`.
+Move the `GridLayout` from `competition-fixtures.component.html` and its content into `fixture.component.html`.
 
-Then add `fixture` input attribute to `FixtureComponent`
+Then add `fixture` input attribute to `FixtureComponent`:
 
 <div class="solution-start"></div>
 
@@ -635,6 +630,7 @@ Reload the app. Now the fixtures should be displayed correctly again.
 #### Step 3 (Bonus) - Convert inline styling conditions to functions
 
 The middle `StackLayout` in `fixture.component.html` has some logic embeded in `*ngIf` and `[class.in-play]`.
+
 Your task is to move this logic into two functions in `fixture.component.ts` and then call these functions:
 
  * `*ngIf` => `displayScore()`
@@ -681,7 +677,7 @@ public inPlay(): boolean {
 
 ### Components with custom events
 
-Adding a custom event to a component is really easy. Let's have a look at `LeagueTableComponent` as an example.
+Adding a custom event to a component is easy. Let's have a look at `LeagueTableComponent` as an example.
 
 To make it work we need first to create an `EventEmitter`:
 
@@ -732,9 +728,7 @@ Even though you could make it happen by adding `[nsRouterLink]` on each fixture 
 
 #### Step 1
 
-Add customer event called `teamTap` to `FixtureComponent`.
-
-Do it just like it was done in `LeagueTableComponent`.
+Add customer event called `teamTap` to `FixtureComponent`, similar to how it was done in `LeagueTableComponent`.
 
 <div class="solution-start"></div>
 ``` javascript
@@ -767,7 +761,7 @@ public awayTeamTap() {
 
 #### Step 3
 
-Update the home and away team labels in `fixture.component.html`, so that a `tap` will trigger either `homeTeamTap` or `awayTeamTap`
+Update the home and away team labels in `fixture.component.html`, so that a `tap` will trigger either `homeTeamTap` or `awayTeamTap`:
 
 <div class="solution-start"></div>
 
@@ -794,10 +788,10 @@ Update the home and away team labels in `fixture.component.html`, so that a `tap
 
 
 #### Step 4
-Now the `FixtureComponent` is ready to emit the if of the tapped team through `teamTap`.
-Let's use it in `CompetitionFixturesComponent` to navigate to the tapped team.
+Now the `FixtureComponent` is ready to emit when tapping a team through `teamTap`. Let's use it in `CompetitionFixturesComponent` to navigate to the tapped team.
 
 Update `teamSelected` function in `competition-fixtures.component.ts` to navigate to the team with the provided `teamId`.
+
 You might need to inspect `app.routing.ts` to find out what is the correct route.
 
 <div class="solution-start"></div>
@@ -828,15 +822,16 @@ Now upon tapping in a team in the fixture you should be redirected to a team vie
 
 ### Components with custom input (two way-binding)
 <!--https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html#creating-custom-two-way-data-bindings-->
-To create a custom attribute that is capable of both taking data as an input, but also updating it we need to use `two-way binding`.
+
+To create a custom attribute that is capable of both taking data as an input and also updating it, we need to use `two-way binding`.
 
 To do that we need to combine the power of `@Input` and `@Output`.
 
-Let's imagine we are working on a `ColorPicker` component, which should take a `color`, as an input, but when the user selects a different color, it should provide with an updated value.
+Let's imagine we are working on a `ColorPicker` component, which should take a `color`, as an input, but when the user selects a different color, it should provide an updated value.
 
-First we need to create a property `@Input color`
+First we need to create a property `@Input color`.
 
-Then we need to add a custom event, which is called `propertyNameChange`, so in our case it should be called `@Output() colorChange`
+Then we need to add a custom event, which is called `propertyNameChange`, so in our case it should be called `@Output() colorChange`.
 
 Finally we need to emit the new value `colorChange.emit(newColor);`
 
@@ -867,7 +862,7 @@ Now you can use the `ColorPickerComponent` like this:
 
 ### Bonus Service Exercise:
 
-When requesting fixtures from `api.football-data.org` it allows you to set the timeframe to # of days before (`p7`) or after (`n7`) the current date. However it is not possilbe to get fixtures for before and after in one call.
+When requesting fixtures from `api.football-data.org` it allows you to set the timeframe to # of days before (`p7`) or after (`n7`) the current date. However it is not possible to get fixtures for before and after in one call.
 
 Update `FootballService` to add a function which would:
 
@@ -877,5 +872,4 @@ Update `FootballService` to add a function which would:
 
 ### Bonus Component Exercise:
 
-Create a `PlayerComponent`, which will display player details like: name, position, jerseyNumber and nationality.
-Then add a list of players to the `Team` screen. 
+Create a `PlayerComponent`, which will display player details like: name, position, jerseyNumber and nationality. Then add a list of players to the `Team` screen. 
