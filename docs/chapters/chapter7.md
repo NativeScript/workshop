@@ -38,11 +38,11 @@ For the most part you will be building this app on your own without any copy-and
   <b>Exercise</b>: Create the app’s service
 </h4>
 
-FurFriendster is driven by the [Petfinder API](https://www.petfinder.com/developers/api-docs), and we have a preconfigured Angular service you can use to get the data you need.
+FurFriendster is driven by the [Petfinder API](https://www.petfinder.com/developers/api-docs), and we have a preconfigured Angular service and a few model objects you can use to get the data you need.
 
-Create a file somewhere in your app named `pet-finder.service.ts`, and copy-and-paste in the code from the following link.
+Download the following zip file, and copy and paste those files into your new app.
 
-* [`pet-finder.service.ts` source code](https://raw.githubusercontent.com/NativeScript/workshop/master/demo/app/pet-finder.service.ts)
+* [Download the Petfinder service zip archive](https://github.com/tjvantoll/petfinder-angular-service/archive/master.zip)
 
 <div class="exercise-end"></div>
 
