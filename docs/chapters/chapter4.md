@@ -27,7 +27,7 @@ This tells us 3 things:
  * If you navigate to `'items'`, you will be provided with `ItemsComponent`,
  * If you navivate to `'items/somevalue'` you will be provided with `ItemDetailComponent`, which additionally will receive `somevalue` as `id`
 
-As your application grows, so will your list of routes. One way to manage them is to group them into related `parent<->children` groups like this
+As your application grows, so will your list of routes. One way to manage them is to group them into related `parent<->children` groups like this:
 
 ``` javascript
 const routes: Routes = [
@@ -72,8 +72,7 @@ Open `app.routing.ts` and change the `redirectTo` of the default route to `'/col
 
 #### Step 2
 
-Now it is time to add routes for the `Red` and `RGB` components.
-Update the childern of the `color` route, so that:
+Now it is time to add routes for the `Red` and `RGB` components. Update the children of the `color` route, so that:
 
  * `'color/red'` path will navigate to `RedComponent` - you can see how this is done for the `blue` example,
  * `'color/rgb'` + `rgb` (as a parameter) path will navigate to `RGBComponent` while passing the `rgb` parameter
@@ -94,10 +93,10 @@ Update the childern of the `color` route, so that:
 
 
 ### Navigation from template
-One way to add navigation in `html` is with the `nsRouterLink` directive.
-It is similar to `routerLink` (which is used in the web), but works with NativeScript navigation.
+One way to add navigation in `html` is with the `nsRouterLink` directive. It is similar to `routerLink` (which is used in the web), but works with NativeScript navigation.
 
 `nsRouterLink` expects an array of parameters, which can be matched to one of the routes defined in `app.routes.ts`.
+
 For example, if we want a label that should navigate to the reading page of article 5 or based on a value stored in the component. We can achieve this by providing an `absolute path`, like this:
 
 ``` XML
@@ -129,7 +128,7 @@ OR
 
 #### Parent
 
-If you are in the `'articles/read/5'` and you want to provide a relative path back to the parent. You can use `'..'`, like this:
+If you are in the `'articles/read/5'` and you want to provide a relative path back to the parent, you can use `'..'`, like this:
 
 ``` XML
 <Label text="Articles" [nsRouterLink]="['..']"></Label>
@@ -137,7 +136,7 @@ If you are in the `'articles/read/5'` and you want to provide a relative path ba
 
 #### Siblings
 
-If you are in the `'articles/read/5'` and you want to provide a relative path to the edit page or search page. You can use `'../sibling_path'`, like this:
+If you are in the `'articles/read/5'` and you want to provide a relative path to the edit page or search page, you can use `'../sibling_path'`, like this:
 
 ``` XML
 <Label text="Articles" [nsRouterLink]="['../edit', 5]"></Label>
@@ -158,7 +157,7 @@ If you are in the `'articles/read/5'` and you want to provide a relative path to
 ```
 
 #### Clear History
-Also if you add a `clearHistory` flag, you can clear the navigation stack. Which means that there won't be a back button displayed on iOS, or pressing back on Android will not take you back to this page again.
+Also if you add a `clearHistory` flag, you can clear the navigation stack. Which means that there won't be a back button displayed on iOS, or pressing `back` on Android will not take you back to this page again.
 
 ``` XML
 <Label text="Back to Articles" [nsRouterLink]="['..']" clearHistory="true"></Label>
@@ -207,8 +206,7 @@ Navigation can also be done with JavaScript.
 
 For that you will either need the standard `Router` from `@angular/router`, or `RouterExtensions` from `nativescript-angular/router`, which comes with additional functionality: to `clearHistory`, choose a page `transition` or navigate `back`.
 
-If you are working on a project where you need to share the code between web and mobile, then you might want to use the standard Angular `Router`.
-However if your project is Mobile only, then you should stick with `RouterExtensions`.
+> Note: If you are working on a project where you need to share the code between web and mobile, then you might want to use the standard Angular `Router`. However if your project is mobile only, then you should stick with `RouterExtensions`.
 
 #### Navigation: how to
 Once you choose which Router to use, navigation is really easy: 
@@ -279,22 +277,24 @@ this.router.navigate(['child'],      {relativeTo: this.route});
 ```
 
 #### Clear History
+
 To clear history just provide `clearHistory` into `navigate`, like this:
 
 ``` javascript
 this.router.navigate(['/articles', { clearHistory: true }]);
 ```
 
-Please note, that you must used `RouterExtensions`, for this to work.
-Also `clearHistory` works only with `page-router-outlet`, this does't work with `router-outlet`.
+Please note that you must used `RouterExtensions`, for this to work. Also `clearHistory` works only with `page-router-outlet`; this does't work with `router-outlet`.
 
 #### Navigating back
+
 To navigate back, you can use `RouterExtensions` functionality to call either:
 
  * `this.router.back()` - always takes us to back the previous view from the navigation stack,
  * `this.router.backToPreviousPage()` - always takes us back to the previous page from the navigation stack, skipping navigation stack items on the same page.
 
 What is the difference?
+
 Let's imagine you navigated through a number of paths in this order.
 
  * navigate `/articles`
@@ -311,6 +311,7 @@ Now calling `back` would take us to `/articles/read/1`, which is another article
 However calling `backToPreviousPage` from `/articles/read/2`, would take us to `/articles`.
 
 #### Default iOS and Android back operations
+
 The default `back` button which appreas in the iOS `action bar` performs `backToPreviousPage`, while the Android back button performs `back`.
 
 ### Exercise: Navigation with code
@@ -319,8 +320,7 @@ The default `back` button which appreas in the iOS `action bar` performs `backTo
   <b>Exercise</b>: Navigation with code
 </h4>
 
-In this exercise we will play with the `blue` component.
-`blue.component.html` already contains 4 buttons, each calling a different function.
+In this exercise we will play with the `blue` component. The `blue.component.html` already contains four buttons, each calling a different function.
 
 Your task is to implement the empty functions, so that:
 
@@ -360,9 +360,10 @@ Your task is to implement the empty functions, so that:
 <div class="exercise-end"></div>
 
 ### Receiving parameters
-For components that are expected to receive parameters from the route navigation, you need to use `ActivatedRoute`
 
-You just have to go through the usual drill of:
+For components that are expected to receive parameters from the route navigation, you need to use `ActivatedRoute`.
+
+You just have to perform the appropriate imports:
 
 #### Import
 ``` javascript
@@ -378,9 +379,8 @@ export class ArticleSearchResultsComponent {
 ```
 
 #### Use
-Here we have two options.
 
-Take a snapshot, which will be triggered only when we navigate to this page from another page.
+Here we have two options. You can take a snapshot, which will be triggered only when we navigate to this page from another page.
 
 ``` javascript
 ngOnInit() {
@@ -393,8 +393,7 @@ ngOnInit() {
 
 #### Navigate to self
 
-However using a snapshot will not work if we were try to navigate from the search to itself, but with different parameters.
-To make this work, we need to use `params.forEach` instead.
+Using a snapshot will not work if we were try to navigate from the search to itself, but with different parameters. To make this work, we need to use `params.forEach` instead.
 
 ``` javascript
 ngOnInit() {
@@ -414,9 +413,7 @@ ngOnInit() {
   <b>Exercise</b>: Receiving parameters
 </h4>
 
-In this exercise we will play with the `rgb` component: `rgb.component.ts`.
-Currently every time you navigate to rgb the input parameters are getting ignored.
-Your task is to intercept the 'rgb' parameter and update `this.rgb`.
+In this exercise we will play with the `rgb` component: `rgb.component.ts`. Currently every time you navigate to `rgb` the input parameters are getting ignored. Your task is to intercept the 'rgb' parameter and update `this.rgb`.
 
 <div class="solution-start"></div>
 
@@ -432,13 +429,15 @@ ngOnInit() {
 <div class="exercise-end"></div>
 
 ### Page Transitions
-One of the great things about NativeScript is it's ability to use native animations and page transitions with very little effort.
+
+One of the great things about NativeScript is its ability to use native animations and page transitions with very little effort.
 
 [Here is a list of all available navigation transitions](http://docs.nativescript.org/api-reference/interfaces/_ui_frame_.navigationtransition.html)
 [Here is a list of all available animation curves](http://docs.nativescript.org/api-reference/modules/_ui_enums_.animationcurve.html)
 
 #### Transition via html
-To add pageTransition in html, just add `pageTransition` with a name of the transition you need. Just like this:
+
+To add pageTransition in html, just add `pageTransition` with a name of the transition you need:
 
 ``` XML
 <Button
@@ -449,6 +448,7 @@ To add pageTransition in html, just add `pageTransition` with a name of the tran
 ```
 
 #### Transition via code
+
 To add page transition in JavaScript, just add a transition object to the `navigate` options. Just like this:
 
 ``` javascript
@@ -493,7 +493,7 @@ Your task is to update the buttons in `color.component.html`, so that:
 
 Your task is to implement the empty functions, so that:
 
- * goBlue() navigates to the `Blue` page with page transition `slideTop`, duration `2 seconds` and curve `spring`,
+ * goBlue() navigates to the `Blue` page with page transition `slideTop`, duration `2 seconds` and curve `spring`
  * goGray() navigates to the `RGB` page with `gray` as the parameter and page transition `fade` and duration `1 second`
  * goBack() navigates back
  * goHome() navigates home whilst clearing the navigation history
