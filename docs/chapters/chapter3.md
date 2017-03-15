@@ -30,7 +30,7 @@ For example:
 
 ### Events
 
-Also to attach to a component's event like: `tab`, `doubleTap`, `pinch`, `pan`, `swipe`, `rotation`, `longPress`, `touch`, just use the `(eventName)` notation.
+UI Components include events to handle common user interactions. A component can handle events such as: `tab`, `doubleTap`, `pinch`, `pan`, `swipe`, `rotation`, `longPress`, `touch`. To leverage them, use the `(eventName)` notation.
 
 For example:
 
@@ -48,7 +48,7 @@ For example:
 Recreate the below UI and bind the input components to the profile attributes.
 Additionally, make sure that the two buttons call `save()` and `clear()` respectively.
 
-<b>HINT</b> To make a TextField password friendly just use `secure="true"`.
+<b>HINT</b> To make a TextField password friendly use `secure="true"`.
 
 ![Recreate UI](images/warmup-01.png?raw=true)
 
@@ -106,7 +106,8 @@ Edit `profile.component.html` and have fun.
 
 <!--#### Two way binding with [(ngModel)]=”name” -> including the required changes to app.module.ts-->
 One way binding is not particularly useful for input forms. This is where `[(ngModel)]` comes in handy.
-Each of the input components you used a moment ago, allows you to use `[(ngModel)]` to configure two-way binding. Just like this:
+
+Each of the input components you used a moment ago allows you to use `[(ngModel)]` to configure two-way binding:
 
 ``` html
 <TextField [(ngModel)]="email" hint="your name here"></TextField>
@@ -115,12 +116,11 @@ Each of the input components you used a moment ago, allows you to use `[(ngModel
 <Slider [(ngModel)]="size" [minValue]="0" [maxValue]="10"></Slider>
 ```
 
-However before you use `[(ngModel)]` in your app, you need to `NativeScriptFormsModule` to `@NgModule` => `imports`
-
-
 <h4 class="exercise-start">
     <b>Exercise</b>: Two-way binding
 </h4>
+
+Before you use `[(ngModel)]` in your app, you need to add `NativeScriptFormsModule` to `@NgModule` => `imports`, so let's do that now.
 
 #### Step 1
 
@@ -145,9 +145,9 @@ imports: [
 #### Step 2
 
 Update all input components to use two-way binding.
-Test it with clear() and save() to see what happens.
+Test it by clicking the clear() and save() buttons and see what happens.
 
-<b>HINT</b> To keep an eye on the slider value, just print it in the label above it, like:
+> Note:  To keep an eye on the slider value, print it in the label above it:
 
 ``` html
 <Label [text]="'Coding power:' + profile.codingPower"></Label>
@@ -207,13 +207,13 @@ Test it with clear() and save() to see what happens.
 
 ### Theme
 
-Now that we have the profile page doing something `sort of` useful ;)
-Let's make it look a little bit better.
+Now that we have the profile page doing something `sort of` useful, let's make it look a little bit better.
 
-The good news is that NativeScript comes with a buncho of built in `Themes`.
+The good news is that NativeScript comes with many built in themes.
+
 ![Color Schemes](http://docs.nativescript.org/img/theme/color-schemes-all.png)
 
-Most of the standard UI components come with styles that you can use for a really quick styling improvements.
+Most of the standard UI components come with styles that you can use for quick styling improvements.
 
 
 #### Text based components can use:
@@ -276,8 +276,7 @@ For example:
 </StackLayout>
 ```
 
-#### To read more about themes
-Go to [NativeScript theme docs](https://docs.nativescript.org/ui/theme)
+> Note: To read more about themes, go to the [NativeScript theme docs](https://docs.nativescript.org/ui/theme).
 
 
 <h4 class="exercise-start">
@@ -324,13 +323,12 @@ Update the UI to make it look more like the one in the picture below.
     [(ngModel)]="profile.dob">
   </DatePicker>
   
-  <Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.zoom]="profile.codingPower > 7"></Label>
+  <Label [text]="'Coding power:' + profile.codingPower" class="text-primary"></Label>
   <Slider
     [(ngModel)]="profile.codingPower"
     [minValue]="0"
     [maxValue]="10"
-    class="slider"
-    [class.danger-slider]="profile.codingPower > 7">
+  >
   </Slider>
 
   <Button text="Save" (tap)="save()" class="btn btn-primary"></Button>
@@ -342,7 +340,7 @@ Update the UI to make it look more like the one in the picture below.
 
 #### Step 2
 
-Open `app.css` and change the imported style to each of the values below and see which one you like the most:
+Open `app.css` and change the imported style to each of the values below to see which one you like the most:
 
  * `aqua.css`
  * `blue.css`
@@ -358,18 +356,56 @@ Open `app.css` and change the imported style to each of the values below and see
  * `ruby.css`
  * `sky.css`
 
-<div class="exercise-end"></div>
 
+
+#### (Bonus) - Use the NativeScript Themebuilder tool to create your own theme
+
+Build your own theme using the [NativeScript theme builder](http://www.nativescriptthemebuilder.com/#). This cool tool lets you view changes in a web browser, download a file, and style your app with a custom CSS file. Try building a patriotic theme with your flag's colors, then download it to the root folder of your app. To see your theme, edit `app.css` to use the core theme and your new custom theme, like this: 
+
+```
+@import 'nativescript-theme-core/css/core.light.css';
+@import '~/custom.css';
+```
+
+Make something beautiful!
+
+<div class="exercise-end"></div>
 
 ### Animations 
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Animations
 </h4>
-Instruction of the exercise
+
+Adding animation to your app can really enhance its attraction and usefulness. There are several ways to add animation:
+
+1. Leveraging Angular-style animation
+2. Use NativeScript's built-in animation library
+3. Use Animate.css
+4. Use CSS keyframe animation techniques
+5. Use Lottie (AirBnB's library) or Keyframes (by Facebook) animations
+6. Use a community-generated animation plugin
+
+Let's work with keyframe animations to give you a feel for how animations work in NativeScript apps.
+
+Enhance the slider so that when you slide it to a value greater than 7, its color changes and the label above it expands. To do this, you need to leverage the Angular bindings we learned about above.
+
+Give the slider a class so that we can style it in the css, and bind the class.danger-slider property to the value `profile.codingPower > 7`:
+
+```
+class="slider"
+    [class.danger-slider]="profile.codingPower > 7"
+```
+
+Then, edit the Label above the slider to expand when the slider value is more than 7 by giving it a class name that is bound to that value:
+
+```
+[class.zoom]="profile.codingPower > 7"
+```
+
+Take a look at `profile.component.css` to see how the keyframe animation is invoked. 
 
 <div class="solution-start"></div>
-
 
 ``` html
 <Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.zoom]="profile.codingPower > 7"></Label>
@@ -398,6 +434,36 @@ Instruction of the exercise
   to {  transform: scale(1.0,1.0) }
 }
 
+```
+<div class="solution-end"></div>
+
+#### (Bonus) - Change the animation to spin, instead of zoom.
+
+Instead of zooming, make the label spin around, just for practice. Hint, both `profile.component.html` and `profile.component.css` need to be edited.
+
+<div class="solution-start"></div>
+
+``` html
+<Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.spin]="profile.codingPower > 7"></Label>
+<Slider
+  [(ngModel)]="profile.codingPower"
+  [minValue]="0"
+  [maxValue]="10"
+  class="slider"
+  [class.danger-slider]="profile.codingPower > 7">
+</Slider>
+```
+
+``` css
+.danger-slider {
+  background-color: red;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 2s;
+}
+
 @keyframes spin {
   from { transform: rotate(-30) }
   40% { transform: rotate(420) }
@@ -408,14 +474,4 @@ Instruction of the exercise
 <div class="solution-end"></div>
 
 <div class="exercise-end"></div>
-
-
-
-### Create your own theme ???
-(Bonus exercise) - This to be covered by Jen
-Build your own theme at [NativeScript theme builder](http://www.nativescriptthemebuilder.com/#)
-
---- Do we need instructions on how to do this? ---
-
-
 
