@@ -14,11 +14,13 @@ Here’s what your master-detail UI might look like after you complete this sect
 
 ### Building the page
 
-Talk a little bit about how to approach the problem. Maybe even list the various files the reader will have to touch in order to implement a new route.
+Your main task for this workshop will be figuring out how to add a new route to act as the details page, and how to pass data to that new page from the master page.
+
+Don’t worry too much if your details page doesn’t look amazing. 
 
 ### Requirements
 
-List the hard requirements of this challenge. I think we’ll want to tell the reader that they must use at least social share. They must display certain information. That sort of thing.
+* 
 
 ### Tips
 
