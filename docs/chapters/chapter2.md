@@ -1,13 +1,20 @@
 ## Project setup
 
-The files for this part of the workshop are in the /warmup folder. Clone the repo and navigate to the /warmup folder by running the following commands in a :
+The files for this part of the workshop are in the `/warmup` folder. Clone the repo and navigate to its `/warmup` folder by running the following commands.
 
-`git clone https://github.com/NativeScript/workshop.git`
+```
+git clone https://github.com/NativeScript/workshop.git
+cd warmup
+```
 
-Navigate to the location of the new repo on your local computer and go to the warmup folder: 
+Next, run the project in an emulator using one of the command below.
 
-`cd warmup`
+```
+tns run ios
+```
 
-Run the project in an emulator:
+Or
 
-`tns run ios` or `tns run android` 
+```
+tns run android
+```
