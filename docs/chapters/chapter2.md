@@ -4,7 +4,7 @@ The files for this part of the workshop are in the `/warmup` folder. Clone the r
 
 ```
 git clone https://github.com/NativeScript/workshop.git
-cd warmup
+cd workshop/warmup
 ```
 
 Next, run the project in an emulator using one of the command below.
