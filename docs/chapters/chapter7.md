@@ -75,6 +75,7 @@ From there it’s up to you. Feel free to implement the design we show in this s
 
 The NativeScript ListView documentation is available at <https://docs.nativescript.org/angular/ui/list-view.html>.
 
+
 #### Tip #2: Images
 
 Our service provides a convenience method for accessing the appropriate pet images. You can bind an `<Image>` tag using the following code.
@@ -82,3 +83,7 @@ Our service provides a convenience method for accessing the appropriate pet imag
 ```
 [src]="item.media.getFirstImage(2, 'res://icon')"
 ```
+
+#### Tip #3: Styling
+
+The NativeScript core theme has a few CSS class names for displaying thumbnail images. Check out <https://docs.nativescript.org/ui/theme#listviews> for details.
