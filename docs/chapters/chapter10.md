@@ -6,6 +6,9 @@ Take whatever time you have left and implement a new feature for FurFriendster. 
 
 If you’re having trouble coming up with good ideas, we have a few suggestions.
 
-### Adding favorites
-
-Show screenshots of what the app might look like if you allowed users to favorite pets and view them on a separate screen. Give hints on how they might accomplish that.
+* Adding favorites
+    * Allow users to heart or start their favorite pets, and show those favorites in a new screen in your app.
+* A new theme
+    * Try a different [color scheme](https://docs.nativescript.org/ui/theme#color-schemes) to give your app a whole new look.
+* Random pet
+    * Give the user a way of seeing for a random pet.
