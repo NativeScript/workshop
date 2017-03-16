@@ -24,10 +24,22 @@ Don’t worry too much if your details page doesn’t look amazing. You main tas
     * `description`
     * `breeds`
     * Two images, which you can access by binding an `<Image>` component’s `src` attribute to the following properties of a `Pet` object: `media.getFirstImage(3, 'res://icon')` and `media.getSecondImage(4, 'res://icon')`.
+* **2**. Add the following two plugins to the details screen.
+    * [Font Awesome](https://github.com/NathanWalker/nativescript-ngx-fonticon)
+        * We gave you a `fonts` folder in the starting files for your app, and with this plugin you’ll be able to use them. There are a number of icons you might want to use in your app, but the one you must use is one of Font Awesome’s share icons.
+    * [Social Share](https://github.com/tjvantoll/nativescript-social-share)
+        * You must allow users to share a pet’s description using the social share plugin.
 
 ### Tips
 
-Give a couple of hints. Like:
+#### Tip #1: clip-path
 
-* Links to the navigation docs.
-* Information on how to build that diamond UI with clip-path
+If you want to try to recreate the diamond shape images we used in our screenshots, give the CSS `clip-path` property a shot. You can use [this tool](http://bennettfeely.com/clippy/) to define your own custom shape.
+
+#### Tip #2: Angular configuration
+
+When adding your new route, make sure to add the appropriate entries to both your `app.routing.ts` and `app.module.ts` files.
+
+#### Tip #3: ScrollView
+
+If your UI components no longer fit on a user’s screen, add a [`<ScrollView>`](https://docs.nativescript.org/cookbook/ui/scroll-view) as a top-level UI component.
