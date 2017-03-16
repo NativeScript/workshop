@@ -16,11 +16,14 @@ Here’s what your master-detail UI might look like after you complete this sect
 
 Your main task for this workshop will be figuring out how to add a new route to act as the details page, and how to pass data to that new page from the master page.
 
-Don’t worry too much if your details page doesn’t look amazing. 
+Don’t worry too much if your details page doesn’t look amazing. You main task is to show the appropriate data for each pet and get the navigation working. Here are the specific requirements for this part of the workshop.
 
 ### Requirements
 
-* 
+* **1**. Show the following information for each pet on its details screen.
+    * `description`
+    * `breeds`
+    * Two images, which you can access by binding an `<Image>` component’s `src` attribute to the following properties of a `Pet` object: `media.getFirstImage(3, 'res://icon')` and `media.getSecondImage(4, 'res://icon')`.
 
 ### Tips
 

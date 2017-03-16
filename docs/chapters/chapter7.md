@@ -32,17 +32,15 @@ Your task for the first part of building this app is to create a big list of pet
 
 ![](/images/chapter7/1.png)
 
-For the most part you will be building this app on your own without any copy-and-paste guidance from us, but we are going to provide one thing.
+For the most part you will be building this app on your own without any copy-and-paste guidance from us, but we are going to provide a few things.
 
 <h4 class="exercise-start">
-  <b>Exercise</b>: Create the app’s service
+  <b>Exercise</b>: Get the starting files
 </h4>
 
-FurFriendster is driven by the [Petfinder API](https://www.petfinder.com/developers/api-docs), and we have a preconfigured Angular service and a few model objects you can use to get the data you need.
+FurFriendster is driven by the [Petfinder API](https://www.petfinder.com/developers/api-docs), and we have a pre-configured Angular service and a few model objects you can use to get the data you need.
 
-Download the following zip file, and copy and paste those files into your new app.
-
-* [Download the Petfinder service zip archive](https://github.com/tjvantoll/petfinder-angular-service/archive/master.zip)
+Open the `workshop` folder you’ve been working in today, and find its child `app-challenge-files` folder. Next, copy every file and folder in `app-challenge-files`, and paste them into your new `FurFriendster` app.
 
 <div class="exercise-end"></div>
 
