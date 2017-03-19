@@ -5,14 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Fixture, Team } from '../models';
 import { FootballService } from '../football.service';
 
-// import { Observable } from 'rxjs';
-
 @Component({
   selector: 'my-fixtures',
-  templateUrl: './football/competition-fixtures.component.html'
+  templateUrl: './football/competition-fixtures.component.html',
+  styleUrls: ['./football/fixture.component.css']
 })
 export class CompetitionFixturesComponent implements OnInit{
   public fixtures: Fixture[] = [];
+  public competitionId: number;
   public competitionName: string = '';
 
   constructor(
@@ -22,10 +22,10 @@ export class CompetitionFixturesComponent implements OnInit{
   }
 
   ngOnInit() {
-    const competitionId = +this.route.snapshot.params['competitionId'];
+    this.competitionId = +this.route.snapshot.params['competitionId'];
     this.competitionName = this.route.snapshot.params['competitionName'];
 
-    this.footballService.getFixtures(competitionId, { timeFrame: 'n7'})
+    this.footballService.getFixtures(this.competitionId)
       .then(fixtures => this.fixtures = fixtures);
   }
 
@@ -33,16 +33,4 @@ export class CompetitionFixturesComponent implements OnInit{
     console.log('::CompetitionFixturesComponent::teamSelected::' + teamId);
     this.router.navigate(['/football/team', teamId]);
   }
-
-  // public days: Array<Fixture[]> = [];
-  // groupFixtures(fixtures: Fixture[]) {
-  //   this.days = [];
-  //   const source = Observable.from(fixtures);
-  //   const groupSubscription = source.groupBy(fix => fix.date.substr(0, 10))
-  //     .flatMap(group => group.reduce((acc, curr) => [...acc, curr], []))
-  //     .subscribe(day => {
-  //       // console.log(JSON.stringify(group));
-  //       this.days.push(day);
-  //     });
-  // }
 }

@@ -7,5 +7,5 @@ export interface Competition {
   numberOfMatchdays: number;
   numberOfTeams: number;
   numberOfGames: number;
-  lastUpdated: Date;
+  lastUpdated: string;
 }

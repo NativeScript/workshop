@@ -1,24 +1,24 @@
 <ActionBar [title]="pet?.name" class="action-bar"></ActionBar>
 
-<ScrollView>
+<ScrollView #scroll>
 
   <StackLayout>
 
 
     <Image class="petBackground" height="300" [src]="pet?.media.getFirstImage(3, 'res://icon')" stretch="aspectFill"></Image>
 
-    <AbsoluteLayout>
-      
-      <Image top="-100" left="100" width="200" height="200" class="petImage" [src]="pet?.media.getSecondImage(4, 'res://icon')"
+      <AbsoluteLayout> 
+        
+        <Image #petImage top="-100" left="100" width="200" height="200" class="petImage" [src]="pet?.media.getSecondImage(4, 'res://icon')"
         stretch="aspectFill"></Image>
-    
-    </AbsoluteLayout>
 
+      </AbsoluteLayout>
+    
     <Label class="h1" [text]="pet?.age + ' ' +  pet?.breeds"></Label>
 
     <GridLayout columns="*,*">
-      <Button col="0" row="0" [text]="'fa-heart' | fonticon" class="fa like"></Button>
-      <Button col="1" row="0" [text]="'fa-share-square-o' | fonticon" class="fa share"></Button>
+      <Button col="0" row="0" [text]="'fa-heart' | fonticon" class="fa like" (tap)=favorite()></Button>
+      <Button col="1" row="0" [text]="'fa-share-square-o' | fonticon" class="fa share" (tap)=share(pet?.description)></Button>
     </GridLayout>
 
     <Label [text]="pet?.description" class="petDescription" textWrap="true"></Label>
