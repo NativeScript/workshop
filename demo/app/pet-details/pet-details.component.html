@@ -17,7 +17,7 @@
     <Label class="h1" [text]="pet?.age + ' ' +  pet?.breeds"></Label>
 
     <GridLayout columns="*,*">
-      <Button col="0" row="0" [text]="'fa-heart' | fonticon" class="fa like" (tap)=favorite()></Button>
+      <Button col="0" row="0" [text]="'fa-heart' | fonticon" class="fa like"  [class.favorite]="isFavorite" (tap)=favorite()></Button>
       <Button col="1" row="0" [text]="'fa-share-square-o' | fonticon" class="fa share" (tap)=share(pet?.description)></Button>
     </GridLayout>
 
