@@ -79,6 +79,6 @@ export class PetSearchComponent implements OnInit{
   } 
 
   myFavorites(){
-    
+      this.router.navigate(['favorites']);
   } 
 }

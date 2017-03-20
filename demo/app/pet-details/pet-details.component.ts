@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { PetFinderService } from '../pet-finder.service';
+import { PetStorageService } from '../pet-storage.service';
+
 import { Pet } from '../models';
 
 import * as SocialShare from "nativescript-social-share";
@@ -17,6 +19,8 @@ import { Image } from "ui/image";
 export class PetDetailsComponent implements OnInit{
   public pet: Pet;
   public position: number;
+  public isFavorite: boolean = false;
+
   @ViewChild("petImage") img: ElementRef;
 
   petImage: Image;
@@ -24,7 +28,8 @@ export class PetDetailsComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private petFinder: PetFinderService) {
+    private petFinder: PetFinderService,
+    private petStorage: PetStorageService) {
   }
 
   ngOnInit() {
@@ -34,7 +39,10 @@ export class PetDetailsComponent implements OnInit{
     this.petImage = this.img.nativeElement;
     this.petImage.translateX = this.position;*/
     this.petFinder.getPet(id)
-      .then(pet => this.pet = pet)
+      .then(pet => {
+        this.pet = pet;
+        this.isFavorite = this.petStorage.isPetFavorite(pet);
+      })
   }
 
   share(text:string){
@@ -42,6 +50,11 @@ export class PetDetailsComponent implements OnInit{
   }
 
   favorite(){
-    
+    this.isFavorite = !this.isFavorite;
+    if (this.isFavorite) {
+      this.petStorage.addPetToFavorites(this.pet);
+    } else {
+      this.petStorage.removePetFromFavorites(this.pet);
+    }
   }
 }

@@ -1,0 +1,9 @@
+<ScrollView #scroll>
+  <StackLayout>
+    <StackLayout *ngFor="let pet of pets">
+      <Label class="h1" [text]="pet?.name"></Label>
+      <Label class="h1" [text]="pet?.age + ' ' +  pet?.breeds"></Label>
+      <Button [text]="'fa-thumbs-down' | fonticon" class="fa thumbs-down" (tap)=removeFavorite(pet)></Button>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

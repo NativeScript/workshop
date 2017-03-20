@@ -12,9 +12,11 @@ import { SelectModalComponent } from './select-modal/select-modal.component';
 import { PetSearchComponent } from './pet-search/pet-search.component';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { PetResultsComponent } from './pet-results/pet-results.component';
+import { PetFavoritesComponent } from './pet-favorites/pet-favorites.component';
 
 import { SelectModalService } from './select-modal.service';
 import { PetFinderService } from './pet-finder.service';
+import { PetStorageService } from './pet-storage.service';
 
 //fonts
 import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPurePipe} from 'nativescript-ngx-fonticon';
@@ -38,14 +40,16 @@ import {TNSFontIconModule, TNSFontIconService, TNSFontIconPipe, TNSFontIconPureP
         TestComponent,
         PetSearchComponent,
         PetDetailsComponent,
-        PetResultsComponent
+        PetResultsComponent,
+        PetFavoritesComponent
     ],
     entryComponents: [
         SelectModalComponent
     ],
     providers: [
         SelectModalService,
-        PetFinderService
+        PetFinderService,
+        PetStorageService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

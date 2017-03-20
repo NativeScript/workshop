@@ -10,11 +10,6 @@
 .fa {
     font-size: 40;
 }
-
-.like:highlighter {
-   color:mediumvioletred;
-}
-
-.like.favorite {
-   color:mediumvioletred;
+.fa-heart:highlighting {
+   background-color:mediumvioletred;
 }
