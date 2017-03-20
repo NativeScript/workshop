@@ -1,4 +1,7 @@
 <ActionBar title="Friends">
+    <ActionItem (tap)="myFavorites()" ios.position="right">
+        <Button [text]="'fa-heart' | fonticon" class="fa like"></Button>
+    </ActionItem>
 </ActionBar>
 <ScrollView>
     <ListView [items]="pets" class="list-group" (itemTap)="onPetSelect($event)">

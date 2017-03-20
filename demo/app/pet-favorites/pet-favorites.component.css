@@ -1,15 +1,23 @@
-.petBackground {
-    opacity: .75;
-}
-.petImage { 
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-}
+
 .petDescription {
     padding: 10;
 }
 .fa {
     font-size: 40;
 }
-.fa-heart:highlighting {
-   background-color:mediumvioletred;
+.small {
+    font-size: 15;
+}
+.like {
+   color:#DD2AF3;
+}
+
+.card {
+    margin: 5;
+    color: white;
+    vertical-align:top;
+    background-color: #3EA0C0;
+    border-width: 1;
+    border-radius: 5;
+    border-color: #353BA7;
 }

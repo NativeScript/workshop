@@ -11,10 +11,14 @@
     font-size: 40;
 }
 
+.small {
+    font-size: 15;
+}
+
 .like:highlighter {
-   color:mediumvioletred;
+   color:#DD2AF3;
 }
 
 .like.favorite {
-   color:mediumvioletred;
+   color:#DD2AF3;
 }

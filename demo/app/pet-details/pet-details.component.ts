@@ -57,4 +57,8 @@ export class PetDetailsComponent implements OnInit{
       this.petStorage.removePetFromFavorites(this.pet);
     }
   }
+
+  myFavorites(){
+      this.router.navigate(['favorites']);
+  }
 }

@@ -50,4 +50,8 @@ export class PetResultsComponent implements OnInit{
         this.router.navigate(['petresults', selectedPet.id]);
     }
 
+    myFavorites(){
+      this.router.navigate(['favorites']);
+    }
+
 }
