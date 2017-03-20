@@ -1,16 +1,6 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImageAsset } from "image-asset";
 import { ImageSource } from 'image-source';
-
-//https://docs.nativescript.org/angular/code-samples/camera
-//npm i nativescript-camera --save
-import * as camera from 'nativescript-camera';
-
-//https://www.npmjs.com/package/nativescript-social-share
-import * as SocialShare from 'nativescript-social-share';
-
-//https://www.npmjs.com/package/nativescript-fancyalert
-import { TNSFancyAlert, TNSFancyAlertButton } from 'nativescript-fancyalert';
  
 
 @Component({
@@ -32,15 +22,12 @@ export class WizardProfileComponent implements OnInit{
   
   public profilePicture: ImageSource;
 
-  constructor(private zone: NgZone) {
+  constructor() {
   }
 
   ngOnInit() {
     // get camera permissions when loading for the first time
-    camera.requestPermissions();
-
-    TNSFancyAlert.shouldDismissOnTapOutside = false;
-    TNSFancyAlert.useLargerIcon = false;
+    
 
     this.reloadPowers();
   }
@@ -48,30 +35,19 @@ export class WizardProfileComponent implements OnInit{
   share() {
     const messageBody = `name: ${this.name}, powers: ${JSON.stringify(this.powers)}`;
 
-    SocialShare.shareText(messageBody);
+    // Add social shareText code here
+    
   }
 
   sharePicture() {
     if(this.profilePicture) {
-      SocialShare.shareImage(this.profilePicture);
+      // Call SocialShare.shareImage here
+
     }
   }
 
   takeProfilePicture() {
-  const options: camera.CameraOptions = {
-    width: 300,
-    height: 300,
-    keepAspectRatio: true,
-    saveToGallery: false
-  };
-
-
-  camera.takePicture(options)
-    .then((imageAsset: ImageAsset) => {
-      this.updateProfilePicture(imageAsset);
-    }).catch(err => {
-      console.log(err.message);
-    });
+    // call camera.takePicture here
   }
 
   updateProfilePicture(asset: ImageAsset) {
@@ -89,11 +65,9 @@ export class WizardProfileComponent implements OnInit{
   }
 
   reloadPowers() {
-    // this.zone.run(() => {
-      this.powers.forEach(
-        power => power.level = Math.round(Math.random()*10)
-      );
-    // })
+    this.powers.forEach(
+      power => power.level = Math.round(Math.random()*10)
+    );
   }
 
   onPowerTap(event) {
@@ -102,18 +76,12 @@ export class WizardProfileComponent implements OnInit{
 
   displayPower(power: Power) {
     if(power.level < 5) {
-      TNSFancyAlert.showNotice(power.name, power.description, 'Nice');
+      alert(power.name + ' ' + power.description + ' ' + 'Nice');
     } else if(power.level < 9) {
-      TNSFancyAlert.showInfo(power.name, power.description, 'W00000W!!!');
+      alert(power.name + ' ' + power.description + ' ' + 'W00000W!!!');
     } else {
-      TNSFancyAlert.showWarning(power.name, power.description, 'Be careful');
+      alert(power.name + ' ' + power.description + ' ' + 'Be careful');
     }
-  }
-
-  updateFrameRate() {
-    this.zone.run(() => {
-      // the code to run outside of the zone
-    });
   }
 }
 

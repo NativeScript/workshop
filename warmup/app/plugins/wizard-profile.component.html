@@ -22,7 +22,7 @@
 
   <!--tns plugin add nativescript-pulltorefresh/-->
   <!-- Make sure to register in main.ts -->
-  <PullToRefresh (refresh)="onPull($event)">
+
     <ListView [items]="powers" class="list-group" (itemTap)="onPowerTap($event)">
       <template let-power="item">
         <StackLayout>
@@ -30,6 +30,6 @@
         </StackLayout>
       </template>
     </ListView>
-  </PullToRefresh>
+
 
 </DockLayout>
