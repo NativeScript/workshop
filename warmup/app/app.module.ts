@@ -3,7 +3,7 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
-import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+// import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
 //Lesson 1
 import { ProfileComponent } from './profile/profile.component';
@@ -32,7 +32,7 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
     NativeScriptModule,
     AppRoutingModule,
     NativeScriptHttpModule,
-    NativeScriptFormsModule
+    // NativeScriptFormsModule
   ],
   declarations: [
     AppComponent,
