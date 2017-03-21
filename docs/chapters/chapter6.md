@@ -19,12 +19,13 @@ Let's start with changing the default route in `app.routing.ts` to `'/plugins'`:
 
 <div class="exercise-end"></div>
 
+### Exercise: Camera Plugin
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Camera Plugin
 </h4>
 
-You can find the ![camera plugin here](https://docs.nativescript.org/angular/code-samples/camera)
+You can find the [camera plugin here](https://docs.nativescript.org/angular/code-samples/camera)
 
 To install it run:
 
@@ -69,12 +70,13 @@ takeProfilePicture() {
 
 <div class="exercise-end"></div>
 
+### Exercise: Social Share Plugin
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Social Share Plugin
 </h4>
 
-You can find the ![nativescript-social-share here](https://www.npmjs.com/package/nativescript-social-share)
+You can find the [nativescript-social-share here](https://www.npmjs.com/package/nativescript-social-share)
 
 To install it run:
 
@@ -118,12 +120,13 @@ SocialShare.shareImage(this.profilePicture);
 
 <div class="exercise-end"></div>
 
+### Exercise: Fancy Alert Plugin
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Fancy Alert Plugin
 </h4>
 
-You can find the ![nativescript-fancyalert plugin here](https://www.npmjs.com/package/nativescript-fancyalert)
+You can find the [nativescript-fancyalert plugin here](https://www.npmjs.com/package/nativescript-fancyalert)
 
 To install it run:
 
@@ -157,6 +160,7 @@ displayPower(power: Power) {
 
 <div class="exercise-end"></div>
 
+### Exercise: Pull To Refresh Plugin
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Pull To Refresh Plugin
@@ -167,7 +171,7 @@ import {registerElement} from "nativescript-angular/element-registry";
 registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);
 
 
-You can find the ![nativescript-pulltorefresh plugin here](https://www.npmjs.com/package/nativescript-pulltorefresh)
+You can find the [nativescript-pulltorefresh plugin here](https://www.npmjs.com/package/nativescript-pulltorefresh)
 
 To install it run:
 
