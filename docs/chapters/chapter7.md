@@ -6,9 +6,9 @@ Now that you’ve got the NativeScript basics down, it’s time to put your skil
 
 So what are you building? The ultimate app for finding pets of all shapes and sizes—FurFriendster! At the end of the day you’ll have an app that looks something like this.
 
-![](/images/chapter7/0.png)
-![](/images/chapter7/1.png)
-![](/images/chapter7/2.png)
+![](/images/chapter7/0.png?raw=true)
+![](/images/chapter7/1.png?raw=true)
+![](/images/chapter7/2.png?raw=true)
 
 Don’t get too overwhelmed the scope of this app as you’ll be building it one step at a time. Let’s start by building the list page.
 
@@ -30,7 +30,7 @@ tns create FurFriendster --ng
 
 Your task for the first part of building this app is to create a big list of pets. Specifically, you’ll want your UI to look something like this.
 
-![](/images/chapter7/1.png)
+![](/images/chapter7/1.png?raw=true)
 
 For the most part you will be building this app on your own without any copy-and-paste guidance from us, but we are going to provide a few things.
 
