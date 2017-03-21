@@ -6,7 +6,7 @@ With a master/detail interface complete, your app is almost ready to go. Your ne
 
 In the third and final part of this challenge you’ll be building a third screen for your app. The app will be the new starting screen of your app, and will look something like the screenshot below.
 
-![](/images/chapter9/0.png?raw=true)
+![](images/chapter9/0.png?raw=true)
 
 ### Building the form
 
