@@ -10,7 +10,7 @@ The Petfinder API provides exactly this information, so let’s put this user in
 
 Here’s what your master-detail UI might look like after you complete this section.
 
-<img src="/images/chapter8/master-detail.png" class="plain">
+![](images/chapter8/master-detail.png?raw=true)
 
 ### Building the page
 
