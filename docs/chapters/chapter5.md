@@ -344,7 +344,6 @@ Follow the pattern of the implementation of `getCompetitions`:
 return this.callFootballService(`competitions/${competitionId}`)
 .map(competition => FootballFactory.competitionFromRaw(competition))
 .toPromise();
-}
 ```
 
 #### getLeagueTable
