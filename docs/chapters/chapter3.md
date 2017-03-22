@@ -289,7 +289,18 @@ Update the UI to make it look more like the one in the picture below.
 
 ![Recreate UI](images/warmup-02.png?raw=true)
 
-<b>HINT</b> You may need to update the margin on the `StackLayout`, so that the UI components don't stay too close to the edge of the screen.
+<b>HINT 1</b> You may need to update the margin on the `StackLayout`, so that the UI components don't stay too close to the edge of the screen.
+
+<b>HINT 2</b> If you are working with a small screen, you may need to add `<ScrollView>` around the `<StackLayout>` to allow the user to scroll in the screen. Like this:
+
+```
+<ScrollView>
+  <StackLayout>
+    ...
+  <StackLayout>
+</ScrollView>
+```
+
 
 <div class="solution-start"></div>
 
