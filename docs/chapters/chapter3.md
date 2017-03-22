@@ -41,6 +41,8 @@ For example:
 </StackLayout>
 ```
 
+### Exercise: Use UI components
+
 <h4 class="exercise-start">
   <b>Exercise</b>: Use Label, TextField, Switch, DatePicker, Slider, Button
 </h4>
@@ -104,6 +106,8 @@ Edit `profile.component.html` and have fun.
 
 <div class="exercise-end"></div>
 
+### Two way binding
+
 <!--#### Two way binding with [(ngModel)]=”name” -> including the required changes to app.module.ts-->
 One way binding is not particularly useful for input forms. This is where `[(ngModel)]` comes in handy.
 
@@ -115,6 +119,8 @@ Each of the input components you used a moment ago allows you to use `[(ngModel)
 <DatePicker [(ngModel)]="dob"></DatePicker>
 <Slider [(ngModel)]="size" [minValue]="0" [maxValue]="10"></Slider>
 ```
+
+### Exercise: Two way binding
 
 <h4 class="exercise-start">
     <b>Exercise</b>: Two-way binding
@@ -384,10 +390,6 @@ Make something beautiful!
 
 ### Animations 
 
-<h4 class="exercise-start">
-  <b>Exercise</b>: Animations
-</h4>
-
 Adding animation to your app can really enhance its attraction and usefulness. There are several ways to add animation:
 
 1. Leveraging Angular-style animation
@@ -398,6 +400,12 @@ Adding animation to your app can really enhance its attraction and usefulness. T
 6. Use a community-generated animation plugin
 
 Let's work with keyframe animations to give you a feel for how animations work in NativeScript apps.
+
+### Exercise: Animations
+
+<h4 class="exercise-start">
+  <b>Exercise</b>: Animations
+</h4>
 
 Enhance the slider so that when you slide it to a value greater than 7, its color changes and the label above it expands. To do this, you need to leverage the Angular bindings we learned about above.
 
