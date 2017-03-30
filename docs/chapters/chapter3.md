@@ -255,9 +255,9 @@ For example:
 
 #### Other components can use
 
- * `action` - for the default `<Slider>` styling
- * `slider` - for the default `<Slider>` styling
  * `action-bar` - for the default `<ActionBar>` styling
+ * `switch` - for the default `<Switch>` styling
+ * `slider` - for the default `<Slider>` styling
 
 #### Margins and padding
 
