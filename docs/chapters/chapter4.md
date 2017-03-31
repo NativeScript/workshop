@@ -492,7 +492,7 @@ Your task is to update the buttons in `color.component.html`, so that:
 
 `red.component.html` already contains 4 buttons, each calling a different function.
 
-Your task is to implement the empty functions, so that:
+Your task is to implement the empty functions in `red.component.ts`, so that:
 
  * goBlue() navigates to the `Blue` page with page transition `slideTop`, duration `2 seconds` and curve `spring`
  * goGray() navigates to the `RGB` page with `gray` as the parameter and page transition `fade` and duration `1 second`
@@ -502,17 +502,40 @@ Your task is to implement the empty functions, so that:
 
 <div class="solution-start"></div>
 
-#### goBlue (Absolute Solution)
- `this.router.navigate(['/color/red']);`
+#### goBlue
 
-#### goGray (Relative Solution)
- `this.router.navigate(['../red'], { relativeTo: this.route });`
+```
+this.router.navigate(['/color/blue'], {
+  transition: {
+    name: 'slideTop',
+    duration: 2000,
+    curve: 'spring'
+  }
+});
+```
+
+#### goGray
+
+```
+this.router.navigate(['/color/rgb', 'gray'], {
+  transition: {
+    name: 'fade',
+    duration: 1000
+  }
+});
+```
 
 #### goBack
- `this.router.back();`
+
+```
+this.router.back();
+```
 
 #### goHome
- `this.router.navigate(['/color'], { clearHistory: true });`
+
+```
+this.router.navigate(['/color'], { clearHistory: true });
+```
 
 <div class="solution-end"></div>
 
