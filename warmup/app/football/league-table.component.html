@@ -11,7 +11,7 @@
   </GridLayout>
 
   <ListView [items]="table?.standing" class="list-group" (itemTap)="onTeamSelect($event)">
-    <template let-team="item">
+    <ng-template let-team="item">
       <GridLayout rows="30" columns="30, *, 30, 30, 30, 30, 40, 40">
         <Label col="0" [text]="team.position" class="text-center"></Label>
         <Label col="1" [text]="getTeamName(team.teamId)"></Label>
@@ -22,7 +22,7 @@
         <Label col="6" [text]="team.goalDifference" class="text-center"></Label>
         <Label col="7" [text]="team.points" class="text-center"></Label>
       </GridLayout>
-    </template>
+    </ng-template>
   </ListView>
 
 </StackLayout>
