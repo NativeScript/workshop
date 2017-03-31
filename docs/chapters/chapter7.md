@@ -41,7 +41,7 @@ For the most part you will be building this app on your own without any copy-and
 FurFriendster is driven by the [Petfinder API](https://www.petfinder.com/developers/api-docs), and we have a pre-configured Angular service and a few model objects you can use to get the data you need. To install it run the following command:
 
 ```
-npm i petfinder-angular-service
+npm i petfinder-angular-service --save
 ```
 
 Alternatively (if npm install doesn't work) you can open the `workshop` folder you’ve been working in today, and find its child `app-challenge-files` folder. Next, copy every file and folder in `app-challenge-files`, and paste them into your new `FurFriendster` app.
