@@ -56,6 +56,8 @@ Additionally, make sure that the two buttons call `save()` and `clear()` respect
 
 Edit `profile.component.html` and have fun.
 
+> **NOTE**: Your goal at this point is just to get the _initial_ values of the `profile` property to show up. If you change the values of the form fields and you don’t see those changes when you hit Save don’t worry; we’ll tackle that in the next section.
+
 <div class="solution-start"></div>
 
 ``` html
@@ -106,10 +108,10 @@ Edit `profile.component.html` and have fun.
 
 <div class="exercise-end"></div>
 
-### Two way binding
+### Two-way binding
 
 <!--#### Two way binding with [(ngModel)]=”name” -> including the required changes to app.module.ts-->
-One way binding is not particularly useful for input forms. This is where `[(ngModel)]` comes in handy.
+One-way binding is not particularly useful for input forms. This is where `[(ngModel)]` comes in handy.
 
 Each of the input components you used a moment ago allows you to use `[(ngModel)]` to configure two-way binding:
 
@@ -130,13 +132,13 @@ Before you use `[(ngModel)]` in your app, you need to add `NativeScriptFormsModu
 
 #### Step 1
 
-Open `app.modules.ts` and import `NativeScriptFormsModule`
+Open `app.modules.ts` and uncomment the line that imports `NativeScriptFormsModule`.
 
 ``` html
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 ```
 
-Then add it to `@NgModule` imports:
+Then uncomment the line that adds `NativeScriptFormsModule` to the `@NgModule` imports array:
 
 ``` html
 imports: [
@@ -151,13 +153,12 @@ imports: [
 #### Step 2
 
 Update all input components to use two-way binding.
-Test it by clicking the clear() and save() buttons and see what happens.
+Test it by clicking the Clear and Save buttons and see what happens.
 
-> Note:  To keep an eye on the slider value, print it in the label above it:
-
-``` html
-<Label [text]="'Coding power:' + profile.codingPower"></Label>
-```
+> **NOTE**:  To keep an eye on the slider value, print it in the label above it:
+> ```
+> <Label [text]="'Coding power:' + profile.codingPower"></Label>
+> ```
 
 <div class="solution-start"></div>
 
