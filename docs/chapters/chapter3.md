@@ -223,7 +223,7 @@ The good news is that NativeScript comes with many built in themes.
 Most of the standard UI components come with styles that you can use for quick styling improvements.
 
 
-#### Text based components can use:
+#### Text-based components can use:
 
  * `text-primary`, `text-muted`, `text-danger` to change the text color,
  * `text-center`, `text-left`, `text-right` to change the alignment of the text,

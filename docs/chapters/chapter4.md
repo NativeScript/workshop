@@ -93,15 +93,14 @@ Now it is time to add routes for the `Red` and `RGB` components. Update the chil
 
 
 ### Navigation from template
-One way to add navigation in `html` is with the `nsRouterLink` directive. It is similar to `routerLink` (which is used in the web), but works with NativeScript navigation.
+One way to add navigation in markup is with the `nsRouterLink` directive. It is similar to `routerLink` (which is used in the web), but works with NativeScript navigation.
 
 `nsRouterLink` expects an array of parameters, which can be matched to one of the routes defined in `app.routes.ts`.
 
-For example, if we want a label that should navigate to the reading page of article 5 or based on a value stored in the component. We can achieve this by providing an `absolute path`, like this:
+For example, if we want to create a label that should navigate to a “reading” page and pass it a value, such as “5”, we can achieve this by providing an absolute path. That would look something like this:
 
 ``` XML
 <Label text="Angular Navigation" [nsRouterLink]="['/articles/read', '5']"></Label>
-<Label text="Angular Navigation" [nsRouterLink]="['/articles/read', navigationId]"></Label>
 ```
 
 #### Relative Paths
@@ -110,7 +109,7 @@ We can also use relative paths. Where you provide the path based on the page you
 
 #### Children
 
-If you are in the articles page (path '/articles') and want to navigate to the same pages as in the previous example. You can use `'./child_path'` or `'child_path'`, like this:
+If you are in the articles page (path `'/articles'`) and want to navigate to the same pages as in the previous example. You can use `'./name_of_child_path'` or `'name_of_child_path'`, like this:
 
 ``` XML
 <!--With an embeded param-->
@@ -128,7 +127,7 @@ OR
 
 #### Parent
 
-If you are in the `'articles/read/5'` and you want to provide a relative path back to the parent, you can use `'..'`, like this:
+If you are in the `'articles/read/5'` route and you want to provide a relative path back to the parent, you can use `'..'`, like this:
 
 ``` XML
 <Label text="Articles" [nsRouterLink]="['..']"></Label>
@@ -136,7 +135,7 @@ If you are in the `'articles/read/5'` and you want to provide a relative path ba
 
 #### Siblings
 
-If you are in the `'articles/read/5'` and you want to provide a relative path to the edit page or search page, you can use `'../sibling_path'`, like this:
+If you are in the `'articles/read/5'` route and you want to provide a relative path to the edit page or search page, you can use `'../name_of_sibling_path'`, like this:
 
 ``` XML
 <Label text="Articles" [nsRouterLink]="['../edit', 5]"></Label>
@@ -176,6 +175,8 @@ Open `color.component.html` and update `[nsRouterLink]` for each button, so that
  * `Pink` button navigates to the `RGBComponent` with `'#ff0088'` as the parameter
  * `Gray` button navigates to the `RGBComponent` with `'gray'` as the parameter
  * `Lavender` button navigates to the `RGBComponent` with `'#bad'` as the parameter
+
+> **NOTE**: The parameter you pass to the “rgb” route won’t have an effect on that page—yet. Later in this section you’ll utilize that data to change the colors on the “rgb” component.
 
 <div class="solution-start"></div>
 
@@ -284,7 +285,7 @@ To clear history just provide `clearHistory` into `navigate`, like this:
 this.router.navigate(['/articles', { clearHistory: true }]);
 ```
 
-Please note that you must used `RouterExtensions`, for this to work. Also `clearHistory` works only with `page-router-outlet`; this does't work with `router-outlet`.
+Please note that you must use `RouterExtensions` for this to work. Also, `clearHistory` works only with `page-router-outlet`; this doesn't work with `router-outlet`.
 
 #### Navigating back
 
@@ -312,7 +313,7 @@ However calling `backToPreviousPage` from `/articles/read/2`, would take us to `
 
 #### Default iOS and Android back operations
 
-The default `back` button which appreas in the iOS `action bar` performs `backToPreviousPage`, while the Android back button performs `back`.
+The default `back` button which appears in the iOS `<ActionBar>` performs `backToPreviousPage`, while the Android back button performs `back`.
 
 ### Exercise: Navigation with code
 
@@ -322,7 +323,7 @@ The default `back` button which appreas in the iOS `action bar` performs `backTo
 
 In this exercise we will play with the `blue` component. The `blue.component.html` already contains four buttons, each calling a different function.
 
-Your task is to implement the empty functions, so that:
+Your task is to implement the empty functions in `blue.component.ts`, so that:
 
  * goRed() navigates to the `Red` page
  * goPink() navigates to the `RGB` page with `this.pink` as the parameter
