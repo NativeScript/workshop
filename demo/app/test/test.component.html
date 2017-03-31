@@ -8,9 +8,9 @@
 
     <Label text="Breeds:" class="text-primary"></Label>
     <ListView [items]="breeds" class="list-group">
-      <template let-item="item">
+      <ng-template let-item="item">
         <Label [text]="item" class="list-group-item"></Label>
-      </template>
+      </ng-template>
     </ListView>
   </StackLayout>
 
@@ -31,9 +31,9 @@
     
     <Label [text]="'Breeds: (mix:' + pet?.mix + ')' " class="text-primary"></Label>
     <ListView row="2" [items]="pet?.breeds" class="list-group">
-      <template let-item="item">
+      <ng-template let-item="item">
         <Label [text]="item" class="list-group-item"></Label>
-      </template>
+      </ng-template>
     </ListView>
 
     <Label text="Pictures:" class="text-primary"></Label>
@@ -44,11 +44,11 @@
     </ScrollView>
 
     <!--<ListView [items]="pet?.media.getImages(2)" class="list-group">
-      <template let-item="item">
+      <ng-template let-item="item">
         <StackLayout orientation="horizontal">
           <Image [src]="item" stretch="aspectFit" height="200"></Image>
         </StackLayout>
-      </template>
+      </ng-template>
     </ListView>-->
   </StackLayout>
 
@@ -69,12 +69,12 @@
 
     <Label text="Shelters:" class="text-primary"></Label>
     <ListView [items]="shelters" (itemTap)="onShelterTap($event)" class="list-group">
-      <template let-item="item">
+      <ng-template let-item="item">
         <DockLayout>
           <Label dock="left" [text]="item.id" class="list-group-item" width="100"></Label>
           <Label [text]="item.name" class="list-group-item" textWrap="true"></Label>
         </DockLayout>
-      </template>
+      </ng-template>
     </ListView>
   </StackLayout>
 </TabView>

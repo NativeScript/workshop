@@ -5,11 +5,11 @@
 </ActionBar>
 <ScrollView>
     <ListView [items]="pets" class="list-group" (itemTap)="onPetSelect($event)">
-        <template let-pet="item">
+        <ng-template let-pet="item">
         <GridLayout rows="100" columns="100, *">
             <Image col="0" [src]="pet.media.getFirstImage(2, 'res://icon')" stretch="aspectFill"></Image>
             <Label class="petLabel" col="1" [text]="pet?.name"></Label>
         </GridLayout>
-        </template>
+        </ng-template>
     </ListView>
 </ScrollView>
