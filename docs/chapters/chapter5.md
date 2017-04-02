@@ -332,9 +332,11 @@ Update the implementation of:
 
 Follow the pattern of the implementation of `getCompetitions`:
 
-  * first call `this.callFootballService` with correctly constructed URL, for example to get list of teams your url should be like: `competitions/123/teams`, where `123, should come from teamId,
-  * second use `FootballFactory` to get an object from raw. Please note that some functions like `getTeams` returns a result, which contains teams, like: `result.teams`, while other functions return the required object straight away. So you may need to use map accordingly,
-  * finally convert the Observable to promise
+  * First call `this.callFootballService` with a correctly constructed URL, for example to get list of teams your URL should look like: `competitions/123/teams`, where `123, should come from teamId.
+  * Second use `FootballFactory` to get an object from raw. Please note that some functions like `getTeams` returns a result, which contains teams, like: `result.teams`, while other functions return the required object straight away. So you may need to use map accordingly.
+  * Finally convert the Observable to a Promise object.
+
+> **TODO**: Change this section so the user only needs to implement one or two of these methods. The rest should be included in the warmup by default.
 
 <div class="solution-start"></div>
 
@@ -395,25 +397,27 @@ return this.callFootballService(`teams/${teamId}/fixtures`)
   <b>Exercise</b>: Adding Query parameters
 </h4>
 
-Some of the api functions allow to pass query parameters. For example to get fixtures for the next 7 days, you can use `timeFrame=n7`, like:  
+Some of the API functions allow you to pass query parameters. For example to get fixtures for the next 7 days, you can use `timeFrame=n7`, like:  
 
 ```
 https://api.football-data.org/v1/competitions/426/fixtures?timeFrame=n7
 ```
 
-Or to get fixtures for the previous 10 days, call it like:
+Or to get fixtures for the previous 10 days, you can use the following URL:
 
 ```
 https://api.football-data.org/v1/competitions/426/fixtures?timeFrame=p10
 ```
 
-In `FootballService` functions: `getLeagueTable` and `getFixtures` take an additional parameter and pass it into `callFootballService`.
+The `FootballService` functions `getLeagueTable` and `getFixtures` take an additional parameter and pass it into `callFootballService`.
 
 To pass query parameters into `get` you need to construct a `URLSearchParams` object and add it to `RequestOptionsArgs`, as `search`, like `{ search: <URL Search Params here>}`.
 
 Luckily for you the `FootballService` already contains `buildSearchParams` function that can construct a `URLSearchParams` from an object.
 
-Your task is to update `RequestOptionsArgs` when calling `get` and add the constructed `URLSearchParams` as `search`.
+Your task is to update the `callFootballService` function in `FootballService` to include a `RequestOptionsArgs` when calling `get`. Hint: You’ll need to pass `this.buildSearchParams(queryParams)` in as a new `search` property of the `get` method’s second argument.
+
+> **TODO**: How is the user supposed to test these changes after they make them.
 
 <div class="solution-start"></div>
 
@@ -503,7 +507,7 @@ declarations: [
 ]
 ```
 
-#### Smart VS Presentation components
+#### Smart versus Presentation components
 <!--http://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/-->
 Components can be divided into two categories:
 
@@ -512,10 +516,9 @@ Components can be divided into two categories:
 
 #### Components with custom input (one way-binding)
 
-Just like `<label>` can take `text` attribute, so your components can have their own custom attributes.
+Just like the `<Label>` component has a `text` attribute, your components can have their own custom attributes as well.
 
-Adding custom attributes to a component is really easy.
-Just add an `@Input()` decorator in front of your attribute or property `set` and you are ready to go.
+Adding custom attributes to a component is really easy—just add an `@Input()` decorator in front of your attribute or property set and you are ready to go.
 
 ``` javascript
 @Component({
@@ -542,7 +545,7 @@ Now you can use it like this:
 
 For this part of the exercise we will be using all components in the `football` folder.
 
-Change the `default route` to:
+Change the default route to:
 
 ``` javascript
 { path: '', redirectTo: '/football', pathMatch: 'full' },
@@ -568,7 +571,7 @@ Open `competition-fixtures.component.html`, comment out the `GridLayout` and the
 
 You will notice that `my-fixture` expects a `[fixture]` attribute. This will be added in the next exercise.
 
-<b>HINT</b> Make sure to keep a copy of the `GridLayout`.
+> **HINT**: Make sure to keep the `GridLayout` commented out—you’ll need it momentarily.
 
 <div class="solution-start"></div>
 
@@ -593,7 +596,9 @@ Now if you reload the app and go to `View Fixtures` you should get something lik
 
 Move the `GridLayout` from `competition-fixtures.component.html` and its content into `fixture.component.html`.
 
-Then add `fixture` input attribute to `FixtureComponent`:
+To get the fixtures to show up correctly again, you’ll need to add a `fixture` input attribute to the `FixtureComponent`. Refer to the solution below if you get stuck.
+
+> **TODO**: In the solution I found it really strange that four functions suddenly showed up when I wasn’t asked to add them. I think those four functions should be included (as empty placeholders) in the warmup starting point, and removed from the solution below.
 
 <div class="solution-start"></div>
 
@@ -627,7 +632,7 @@ Reload the app. Now the fixtures should be displayed correctly again.
 
 #### Step 3 (Bonus) - Convert inline styling conditions to functions
 
-The middle `StackLayout` in `fixture.component.html` has some logic embeded in `*ngIf` and `[class.in-play]`.
+The `<StackLayout>` and `<Label>` components in `fixture.component.html` have some logic embedded in `*ngIf` and `[class.in-play]` attributes.
 
 Your task is to move this logic into two functions in `fixture.component.ts` and then call these functions:
 
@@ -637,7 +642,7 @@ Your task is to move this logic into two functions in `fixture.component.ts` and
 
 <div class="solution-start"></div>
 
-The middle `StackLayout` should like this:
+The outer `StackLayout` in `fixture.component.html` should now look like this:
 
 ``` XML
 <StackLayout col="1"  horizontalAlignment="center" class="p-l-10 p-r-10 h3">
@@ -652,6 +657,8 @@ The middle `StackLayout` should like this:
   </StackLayout>
 </StackLayout>
 ```
+
+And the following functions should now be defined in your `FixtureComponent`.
 
 #### displayScore
 ``` javascript
@@ -726,7 +733,7 @@ Even though you could make it happen by adding `[nsRouterLink]` on each fixture 
 
 #### Step 1
 
-Add customer event called `teamTap` to `FixtureComponent`, similar to how it was done in `LeagueTableComponent`.
+Add a custom event called `teamTap` to your `FixtureComponent` in `fixture.component.ts`, similar to how it was done in `LeagueTableComponent` example above.
 
 <div class="solution-start"></div>
 ``` javascript
@@ -736,7 +743,7 @@ Add customer event called `teamTap` to `FixtureComponent`, similar to how it was
 
 #### Step 2
 
-Update `homeTeamTap` and `awayTeamTap`, so that they `emit` either `homeTeamId` or `awayTeamId`.
+Update the `homeTeamTap` and `awayTeamTap` functions in your `FixtureComponent`, so that they `emit` events named `homeTeamId` or `awayTeamId`, respectively.
 
 <div class="solution-start"></div>
 
@@ -759,7 +766,9 @@ public awayTeamTap() {
 
 #### Step 3
 
-Update the home and away team labels in `fixture.component.html`, so that a `tap` will trigger either `homeTeamTap` or `awayTeamTap`:
+Update the home and away team labels in `fixture.component.html`, so that a `tap` event will trigger either `homeTeamTap` or `awayTeamTap`:
+
+> **HINT**: If you haven’t already, it’s a good idea to add a `console.log` call to your `homeTeamTap` and `awayTeamMap` functions, so that you can test whether the bindings you’re adding in this steps are working appropriately.
 
 <div class="solution-start"></div>
 
@@ -788,9 +797,11 @@ Update the home and away team labels in `fixture.component.html`, so that a `tap
 #### Step 4
 Now the `FixtureComponent` is ready to emit when tapping a team through `teamTap`. Let's use it in `CompetitionFixturesComponent` to navigate to the tapped team.
 
-Update `teamSelected` function in `competition-fixtures.component.ts` to navigate to the team with the provided `teamId`.
+Update the `teamSelected` function in `competition-fixtures.component.ts` to navigate to the team with the provided `teamId`.
 
 You might need to inspect `app.routing.ts` to find out what is the correct route.
+
+> **TODO**: It looks like this code is already in place in the starting version of the code. I didn’t have to add anything.
 
 <div class="solution-start"></div>
 ``` javascript
@@ -803,9 +814,9 @@ teamSelected(teamId: number) {
 
 #### Step 5
 
-Update `my-fixture` in `competition-fixtures.component.html` so that it binds to `teamTap` and call `teamSelected` (that you implemented in step 4).
+Update the `<my-fixture>` tag in `competition-fixtures.component.html` so that it binds to the `teamTap` event, and calls the `teamSelected` function that you just implemented in your `CompetitionFixturesComponent` component.
 
-<b>HINT:</b> Don't forget to pass `$event` to `teamSelected`.
+> **HINT**: Don't forget to pass `$event` to `teamSelected`.
 
 <div class="solution-start"></div>
 ``` XML
@@ -821,17 +832,17 @@ Now upon tapping in a team in the fixture you should be redirected to a team vie
 ### Components with custom input (two way-binding)
 <!--https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html#creating-custom-two-way-data-bindings-->
 
-To create a custom attribute that is capable of both taking data as an input and also updating it, we need to use `two-way binding`.
+To create a custom attribute that is capable of both taking data as an input and also updating it, we need to use two-way binding.
 
-To do that we need to combine the power of `@Input` and `@Output`.
+To do that we need to combine the power of the `@Input` and `@Output` decorators.
 
 Let's imagine we are working on a `ColorPicker` component, which should take a `color`, as an input, but when the user selects a different color, it should provide an updated value.
 
 First we need to create a property `@Input color`.
 
-Then we need to add a custom event, which is called `propertyNameChange`, so in our case it should be called `@Output() colorChange`.
+Then we need to add a custom event, which is called `propertyNameChange`. For our example we’ll use `@Output() colorChange`.
 
-Finally we need to emit the new value `colorChange.emit(newColor);`
+Finally, we need to emit the new value `colorChange.emit(newColor);`
 
 Here is the full code:
 
@@ -860,9 +871,9 @@ Now you can use the `ColorPickerComponent` like this:
 
 ### Bonus Service Exercise:
 
-When requesting fixtures from `api.football-data.org` it allows you to set the timeframe to # of days before (`p7`) or after (`n7`) the current date. However it is not possible to get fixtures for before and after in one call.
+When requesting fixtures from `api.football-data.org` it allows you to set the timeframe to # of days before (`p7`) or after (`n7`) the current date. However, it is not possible to get fixtures for before and after in one call.
 
-Update `FootballService` to add a function which would:
+Update `FootballService` in `football.service.ts` to add a function which would:
 
  * take two parameters: `before` and `after`
  * call football service twice, once with the value of before and once with the value of after

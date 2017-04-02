@@ -1,6 +1,6 @@
 ## Lesson 4 - Plugins
 
-In this Lesson you are going to learn how to use a few out of a generous collection of `NativeScript` plugins.
+In this Lesson you are going to learn how to use a few out of a generous collection of NativeScript plugins.
 
 Most of the plugins you can install either by calling `npm install` or for those that contain some native iOS and/or Android elements `tns plugin add`.
 
@@ -25,7 +25,7 @@ Let's start with changing the default route in `app.routing.ts` to `'/plugins'`:
   <b>Exercise</b>: Camera Plugin
 </h4>
 
-You can find the [camera plugin here](https://docs.nativescript.org/angular/code-samples/camera)
+You can find the [camera plugin here](https://docs.nativescript.org/angular/code-samples/camera).
 
 To install it run:
 
@@ -33,13 +33,13 @@ To install it run:
 npm i nativescript-camera --save
 ```
 
-Open `wizard-profile.component.ts` and import `nativescript-camera`
+Next, open `wizard-profile.component.ts` and import `nativescript-camera` using the line of code below.
 
 ``` javascript
 import * as camera from 'nativescript-camera';
 ```
 
-Then update `takeProfilePicture` function to take a picture and call `this.updateProfilePicture` and pass the picture you got from the camera.
+After that, update the `WizardProfileComponent`’s `takeProfilePicture` function to take a picture and call `this.updateProfilePicture`, passing the `ImageAsset` you got from the camera plugin’s callback function.
 Try to figure it out based on the info in the documentation. 
 Note that you might need to call `camera.requestPermissions();` from `ngOnInit`.
 
@@ -84,32 +84,21 @@ To install it run:
 tns plugin add nativescript-social-share
 ```
 
-Open `wizard-profile.component.ts` and import `nativescript-social-share`:
+Next, open `wizard-profile.component.ts` and import `nativescript-social-share` using the code below:
 
 ``` javascript
 import * as SocialShare from 'nativescript-social-share';
 ```
 
-Then update the `share` function to share `name` and a list of `powers`.
-You just need to call: 
-
-``` javascript
-SocialShare.shareText(someText)
-```
+After that, update the `share` function in `WizardProfileComponent` to share the existing `messageBody` variable.
 
 <div class="solution-start"></div>
 ``` javascript
-
+SocialShare.shareText(messageBody);
 ```
 <div class="solution-end"></div>
 
-
-Also update the `sharePicture` function to share `this.profilePicture`. 
-Just call it like this:
-
-``` javascript
-SocialShare.shareImage(pictureItemHere);
-```
+Finally, update the `WizardProfileComponent`’s `sharePicture` function to share the component’s `profilePicture` property.
 
 <div class="solution-start"></div>
 ``` javascript
@@ -126,7 +115,7 @@ SocialShare.shareImage(this.profilePicture);
   <b>Exercise</b>: Fancy Alert Plugin
 </h4>
 
-You can find the [nativescript-fancyalert plugin here](https://www.npmjs.com/package/nativescript-fancyalert)
+You can find the [nativescript-fancyalert plugin here](https://www.npmjs.com/package/nativescript-fancyalert).
 
 To install it run:
 
@@ -134,13 +123,13 @@ To install it run:
 npm install nativescript-fancyalert --save
 ```
 
-Open `wizard-profile.component.ts` and import `nativescript-fancyalert`
+Open `wizard-profile.component.ts` and import `nativescript-fancyalert` using the line of code below.
 
 ``` javascript
 import { TNSFancyAlert } from 'nativescript-fancyalert';
 ```
 
-Then replace the 3 `alert` calls in `displayPower` with `TNSFancyAlert.showNotice`, `TNSFancyAlert.showInfo`, `TNSFancyAlert.showWarning`.
+Next, replace the 3 `alert` calls in `displayPower` with `TNSFancyAlert.showNotice`, `TNSFancyAlert.showInfo`, `TNSFancyAlert.showWarning`.
 You can pass in `power.name` and `power.description` as the parameters.
 
 <div class="solution-start"></div>
@@ -166,10 +155,9 @@ displayPower(power: Power) {
   <b>Exercise</b>: Pull To Refresh Plugin
 </h4>
 
-main.ts
+<!--main.ts
 import {registerElement} from "nativescript-angular/element-registry";
-registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);
-
+registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);-->
 
 You can find the [nativescript-pulltorefresh plugin here](https://www.npmjs.com/package/nativescript-pulltorefresh)
 
