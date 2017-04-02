@@ -27,6 +27,12 @@ Navigate to a folder where you’d like your new project to live in your file sy
 tns create FurFriendster --ng
 ```
 
+After that completes, `cd` into your newly created project.
+
+```
+cd FurFriendster
+```
+
 <div class="exercise-end"></div>
 
 Your task for the first part of building this app is to create a big list of pets. Specifically, you’ll want your UI to look something like this.
@@ -94,7 +100,8 @@ Likewise, import your petfinder service that you installed from npm:
 ```
 import { PetFinderService } from "petfinder-angular-service";
 ```
-and include it in Providers. 
+
+and include it in your Providers. 
 
 Then, start your work in `items.component.ts` by importing the petfinder service and pet model. 
 
@@ -102,17 +109,16 @@ Change `items` to `pets` and edit ngOnInit() with the new service call, returnin
 
 ```
 this.petService.findPets("10001", {
-        age: "",
-        animal: "bird",      
-        breed: "",
-        sex: "",
-        size: ""
-        })
-          .then(pets => this.pets = pets)
-        }
+  age: "",
+  animal: "bird",
+  breed: "",
+  sex: "",
+  size: ""
+})
+.then(pets => this.pets = pets)
 ```
 
-Then, get to work on the items.component.html file, editing the ListView to display the pets.
+Then, get to work on the `items.component.html` file, editing the ListView to display the pets.
 
 <div class="exercise-end"></div> 
 
@@ -131,21 +137,21 @@ Our service provides a convenience method for accessing the appropriate pet imag
 
 ```
 <key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>photos.petfinder.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
+<dict>
+  <key>NSExceptionDomains</key>
+  <dict>
+    <key>photos.petfinder.com</key>
+    <dict>
+      <key>NSExceptionAllowsInsecureHTTPLoads</key>
+      <true/>
+      <key>NSIncludesSubdomains</key>
+      <true/>
+    </dict>
+  </dict>
+</dict>
 ```
 
-> Hint: use a GridLayout within your ListView template to layout the image next to the label 
+> **Hint**: use a GridLayout within your ListView template to layout the image next to the label. 
 
 <div class="exercise-end"></div>
 
