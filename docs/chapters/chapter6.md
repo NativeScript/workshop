@@ -159,7 +159,7 @@ displayPower(power: Power) {
 import {registerElement} from "nativescript-angular/element-registry";
 registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);-->
 
-You can find the [nativescript-pulltorefresh plugin here](https://www.npmjs.com/package/nativescript-pulltorefresh)
+You can find the [nativescript-pulltorefresh plugin here](https://www.npmjs.com/package/nativescript-pulltorefresh).
 
 To install it run:
 
