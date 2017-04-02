@@ -3,7 +3,7 @@
 ### Services
 <!-- https://angular.io/docs/ts/latest/tutorial/toh-pt4.html-->
 
-Services are JavaScript functions that are responsible for doing a specific task. Angular services are injected using Dependency Injection mechanism and include the value, function or feature that is required by the application. There nothing specially related to Services in Angular--there is no ServiceBase class--but still services can be treated as fundamental to Angular applications.
+Services are JavaScript functions that are responsible for doing a specific task. Angular services are injected using a Dependency Injection mechanism and include the value, function or feature that is required by the application. There nothing specially related to Services in Angular--there is no ServiceBase class--but still services can be treated as fundamental to Angular applications.
 
 #### Creating a service
 
@@ -268,10 +268,9 @@ For your convenience the `http` service is already injected into `FootballServic
 
 #### Step 1 - Make it work
 
-In this exercise you need to implement `callFootballService` function, which should use the `http` to `get` data. `get` returns an observable, which is the result that we are after.
+In this exercise you need to implement the `callFootballService` function in `football.service.ts`, which should use the `http` service to `get` data. `get` returns an observable, which is the result that we are after.
 
-Just construct a full `url` using `baseUrl` (class attribute) and `method` (passed in as a parameter).
-Call `http.get`, and `map` the `result` to `result.json()`.
+For a URL use the `FootballService`’s `baseUrl` property, and append the `method` parameter of the `callFootballService` function (so `this.baseUrl + method). Use that to call `http.get`, and `map` the `result` to `result.json()`.
 
 Now if you run the app and press `Get Competitions` button. You should get all available competitions printed out in the console.
 
@@ -290,11 +289,11 @@ private callFootballService(method: string, queryParams: any = {}): Observable<a
 
 Without the API KEY, you are going to quickly hit the limit of allowed API calls, which is `50 requests a day`.
 
-Use [this link](http://api.football-data.org/register) to get your own API KEY.
+Use [this link](http://api.football-data.org/register) to get your own API KEY, and then paste it in as the `FootballService`’s `apiKey` property.
 
 This API requires the key to be added in the header. For your convenience the header is already constructed with `prepareHeader` and stored in `this.header`.
 
-In order to add a header, `get` takes a second parameter of type `RequestOptionsArgs`, with `headers` as one of the options. Update the `get` function with `{ headers: <your header here>}` as the second parameter.
+In order to add a header, `get` takes a second parameter of type `RequestOptionsArgs`, with `headers` as one of the options. Update the `get` function with `{ headers: this.header }` as the second parameter.
 
 Now test the app. It should still let you call the API with a much more generous API call limit `(50 requests per minute)`.
 
