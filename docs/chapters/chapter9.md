@@ -27,7 +27,7 @@ If you have extra time, there are a lot more filters you might want to implement
 
 #### Tip #1: NativeScriptFormsModule
 
-Include the following import in your `app.module.ts` file.
+Since your app now has a form, you need to include the following import in your `app.module.ts` file.
 
 ```
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -37,4 +37,4 @@ And then include `NativeScriptFormsModule` in the `imports` array of your main `
 
 #### Tip #2: SegmentedBar
 
-The easiest way to implement radio-button-like controls in native apps is with SegmentedBars. Here are the docs on how to use them in NativeScript: https://docs.nativescript.org/angular/code-samples/ui/segmented-bar.html.
+The easiest way to implement radio-button-like controls in native apps is with SegmentedBars. [Here are the docs on how to use them in NativeScript](https://docs.nativescript.org/angular/code-samples/ui/segmented-bar.html)
