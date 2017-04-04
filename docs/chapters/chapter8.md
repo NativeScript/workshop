@@ -26,11 +26,9 @@ Don’t worry too much if your details page doesn’t look amazing. You main tas
     * Two images, which you can access by binding an `<Image>` component’s `src` attribute to the following properties of a `Pet` object: `media.getFirstImage(3, 'res://icon')` and `media.getSecondImage(4, 'res://icon')`.
 * **2**. Add the following two plugins to the details screen.
     * [Font Awesome](https://github.com/NathanWalker/nativescript-ngx-fonticon)
-        * We gave you a `fonts` folder in the starting files for your app, and with this plugin you’ll be able to use them. There are a number of icons you might want to use in your app, but the one you must use is one of Font Awesome’s share icons.
+        * After installing this plugin, download <http://fontawesome.io/assets/font-awesome-4.7.0.zip>, unzip the archive. Copy the archive’s `fonts` folder and paste it into your `app` folder. You’ll need those files for Font Awesome to work.
     * [Social Share](https://github.com/tjvantoll/nativescript-social-share)
         * You must allow users to share a pet’s description using the social share plugin.
-
-> **TODO**: The “starting files” part of this is not accurate since we switched to the service. We need to fix that.
 
 ### Tips
 
