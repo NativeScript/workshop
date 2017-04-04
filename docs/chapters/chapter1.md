@@ -2,7 +2,7 @@
 
 Let’s take a look at what at NativeScript is using the slides linked to below.
 
-* [Download the _Introduction to NativeScript_ slides](slides/Introducing-NativeScript.pptx)
+* [Download the _Introduction to NativeScript_ slides](https://github.com/NativeScript/workshop/blob/master/Introduction.pptx)
 
 ### The NativeScript CLI
 
