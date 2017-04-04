@@ -33,7 +33,9 @@ export class FootballService {
    * @param competitionId: id of the competition
    */
   public getCompetition(competitionId: number): Promise<Competition> {
-    return this.notImplemented('getCompetition');
+    return this.callFootballService(`competitions/${competitionId}`)
+    .map(competition => FootballFactory.competitionFromRaw(competition))
+    .toPromise();
   }
 
   /**
@@ -58,7 +60,9 @@ export class FootballService {
    * URL Structure: https://api.football-data.org/v1/teams/{teamId}
    */
   public getTeam(teamId: number): Promise<Team> {
-    return this.notImplemented('getTeam');
+    return this.callFootballService(`teams/${teamId}`)
+    .map(team => FootballFactory.teamFromRaw(team))
+    .toPromise();
   }
 
   /**
@@ -66,7 +70,9 @@ export class FootballService {
    * URL Structure: https://api.football-data.org/v1/teams/{teamId}/players
    */
   public getPlayers(teamId: number): Promise<Player[]> {
-    return this.notImplemented('getPlayers');
+    return this.callFootballService(`teams/${teamId}/players`)
+    .map(result => FootballFactory.playersFromRaw(result.players))
+    .toPromise();
   }
 
   /**
@@ -75,7 +81,9 @@ export class FootballService {
    * @param options: FixtureSearchOptions which allows to specify either a matchday or timeframe
    */
   public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): Promise<Fixture[]> {
-    return this.notImplemented('getFixtures');
+    return this.callFootballService(`competitions/${competitionId}/fixtures`, options)
+    .map(result => FootballFactory.fixturesFromRaw(result.fixtures))
+    .toPromise();
   }
 
   /**
@@ -83,7 +91,9 @@ export class FootballService {
    * URL Structure: https://api.football-data.org/v1/teams/{teamId}/fixtures
    */
   public getTeamFixtures(teamId: number): Promise<Fixture[]> {
-    return this.notImplemented('getTeamFixtures');
+    return this.callFootballService(`teams/${teamId}/fixtures`)
+    .map(result => FootballFactory.fixturesFromRaw(result.fixtures))
+    .toPromise();
   }
 
   /**
