@@ -30,7 +30,7 @@ For example:
 
 ### Events
 
-UI Components include events to handle common user interactions. A component can handle events such as: `tab`, `doubleTap`, `pinch`, `pan`, `swipe`, `rotation`, `longPress`, `touch`. To leverage them, use the `(eventName)` notation.
+UI Components include events to handle common user interactions. A component can handle events such as: `tap`, `doubleTap`, `pinch`, `pan`, `swipe`, `rotation`, `longPress`, `touch`. To leverage them, use the `(eventName)` notation.
 
 For example:
 
@@ -285,6 +285,8 @@ For example:
 
 > Note: To read more about themes, go to the [NativeScript theme docs](https://docs.nativescript.org/ui/theme).
 
+
+### Exercise: Theme
 
 <h4 class="exercise-start">
   <b>Exercise</b>: NativeScript Theme
