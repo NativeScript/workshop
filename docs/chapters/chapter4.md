@@ -15,9 +15,9 @@ When you create a brand new {N} app, you will straight away get a sample `Routes
 
 ``` javascript
 const routes: Routes = [
-    { path: "", redirectTo: "/items", pathMatch: "full" },
-    { path: "items", component: ItemsComponent },
-    { path: "item/:id", component: ItemDetailComponent },
+  { path: "", redirectTo: "/items", pathMatch: "full" },
+  { path: "items", component: ItemsComponent },
+  { path: "item/:id", component: ItemDetailComponent },
 ];
 ```
 
@@ -34,13 +34,13 @@ const routes: Routes = [
   { path: '', redirectTo: '/articles', pathMatch: 'full' },
   { path: 'items', children: [
     { path: '', component: ItemsComponent },
-    { path: ":id", component: ItemDetailComponent },
+    { path: ':id', component: ItemDetailComponent },
   ]},
   { path: 'articles', children: [
     { path: '', component: ArticlesComponent },
-    { path: "read/:id", component: ArticleComponent },
-    { path: "edit/:id", component: EditArticleComponent },
-    { path: "search/:tech/:keyword", component: ArticleSearchResultsComponent },
+    { path: 'read/:id', component: ArticleComponent },
+    { path: 'edit/:id', component: EditArticleComponent },
+    { path: 'search/:tech/:keyword', component: ArticleSearchResultsComponent },
   ]},
 ];
 ```
@@ -243,9 +243,8 @@ To use a relative path you need to:
  * provide it as a parameter for `navigate`, as `relativeTo`
 
 ``` javascript
-import { Router } from '@angular/router';
-// or
 import { RouterExtensions } from 'nativescript-angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'my-articles',
