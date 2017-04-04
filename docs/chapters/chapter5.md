@@ -187,7 +187,7 @@ import { Http, Headers } from '@angular/http';
 
 ``` javascript
 let myHeaders = new Headers();
-myHeaders.appen('key', 'value');
+myHeaders.append('key', 'value');
 
 this.http.get('http://api.someopendata.org/cities', 
   { headers: myHeaders })
@@ -270,7 +270,7 @@ For your convenience the `http` service is already injected into `FootballServic
 
 In this exercise you need to implement the `callFootballService` function in `football.service.ts`, which should use the `http` service to `get` data. `get` returns an observable, which is the result that we are after.
 
-For a URL use the `FootballService`’s `baseUrl` property, and append the `method` parameter of the `callFootballService` function (so `this.baseUrl + method). Use that to call `http.get`, and `map` the `result` to `result.json()`.
+For a URL use the `FootballService`’s `baseUrl` property, and append the `method` parameter of the `callFootballService` function (`this.baseUrl` + method). Use that to call `http.get`, and `map` the `result` to `result.json()`.
 
 Now if you run the app and press `Get Competitions` button, as a result you should get all the available competitions printed out in the console. 
 <!--`Get PL Competition`, `Get PL Fixtures`, `Get Liverpool`, `Get Liverpool Players`, `Get Liverpool Fixtures` and `Get Champions League Group Tables` buttons are also implemented.-->
@@ -281,7 +281,7 @@ You will however get an error when trying to press `GetPLTeams` or `GetPLTable`.
 
 ``` javascript
 private callFootballService(method: string, queryParams: any = {}): Observable<any> {
-  return this.http.get(this.baseUrl + method,)
+  return this.http.get(this.baseUrl + method)
   .map(result => result.json());
 }
 ```
@@ -438,7 +438,7 @@ export class BlueComponent{
 }
 ```
 
-#### blue.component.ts
+#### blue.component.html
 
 ``` XML
 <ActionBar title="BLUE" color="white" backgroundColor="blue">
@@ -488,12 +488,12 @@ Adding custom attributes to a component is really easy—just add an `@Input()` 
   selector: 'my-calendar',
   templateUrl: './calendar/calendar.component.html'
 })
-export class LeagueTableComponent {
+export class CalendarComponent {
   @Input() day: number;
   @Input() month: number;
 
   private _year: number;
-  @Input() set(year: number) {
+  @Input() set year(year: number) {
     this._year = (year > 100) ? year : year + 2000; 
   }
 ```
