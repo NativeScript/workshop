@@ -1,6 +1,6 @@
 ## What is NativeScript?
 
-Let’s take a look at what at NativeScript is using the slides linked to below.
+Let’s take a look at what  NativeScript is using the slides linked to below.
 
 * [Download the _Introduction to NativeScript_ slides](https://github.com/NativeScript/workshop/blob/master/Introduction.pptx)
 
