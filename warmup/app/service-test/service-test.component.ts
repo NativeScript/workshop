@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Competition } from '../models';
+import { Competition, Fixture } from '../models';
 import { FootballService } from '../football.service';
 
 @Component({
@@ -37,8 +37,19 @@ export class ServiceTestComponent {
   }
 
   getPLFixtures() {
-    this.footballService.getFixtures(426, { timeFrame: 'n7' })
-    .then(this.print)
+    this.footballService.getFixtures(426, { timeFrame: 'p7' })
+    .then(fixtures => {
+      const fixturesEssential = fixtures.map((fix: Fixture) => {
+        return { 
+          homeTeam: fix.homeTeamName,
+          awayTeam: fix.awayTeamName,
+          date: fix.date,
+          score: fix.result.goalsHomeTeam + ':' + fix.result.goalsAwayTeam
+        }
+      })
+
+      this.print(fixturesEssential);
+    })
     .catch(this.printError);
   }
 
