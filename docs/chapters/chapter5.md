@@ -272,7 +272,10 @@ In this exercise you need to implement the `callFootballService` function in `fo
 
 For a URL use the `FootballService`’s `baseUrl` property, and append the `method` parameter of the `callFootballService` function (so `this.baseUrl + method). Use that to call `http.get`, and `map` the `result` to `result.json()`.
 
-Now if you run the app and press `Get Competitions` button. You should get all available competitions printed out in the console.
+Now if you run the app and press `Get Competitions` button, as a result you should get all the available competitions printed out in the console. 
+<!--`Get PL Competition`, `Get PL Fixtures`, `Get Liverpool`, `Get Liverpool Players`, `Get Liverpool Fixtures` and `Get Champions League Group Tables` buttons are also implemented.-->
+
+You will however get an error when trying to press `GetPLTeams` or `GetPLTable`. But don't worry about this for now.
 
 <div class="solution-start"></div>
 
@@ -322,13 +325,8 @@ Now it's time to implement the remaining functions of the `FootballService`.
 
 Update the implementation of:
 
- * getCompetition
  * getLeagueTable -> make sure to pass in `matchday` into `callFootballService`, as the second parameter in the form of `{ matchday: matchday }` or in short `{ matchday }`. This will be explained in the next exercise.
  * getTeams
- * getTeam
- * getPlayers
- * getFixtures -> make sure to pass in `options` into `callFootballService`. Options are already provided in the expected format. This will be explained in the next exercise.
- * getTeamFixtures
 
 Follow the pattern of the implementation of `getCompetitions`:
 
@@ -336,16 +334,7 @@ Follow the pattern of the implementation of `getCompetitions`:
   * Second use `FootballFactory` to get an object from raw. Please note that some functions like `getTeams` returns a result, which contains teams, like: `result.teams`, while other functions return the required object straight away. So you may need to use map accordingly.
   * Finally convert the Observable to a Promise object.
 
-> **TODO**: Change this section so the user only needs to implement one or two of these methods. The rest should be included in the warmup by default.
-
 <div class="solution-start"></div>
-
-#### getCompetition
-```
-return this.callFootballService(`competitions/${competitionId}`)
-.map(competition => FootballFactory.competitionFromRaw(competition))
-.toPromise();
-```
 
 #### getLeagueTable
 ``` javascript
@@ -358,34 +347,6 @@ return this.callFootballService(`competitions/${competitionId}/leagueTable`, { m
 ``` javascript
 return this.callFootballService(`competitions/${competitionId}/teams`)
 .map(result => FootballFactory.teamsFromRaw(result.teams))
-.toPromise();
-```
-
-#### getTeam
-``` javascript
-return this.callFootballService(`teams/${teamId}`)
-.map(team => FootballFactory.teamFromRaw(team))
-.toPromise();
-```
-
-#### getPlayers
-``` javascript
-return this.callFootballService(`teams/${teamId}/players`)
-.map(result => FootballFactory.playersFromRaw(result.players))
-.toPromise();
-```
-
-#### getFixtures
-``` javascript
-return this.callFootballService(`competitions/${competitionId}/fixtures`, options)
-.map(result => FootballFactory.fixturesFromRaw(result.fixtures))
-.toPromise();
-```
-
-#### getTeamFixtures
-``` javascript
-return this.callFootballService(`teams/${teamId}/fixtures`)
-.map(result => FootballFactory.fixturesFromRaw(result.fixtures))
 .toPromise();
 ```
 
@@ -417,7 +378,9 @@ Luckily for you the `FootballService` already contains `buildSearchParams` funct
 
 Your task is to update the `callFootballService` function in `FootballService` to include a `RequestOptionsArgs` when calling `get`. Hint: You’ll need to pass `this.buildSearchParams(queryParams)` in as a new `search` property of the `get` method’s second argument.
 
-> **TODO**: How is the user supposed to test these changes after they make them.
+<!--TODO: See if I can add get getPLFixturesLastWeek-->
+
+To test it out you can use the `getPLFixtures` function, which already passes `{ timeFrame: 'n7' }`, as an optional parameter. Try to change the timeFrame to another value like `n3` or `p7` and see if you get different results.
 
 <div class="solution-start"></div>
 
@@ -514,7 +477,7 @@ Components can be divided into two categories:
  * smart - those contain the business logic of your application. Like a `LoginComponent` that contains the logic of how to log in and where to redirect after user successfully logs in
  * presentation - those are used to encapsulate something that we want to show on the screen. Like a `LogoComponent`, which contains the `img` tag with your logo, which you can paste everywhere you need to display your logo. However when you need to change the logo, you can do it all in one place (the definition of the component).
 
-#### Components with custom input (one way-binding)
+### Components with custom input (one-way binding)
 
 Just like the `<Label>` component has a `text` attribute, your components can have their own custom attributes as well.
 
@@ -597,8 +560,6 @@ Now if you reload the app and go to `View Fixtures` you should get something lik
 Move the `GridLayout` from `competition-fixtures.component.html` and its content into `fixture.component.html`.
 
 To get the fixtures to show up correctly again, you’ll need to add a `fixture` input attribute to the `FixtureComponent`. Refer to the solution below if you get stuck.
-
-> **TODO**: In the solution I found it really strange that four functions suddenly showed up when I wasn’t asked to add them. I think those four functions should be included (as empty placeholders) in the warmup starting point, and removed from the solution below.
 
 <div class="solution-start"></div>
 
@@ -801,8 +762,6 @@ Update the `teamSelected` function in `competition-fixtures.component.ts` to nav
 
 You might need to inspect `app.routing.ts` to find out what is the correct route.
 
-> **TODO**: It looks like this code is already in place in the starting version of the code. I didn’t have to add anything.
-
 <div class="solution-start"></div>
 ``` javascript
 teamSelected(teamId: number) {
@@ -829,7 +788,7 @@ Now upon tapping in a team in the fixture you should be redirected to a team vie
 <div class="exercise-end"></div>
 
 
-### Components with custom input (two way-binding)
+### Components with custom input (two-way binding)
 <!--https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html#creating-custom-two-way-data-bindings-->
 
 To create a custom attribute that is capable of both taking data as an input and also updating it, we need to use two-way binding.
@@ -869,7 +828,7 @@ Now you can use the `ColorPickerComponent` like this:
 <color-picker [(color)]="selectedColorFromParentClass"></color-picker>
 ```
 
-### Bonus Service Exercise:
+### Bonus Service Exercise
 
 When requesting fixtures from `api.football-data.org` it allows you to set the timeframe to # of days before (`p7`) or after (`n7`) the current date. However, it is not possible to get fixtures for before and after in one call.
 
@@ -879,6 +838,6 @@ Update `FootballService` in `football.service.ts` to add a function which would:
  * call football service twice, once with the value of before and once with the value of after
  * return merged results
 
-### Bonus Component Exercise:
+### Bonus Component Exercise
 
 Create a `PlayerComponent`, which will display player details like: name, position, jerseyNumber and nationality. Then add a list of players to the `Team` screen. 
