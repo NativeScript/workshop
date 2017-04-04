@@ -30,6 +30,8 @@ Don’t worry too much if your details page doesn’t look amazing. You main tas
     * [Social Share](https://github.com/tjvantoll/nativescript-social-share)
         * You must allow users to share a pet’s description using the social share plugin.
 
+> **TODO**: The “starting files” part of this is not accurate since we switched to the service. We need to fix that.
+
 ### Tips
 
 #### Tip #1: clip-path
