@@ -31,6 +31,6 @@ export class CompetitionFixturesComponent implements OnInit{
 
   teamSelected(teamId: number) {
     console.log('::CompetitionFixturesComponent::teamSelected::' + teamId);
-    this.router.navigate(['/football/team', teamId]);
+    // add navigation here
   }
 }
