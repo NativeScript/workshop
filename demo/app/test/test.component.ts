@@ -3,8 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Pet, Shelter, Options } from '../models';
-import { PetFinderService } from '../pet-finder.service';
+import { Pet, Shelter, Options, PetFinderService } from 'petfinder-angular-service';
 
 @Component({
     selector: 'my-test',

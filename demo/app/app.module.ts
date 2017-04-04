@@ -15,7 +15,7 @@ import { PetResultsComponent } from './pet-results/pet-results.component';
 import { PetFavoritesComponent } from './pet-favorites/pet-favorites.component';
 
 import { SelectModalService } from './select-modal.service';
-import { PetFinderService } from './pet-finder.service';
+import { PetFinderService } from 'petfinder-angular-service';
 import { PetStorageService } from './pet-storage.service';
 
 //fonts

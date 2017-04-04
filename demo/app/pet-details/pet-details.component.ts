@@ -1,10 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { PetFinderService } from '../pet-finder.service';
+import { Pet, PetFinderService } from 'petfinder-angular-service';
 import { PetStorageService } from '../pet-storage.service';
-
-import { Pet } from '../models';
 
 import * as SocialShare from "nativescript-social-share";
 import platformModule = require("platform");

@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular';
 import { Router } from '@angular/router';
-import { Pet, Shelter, Options } from '../models';
-import { PetFinderService } from '../pet-finder.service';
+import { Pet, Shelter, Options, PetFinderService } from 'petfinder-angular-service';
 
 import { SelectModalService } from '../select-modal.service';
 import { SelectModalComponent } from '../select-modal/select-modal.component';

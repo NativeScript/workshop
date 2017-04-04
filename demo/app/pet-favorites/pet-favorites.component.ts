@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PetStorageService } from '../pet-storage.service';
-import { Pet } from '../models';
+import { Pet } from 'petfinder-angular-service';
 
 import { Image } from "ui/image";
 
