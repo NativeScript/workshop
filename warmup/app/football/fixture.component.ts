@@ -8,5 +8,19 @@ import { Fixture } from '../models';
 })
 export class FixtureComponent {
 
+  public displayScore(): boolean {
+    return undefined;
+  }
 
+  public inPlay(): boolean {
+    return undefined;
+  }
+
+  public homeTeamTap() {
+    
+  }
+
+  public awayTeamTap() {
+
+  }
 }
