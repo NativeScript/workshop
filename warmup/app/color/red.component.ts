@@ -21,10 +21,10 @@ export class RedComponent {
   }
 
   goBack() {
-    
+    this.router.back();
   }
 
   goHome() {
-    
+    this.router.navigate(['/color'], { clearHistory: true });
   }
 }

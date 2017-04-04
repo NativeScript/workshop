@@ -433,6 +433,7 @@ ngOnInit() {
 One of the great things about NativeScript is its ability to use native animations and page transitions with very little effort.
 
 [Here is a list of all available navigation transitions](http://docs.nativescript.org/api-reference/interfaces/_ui_frame_.navigationtransition.html)
+
 [Here is a list of all available animation curves](http://docs.nativescript.org/api-reference/modules/_ui_enums_.animationcurve.html)
 
 #### Transition via html
@@ -495,8 +496,6 @@ Your task is to implement the empty functions in `red.component.ts`, so that:
 
  * goBlue() navigates to the `Blue` page with page transition `slideTop`, duration `2 seconds` and curve `spring`
  * goGray() navigates to the `RGB` page with `gray` as the parameter and page transition `fade` and duration `1 second`
- * goBack() navigates back
- * goHome() navigates home whilst clearing the navigation history
 
 
 <div class="solution-start"></div>
@@ -522,18 +521,6 @@ this.router.navigate(['/color/rgb', 'gray'], {
     duration: 1000
   }
 });
-```
-
-#### goBack
-
-```
-this.router.back();
-```
-
-#### goHome
-
-```
-this.router.navigate(['/color'], { clearHistory: true });
 ```
 
 <div class="solution-end"></div>
