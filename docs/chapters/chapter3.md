@@ -132,7 +132,7 @@ Before you use `[(ngModel)]` in your app, you need to add `NativeScriptFormsModu
 
 #### Step 1
 
-Open `app.modules.ts` and uncomment the line that imports `NativeScriptFormsModule`.
+Open `app.module.ts` and uncomment the line that imports `NativeScriptFormsModule`.
 
 ``` html
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
