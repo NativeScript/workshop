@@ -326,7 +326,7 @@ Update the UI to make it look more like the one in the picture below.
 
   <Label text="Password:" class="text-primary"></Label>
   <TextField
-    [text]="profile.password"
+    [(ngModel)]="profile.password"
     hint="password"
     secure="true">
   </TextField>
