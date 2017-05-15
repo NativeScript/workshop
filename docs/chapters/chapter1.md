@@ -43,7 +43,7 @@ tns run android
     <b>Exercise 3</b>: Making some changes
 </h4>
 
-Open your `app/item/item.component.html` file and change the `title` attribute of the `<ActionBar>`.
+Open your `app/item/items.component.html` file and change the `title` attribute of the `<ActionBar>`.
 
 <div class="exercise-end"></div>
 
