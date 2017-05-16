@@ -389,7 +389,7 @@ ngOnInit() {
 
 #### Navigate to self
 
-Using a snapshot will not work if we were try to navigate from the search to itself, but with different parameters. To make this work, we need to use `params.forEach` instead.
+Using a snapshot will not work if we try to navigate from the search to itself, but with different parameters. To make this work, we need to use `params.forEach` instead.
 
 ``` javascript
 ngOnInit() {
