@@ -471,14 +471,14 @@ In this exercise we will play with the `color` and `red` components.
 Your task is to update the buttons in `color.component.html`, so that:
 
  * The `Blue` button triggers `curl` transition
- * The `Red` button triggers the `explode` transition
+ * The `Red` button triggers the `fade` transition
  * The `Pink`, `Gray` and `#bad` buttons trigger the `flip` transition
 
 
 <div class="solution-start"></div>
 
  * `Blue` => `pageTransition="curl"`
- * `Red` => `pageTransition="explode"`
+ * `Red` => `pageTransition="fade"`
  * `Pink`, `Gray` and `#bad` => `pageTransition="flip"`
 
 <div class="solution-end"></div>
