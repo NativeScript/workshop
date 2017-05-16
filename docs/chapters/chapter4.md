@@ -339,13 +339,9 @@ Your task is to implement the empty functions in `blue.component.ts`, so that:
 
  `this.router.navigate(['../red'], { relativeTo: this.route });`
 
-#### goPink (Absolute Solution)
+#### goPink 
 
  `this.router.navigate(['/color/rgb', this.pink]);`
-
-#### goPink (Relative Solution)
-
- `this.router.navigate(['../rgb', this.pink], { relativeTo: this.route });`
 
 #### goBack
 
