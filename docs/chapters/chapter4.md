@@ -25,7 +25,7 @@ This tells us 3 things:
 
  * When the app starts, it should automatically redirect to `items` path,
  * If you navigate to `'items'`, you will be provided with `ItemsComponent`,
- * If you navivate to `'items/somevalue'` you will be provided with `ItemDetailComponent`, which additionally will receive `somevalue` as `id`
+ * If you navigate to `'items/somevalue'` you will be provided with `ItemDetailComponent`, which additionally will receive `somevalue` as `id`
 
 As your application grows, so will your list of routes. One way to manage them is to group them into related `parent<->children` groups like this:
 
