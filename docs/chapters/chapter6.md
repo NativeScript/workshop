@@ -33,7 +33,7 @@ To install it run:
 npm i nativescript-camera --save
 ```
 
-> Remember, every time you make a change to native bits of your app (including adding/removing plugins) you need to do rebuild and redeploy your app with `tns run`.
+> Remember, every time you make a change to native bits of your app (including adding/removing plugins) you need to rebuild and redeploy your app with `tns run`.
 
 Next, open `wizard-profile.component.ts` and import `nativescript-camera` using the line of code below.
 
