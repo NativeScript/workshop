@@ -33,6 +33,8 @@ To install it run:
 npm i nativescript-camera --save
 ```
 
+> Remember, every time you make a change to native bits of your app (including adding/removing plugins) you need to do rebuild and redeploy your app with `tns run`.
+
 Next, open `wizard-profile.component.ts` and import `nativescript-camera` using the line of code below.
 
 ``` javascript
@@ -44,6 +46,7 @@ Try to figure it out based on the info in the documentation.
 Note that you might need to call `camera.requestPermissions();` from `ngOnInit`.
 
 <div class="solution-start"></div>
+``` javascript
 ngOnInit() {
   // get camera permissions when loading for the first time
   camera.requestPermissions();
@@ -66,6 +69,7 @@ takeProfilePicture() {
     console.log(err.message);
   });
 }
+```
 <div class="solution-end"></div>
 
 <div class="exercise-end"></div>
