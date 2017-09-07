@@ -6,10 +6,10 @@
   "nativescript": {
     "id": "org.nativescript.warmup",
     "tns-ios": {
-      "version": "3.0.0"
+      "version": "3.1.1"
     },
     "tns-android": {
-      "version": "3.0.0"
+      "version": "3.1.0"
     }
   },
   "dependencies": {
