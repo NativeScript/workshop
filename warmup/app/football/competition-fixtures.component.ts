@@ -17,8 +17,7 @@ export class CompetitionFixturesComponent implements OnInit{
 
   constructor(
     private footballService: FootballService,
-    private route: ActivatedRoute,
-    private router: Router) {
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -27,10 +26,5 @@ export class CompetitionFixturesComponent implements OnInit{
 
     this.footballService.getFixtures(this.competitionId)
       .subscribe(fixtures => this.fixtures = fixtures);
-  }
-
-  teamSelected(teamId: number) {
-    console.log('::CompetitionFixturesComponent::teamSelected::' + teamId);
-    // add navigation here
   }
 }
