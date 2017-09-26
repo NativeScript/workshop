@@ -4,10 +4,7 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.nativescript.profile",
-    "tns-ios": {
-      "version": "3.2.0"
-    }
+    "id": "org.nativescript.profile"
   },
   "dependencies": {
     "@angular/animations": "~4.2.0",
