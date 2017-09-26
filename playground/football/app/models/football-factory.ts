@@ -2,16 +2,6 @@ import { Competition, LeagueTable, Team, Fixture, Player, Standing } from './';
 
 export class FootballFactory {
 
-  static competitionFromRaw(rawCompetition: any): Competition {
-    return rawCompetition;
-  }
-
-  static competitionsFromRaw(rawCompetitions: any[]): Competition[] {
-    return rawCompetitions.map(
-      rawCompetition => this.competitionFromRaw(rawCompetition)
-    );
-  }
-
   static leagueTableFromRaw(rawLeagueTable: any): LeagueTable {
     // If table for a leage (not a tournament with groups), then append teamId for each standing.
     // This doesn't apply to tournaments, as tournament teams already contain the teamId value
