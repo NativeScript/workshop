@@ -1,0 +1,13 @@
+<ActionBar [title]="team?.name" class="action-bar">
+</ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <Label dock="top" text="Fixtures" class="h2 text-center action-bar"></Label>
+  <ListView [items]="fixtures" class="list-group">
+    <ng-template let-item="item" let-odd="odd" let-even="even">
+      <StackLayout class="list-group-item">
+        <my-fixture [fixture]="item" (teamTap)="teamSelected($event)"></my-fixture>
+      </StackLayout>
+    </ng-template>
+  </ListView> 
+</DockLayout>
