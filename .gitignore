@@ -8,6 +8,25 @@ warmup/platforms
 warmup/hooks
 warmup/app/**/*.js
 
+solution/node_modules
+solution/platforms
+solution/hooks
+solution/app/**/*.js
+
+playground/profile/node_modules
+playground/profile/platforms
+playground/profile/hooks
+playground/profile/app/**/*.js
+
+playground/color/node_modules
+playground/color/platforms
+playground/color/hooks
+playground/color/app/**/*.js
+
+playground/football/node_modules
+playground/football/platforms
+playground/football/hooks
+playground/football/app/**/*.js
+
 warmup-start
 warmup-end
-warmup-bak
