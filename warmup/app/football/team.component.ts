@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { FootballService } from '../football.service';
-import { Team, Fixture } from '../models';
+import { Team, Fixture, Player } from '../models';
 
 @Component({
   selector: 'my-team',
@@ -11,6 +11,7 @@ import { Team, Fixture } from '../models';
 export class TeamComponent implements OnInit{
   private team: Team;
   private fixtures: Fixture[] = [];
+  // private players: Player[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,10 +22,13 @@ export class TeamComponent implements OnInit{
     const teamId = +this.route.snapshot.params['teamId'];
 
     this.footballService.getTeam(teamId)
-      .then(team => this.team = team);
+      .subscribe(team => this.team = team);
 
     this.footballService.getTeamFixtures(teamId)
-      .then(fixtures => this.fixtures = fixtures) 
+      .subscribe(fixtures => this.fixtures = fixtures) 
+
+    // this.footballService.getPlayers(teamId)
+    // .subscribe(players => this.players = players);
   }
 
   teamSelected(teamId: number) {

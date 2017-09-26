@@ -26,7 +26,7 @@ export class CompetitionFixturesComponent implements OnInit{
     this.competitionName = this.route.snapshot.params['competitionName'];
 
     this.footballService.getFixtures(this.competitionId)
-      .then(fixtures => this.fixtures = fixtures);
+      .subscribe(fixtures => this.fixtures = fixtures);
   }
 
   teamSelected(teamId: number) {

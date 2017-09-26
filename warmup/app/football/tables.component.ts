@@ -8,19 +8,19 @@ import { Competition, LeagueTable } from '../models';
   templateUrl: './football/tables.component.html'
 })
 export class TablesComponent {
-  public competitions: Competition[] = [];
 
-  public PremierLeagueId: number = 426;
-  public PrimeraDivisionId: number = 436;
-  public BundesligaId: number = 430;
-  public SerieAId: number = 438;
-  public Ligue1Id: number = 434;
-  public EredivisieId: number = 433;
+  public PremierLeagueId: number = 445;
+  public PrimeraDivisionId: number = 455;
+  public BundesligaId: number = 452;
+  public SerieAId: number = 456;
+  public Ligue1Id: number = 450;
+  public EredivisieId: number = 449;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   private onTeamTap(teamId: number) {
     console.log('::TablesComponent::onTeamTap::' + teamId);
+    this.router.navigate(['/football/team', teamId]);
   }
 }

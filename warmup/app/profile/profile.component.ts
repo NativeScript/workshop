@@ -29,6 +29,16 @@ export class ProfileComponent {
     this.profile.dob = new Date();
     this.profile.codingPower = 1;
   }
+
+  clearForm() {
+    this.profile = {
+      name: '',
+      password: '',
+      angularPro: false,
+      dob: new Date(),
+      codingPower: 1
+    }
+  }
 }
 
 export interface Profile {

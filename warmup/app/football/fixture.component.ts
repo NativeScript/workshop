@@ -7,20 +7,13 @@ import { Fixture } from '../models';
   styleUrls: ['./football/fixture.component.css']
 })
 export class FixtureComponent {
+  public fixture: Fixture;
+
+  public fakeDate: Date = new Date();
 
   public displayScore(): boolean {
-    return undefined;
+    // return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY'
+    return false;
   }
 
-  public inPlay(): boolean {
-    return undefined;
-  }
-
-  public homeTeamTap() {
-    
-  }
-
-  public awayTeamTap() {
-
-  }
 }
