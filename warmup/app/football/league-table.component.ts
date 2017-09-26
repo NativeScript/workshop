@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { LeagueTable, Team } from '../models';
 import { FootballService } from '../football.service';
@@ -7,12 +8,9 @@ import { FootballService } from '../football.service';
   selector: 'my-league-table',
   templateUrl: './football/league-table.component.html'
 })
-export class LeagueTableComponent {
-  private id: number;
-  @Input() public set competitionId(id: number) {
-    this.id = id;
-    this.loadTeamsAndTable();
-  }
+export class LeagueTableComponent implements OnInit{
+  @Input() public competitionId: number;
+  // Add Output EventEmitter here
 
   public table: LeagueTable;
   public teams: Team[];
@@ -20,15 +18,19 @@ export class LeagueTableComponent {
   constructor(private footballService: FootballService) {
   }
 
-  /** 
+  ngOnInit() {
+    this.loadTeamsAndTable();
+  }
+
+  /**
    * Get both teams and table info. Teams contains short name for each team
    */
   private loadTeamsAndTable() {
-    this.footballService.getTeams(this.id)
-      .then(teams => {
+    this.footballService.getTeams(this.competitionId)
+      .subscribe(teams => {
         this.teams = teams;
-        this.footballService.getLeagueTable(this.id)
-          .then(table => this.table = table);
+        this.footballService.getLeagueTable(this.competitionId)
+          .subscribe(table => this.table = table);
       });
   }
 
@@ -42,10 +44,9 @@ export class LeagueTableComponent {
     return this.teams.filter(team => team.teamId === teamId)[0];
   }
 
-  @Output() teamSelected: EventEmitter<number> = new EventEmitter<number>();
-  onTeamSelect(event) {
+  onTeamSelected(event) {
     const selectedTeamId = this.table.standing[event.index].teamId;
     console.log('::LeagueTableComponent::onTeamSelect::' + selectedTeamId);
-    this.teamSelected.emit(selectedTeamId);
+    // Add eventemitter emit call here with the selectedTeamId
   }
 }

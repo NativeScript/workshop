@@ -11,9 +11,7 @@ import 'rxjs/add/operator/switchMap';
 export class RGBComponent implements OnInit{
   rgb: string = 'black';
 
-  constructor(
-    private router: RouterExtensions,
-    private route: ActivatedRoute) {
+  constructor(private router: RouterExtensions, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -21,11 +19,11 @@ export class RGBComponent implements OnInit{
   }
 
   goBlue() {
-    this.router.navigate(['../blue'], { relativeTo: this.route });
+    this.router.navigate(['/color/blue']);
   }
 
   goRed() {
-    this.router.navigate(['../red'], { relativeTo: this.route });
+    this.router.navigate(['/color/red']);
   }
 
   changeToRandom() {

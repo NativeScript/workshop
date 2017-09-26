@@ -2,9 +2,11 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
+
+import { NativeScriptUIDataFormModule } from 'nativescript-pro-ui/dataform/angular';
 import { NativeScriptHttpModule } from 'nativescript-angular/http';
 
-// import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
 //Lesson 1
 import { ProfileComponent } from './profile/profile.component';
@@ -20,6 +22,7 @@ import { LeagueTableComponent } from './football/league-table.component';
 import { CompetitionFixturesComponent } from './football/competition-fixtures.component';
 import { FixtureComponent } from './football/fixture.component';
 import { TeamComponent } from './football/team.component';
+import { PlayerComponent } from './football/player.component';
 
 // Lesson 4
 import { WizardProfileComponent } from './plugins/wizard-profile.component';
@@ -32,8 +35,9 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
   imports: [
     NativeScriptModule,
     AppRoutingModule,
+    NativeScriptUIDataFormModule,
     NativeScriptHttpModule,
-    // NativeScriptFormsModule
+    NativeScriptFormsModule
   ],
   declarations: [
     AppComponent,
@@ -56,6 +60,7 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
     CompetitionFixturesComponent,
     FixtureComponent,
     TeamComponent,
+    PlayerComponent,
 
     //Lesson 4
     WizardProfileComponent
