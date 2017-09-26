@@ -1,0 +1,68 @@
+<ActionBar title="Profile" class="action-bar">
+</ActionBar>
+
+<TabView selectedIndex="0" >
+  <ScrollView *tabItem="{title:'UI Components'}">
+      
+  <StackLayout class="form m-l-5">
+      <Label text="Name:" class="text-primary"></Label>
+      <TextField
+        [(ngModel)]="profile.name"
+        hint="name">
+      </TextField>
+    
+      <Label text="Password:" class="text-primary"></Label>
+      <TextField
+        [(ngModel)]="profile.password"
+        hint="password"
+        secure="true">
+      </TextField>
+    
+      <Label [text]="'Angular Pro: ' + ((profile.angularPro) ? 'Yes': 'No')" class="text-primary"></Label>
+      <Switch
+        [(ngModel)]="profile.angularPro"
+        class="switch"
+        horizontalAlignment="left">
+      </Switch>
+    
+      <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()" class="text-primary"></Label>
+      <DatePicker
+        [(ngModel)]="profile.dob">
+      </DatePicker>
+
+      <Label [text]="'Coding power:' + profile.codingPower" class="text-primary" [class.zoom]="profile.codingPower > 7"></Label>
+      <Slider
+        [(ngModel)]="profile.codingPower"
+        [minValue]="0"
+        [maxValue]="10"
+        class="slider"
+        [class.danger-slider]="profile.codingPower > 7">
+      </Slider>
+    
+    <Button text="Save" (tap)="save()" class="btn btn-primary"></Button>
+    <Button text="Clear" (tap)="clear()" class="btn btn-primary"></Button>
+  </StackLayout>
+  </ScrollView>
+
+  <GridLayout *tabItem="{title:'DataForm'}" rows="*, auto, auto">
+    <!-- http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/Editors/dataform-editors-list -->
+    <RadDataForm [source]="profile" row="0">
+      <TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0"></TKEntityProperty>
+      <TKEntityProperty tkDataFormProperty name="password" displayName="Password" index="1">
+        <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+      </TKEntityProperty>
+      <TKEntityProperty tkDataFormProperty name="dob" displayName="DOB" index="2">
+        <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+      </TKEntityProperty>
+      <TKEntityProperty tkDataFormProperty name="codingPower" displayName="Coding Power" index="3">
+        <TKPropertyEditor tkEntityPropertyEditor type="Stepper"></TKPropertyEditor>
+      </TKEntityProperty>
+      <TKEntityProperty tkDataFormProperty name="angularPro" displayName="Angular Pro" index="3">
+        <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+      </TKEntityProperty>
+    </RadDataForm>
+    <Button text="Save" (tap)="save()" class="btn btn-primary" row="1"></Button>
+    <Button text="Clear" (tap)="clearForm()" class="btn btn-primary" row="2"></Button>
+    
+  </GridLayout>
+</TabView>

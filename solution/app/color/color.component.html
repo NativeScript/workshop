@@ -1,0 +1,40 @@
+<ActionBar title="Color" icon="" class="action-bar">
+</ActionBar>
+
+<StackLayout>
+  <Button
+    text="Open Blue"
+    [nsRouterLink]="['blue']"
+    class="btn blue"
+    pageTransition="curl">
+  </Button>
+
+  <Button
+    text="Open Red"
+    [nsRouterLink]="['red']"
+    class="btn red"
+    pageTransition="fade">
+  </Button>
+
+  <Button
+    text="Open RGB (pink)"
+    [nsRouterLink]="['rgb', '#ff0088']"
+    class="btn pink"
+    pageTransition="flip">
+  </Button>
+
+  <Button
+    text="Open RGB (gray)"
+    [nsRouterLink]="['rgb', 'gray']"
+    class="btn gray"
+    pageTransition="flip">
+  </Button>
+
+  <Button
+    text="Open RGB (#bad)"
+    [nsRouterLink]="['rgb', '#bad']"
+    class="btn bad"
+    pageTransition="flip">
+  </Button>
+
+</StackLayout>

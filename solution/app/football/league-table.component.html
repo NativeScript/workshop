@@ -1,0 +1,29 @@
+<StackLayout>
+  <GridLayout rows="auto" columns="30, *, 30, 30, 30, 30, 40, 40">
+    <Label col="0" text="#" class="text-center text-primary"></Label>
+    <Label col="1" text="Name"class="text-left text-primary"></Label>
+    <Label col="2" text="P" class="text-center text-primary"></Label>
+    <Label col="3" text="W" class="text-center text-primary"></Label>
+    <Label col="4" text="D" class="text-center text-primary"></Label>
+    <Label col="5" text="L" class="text-center text-primary"></Label>
+    <Label col="6" text="GD" class="text-center text-primary"></Label>
+    <Label col="7" text="PT" class="text-center text-primary"></Label>
+  </GridLayout>
+
+  <!-- attach to itemTap event and call onTeamSelected($event) -->
+  <ListView [items]="table?.standing" class="list-group" (itemTap)="onTeamSelected($event)">
+    <ng-template let-team="item">
+      <GridLayout rows="30" columns="30, *, 30, 30, 30, 30, 40, 40">
+        <Label col="0" [text]="team.position" class="text-center"></Label>
+        <Label col="1" [text]="getTeamName(team.teamId)"></Label>
+        <Label col="2" [text]="team.playedGames" class="text-center"></Label>
+        <Label col="3" [text]="team.wins" class="text-center"></Label>
+        <Label col="4" [text]="team.draws" class="text-center"></Label>
+        <Label col="5" [text]="team.losses" class="text-center"></Label>
+        <Label col="6" [text]="team.goalDifference" class="text-center"></Label>
+        <Label col="7" [text]="team.points" class="text-center"></Label>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+
+</StackLayout>

@@ -1,0 +1,17 @@
+<GridLayout rows="auto" columns="*, auto, *" class="list-group-item">  
+  <Label col="0" [text]="fixture.homeTeamName" class="h4 text-right"></Label>
+  
+  <StackLayout col="1"  horizontalAlignment="center" class="m-x-10 h3">
+    <StackLayout *ngIf="displayScore()"  orientation="horizontal">
+      <Label [text]="fixture.result.goalsHomeTeam" class="score m-r-5"></Label>
+      <Label [text]="fixture.result.goalsAwayTeam" class="score"></Label>
+    </StackLayout>
+
+    <StackLayout *ngIf="!displayScore()" class="text-center text-muted h5">
+        <Label [text]="fixture.date | date:'H:m'"></Label>
+        <Label [text]="fixture.date | date:'dd-MMM'" textWrap="true"></Label>
+    </StackLayout>
+  </StackLayout>
+
+  <Label col="2" [text]="fixture.awayTeamName" class="h4 text-left"></Label>
+</GridLayout>
