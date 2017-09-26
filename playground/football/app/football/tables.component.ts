@@ -3,9 +3,6 @@ import { Router } from '@angular/router';
 
 import { Competition, LeagueTable } from '../models';
 
-// To be refactored and removed
-import { FootballService } from '../football.service';
-
 @Component({
   selector: 'my-tables',
   templateUrl: './football/tables.component.html'

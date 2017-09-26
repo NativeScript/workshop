@@ -5,8 +5,7 @@
   <ListView [items]="fixtures" class="list-group">
     <ng-template let-fixture="item">
       <!-- fixture template - to be replaced with my-fixture -->
-      <my-fixture [fixture]="fixture"></my-fixture>
-      <!-- <StackLayout class="list-group-item">
+      <StackLayout class="list-group-item">
         <GridLayout rows="auto" columns="*, auto, *">  
           <Label
             col="0"
@@ -32,7 +31,7 @@
             class="h4">
           </Label>
         </GridLayout>
-      </StackLayout> -->
+      </StackLayout>
     </ng-template>
   </ListView>
 </DockLayout>
