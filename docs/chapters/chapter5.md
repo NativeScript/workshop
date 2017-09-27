@@ -215,6 +215,8 @@ this.http.get('http://api.someopendata.org/cities',
 
 For this exercise we will use `ServiceTestComponent` located in `service-test` folder and `FootballService`, which you can find in `football.service.ts`.
 
+If you are using `Playground` then you should head to: [https://play.nativescript.org/?template=nsday-football`](https://play.nativescript.org/?template=nsday-football)
+
 `ServiceTestComponent` has several buttons, each designed to test a function of the `FootballService` that you will be constructing in this exercise. 
 
 The football service is based on [football-data.org API](http://api.football-data.org/documentation)
@@ -230,7 +232,7 @@ Let's start with changing the default route in `app.routing.ts` to `'/service-te
 
 ``` javascript
 { path: '', redirectTo: '/service-test', pathMatch: 'full' },
-````
+```
 
 If you try to run the application, it will fail with the following error: `Error: No provider for FootballService!` 
 
@@ -261,145 +263,101 @@ providers: [
 Now the app should be loading without any issues. However none of the buttons will deliver the results we want.
 
 <h4 class="exercise-start">
-  <b>Exercise</b>: Implementing the first http call
+  <b>Exercise</b>: Implementing the http calls
 </h4>
 
-For your convenience the `http` service is already injected into `FootballService`.
+For your convenience the `http` service is already injected into `FootballService` and the header with `apiKEY` is already configured.
 
 #### Step 1 - Make it work
 
-In this exercise you need to implement the `callFootballService` function in `football.service.ts`, which should use the `http` service to `get` data. `get` returns an observable, which is the result that we are after.
+If you open `football.service.ts` you will notice that `getTeams` and `getLeagueTable` are already implemented, which are the functions required to display the data in the `TablesComponent`.
 
-For a URL use the `FootballService`’s `baseUrl` property, and append the `method` parameter of the `callFootballService` function (`this.baseUrl` + method). Use that to call `http.get`, and `map` the `result` to `result.json()`.
+If you press the `Get PL Table` button or `Get PL Teams`, you should get the data in the terminal.
 
-Now if you run the app and press `Get Competitions` button, as a result you should get all the available competitions printed out in the console. 
-<!--`Get PL Competition`, `Get PL Fixtures`, `Get Liverpool`, `Get Liverpool Players`, `Get Liverpool Fixtures` and `Get Champions League Group Tables` buttons are also implemented.-->
+#### Step 2 - Implement the missing functions
 
-You will however get an error when trying to press `GetPLTeams` or `GetPLTable`. But don't worry about this for now.
+Your job is to implement the remaining functions:
+
+ * `getTeam` - should make a call to: `https://api.football-data.org/v1/teams/{teamId}` with the `teamId` param,
+ * `getPlayers` - should make a call to: `https://api.football-data.org/v1/teams/{teamId}/players` with the `teamId` param,
+ * `getTeamFixtures` - should make a call to: `https://api.football-data.org/v1/teams/{teamId}/fixtures` with the `teamId` param,
+ * `getFixtures` - should make a call to: `https://api.football-data.org/v1/competitions/{competitionId}/fixtures` with the `competitionId` param. Additionally this function should construct `URLSearchParams` for attributes passed in `options`.
+
+To implement the first 3 functions, you can follow the `getTeams` function as the example. 
+To implement `getFixtures`, see `getLeagueTable`, which constructs `URLSearchParams`.
+
+In each function you will need to follow these steps:
+
+ * construct the `url` - you can use the `baseUrl` property as the basis
+ * use the `http` service to call `get()`
+ * `map` and convert the result to `json`
+ * use `FootballFactory` to convert the `Raw` output into the expected objects
+
+As you implement each of the functions, you can test them with the buttons in the `Service Test`. If you get the data in the terminal, then you most likely did it right. But if you get an error message, then you need to keep working :)
 
 <div class="solution-start"></div>
 
+#### getTeam
+
 ``` javascript
-private callFootballService(method: string, queryParams: any = {}): Observable<any> {
-  return this.http.get(this.baseUrl + method)
-  .map(result => result.json());
+public getTeam(teamId: number): Observable<Team> {
+  const url = `${this.baseUrl}/teams/${teamId}`;
+
+  return this.http.get(url, { headers: this.header })
+  .map(result => result.json())
+  .map(result => FootballFactory.teamFromRaw(result));
 }
 ```
 
-<div class="solution-end"></div>
-
-#### Step 2 - Add API KEY
-
-Without the API KEY, you are going to quickly hit the limit of allowed API calls, which is `50 requests a day`.
-
-Use [this link](http://api.football-data.org/register) to get your own API KEY, and then paste it in as the `FootballService`’s `apiKey` property.
-
-This API requires the key to be added in the header. For your convenience the header is already constructed with `prepareHeader` and stored in `this.header`.
-
-In order to add a header, `get` takes a second parameter of type `RequestOptionsArgs`, with `headers` as one of the options. Update the `get` function with `{ headers: this.header }` as the second parameter.
-
-Now test the app. It should still let you call the API with a much more generous API call limit `(50 requests per minute)`.
-
-<div class="solution-start"></div>
+#### getPlayers
 
 ``` javascript
-private callFootballService(method: string, queryParams: any = {}): Observable<any> {
-  return this.http.get(
-    this.baseUrl + method, 
-    { 
-      headers: this.header
-    })
-    .map(result => result.json());
+public getPlayers(teamId: number): Observable<Player[]> {
+  const url = `${this.baseUrl}/teams/${teamId}/players`;
+
+  return this.http.get(url, { headers: this.header })
+  .map(result => result.json())
+  .map(result => FootballFactory.playersFromRaw(result));
 }
 ```
 
-<div class="solution-end"></div>
-
-<div class="exercise-end"></div>
-
-<h4 class="exercise-start">
-  <b>Exercise</b>: Implement the remaining functions
-</h4>
-
-Now it's time to implement the remaining functions of the `FootballService`.
-
-Update the implementation of:
-
- * getLeagueTable -> make sure to pass in `matchday` into `callFootballService`, as the second parameter in the form of `{ matchday: matchday }` or in short `{ matchday }`. This will be explained in the next exercise.
- * getTeams
-
-Follow the pattern of the implementation of `getCompetitions`:
-
-  * First call `this.callFootballService` with a correctly constructed URL, for example to get list of teams your URL should look like: `competitions/123/teams`, where `123, should come from teamId.
-  * Second use `FootballFactory` to get an object from raw. Please note that some functions like `getTeams` returns a result, which contains teams, like: `result.teams`, while other functions return the required object straight away. So you may need to use map accordingly.
-  * Finally convert the Observable to a Promise object.
-
-<div class="solution-start"></div>
-
-#### getLeagueTable
-``` javascript
-return this.callFootballService(`competitions/${competitionId}/leagueTable`, { matchday })
-.map(table => FootballFactory.leagueTableFromRaw(table))
-.toPromise();
-```
-
-#### getTeams
-``` javascript
-return this.callFootballService(`competitions/${competitionId}/teams`)
-.map(result => FootballFactory.teamsFromRaw(result.teams))
-.toPromise();
-```
-
-<div class="solution-end"></div>
-
-<div class="exercise-end"></div>
-
-<h4 class="exercise-start">
-  <b>Exercise</b>: Adding Query parameters
-</h4>
-
-Some of the API functions allow you to pass query parameters. For example to get fixtures for the next 7 days, you can use `timeFrame=n7`, like:  
-
-```
-https://api.football-data.org/v1/competitions/426/fixtures?timeFrame=n7
-```
-
-Or to get fixtures for the previous 10 days, you can use the following URL:
-
-```
-https://api.football-data.org/v1/competitions/426/fixtures?timeFrame=p10
-```
-
-The `FootballService` functions `getLeagueTable` and `getFixtures` take an additional parameter and pass it into `callFootballService`.
-
-To pass query parameters into `get` you need to construct a `URLSearchParams` object and add it to `RequestOptionsArgs`, as `search`, like `{ search: <URL Search Params here>}`.
-
-Luckily for you the `FootballService` already contains `buildSearchParams` function that can construct a `URLSearchParams` from an object.
-
-Your task is to update the `callFootballService` function in `FootballService` to include a `RequestOptionsArgs` when calling `get`. Hint: You’ll need to pass `this.buildSearchParams(queryParams)` in as a new `search` property of the `get` method’s second argument.
-
-<!--TODO: See if I can add get getPLFixturesLastWeek-->
-
-To test it out you can use the `getPLFixtures` function, which already passes `{ timeFrame: 'n7' }`, as an optional parameter. Try to change the timeFrame to another value like `n3` or `p7` and see if you get different results.
-
-<div class="solution-start"></div>
+#### getTeamFixtures
 
 ``` javascript
-private callFootballService(method: string, queryParams: any = {}): Observable<any> {
-  return this.http.get(
-    this.baseUrl + method, 
-    { 
-      headers: this.header,
-      search: this.buildSearchParams(queryParams)
-    })
-    .map(result => result.json());
+public getTeamFixtures(teamId: number): Observable<Fixture[]> {
+  const url = `${this.baseUrl}/teams/${teamId}/fixtures`;
+
+  return this.http.get(url, { headers: this.header })
+  .map(result => result.json())
+  .map(result => FootballFactory.fixturesFromRaw(result));
+}
+```
+
+#### getFixtures
+
+``` javascript
+public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): Observable<Fixture[]> {
+  const url = `${this.baseUrl}/competitions/${competitionId}/fixtures`;
+
+  let searchParams: URLSearchParams = new URLSearchParams();
+  if (options.matchday) {
+    searchParams.set('matchday', options.matchday.toString());
+  } else if (options.timeFrame) {
+    searchParams.set('timeFrame', options.timeFrame);
+  }
+
+  // alternative way
+  // let searchParams = this.buildSearchParams(options);
+
+  return this.http.get(url, { headers: this.header, params: options })
+  .map(result => result.json())
+  .map(result => FootballFactory.fixturesFromRaw(result));
 }
 ```
 
 <div class="solution-end"></div>
 
 <div class="exercise-end"></div>
-
 
 ### Components 
 <!--with custom attributes-->
@@ -534,7 +492,7 @@ Open `competition-fixtures.component.html`, comment out the `GridLayout` and the
 
 You will notice that `my-fixture` expects a `[fixture]` attribute. This will be added in the next exercise.
 
-> **HINT**: Make sure to keep the `GridLayout` commented out—you’ll need it momentarily.
+<!-- > **HINT**: Make sure to keep the `GridLayout` commented out—you’ll need it momentarily. -->
 
 <div class="solution-start"></div>
 
@@ -557,9 +515,13 @@ Now if you reload the app and go to `View Fixtures` you should get something lik
 
 #### Step 2 - Update FixtureComponent and add @Input for fixture
 
-Move the `GridLayout` from `competition-fixtures.component.html` and its content into `fixture.component.html`.
+Head to `fixture.component.ts`.
 
-To get the fixtures to show up correctly again, you’ll need to add a `fixture` input attribute to the `FixtureComponent`. Refer to the solution below if you get stuck.
+Currently the `FixtureComponent` has a `fixture` attribute, however in this state there is no way to update the value of the fixture from the `LeagueFixtures` Component.
+
+What we need is to turn the `fixture` into an `@Input` type attribute.
+
+Refer to the solution below if you get stuck.
 
 <div class="solution-start"></div>
 
@@ -569,29 +531,64 @@ To get the fixtures to show up correctly again, you’ll need to add a `fixture`
 export class FixtureComponent {
   @Input() fixture: Fixture;
 
+  public fakeDate: Date = new Date();
+
   public displayScore(): boolean {
-    return undefined;
-  }
-
-  public inPlay(): boolean {
-    return undefined;
-  }
-
-  public homeTeamTap() {
-    
-  }
-
-  public awayTeamTap() {
-
+    // return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY'
+    return false;
   }
 }
+```
+<div class="solution-end"></div>
+
+#### Step 3 - Update displayScore
+
+You should also update `displayScore()` to use the commented out logic. Basically it is a helper function that is used to define whether we should display the `score` or the `date and time` of the game.
+
+<div class="solution-start"></div>
+
+``` javascript
+public displayScore(): boolean {
+  return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY'
+}
+```
+
+<div class="solution-end"></div>
+
+
+#### Step 4 - Update HTML
+
+Head to `fixture.component.html`.
+
+Update all the `Labels` so that they display the data from the fixture attribute. Make sure you take care of `homeTeamName`, `awayTeamName`, `result.goalsHomeTeam`, `result.goalsAwayTeam`, and `date`.
+
+<div class="solution-start"></div>
+
+``` XML
+<GridLayout rows="auto" columns="*, auto, *" class="list-group-item">  
+  <Label col="0" [text]="fixture.homeTeamName" class="h4 text-right"></Label>
+  
+  <StackLayout col="1"  horizontalAlignment="center" class="m-x-10 h3">
+    <StackLayout *ngIf="displayScore()"  orientation="horizontal">
+      <Label [text]="fixture.result.goalsHomeTeam" class="score m-r-5"></Label>
+      <Label [text]="fixture.result.goalsAwayTeam" class="score"></Label>
+    </StackLayout>
+
+    <StackLayout *ngIf="!displayScore()" class="text-center text-muted h5">
+        <Label [text]="fixture.date | date:'H:m'"></Label>
+        <Label [text]="fixture.date | date:'dd-MMM'" textWrap="true"></Label>
+    </StackLayout>
+  </StackLayout>
+
+  <Label col="2" [text]="fixture.awayTeamName" class="h4 text-left"></Label>
+</GridLayout>
 ```
 
 <div class="solution-end"></div>
 
 Reload the app. Now the fixtures should be displayed correctly again.
 
-#### Step 3 (Bonus) - Convert inline styling conditions to functions
+<!-- #### Step 3 (Bonus) - Convert inline styling conditions to functions
 
 The `<StackLayout>` and `<Label>` components in `fixture.component.html` have some logic embedded in `*ngIf` and `[class.in-play]` attributes.
 
@@ -636,7 +633,7 @@ public inPlay(): boolean {
 }
 ```
 
-<div class="solution-end"></div>
+<div class="solution-end"></div> -->
 
 <div class="exercise-end"></div>
 
@@ -683,110 +680,89 @@ Note that `$event` will contain the value passed into `emit`, in this case this 
 
 ### Exercise: Creating a presentation component with @Output
 
-In this exercise we need to update the app, so that if the user clicks on a team in the fixture, the app should navigate to `TeamComponent` with `teamId` of that team.
+In this exercise we need to update the app, so that if the user taps on a team in the league table, the app should navigate to `TeamComponent` with `teamId` of that team.
 
-Even though you could make it happen by adding `[nsRouterLink]` on each fixture team name `Label`. We want the navigation logic to be delegated to the parent component, so it should be `CompetitionFixturesComponent` that should trigger navigation.
+Even though you could make it happen by adding `[nsRouterLink]` on each team standing. We want the navigation logic to be delegated to the parent component, so it should be the `TablesComponent` that should trigger the navigation.
 
+> So in short: when the user taps on a team, we need the `LeagueTableComponent` to emit `teamSelected` with the `teamId`. And the `TablesComponent` should intercept the `teamSelected` event and call `onTeamSelected` where it should navigate to the `TeamComponent`.
 
 <h4 class="exercise-start">
-  <b>Exercise</b>: Update FixtureComponent with @Output
+  <b>Exercise</b>: Update LeagueTableComponent with @Output
 </h4>
 
-#### Step 1
+#### Step 1 - Add @Output EventEmitter
 
-Add a custom event called `teamTap` to your `FixtureComponent` in `fixture.component.ts`, similar to how it was done in `LeagueTableComponent` example above.
+Add an `EventEmitter<number>` called `teamSelected` to your `LeagueTableComponent` in `league-table.component.ts`.
 
 <div class="solution-start"></div>
 ``` javascript
-@Output() teamTap: EventEmitter<number> = new EventEmitter<number>();
+@Output() teamSelected: EventEmitter<number> = new EventEmitter<number>();
 ```
 <div class="solution-end"></div>
 
-#### Step 2
+#### Step 2 - Emit value
 
-Update the `homeTeamTap` and `awayTeamTap` functions in your `FixtureComponent`, so that they `emit` events named `homeTeamId` or `awayTeamId`, respectively.
+Update the `onTeamSelected` function, so that it `emits` the `teamSelected` event with the `teamId`
 
 <div class="solution-start"></div>
 
-#### homeTeamTap
 ``` javascript
-public homeTeamTap() {
-  console.log('::FixtureComponent::homeTeamTap::' + this.fixture.homeTeamId);
-  this.teamTap.emit(this.fixture.homeTeamId);
+onTeamSelected(event) {
+  const selectedTeamId = this.table.standing[event.index].teamId;
+  console.log('::LeagueTableComponent::onTeamSelect::' + selectedTeamId);
+
+  this.teamSelected.emit(selectedTeamId);
 }
 ```
 
-#### awayTeamTap
-``` javascript
-public awayTeamTap() {
-  console.log('::FixtureComponent::awayTeamTap::' + this.fixture.awayTeamId);
-  this.teamTap.emit(this.fixture.awayTeamId);
-}
-```
 <div class="solution-end"></div>
 
-#### Step 3
+#### Step 3 - Call OnTeamSelect from the UI
 
-Update the home and away team labels in `fixture.component.html`, so that a `tap` event will trigger either `homeTeamTap` or `awayTeamTap`:
+Now we need the `ListView` in `league-table.component.html` to call `onTeamSelected` whenever the user taps on one of the teams. 
+`ListView` has an event `itemTap` which does precisely that.
 
-> **HINT**: If you haven’t already, it’s a good idea to add a `console.log` call to your `homeTeamTap` and `awayTeamMap` functions, so that you can test whether the bindings you’re adding in this steps are working appropriately.
+Add `(itemTap)="onTeamSelected($event)"` to the `ListView`.
 
 <div class="solution-start"></div>
 
-#### home label
+ListView first line
+
 ``` XML
-<Label
-  col="0"
-  [text]="fixture.homeTeamName"
-  (tap)="homeTeamTap()"
-  class="h4 text-right">
-</Label>
+<ListView [items]="table?.standing" class="list-group" (itemTap)="onTeamSelected($event)">
 ```
 
-#### away label
-``` XML
-<Label
-  col="2"
-  [text]="fixture.awayTeamName"
-  (tap)="awayTeamTap()"
-  class="h4">
-</Label>
-```
 <div class="solution-end"></div>
-
 
 #### Step 4
-Now the `FixtureComponent` is ready to emit when tapping a team through `teamTap`. Let's use it in `CompetitionFixturesComponent` to navigate to the tapped team.
+Now the `LeagueTableComponent` is ready to emit a `teamId` each time user taps on it. We just need to take it and navigate to the `TeamComponent`.
 
-Update the `teamSelected` function in `competition-fixtures.component.ts` to navigate to the team with the provided `teamId`.
+The `onTeamTap` function in `tables.component.ts` already has a logic to navigate to the `TeamComponent` with a specified `teamId`.
 
-You might need to inspect `app.routing.ts` to find out what is the correct route.
-
-<div class="solution-start"></div>
 ``` javascript
-teamSelected(teamId: number) {
-  console.log('::CompetitionFixturesComponent::teamSelected::' + teamId);
+private onTeamTap(teamId: number) {
+  console.log('::TablesComponent::onTeamTap::' + teamId);
   this.router.navigate(['/football/team', teamId]);
 }
 ```
-<div class="solution-end"></div>
 
-#### Step 5
-
-Update the `<my-fixture>` tag in `competition-fixtures.component.html` so that it binds to the `teamTap` event, and calls the `teamSelected` function that you just implemented in your `CompetitionFixturesComponent` component.
+We just need to update each of the `<my-league-table>` tag to bind to the `(teamSelected)` event and call `onTeamTap`
 
 > **HINT**: Don't forget to pass `$event` to `teamSelected`.
 
 <div class="solution-start"></div>
 ``` XML
-<my-fixture [fixture]="fixture" (teamTap)="teamSelected($event)"></my-fixture>
+<my-league-table [competitionId]="PremierLeagueId" (teamSelected)="onTeamTap($event)"></my-league-table>
 ```
 <div class="solution-end"></div>
 
-Now upon tapping in a team in the fixture you should be redirected to a team view, which should display fixtures for that given team.
+#### Step 5
+
+Test the app to see if this works.
+
+Now upon tapping on a team in the table you should be redirected to a team view, which should display fixtures for that given team.
 
 <div class="exercise-end"></div>
-
 
 ### Components with custom input (two-way binding)
 <!--https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html#creating-custom-two-way-data-bindings-->
@@ -828,16 +804,9 @@ Now you can use the `ColorPickerComponent` like this:
 <color-picker [(color)]="selectedColorFromParentClass"></color-picker>
 ```
 
-### Bonus Service Exercise
-
-When requesting fixtures from `api.football-data.org` it allows you to set the timeframe to # of days before (`p7`) or after (`n7`) the current date. However, it is not possible to get fixtures for before and after in one call.
-
-Update `FootballService` in `football.service.ts` to add a function which would:
-
- * take two parameters: `before` and `after`
- * call football service twice, once with the value of before and once with the value of after
- * return merged results
-
 ### Bonus Component Exercise
 
-Create a `PlayerComponent`, which will display player details like: name, position, jerseyNumber and nationality. Then add a list of players to the `Team` screen. 
+Can you implement the missing pieces of the `PlayerComponent`? 
+Your task is to add an `@Input` to capture the player object, then update `TeamComponent`, so that it displayes a list of players instead of fixtures.
+
+Each `PlayerComponent` should display player details like: name, position, jerseyNumber and nationality. 
