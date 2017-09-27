@@ -1,8 +1,10 @@
 ## Lesson 1 - UI
 
-In this lesson we are going to familiarise ourselves with some of the most commonly used UI components in NativeScript.
+In this lesson we are going to familiarize ourselves with some of the most commonly used UI components in NativeScript.
 
 For this exercise we will use the contents of the `app/profile` folder, which already contains some pieces of the app that we need.
+
+If you are using `Playground` then you should head to: [https://play.nativescript.org/?template=nsday-profile`](https://play.nativescript.org/?template=nsday-profile)
 
 If you open `profile.component.ts` you will notice that our component has an attribute `profile` with some populated values. In the next few steps we will create a screen that will allow us to display and edit these values.
 
@@ -64,45 +66,58 @@ Edit `profile.component.html` and have fun.
 <ActionBar title="Profile" class="action-bar">
 </ActionBar>
 
-<StackLayout>
-  <Label text="Name:"></Label>
-  <TextField
-    [text]="profile.name"
-    hint="name">
-  </TextField>
+<TabView selectedIndex="0" >
+  <ScrollView *tabItem="{title:'UI Components'}">
+    <StackLayout>
+      <Label text="Name:"></Label>
+      <TextField
+        [text]="profile.name"
+        hint="name">
+      </TextField>
 
-  <Label text="Password:"></Label>
-  <TextField
-    [text]="profile.password"
-    hint="password"
-    secure="true">
-  </TextField>
+      <Label text="Password:"></Label>
+      <TextField
+        [text]="profile.password"
+        hint="password"
+        secure="true">
+      </TextField>
 
-  <Label text="Angular Pro:"></Label>
-  <Switch
-    [checked]="profile.angularPro"
-    class="switch"
-    horizontalAlignment="left">
-  </Switch>
+      <Label text="Angular Pro:"></Label>
+      <Switch
+        [checked]="profile.angularPro"
+        class="switch"
+        horizontalAlignment="left">
+      </Switch>
 
-  <Label text="Date of Birth:"></Label>
-  <DatePicker 
-    [day]="profile.dob.getDate()"
-    [month]="profile.dob.getMonth()+1"
-    [year]="profile.dob.getYear() + 1900">
-  </DatePicker>
-  
-  <Label text="Coding power:"></Label>
-  <Slider
-    [value]="profile.codingPower"
-    [minValue]="0"
-    [maxValue]="10"
-    class="slider">
-  </Slider>
+      <Label text="Date of Birth:"></Label>
+      <DatePicker 
+        [day]="profile.dob.getDate()"
+        [month]="profile.dob.getMonth()+1"
+        [year]="profile.dob.getYear() + 1900">
+      </DatePicker>
+      
+      <Label text="Coding power:"></Label>
+      <Slider
+        [value]="profile.codingPower"
+        [minValue]="0"
+        [maxValue]="10"
+        class="slider">
+      </Slider>
 
-  <Button text="Save" (tap)="save()"></Button>
-  <Button text="Clear" (tap)="clear()"></Button>
-</StackLayout>
+      <Button text="Save" (tap)="save()"></Button>
+      <Button text="Clear" (tap)="clear()"></Button>
+    </StackLayout>
+  </ScrollView>
+
+  <GridLayout *tabItem="{title:'DataForm'}" rows="*, auto, auto">
+    <!-- http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/Editors/dataform-editors-list -->
+    <RadDataForm [source]="profile" row="0">
+
+    </RadDataForm>
+    <Button text="Save" (tap)="save()" class="btn btn-primary" row="1"></Button>
+    <Button text="Clear" (tap)="clearForm()" class="btn btn-primary" row="2"></Button>
+  </GridLayout>
+</TabView>
 ```
 
 <div class="solution-end"></div>
@@ -145,6 +160,7 @@ Then uncomment the line that adds `NativeScriptFormsModule` to the `@NgModule` i
 imports: [
   NativeScriptModule,
   AppRoutingModule,
+  NativeScriptUIDataFormModule,
   NativeScriptHttpModule,
   NativeScriptFormsModule
 ],
@@ -166,43 +182,56 @@ Test it by clicking the Clear and Save buttons and see what happens.
 ``` html
 <ActionBar title="Profile" class="action-bar">
 </ActionBar>
+<TabView selectedIndex="0" >
+  <ScrollView *tabItem="{title:'UI Components'}">
+    <StackLayout>
+      <Label text="Name:"></Label>
+      <TextField
+        [(ngModel)]="profile.name"
+        hint="name">
+      </TextField>
 
-<StackLayout>
-  <Label text="Name:"></Label>
-  <TextField
-    [(ngModel)]="profile.name"
-    hint="name">
-  </TextField>
+      <Label text="Password:"></Label>
+      <TextField
+        [text]="profile.password"
+        hint="password"
+        secure="true">
+      </TextField>
 
-  <Label text="Password:"></Label>
-  <TextField
-    [text]="profile.password"
-    hint="password"
-    secure="true">
-  </TextField>
+      <Label [text]="'Angular Pro: ' + ((profile.angularPro) ? 'Yes': 'No')"></Label>
+      <Switch
+        [(ngModel)]="profile.angularPro"
+        class="switch"
+        horizontalAlignment="left">
+      </Switch>
 
-  <Label [text]="'Angular Pro: ' + ((profile.angularPro) ? 'Yes': 'No')"></Label>
-  <Switch
-    [(ngModel)]="profile.angularPro"
-    class="switch"
-    horizontalAlignment="left">
-  </Switch>
+      <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()"></Label>
+      <DatePicker
+        [(ngModel)]="profile.dob">
+      </DatePicker>
+      
+      <Label [text]="'Coding power:' + profile.codingPower"></Label>
+      <Slider
+        [(ngModel)]="profile.codingPower"
+        [minValue]="0"
+        [maxValue]="10">
+      </Slider>
+      
+      <Button text="Save" (tap)="save()"></Button>
+      <Button text="Clear" (tap)="clear()"></Button>
+    </StackLayout>
+  </ScrollView>
 
-  <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()"></Label>
-  <DatePicker
-    [(ngModel)]="profile.dob">
-  </DatePicker>
-  
-  <Label [text]="'Coding power:' + profile.codingPower"></Label>
-  <Slider
-    [(ngModel)]="profile.codingPower"
-    [minValue]="0"
-    [maxValue]="10">
-  </Slider>
-  
-  <Button text="Save" (tap)="save()"></Button>
-  <Button text="Clear" (tap)="clear()"></Button>
-</StackLayout>
+  <GridLayout *tabItem="{title:'DataForm'}" rows="*, auto, auto">
+    <!-- http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/Editors/dataform-editors-list -->
+    <RadDataForm [source]="profile" row="0">
+
+    </RadDataForm>
+    <Button text="Save" (tap)="save()" class="btn btn-primary" row="1"></Button>
+    <Button text="Clear" (tap)="clearForm()" class="btn btn-primary" row="2"></Button>
+    
+  </GridLayout>
+</TabView>
 ```
 
 <div class="solution-end"></div>
@@ -318,44 +347,57 @@ Update the UI to make it look more like the one in the picture below.
 ``` html
 <ActionBar title="Profile" class="action-bar">
 </ActionBar>
-  
-<StackLayout class="form m-l-5">
-  <Label text="Name:" class="text-primary"></Label>
-  <TextField
-    [(ngModel)]="profile.name"
-    hint="name">
-  </TextField>
 
-  <Label text="Password:" class="text-primary"></Label>
-  <TextField
-    [(ngModel)]="profile.password"
-    hint="password"
-    secure="true">
-  </TextField>
+<TabView selectedIndex="0" >
+  <ScrollView *tabItem="{title:'UI Components'}">
+    <StackLayout class="form m-l-5">
+      <Label text="Name:" class="text-primary"></Label>
+      <TextField
+        [(ngModel)]="profile.name"
+        hint="name">
+      </TextField>
 
-  <Label [text]="'Angular Pro: ' + ((profile.angularPro) ? 'Yes': 'No')" class="text-primary"></Label>
-  <Switch
-    [(ngModel)]="profile.angularPro"
-    class="switch"
-    horizontalAlignment="left">
-  </Switch>
+      <Label text="Password:" class="text-primary"></Label>
+      <TextField
+        [(ngModel)]="profile.password"
+        hint="password"
+        secure="true">
+      </TextField>
 
-  <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()" class="text-primary"></Label>
-  <DatePicker
-    [(ngModel)]="profile.dob">
-  </DatePicker>
-  
-  <Label [text]="'Coding power:' + profile.codingPower" class="text-primary"></Label>
-  <Slider
-    [(ngModel)]="profile.codingPower"
-    [minValue]="0"
-    [maxValue]="10"
-  >
-  </Slider>
+      <Label [text]="'Angular Pro: ' + ((profile.angularPro) ? 'Yes': 'No')" class="text-primary"></Label>
+      <Switch
+        [(ngModel)]="profile.angularPro"
+        class="switch"
+        horizontalAlignment="left">
+      </Switch>
 
-  <Button text="Save" (tap)="save()" class="btn btn-primary"></Button>
-  <Button text="Clear" (tap)="clear()" class="btn btn-outline"></Button>
-</StackLayout>
+      <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()" class="text-primary"></Label>
+      <DatePicker
+        [(ngModel)]="profile.dob">
+      </DatePicker>
+      
+      <Label [text]="'Coding power:' + profile.codingPower" class="text-primary"></Label>
+      <Slider
+        [(ngModel)]="profile.codingPower"
+        [minValue]="0"
+        [maxValue]="10">
+      </Slider>
+
+      <Button text="Save" (tap)="save()" class="btn btn-primary"></Button>
+      <Button text="Clear" (tap)="clear()" class="btn btn-outline"></Button>
+    </StackLayout>  
+  </ScrollView>
+
+  <GridLayout *tabItem="{title:'DataForm'}" rows="*, auto, auto">
+    <!-- http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/Editors/dataform-editors-list -->
+    <RadDataForm [source]="profile" row="0">
+
+    </RadDataForm>
+    <Button text="Save" (tap)="save()" class="btn btn-primary" row="1"></Button>
+    <Button text="Clear" (tap)="clearForm()" class="btn btn-primary" row="2"></Button>
+    
+  </GridLayout>
+</TabView>
 ```
 
 <div class="solution-end"></div>
@@ -499,3 +541,201 @@ Instead of zooming, make the label spin around, just for practice. Hint, both `p
 
 <div class="exercise-end"></div>
 
+### NativeScript UI
+
+NativeScript comes with an additional `FREE` UI library called [NativeScript UI](https://www.nativescript.org/ui-for-nativescript) it comes with a set of great components like: ListView, SideDrawer, Calendar, DataForm, Gauges and AutoComplete.
+
+You can find the Angular Docs for these components [here](http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/overview)
+
+#### Adding NativeScript UI to a project
+
+To install it, we only need to run:
+`tns plugin add nativescript-pro-ui`
+
+Then we need to add the necessary Modules to `@NgModule`. For example:
+
+```
+import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/dataform/angular';
+...
+
+@NgModule({
+  imports: [
+    NativeScriptUICalendarModule,
+    ...
+  ],
+  ...
+})
+```
+
+
+
+And then we are ready to use the component in the html.
+
+#### DataForm
+
+For today we will focus on one of the components [DataForm](http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/dataform-overview).
+
+It allows you to construct nice looking entry forms with all the styling and eye pleasing UX purely through configuration.
+
+Let's say we want to create a feedback form with the following structure.
+Please note that for `component` we will use the `components` array as a source of values.
+
+```
+  public feedback = {
+    title: 'Amazing Results',
+    score: 5,
+    date: new Date(),
+    component: 'DataForm',
+    note: `This looks really great, 
+I was really amazed how little effort it took to implement it.
+I can't wait to see other components`,
+    test: false
+  }
+
+  public components: string[] = [
+    'DataForm',
+    'SideDrawer',
+    'Calendar',
+    'ListView',
+    'Gauge',
+    'AutoComplete'
+  ];
+```
+
+To do that we need to use `RadDataForm`.
+
+First we need to add it to the `@NgModule`:
+
+```
+import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/dataform/angular';
+...
+
+@NgModule({
+  imports: [
+    NativeScriptUIDataFormModule,
+    ...
+  ],
+  ...
+})
+```
+
+Then we can add the `RadDataForm` (with `source` bound to `feedback`) to the html:
+
+```
+<RadDataForm [source]="feedback">
+</RadDataForm>
+```
+
+This will already produce a nice DataForm, however the form doesn't necessarily know in which order to arrange the fields or what sort of input editors we want to use.
+
+#### Configuring Properties
+
+For a simple field we need to use `TKEntityProperty`. We need to provide 
+
+ * `name` - the name of the property, 
+ * `displayName` - the label for the field, 
+ * `index` - used to define the order in which the fields should be displayed on the form, 1 means first
+
+```
+<RadDataForm [source]="feedback">
+  <TKEntityProperty tkDataFormProperty name="name" displayName="displayName" index="1"></TKEntityProperty>
+</RadDataForm>
+```
+
+#### Configuring Editors
+
+Then we can additionally specify an editor type.
+For the full list [see the documentation](http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/Editors/dataform-editors-list)
+
+For example, to match to a date we can use `TKPropertyEditor` with `type:"DatePicker"`:
+
+```
+<RadDataForm [source]="feedback">
+  <TKEntityProperty tkDataFormProperty name="date" displayName="Date" index="3">
+    <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+  </TKEntityProperty>
+</RadDataForm>
+```
+
+#### Configuring List based Editors
+
+Also to provide a list of possible values we can use `TKPropertyEditor` with `type:"DatePicker"` and `[valuesProvider]`: 
+
+```
+<RadDataForm [source]="feedback">
+  <TKEntityProperty tkDataFormProperty name="component" displayName="Component" index="4" [valuesProvider]="components">
+    <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+  </TKEntityProperty>
+</RadDataForm>
+```
+
+#### Final result
+
+![Recreate UI](images/warmup-dataform.png?raw=true)
+
+Here is the full implementation of the feedback form:
+
+```
+<RadDataForm [source]="feedback">
+  <TKEntityProperty tkDataFormProperty name="name" displayName="displayName" index="1"></TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="score" displayName="Score" index="2">
+    <TKPropertyEditor tkEntityPropertyEditor type="Stepper"></TKPropertyEditor>
+  </TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="date" displayName="Date" index="3">
+    <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+  </TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="component" displayName="Component" index="4" [valuesProvider]="components">
+    <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+  </TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="note" displayName="Note" index="5">
+    <TKPropertyEditor tkEntityPropertyEditor type="MultilineText"></TKPropertyEditor>
+  </TKEntityProperty>
+</RadDataForm>
+```
+
+This is just scratching the surface of what `RadDataForm` can do. We can also add input validation, add field grouping add images and more.
+
+### Exercise: NativeScript UI
+
+<h4 class="exercise-start">
+  <b>Exercise</b>: NativeScript UI
+</h4>
+
+Change `selectedIndex="1"` on the `TabView` component, so that each time the app refreshes we will start on the second tab.
+
+In this exercise you need to populate `Entity Properties` to match each item of the profile.
+There is already a `RadDataForm` on the second tab.
+
+```
+<RadDataForm [source]="profile" row="0">
+
+</RadDataForm>
+```
+
+You can find the list of editors in the [documentation](http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/Editors/dataform-editors-list)
+
+<div class="solution-start"></div>
+
+Here is how your `DataForm` should look like:
+
+```
+<RadDataForm [source]="profile" row="0">
+  <TKEntityProperty tkDataFormProperty name="name" displayName="Name" index="0"></TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="password" displayName="Password" index="1">
+    <TKPropertyEditor tkEntityPropertyEditor type="Password"></TKPropertyEditor>
+  </TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="dob" displayName="DOB" index="2">
+    <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+  </TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="codingPower" displayName="Coding Power" index="3">
+    <TKPropertyEditor tkEntityPropertyEditor type="Stepper"></TKPropertyEditor>
+  </TKEntityProperty>
+  <TKEntityProperty tkDataFormProperty name="angularPro" displayName="Angular Pro" index="3">
+    <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+  </TKEntityProperty>
+</RadDataForm>
+```
+
+<div class="solution-end"></div>
+
+<div class="exercise-end"></div>
