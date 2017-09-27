@@ -2,7 +2,7 @@
 
 ### Intro
 
-In this lesson we are going to familiarise ourselves with navigation techniques.
+In this lesson we are going to familiarize ourselves with navigation techniques.
 
 
 ### Routing configuration
@@ -69,6 +69,8 @@ Open `app.routing.ts` and change the `redirectTo` of the default route to `'/col
 ``` XML
 { path: '', redirectTo: '/color', pathMatch: 'full' },
 ```
+
+If you are using `Playground` then you should head to: [https://play.nativescript.org/?template=nsday-color`](https://play.nativescript.org/?template=nsday-color)
 
 #### Step 2
 
@@ -334,10 +336,6 @@ Your task is to implement the empty functions in `blue.component.ts`, so that:
 
 #### goRed (Absolute Solution)
  `this.router.navigate(['/color/red']);`
-
-#### goRed (Relative Solution)
-
- `this.router.navigate(['../red'], { relativeTo: this.route });`
 
 #### goPink 
 
