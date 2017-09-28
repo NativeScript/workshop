@@ -499,12 +499,12 @@ You will notice that `my-fixture` expects a `[fixture]` attribute. This will be 
 The template in `competition-fixtures.component.html` should look like this:
 
 ``` XML
-<template let-fixture="item">
+<ng-template let-fixture="item">
   <StackLayout class="list-group-item">
     <!-- Fixture Template -->
     <my-fixture [fixture]="fixture"></my-fixture>
   </StackLayout>
-</template>
+</ng-template>
 ```
 
 <div class="solution-end"></div>

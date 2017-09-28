@@ -207,11 +207,11 @@ Once that is done, open `wizard-profile.component.html` and wrap the `PullToRefr
 ``` XML
 <PullToRefresh (refresh)="onPull($event)">
   <ListView [items]="powers" class="list-group" (itemTap)="onPowerTap($event)">
-    <template let-power="item">
+    <ng-template let-power="item">
       <StackLayout>
         <Label [text]="power.name + ': ' + power.level" class="list-group-item"></Label>
       </StackLayout>
-    </template>
+    </ng-template>
   </ListView>
 </PullToRefresh>
 ```
