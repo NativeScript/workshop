@@ -682,7 +682,7 @@ Note that `$event` will contain the value passed into `emit`, in this case this 
 
 In this exercise we need to update the app, so that if the user taps on a team in the league table, the app should navigate to `TeamComponent` with `teamId` of that team.
 
-Even though you could make it happen by adding `[nsRouterLink]` on each team standing. We want the navigation logic to be delegated to the parent component, so it should be the `TablesComponent` that should trigger the navigation.
+Even though you could make it happen by adding `[nsRouterLink]` on each team standing, we want the navigation logic to be delegated to the parent component, so it should be the `TablesComponent` that should trigger the navigation.
 
 > So in short: when the user taps on a team, we need the `LeagueTableComponent` to emit `teamSelected` with the `teamId`. And the `TablesComponent` should intercept the `teamSelected` event and call `onTeamSelected` where it should navigate to the `TeamComponent`.
 
