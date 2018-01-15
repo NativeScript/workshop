@@ -547,15 +547,14 @@ NativeScript comes with an additional `FREE` UI library called [NativeScript UI]
 
 You can find the Angular Docs for these components [here](http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/overview)
 
-#### Adding NativeScript UI to a project
+#### Using NativeScript UI to a project
 
-To install it, we only need to run:
-`tns plugin add nativescript-pro-ui`
+The `nativescript-pro-ui` should already be installed in the project.
 
-Then we need to add the necessary Modules to `@NgModule`. For example:
+To use it we need to add the necessary Modules to `@NgModule`. For example:
 
 ```
-import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/dataform/angular';
+import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/calendar/angular';
 ...
 
 @NgModule({
