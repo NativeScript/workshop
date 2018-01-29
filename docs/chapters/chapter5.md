@@ -3,7 +3,7 @@
 ### Services
 <!-- https://angular.io/docs/ts/latest/tutorial/toh-pt4.html-->
 
-Services are JavaScript functions that are responsible for doing a specific task. Angular services are injected using a Dependency Injection mechanism and include the value, function or feature that is required by the application. There nothing specially related to Services in Angular--there is no ServiceBase class--but still services can be treated as fundamental to Angular applications.
+Services are JavaScript functions that are responsible for doing a specific task. Angular services are injected using a Dependency Injection mechanism and include the value, function or feature that is required by the application. There is nothing especially related to Services in NativeScript Angular--there is no ServiceBase class--but still services can be treated as fundamental to Angular applications.
 
 #### Creating a service
 
@@ -362,7 +362,7 @@ public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): O
 ### Components 
 <!--with custom attributes-->
 
-The component is a controller class with a template which mainly deals with a view of the application and logic on the page. It is a bit of code can be used throughout an application. The component knows how to render itself and configure dependency injection.
+The component is a controller class with a template which mainly deals with a view of the application and logic on the page. It is a bit of code that can be used throughout an application. The component knows how to render itself and configure dependency injection.
 
 The component contains two important things; one is a view and another contains some logic.
 
