@@ -581,7 +581,7 @@ To do that we need to use `RadDataForm`.
 First we need to add it to the `@NgModule`:
 
 ```
-import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/dataform/angular';
+import { NativeScriptUIDataFormModule } from 'nativescript-pro-ui/dataform/angular';
 ...
 
 @NgModule({
