@@ -48,8 +48,8 @@ const routes: Routes = [
 This time:
 
  * The default path is for `articles`,
- * `items` and `items/:id` are grouped together, which means that would could change `items` to something else in just one place,
- * we can also navigate to `articles`, `articles/read/5`, `articles/edit/5` and `articles/search/angular/navigation` (this will translate to `tech='angular'` and `keyword='navigation'`) 
+ * `items` and `items/:id` are grouped together, which means that we could change `items` to something else in just one place,
+ * We can also navigate to `articles`, `articles/read/5`, `articles/edit/5` and `articles/search/angular/navigation` (this will translate to `tech='angular'` and `keyword='navigation'`) 
 
 There is a lot more you can do in here, which is out of scope for this workshop. See [Angular docs](https://angular.io/docs/ts/latest/guide/router.html) for more info on the subject.
 
