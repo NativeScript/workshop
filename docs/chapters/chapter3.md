@@ -524,30 +524,10 @@ You can find the Angular Docs for these components [here](http://docs.telerik.co
 
 #### Using NativeScript UI to a project
 
-The `nativescript-pro-ui` should already be installed in the project.
-
-To use it we need to add the necessary Modules to `@NgModule`. For example:
-
-```
-import { NativeScriptUICalendarModule } from 'nativescript-pro-ui/calendar/angular';
-...
-
-@NgModule({
-  imports: [
-    NativeScriptUICalendarModule,
-    ...
-  ],
-  ...
-})
-```
-
-
-
-And then we are ready to use the component in the html.
-
-#### DataForm
-
 For today we will focus on one of the components [DataForm](http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/dataform-overview).
+
+You `nativescript-ui-dataform` should already be installed in the project.
+So, there is no need to run a separate npm install.
 
 It allows you to construct nice looking entry forms with all the styling and eye pleasing UX purely through configuration.
 
