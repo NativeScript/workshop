@@ -1,0 +1,37 @@
+<ActionBar [title]="competitionName" class="action-bar">
+</ActionBar>
+
+<DockLayout stretchLastChild="true">
+  <ListView [items]="fixtures" class="list-group">
+    <ng-template let-fixture="item">
+      <!-- fixture template - to be replaced with my-fixture -->
+      <StackLayout class="list-group-item">
+        <GridLayout rows="auto" columns="*, auto, *">  
+          <Label
+            col="0"
+            [text]="fixture.homeTeamName"
+            class="h4 text-right">
+          </Label>
+            
+          <StackLayout col="1"  horizontalAlignment="center" class="p-l-10 p-r-10 h3">
+            <StackLayout *ngIf="fixture.status === 'FINISHED' || fixture.status === 'IN_PLAY'"  orientation="horizontal">
+              <Label [text]="fixture.result.goalsHomeTeam" class="score m-r-5" [class.in-play]="fixture.status === 'IN_PLAY'"></Label>
+              <Label [text]="fixture.result.goalsAwayTeam" class="score" [class.in-play]="fixture.status === 'IN_PLAY'"></Label>
+            </StackLayout>
+
+            <StackLayout *ngIf="!(fixture.status === 'FINISHED' || fixture.status === 'IN_PLAY')" class="text-center text-muted h5">
+                <Label [text]="fixture.date | date:'H:m'"></Label>
+                <Label [text]="fixture.date | date:'dd-MMM'" textWrap="true"></Label>
+            </StackLayout>
+          </StackLayout>
+          
+          <Label
+            col="2"
+            [text]="fixture.awayTeamName"
+            class="h4">
+          </Label>
+        </GridLayout>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</DockLayout>

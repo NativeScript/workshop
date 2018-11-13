@@ -1,0 +1,12 @@
+.score {
+  border-color: blue;
+  color: blue;
+  border-width:1;
+  width: 20;
+  text-align: center;
+  padding: 2;
+}
+
+.in-play {
+  color: red;
+}

@@ -1,0 +1,23 @@
+<ActionBar title="Profile" class="action-bar">
+</ActionBar>
+
+<TabView selectedIndex="0" >
+  <StackLayout *tabItem="{title:'UI Components'}" class="form m-l-5">
+    <Label text="Add your code here" class="text-primary"></Label>
+  </StackLayout>
+
+  <GridLayout *tabItem="{title:'DataForm'}" rows="*, auto, auto">
+    <!-- https://docs.nativescript.org/angular/ui/rich-components#dataform -->
+    <!-- http://docs.telerik.com/devtools/nativescript-ui/Controls/Angular/DataForm/dataform-overview -->
+    <RadDataForm [source]="profile" row="0">
+
+    </RadDataForm>
+
+    <Button text="Save" (tap)="save()" class="btn btn-primary" row="1"></Button>
+    <!-- <Button text="Clear" (tap)="clearForm()" class="btn btn-primary" row="2"></Button> -->
+    <Button text="Clear" [nsRouterLink]="['/dogos']" class="btn btn-primary" row="2"></Button>
+    
+
+
+  </GridLayout>
+</TabView>

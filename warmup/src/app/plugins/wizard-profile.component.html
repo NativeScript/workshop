@@ -1,0 +1,35 @@
+<ActionBar title="Wizard Profile" class="action-bar">
+</ActionBar>
+
+<DockLayout class="m-l-15 m-r-15">
+  <StackLayout dock="top">
+    <Button *ngIf="profilePicture === undefined" text="Take Profile Picture" (tap)="takeProfilePicture()" class="btn btn-primary"></Button>
+    <Image *ngIf="profilePicture !== undefined"
+      [src]="profilePicture"
+      class="m-t-5 m-b-5 img-rounded"
+      height="25%"
+      (tap)="takeProfilePicture()">
+    </Image>
+    
+    <Label text="Name:" class="text-primary"></Label>
+    <TextField hint="name" [(ngModel)]="name"></TextField>
+    
+    <Label text="Powers:" class="text-primary"></Label>
+  </StackLayout>
+
+  <Button dock="bottom" text="Share Picture" (tap)="sharePicture()" class="btn btn-primary"></Button>
+  <Button dock="bottom" text="Share" (tap)="share()" class="btn btn-primary"></Button>
+
+  <!--tns plugin add nativescript-pulltorefresh/-->
+  <!-- Make sure to register in main.ts -->
+
+    <ListView [items]="powers" class="list-group" (itemTap)="onPowerTap($event)">
+      <ng-template let-power="item">
+        <StackLayout>
+          <Label [text]="power.name + ': ' + power.level" class="list-group-item"></Label>
+        </StackLayout>
+      </ng-template>
+    </ListView>
+
+
+</DockLayout>

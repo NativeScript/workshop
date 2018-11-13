@@ -1,0 +1,18 @@
+<GridLayout rows="auto" columns="*, auto, *" class="list-group-item">  
+  <Label col="0" text="homeTeamName" class="h4 text-right"></Label>
+  <StackLayout col="1"  horizontalAlignment="center" class="m-x-10 h3">
+    <!-- Update text to bind to fixture.result. goalsHomeTeam/goalsAwayTeam see models/fixture.model.ts for the data structure -->
+    <StackLayout *ngIf="displayScore()"  orientation="horizontal">
+      <Label [text]="0" class="score m-r-5"></Label>
+      <Label [text]="0" class="score"></Label>
+    </StackLayout>
+
+    <!-- Update fakeDate to get the date from the fixtures -->
+    <StackLayout *ngIf="!displayScore()" class="text-center text-muted h5">
+        <Label [text]="fakeDate | date:'H:m'"></Label>
+        <Label [text]="fakeDate | date:'dd-MMM'" textWrap="true"></Label>
+    </StackLayout>
+  </StackLayout>
+
+  <Label col="2" text="awayTeamName" class="h4 text-left"></Label>
+</GridLayout>

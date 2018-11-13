@@ -1,0 +1,20 @@
+.danger-slider {
+  background-color: red;
+}
+
+.zoom {
+  animation-name: zoom;
+  animation-duration: 2s;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.5, 0.5) }
+  40% { transform: scale(1.6, 1.6) }
+  to {  transform: scale(1.0,1.0) }
+}
+
+@keyframes spin {
+  from { transform: rotate(-30) }
+  40% { transform: rotate(420) }
+  to {  transform: rotate(0)}
+}
