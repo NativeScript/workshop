@@ -25,7 +25,19 @@ cd HelloWorld
     <b>Exercise 2</b>: Running your app
 </h4>
 
-You use the `tns run` command to run NativeScript apps. If you’d like to complete this workshop on iOS, run the following command.
+You can use the `tns preview` command to run NativeScript apps in the {N} Companion apps.
+For Android, you can download the apps from:
+
+ * [Google Play - {N} Playground](https://play.google.com/store/apps/details?id=org.nativescript.play&hl=en)
+ * [Google Play - {N} Preview](https://play.google.com/store/apps/details?id=org.nativescript.preview&hl=en)
+
+For iOS, you can download the apps from:
+
+ * [iTunes - {N} Playground](https://itunes.apple.com/us/app/nativescript-playground/id1263543946?mt=8)
+ * [iTunes - {N} Preview](https://itunes.apple.com/us/app/nativescript-preview/id1264484702?mt=8)
+
+
+Alternatively, you can perform the builds locally. To do so, use the `tns run` command to run NativeScript apps. If you’d like to complete this workshop on iOS, run the following command.
 
 ```
 tns run ios

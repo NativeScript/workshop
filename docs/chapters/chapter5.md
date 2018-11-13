@@ -42,7 +42,7 @@ import { MyHappyService } from './my-happy.service';
   imports: [
     NativeScriptModule,
     AppRoutingModule,
-    NativeScriptHttpModule,
+    NativeScriptHttpClientModule,
     NativeScriptFormsModule
   ],
   declarations: [
@@ -94,50 +94,50 @@ export class MoodComponent {
 }
 ```
 
-### Http
+### HttpClient
 <!--https://medium.com/google-developer-experts/angular-2-introduction-to-new-http-module-1278499db2a0#.nh7b07pjg-->
 
-NativeScript comes with its own implementation of the `Http` module, which uses `Android` and `iOS` native functionality to perform the calls.
+NativeScript comes with its own implementation of the `HttpClientModule`, which uses `Android` and `iOS` native functionality to perform the calls.
 
-This is exposed as `NativeScriptHttpModule`, which implements the same interface as the web `Http` module.
+This is exposed as `NativeScriptHttpClientModule`, which implements the same interface as the web `HttpClient` module.
 
-#### Http: adding the module to the app
+#### HttpClient: adding the module to the app
 
 This means that all you have to do is declare our NativeScript wrapper in the respective module file and Dependency Injection will take care of the rest.
 
-This is done by adding `NativeScriptHttpModule` to `@NgModule` `imports`.
+This is done by adding `NativeScriptHttpClientModule` to `@NgModule` `imports`.
 
 ``` javascript
-import { NativeScriptHttpModule } from 'nativescript-angular/http';
+import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 ```
 
 ``` javascript
 imports: [
   ...
-  NativeScriptHttpModule,
+  NativeScriptHttpClientModule,
 ],
 ```
 
-From this point onwards the code that uses the `Http` module is `exactly the same` as the code you would write for a `web application`.
+From this point onwards the code that uses the `HttpClient` module is `exactly the same` as the code you would write for a `web application`.
 
-This gives us a high level Angular `Http` module that is capable of performing various request natively for `Android`, `iOS` and `Web`.
+This gives us a high level Angular `HttpClient` module that is capable of performing various request natively for `Android`, `iOS` and `Web`.
 
 ![Http](images/warmup-http.png?raw=true)
 
-#### Http: Injecting the service
+#### HttpClient: Injecting the service
 
 Then you can `import` and `Inject` the `Http` module where you are planning to use it.
 
 ``` javascript
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 ```
 
 ``` javascript
-constructor(private http: Http) {
+constructor(private http: HttpClient) {
 }
 ```
 
-#### Http: calling the service
+#### HttpClient: calling the service
 
 The http module has a bunch of useful functions like, `get`, `post`, `put`, `delete` and others.
 Each takes a `url` as a parameter and optional `options`, and then they return an `Observable` with a `Response`.
@@ -152,11 +152,9 @@ Please note that you should always convert the response to json()
 ``` javascript
 doSomething() {
   this.http.get('http://api.someopendata.org/cities') // make the call
-  .map(response => response.json())                   // convert the result to json()
-  .map(result => result.cities)                       // map the result to the object we need to return
   .subscribe(                                         // subscribe and do something with the result
-    cities => console.log(cities),
-    error => console.error('Error: ' + err),
+    result => console.log(result.cities),
+    error => console.error('Error: ' + error),
     () => console.log('Completed!')
   )
 }
@@ -167,45 +165,43 @@ Example of how to call `get` and convert the `Observable` to a `Promise`:
 ``` javascript
 doSomething() {
   this.http.get('http://api.someopendata.org/cities') // make the call
-  .map(response => response.json())                   // convert the result to json()
-  .map(result => result.cities)                       // map the result to the object we need to return
   .toPromise()                                        // convert the observable to a promise
   .then(                                              // then do something with the result
-    cities => console.log(cities),
-    error => console.error('Error: ' + err)
+    result => console.log(result.cities),
+    error => console.error('Error: ' + error)
   )
 }
 ```
 
-#### Http: Adding Headers to http calls
+#### HttpClient: Adding Headers to http calls
 
 If you need to pass headers into a `http` call, you can construct it by using `Headers` class, append data and then add it to `options?: RequestOptionsArgs`.
 
 ``` javascript
-import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 ```
 
 ``` javascript
-let myHeaders = new Headers();
+let myHeaders = new HttpHeaders();
 myHeaders.append('key', 'value');
 
 this.http.get('http://api.someopendata.org/cities', 
   { headers: myHeaders })
 ```
 
-#### Http: Constructing URL search params
+#### HttpClient: Constructing URL search params
 
-If you need to pass query parameters (like service?mood='happy'&face='round') into a `http` call, you can construct it by using `URLSearchParams` class, append query params and then add it to `options?: RequestOptionsArgs`.
+If you need to pass query parameters (like service?mood='happy'&face='round') into a `http` call, you can construct it by using `HttpParams ` class, append query params and then add it to `options?: RequestOptionsArgs`.
 
 
 ``` javascript
-import { Http, Headers, URLSearchParams } from '@angular/http';
+import { Http, HttpHeaders, HttpParams } from '@angular/common/http';
 ```
 
 ``` javascript
-let searchParams: URLSearchParams = new URLSearchParams();
-searchParams.set('mood', 'happy');
-searchParams.set('face', 'round');
+let searchParams = new HttpParams();
+searchParams = searchParams.set('mood', 'happy');
+searchParams = searchParams.set('face', 'round');
 
 this.http.get('http://api.someopendata.org/cities', 
   { headers: myHeaders, search: searchParams })
@@ -234,33 +230,9 @@ Let's start with changing the default route in `app.routing.ts` to `'/service-te
 { path: '', redirectTo: '/service-test', pathMatch: 'full' },
 ```
 
-If you try to run the application, it will fail with the following error: `Error: No provider for FootballService!` 
-
-You need to add the `FootballService` to `app.module.ts`.
-
-<b>HINT</b> Remember that this should be added to the providers.
-
-<div class="solution-start"></div>
-
-First import `FootballService`
-
-``` javascript
-import { FootballService } from './football.service';
-```
-
-And then add this inside `@NgModule`:
-
-``` javascript
-providers: [
-  FootballService
-],
-```
-
-<div class="solution-end"></div>
-
 <div class="exercise-end"></div>
 
-Now the app should be loading without any issues. However none of the buttons will deliver the results we want.
+This should load an app with a bunch of buttons, but only the first button will provide you with results.
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Implementing the http calls
@@ -304,8 +276,9 @@ public getTeam(teamId: number): Observable<Team> {
   const url = `${this.baseUrl}/teams/${teamId}`;
 
   return this.http.get(url, { headers: this.header })
-  .map(result => result.json())
-  .map(result => FootballFactory.teamFromRaw(result));
+  .pipe(
+    map(result => FootballFactory.teamFromRaw(result))
+  );
 }
 ```
 
@@ -316,8 +289,9 @@ public getPlayers(teamId: number): Observable<Player[]> {
   const url = `${this.baseUrl}/teams/${teamId}/players`;
 
   return this.http.get(url, { headers: this.header })
-  .map(result => result.json())
-  .map(result => FootballFactory.playersFromRaw(result));
+  .pipe(
+    map(result => FootballFactory.playersFromRaw(result))
+  );
 }
 ```
 
@@ -328,8 +302,9 @@ public getTeamFixtures(teamId: number): Observable<Fixture[]> {
   const url = `${this.baseUrl}/teams/${teamId}/fixtures`;
 
   return this.http.get(url, { headers: this.header })
-  .map(result => result.json())
-  .map(result => FootballFactory.fixturesFromRaw(result));
+  .pipe(
+    map(result => FootballFactory.fixturesFromRaw(result))
+  );
 }
 ```
 
@@ -339,19 +314,20 @@ public getTeamFixtures(teamId: number): Observable<Fixture[]> {
 public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): Observable<Fixture[]> {
   const url = `${this.baseUrl}/competitions/${competitionId}/fixtures`;
 
-  let searchParams: URLSearchParams = new URLSearchParams();
+  let searchParams = new HttpParams();
   if (options.matchday) {
-    searchParams.set('matchday', options.matchday.toString());
+    searchParams = searchParams.set('matchday', options.matchday.toString());
   } else if (options.timeFrame) {
-    searchParams.set('timeFrame', options.timeFrame);
+    searchParams = searchParams.set('timeFrame', options.timeFrame);
   }
 
   // alternative way
   // let searchParams = this.buildSearchParams(options);
 
   return this.http.get(url, { headers: this.header, params: options })
-  .map(result => result.json())
-  .map(result => FootballFactory.fixturesFromRaw(result));
+  .pipe(
+    map(result => FootballFactory.fixturesFromRaw(result))
+  );
 }
 ```
 

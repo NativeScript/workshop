@@ -15,9 +15,9 @@ When you create a brand new {N} app, you will straight away get a sample `Routes
 
 ``` javascript
 const routes: Routes = [
-  { path: "", redirectTo: "/items", pathMatch: "full" },
-  { path: "items", component: ItemsComponent },
-  { path: "item/:id", component: ItemDetailComponent },
+  { path: '', redirectTo: '/items', pathMatch: 'full' },
+  { path: 'items', component: ItemsComponent },
+  { path: 'item/:id', component: ItemDetailComponent },
 ];
 ```
 
