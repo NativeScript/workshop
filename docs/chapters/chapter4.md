@@ -283,7 +283,7 @@ this.router.navigate(['child'],      {relativeTo: this.route});
 To clear history just provide `clearHistory` into `navigate`, like this:
 
 ``` javascript
-this.router.navigate(['/articles', { clearHistory: true }]);
+this.router.navigate(['/articles'], { clearHistory: true } );
 ```
 
 Please note that you must use `RouterExtensions` for this to work. Also, `clearHistory` works only with `page-router-outlet`; this doesn't work with `router-outlet`.
