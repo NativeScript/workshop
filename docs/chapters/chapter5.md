@@ -204,7 +204,7 @@ searchParams = searchParams.set('mood', 'happy');
 searchParams = searchParams.set('face', 'round');
 
 this.http.get('http://api.someopendata.org/cities', 
-  { headers: myHeaders, search: searchParams })
+  { headers: myHeaders, params: searchParams })
 ```
 
 ### Exercise: Football Service
