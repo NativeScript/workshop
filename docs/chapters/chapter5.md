@@ -275,7 +275,7 @@ As you implement each of the functions, you can test them with the buttons in th
 public getTeam(teamId: number): Observable<Team> {
   const url = `${this.baseUrl}/teams/${teamId}`;
 
-  return this.http.get(url, { headers: this.header })
+  return this.http.get<any>(url, { headers: this.header })
   .pipe(
     map(result => FootballFactory.teamFromRaw(result))
   );
@@ -288,7 +288,7 @@ public getTeam(teamId: number): Observable<Team> {
 public getPlayers(teamId: number): Observable<Player[]> {
   const url = `${this.baseUrl}/teams/${teamId}/players`;
 
-  return this.http.get(url, { headers: this.header })
+  return this.http.get<any>(url, { headers: this.header })
   .pipe(
     map(result => FootballFactory.playersFromRaw(result))
   );
@@ -301,7 +301,7 @@ public getPlayers(teamId: number): Observable<Player[]> {
 public getTeamFixtures(teamId: number): Observable<Fixture[]> {
   const url = `${this.baseUrl}/teams/${teamId}/fixtures`;
 
-  return this.http.get(url, { headers: this.header })
+  return this.http.get<any>(url, { headers: this.header })
   .pipe(
     map(result => FootballFactory.fixturesFromRaw(result))
   );
@@ -324,7 +324,7 @@ public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): O
   // alternative way
   // let searchParams = this.buildSearchParams(options);
 
-  return this.http.get(url, { headers: this.header, params: options })
+  return this.http.get<any>(url, { headers: this.header, params: searchParams })
   .pipe(
     map(result => FootballFactory.fixturesFromRaw(result))
   );
