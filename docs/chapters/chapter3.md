@@ -86,7 +86,7 @@ Edit `profile.component.html` and have fun.
       <Switch
         [checked]="profile.angularPro"
         class="switch"
-        horizontalAlignment="left">
+        horizontalAlignment="center">
       </Switch>
 
       <Label text="Date of Birth:"></Label>
@@ -177,7 +177,7 @@ Test it by clicking the Clear and Save buttons and see what happens.
       <Switch
         [(ngModel)]="profile.angularPro"
         class="switch"
-        horizontalAlignment="left">
+        horizontalAlignment="center">
       </Switch>
 
       <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()"></Label>
@@ -343,7 +343,7 @@ Update the UI to make it look more like the one in the picture below.
       <Switch
         [(ngModel)]="profile.angularPro"
         class="switch"
-        horizontalAlignment="left">
+        horizontalAlignment="center">
       </Switch>
 
       <Label [text]="'Date of Birth: ' + profile.dob.toLocaleDateString()" class="text-primary"></Label>
