@@ -11,3 +11,33 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 /* @import '~nativescript-theme-core/css/core.light.css'; */
 @import '~nativescript-theme-core/css/forest.css';
+
+Label {
+  font-family: "Open Sans", "OpenSans-Regular";
+}
+
+.font {
+  font-family: "Open Sans", "OpenSans-Regular";
+}
+
+.font-bold {
+  font-family: "Open Sans", "OpenSans-Bold";
+  font-weight: bold;
+}
+
+.font-italic {
+  font-family: "Open Sans", "OpenSans-Italic";
+  font-style: italic;
+}
+
+.pacifico {
+  font-family: "Pacifico", "Regular";
+}
+
+.roboto {
+  font-family: "Roboto";
+}
+
+.fa {
+  font-family: "Font Awesome 5 Free", "fa-solid-900";
+}
