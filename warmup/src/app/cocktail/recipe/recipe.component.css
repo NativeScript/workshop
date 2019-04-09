@@ -1,0 +1,13 @@
+.title {
+  font-size: 42;
+  font-weight: bold;
+  text-align: center;
+  color: #283593;
+  margin: 10 0
+}
+
+.instructions {
+  font-size: 22;
+  font-style: italic;
+  margin: 0 30 0 30;
+}

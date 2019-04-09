@@ -1,0 +1,19 @@
+TextField {
+  font-size: 20;
+  color: #283593;
+  padding: 8;
+  padding-left: 15;
+}
+
+.selected {
+  background-color: #e3f2fd;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24;
+  text-align: center;
+  padding: 10;
+  color: white;
+  background-color: #283593;
+}

@@ -1,0 +1,42 @@
+<ActionBar title="Cocktail Party" class="action-bar">
+</ActionBar>
+
+<GridLayout rows="6* 6*" columns="*">
+
+  <!-- 
+    <search-ingredient row="0" 
+      [(ingredient)]="selectedIngredient"
+      (ingredientChange)="updateCocktailList($event)">
+    </search-ingredient>
+  -->
+
+  <!-- Ingredient Search <start> -->
+  <StackLayout row="0">
+    <Label text="Select Ingredients:" class="title font-bold"></Label>
+    <TextField hint="Search Ingredient" (textChange)="search($event.value)" class="font"></TextField>
+
+    <ListView [items]="ingredients$ | async" class="list-group p-5" height="100%">
+      <ng-template let-ingredient="item">
+        <StackLayout>
+          <Label [text]="ingredient" class="list-group-item" [class.selected]="selectedIngredient === ingredient"
+            (tap)="updateCocktailList(ingredient); selectedIngredient = ingredient;"></Label>
+        </StackLayout>
+      </ng-template>
+    </ListView>
+  </StackLayout>
+  <!-- Ingredient Search <end> -->
+
+  <StackLayout row="1" *ngIf="selectedIngredient">
+    <Label [text]="'Cocktails: ' + selectedIngredient$.value" class="title font-bold"></Label>
+
+    <ListView [items]="cocktails$ | async" class="list-group p-x-5" height="100%">
+      <ng-template let-cocktail="item">
+        <GridLayout class="list-group-item" rows="auto" columns="auto, *"
+          [nsRouterLink]="['./recipe', cocktail.idDrink]">
+          <Image [src]="cocktail.strDrinkThumb" width="40" class="thumb img-circle"></Image>
+          <Label col="1" [text]="cocktail.strDrink" class="list-group-item-heading font-sb"></Label>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+  </StackLayout>
+</GridLayout>

@@ -1,0 +1,13 @@
+<StackLayout>
+  <Label text="Select Ingredients:" class="title font-bold"></Label>
+  <TextField hint="Search Ingredient" (textChange)="search($event.value)" class="font"></TextField>
+
+  <ListView [items]="ingredients$ | async" class="list-group" height="100%">
+    <ng-template let-item="item">
+      <StackLayout>
+        <Label [text]="item" class="list-group-item" [class.selected]="ingredient === item"
+          (tap)="selectIngredient(item)"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>

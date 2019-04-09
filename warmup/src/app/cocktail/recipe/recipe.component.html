@@ -1,0 +1,28 @@
+<ActionBar [title]="cocktail?.name" icon="" class="action-bar">
+</ActionBar>
+
+<TabView>
+  <StackLayout *tabItem="{title: 'Instructions '}">
+    <ScrollView height="100%">
+      <StackLayout *ngIf="cocktail">
+        <Image [src]="cocktail.imageUrl" width="100%"></Image>
+        <Label text="Instructions:" class="title font-bold"></Label>
+
+        <Label [text]="cocktail.instructions" textWrap="true" class="instructions"></Label>
+      </StackLayout>
+    </ScrollView>
+  </StackLayout>
+  <StackLayout *tabItem="{title: 'Ingredients '}">
+    <StackLayout *ngIf="cocktail">
+      <Label text="Ingredients:" class="title font-bold"></Label>
+      <ListView [items]="cocktail.ingredients" class="list-group" height="100%">
+        <ng-template let-ingredient="item">
+          <GridLayout columns="3*, 2*" class="list-group-item">
+            <Label col="0" [text]="ingredient.ingredient" textWrap="true"></Label>
+            <Label col="1" [text]="ingredient.measure" textWrap="true"></Label>
+          </GridLayout>
+        </ng-template>
+      </ListView>
+    </StackLayout>
+  </StackLayout>
+</TabView>

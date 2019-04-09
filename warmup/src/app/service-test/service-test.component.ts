@@ -1,83 +1,54 @@
 import { Component } from '@angular/core';
-import { Fixture } from '../models';
-import { FootballService } from '../football.service';
+import { CocktailService } from '../cocktail.service';
 import { Observable, throwError } from 'rxjs';
 
 @Component({
-    selector: 'ns-test',
-    moduleId: module.id,
-    templateUrl: './service-test.component.html',
+  selector: 'ns-test',
+  moduleId: module.id,
+  templateUrl: './service-test.component.html',
 })
 export class ServiceTestComponent {
-
-  constructor(private footballService: FootballService) {
+  
+  public response: string = 'Response goes here';
+  
+  constructor(private cocktailService: CocktailService) {
   }
-
-  getPLTable() {
-    this.footballService.getLeagueTable(445)
+  
+  getIngredients() {
+    this.cocktailService.getIngredients()
     .subscribe(
-      leagueTable => this.printData(leagueTable),
+      result => this.response = JSON.stringify(result, null, 2),
       error => this.printError(error)
     );
   }
-
-  getPLTeams() {
-    this.footballService.getTeams(445)
+    
+  findIngredients(term: string) {
+    this.cocktailService.findIngredients(term)
     .subscribe(
-      teams => this.printData(teams),
+      result => this.response = JSON.stringify(result, null, 2),
       error => this.printError(error)
     );
   }
-
-  getPLFixtures() {
-    this.footballService.getFixtures(445, { timeFrame: 'p7' })
+      
+  getCocktails(ingredient: string) {
+    this.cocktailService.getCocktails(ingredient)
     .subscribe(
-      fixtures => {
-        const fixturesEssential = fixtures.map((fix: Fixture) => {
-          return { 
-            homeTeam: fix.homeTeamName,
-            awayTeam: fix.awayTeamName,
-            date: fix.date,
-            score: fix.result.goalsHomeTeam + ':' + fix.result.goalsAwayTeam
-          }
-        })
-
-        this.printData(fixturesEssential);
-      },
+      result => this.response = JSON.stringify(result.slice(0, 10), null, 2),
       error => this.printError(error)
     );
   }
-
-  getLiverpool() {
-    this.footballService.getTeam(64)
+        
+  getCocktail(id: string) {
+    this.cocktailService.getCocktail(id)
     .subscribe(
-      team => this.printData(team),
+      result => this.response = JSON.stringify(result, null, 2),
       error => this.printError(error)
     );
   }
-
-  getLiverpoolPlayers() {
-    this.footballService.getPlayers(64)
-    .subscribe(
-      players => this.printData(players),
-      error => this.printError(error)
-    );
-  }
-
-  getLiverpoolFixtures() {
-    this.footballService.getTeamFixtures(64)
-    .subscribe(
-      fixtures => this.printData(fixtures),
-      error => this.printError(error)
-    );
-  }
-
-  printData(item) {
-    console.log(JSON.stringify(item, null, 2));
-  }
-
+          
   printError(error): Observable<never> {
-    console.log(JSON.stringify(error, null, 2));
+    this.response = `Error: ${error}`
+    console.log(this.response);
     return throwError(error);
   }
 }

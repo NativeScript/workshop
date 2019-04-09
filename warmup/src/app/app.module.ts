@@ -8,19 +8,18 @@ import { AppComponent } from './app.component';
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
-// import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
+import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
 
 import { ProfileComponent } from './profile/profile.component';
 import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './color';
+
 import { ServiceTestComponent } from './service-test/service-test.component';
-import { TablesComponent } from './football/tables.component';
-import { LeagueTableComponent } from './football/league-table.component';
-import { CompetitionFixturesComponent } from './football/competition-fixtures.component';
-import { FixtureComponent } from './football/fixture.component';
-import { TeamComponent } from './football/team.component';
-import { PlayerComponent } from './football/player.component';
+import { CocktailsComponent } from './cocktail/cocktails/cocktails.component';
+import { SearchComponent } from './cocktail/search/search.component';
+import { RecipeComponent } from './cocktail/recipe/recipe.component';
+
 import { WizardProfileComponent } from './plugins/wizard-profile.component';
 
 @NgModule({
@@ -32,7 +31,7 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
         AppRoutingModule,
 
         // NativeScriptFormsModule,
-        // NativeScriptHttpClientModule,
+        NativeScriptHttpClientModule,
 
         NativeScriptUIDataFormModule
     ],
@@ -52,17 +51,12 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
         // Services
         ServiceTestComponent,
         // Components
-        TablesComponent,
-        LeagueTableComponent,
-        CompetitionFixturesComponent,
-        FixtureComponent,
-        TeamComponent,
-        PlayerComponent,
+        CocktailsComponent,
+        SearchComponent,
+        RecipeComponent,
 
         //Lesson 4
         WizardProfileComponent,
-    ],
-    providers: [
     ],
     schemas: [
         NO_ERRORS_SCHEMA
