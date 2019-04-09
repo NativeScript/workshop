@@ -17,13 +17,8 @@ export class CocktailService {
   constructor(private http: HttpClient) { }
 
   // get a list of ingredients: https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list
-  getIngredients(): Observable<string[]> {
-    // return this.notImplemented('getIngredients');
-    return this.http.get<IngredientsRawResult>(`${this.baseUrl}/list.php?i=list`)
-      .pipe(
-        map(result => result.drinks.map(ingredient => ingredient.strIngredient1)),
-        map(ingredients => ingredients.sort())
-      );
+  public getIngredients(): Observable<string[]> {
+    return this.notImplemented('getIngredients');
 
     // 1. Construct a url based on www.thecocktaildb.com/api/json/v1/1/list.php?i=list
     // ideally by combining baseURL and /list.php
@@ -53,7 +48,7 @@ export class CocktailService {
      // 5. Can you add a another map to the pipe to sort the ingredients alphabeticaly?
   }
 
-  findIngredients(term: string) {
+  public findIngredients(term: string) {
     term = (term || '').toLowerCase();
 
     return this.getIngredients()
@@ -66,7 +61,7 @@ export class CocktailService {
 
 
   // get a list of drinks and a picture for a given ingredient: https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin
-  getCocktails(ingredient: string): Observable<CocktailOverviewRaw[]> {
+  public getCocktails(ingredient: string): Observable<CocktailOverviewRaw[]> {
     return this.notImplemented('getCocktails');
 
     // 1. Construct a url based on www.thecocktaildb.com/api/json/v1/1/filter.php
@@ -82,7 +77,7 @@ export class CocktailService {
   }
 
   // get a recipe for a given drink ID: https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=13940
-  getCocktail(id: string): Observable<CocktailRecipe> {
+  public getCocktail(id: string): Observable<CocktailRecipe> {
     return this.notImplemented('getCocktail');
 
     // 1. Construct a url based on www.thecocktaildb.com/api/json/v1/1/lookup.php
