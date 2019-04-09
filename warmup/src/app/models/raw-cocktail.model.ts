@@ -1,5 +1,13 @@
-export interface CocktailApiResult<T> {
-  drinks: T[];
+export interface IngredientsRawResult {
+  drinks: IngredientRaw[];
+}
+
+export interface CocktailsRawResult {
+  drinks: CocktailOverviewRaw[];
+}
+
+export interface CocktailRawResult {
+  drinks: CocktailRecipeRaw[];
 }
 
 export interface IngredientRaw {
