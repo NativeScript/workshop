@@ -605,7 +605,7 @@ Your task is to implement a Presentation Component called `CocktailItemComponent
   <b>Exercise</b>: Create CocktailItemComponent with @Input
 </h4>
 
-#### Step 1 - Replace current fixture template in Competition Fixtures 
+#### Step 1 - Replace current Drinks ListView template 
 
 The initial structure for `CocktailItemComponent` is already in place (see `cocktail-item.component.ts`) and added to declarations in `app.module.ts`.
 
@@ -624,6 +624,8 @@ Also `cocktail-item` contains `[nsRouterLink]`, as the navigation configuration 
 
 <!-- <div class="solution-start"></div> -->
 
+#### Step 2 - Update the template in the CocktailItem Component 
+
 Now, copy over the commented out `<GridLayout>` template to `cocktail-item.component.html`. But remember to remove the `[nsRouterLink]` property. Then change each `cocktail.` to `data.`
 
 Your `cocktail-item.component.html` should look like this:
@@ -634,6 +636,8 @@ Your `cocktail-item.component.html` should look like this:
   <Label col="1" [text]="data.strDrink" class="list-group-item-heading font-sb"></Label>
 </GridLayout>
 ```
+
+#### Step 3 - Enable the CocktailItem Component to receive cocktails as a data attribute
 
 Finally, in order for the `cocktail-item` to be able to receive `data`, you need to add an `@Input() data: CocktailOverviewRaw` to the Component definition in `cocktail-item.component.ts`.
 
