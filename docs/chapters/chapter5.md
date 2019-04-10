@@ -351,8 +351,6 @@ export class MyComponent implements OnInit {
         map(res => res.data)
       );
   }
-
-  }
 }
 ```
 
@@ -655,133 +653,54 @@ export class CocktailItemComponent {
 
 Now if you reload the app and select an ingredient, the app should work as before, but this time you have nice separation of how the Drinks ListView should present each item.
 
-### To be continued here!!!!!!!
-
 ### Components with custom events
 
-Adding a custom event to a component is easy. Let's have a look at `LeagueTableComponent` as an example.
-
-To make it work we need first to create an `EventEmitter`:
-
-``` javascript
-@Output() teamSelected: EventEmitter<number> = new EventEmitter<number>();
-```
-
-Note that this is made of 3 parts:
-
- * @Output - decorator
- * teamSelected - eventName
- * EventEmitter<number> - EventEmitter with the type of output
-
-Then every time we want to trigger the event, we can call `emit(value)` on `this.teamSelected`. Just like this:
+Adding a custom event - like a `(tap)` event - to a component is easy.<br/>
+This is done by adding an `EventEmitter` property with an `@Output` decorator. 
+Like this:
 
 ``` javascript
-onTeamSelect(event) {
-  const selectedTeamId = this.table.standing[event.index].teamId;
-  console.log('::LeagueTableComponent::onTeamSelect::' + selectedTeamId);
-  this.teamSelected.emit(selectedTeamId);
+@Component({
+  selector: 'team-selector'
+  ...
+})
+export class TeamSelectorComponent {
+  @Output() teamSelected: EventEmitter<number> = new EventEmitter<number>();
 }
 ```
 
-Obviously there must be something that actually triggers `onTeamSelect`. In this case this is done by the `<ListView>`
+This automatically means that our component, will have an event called `(teamSelected)`, which should be emitting *numbers*. And can be used like this (note that $event will pass the numbers emitted by the event).
 
 ``` XML
-<ListView [items]="table?.standing" class="list-group" (itemTap)="onTeamSelect($event)">
+<team-selector (teamSelected)="doSomething($event)"></team-selector>
 ```
 
-All this means that everywhere we use `<my-league-table>` we can now add a handler for `teamSelected` like this (see `tables.component.html`):
 
-``` XML
-<my-league-table [competitionId]="PremierLeagueId" (teamSelected)="onTeamTap($event)"></my-league-table>
-```
+#### Emitting values
 
-Note that `$event` will contain the value passed into `emit`, in this case this will be a `teamId`.
-
-### Exercise: Creating a presentation component with @Output
-
-In this exercise we need to update the app, so that if the user taps on a team in the league table, the app should navigate to `TeamComponent` with `teamId` of that team.
-
-Even though you could make it happen by adding `[nsRouterLink]` on each team standing, we want the navigation logic to be delegated to the parent component, so it should be the `TablesComponent` that should trigger the navigation.
-
-> So in short: when the user taps on a team, we need the `LeagueTableComponent` to emit `teamSelected` with the `teamId`. And the `TablesComponent` should intercept the `teamSelected` event and call `onTeamSelected` where it should navigate to the `TeamComponent`.
-
-<h4 class="exercise-start">
-  <b>Exercise</b>: Update LeagueTableComponent with @Output
-</h4>
-
-#### Step 1 - Add @Output EventEmitter
-
-Add an `EventEmitter<number>` called `teamSelected` to your `LeagueTableComponent` in `league-table.component.ts`.
-
-<div class="solution-start"></div>
-``` javascript
-@Output() teamSelected: EventEmitter<number> = new EventEmitter<number>();
-```
-<div class="solution-end"></div>
-
-#### Step 2 - Emit value
-
-Update the `onTeamSelected` function, so that it `emits` the `teamSelected` event with the `teamId`
-
-<div class="solution-start"></div>
+To make your component emit values, you just call `.emit(value)` on your event emitter. Like this (see `onTeamChanged()`):
 
 ``` javascript
-onTeamSelected(event) {
-  const selectedTeamId = this.table.standing[event.index].teamId;
-  console.log('::LeagueTableComponent::onTeamSelect::' + selectedTeamId);
+@Component({
+  selector: 'team-selector'
+  ...
+})
+export class TeamSelectorComponent {
+  @Output() teamSelected: EventEmitter<number> = new EventEmitter<number>();
 
-  this.teamSelected.emit(selectedTeamId);
+  onTeamChanged(teamId) {
+    this.teamSelected.emit(teamId);
+  }
 }
 ```
 
-<div class="solution-end"></div>
+This way, every time the `TeamSelectorComponent` calls `onTeamChanged`, this will result in the emitter triggering the `(teamSelected)` event.
 
-#### Step 3 - Call OnTeamSelect from the UI
-
-Now we need the `ListView` in `league-table.component.html` to call `onTeamSelected` whenever the user taps on one of the teams. 
-`ListView` has an event `itemTap` which does precisely that.
-
-Add `(itemTap)="onTeamSelected($event)"` to the `ListView`.
-
-<div class="solution-start"></div>
-
-ListView first line
+In the case of the below example, this will result in calling `doSomething()` with the `$event` value equal to  `teamId`.
 
 ``` XML
-<ListView [items]="table?.standing" class="list-group" (itemTap)="onTeamSelected($event)">
+<team-selector (teamSelected)="doSomething($event)"></team-selector>
 ```
-
-<div class="solution-end"></div>
-
-#### Step 4
-Now the `LeagueTableComponent` is ready to emit a `teamId` each time user taps on it. We just need to take it and navigate to the `TeamComponent`.
-
-The `onTeamTap` function in `tables.component.ts` already has a logic to navigate to the `TeamComponent` with a specified `teamId`.
-
-``` javascript
-private onTeamTap(teamId: number) {
-  console.log('::TablesComponent::onTeamTap::' + teamId);
-  this.router.navigate(['/football/team', teamId]);
-}
-```
-
-We just need to update each of the `<my-league-table>` tag to bind to the `(teamSelected)` event and call `onTeamTap`
-
-> **HINT**: Don't forget to pass `$event` to `teamSelected`.
-
-<div class="solution-start"></div>
-``` XML
-<my-league-table [competitionId]="PremierLeagueId" (teamSelected)="onTeamTap($event)"></my-league-table>
-```
-<div class="solution-end"></div>
-
-#### Step 5
-
-Test the app to see if this works.
-
-Now upon tapping on a team in the table you should be redirected to a team view, which should display fixtures for that given team.
-
-<div class="exercise-end"></div>
 
 ### Components with custom input (two-way binding)
 <!--https://blog.thoughtram.io/angular/2016/10/13/two-way-data-binding-in-angular-2.html#creating-custom-two-way-data-bindings-->
@@ -822,3 +741,110 @@ Now you can use the `ColorPickerComponent` like this:
 ``` XML
 <color-picker [(color)]="selectedColorFromParentClass"></color-picker>
 ```
+
+
+### Exercise: Creating a presentation component with @Input @Output
+
+In this exercise we need to update the `CocktailsComponent` to replace the first StackLayout that is used for finding an ingredient, and instead use the `SearchComponent`, like this:
+
+``` XML
+<search-ingredient row="0" 
+    [(ingredient)]="selectedIngredient"
+    (ingredientChange)="updateCocktailList($event)">
+</search-ingredient>
+```
+
+The `SearchComponent` already contains most of the logic required to load a list of ingredients, and filter them as the user types in the TextField.
+
+Your task is to update the `SearchComponent`, so that it allows:
+
+* two way binding to `[(ingredient)]`,
+* emitting selected ingredient via `(ingredientChange)`
+
+> Hint: Both of these task can be accomplished by adding `@Input()` and `@Output()` to `search.component.ts`. Make sure to also `emit()` ingredients via the emitter.
+
+<h4 class="exercise-start">
+  <b>Exercise</b>: Update LeagueTableComponent with @Output
+</h4>
+
+#### Step 0 - Switch to use SearchComponent
+
+You can start by commenting out the code in `cocktails.component.html` that is between:
+
+``` XML
+<!-- Ingredient Search <start> -->
+   code
+<!-- Ingredient Search <end> -->
+```
+
+Uncomment the `<search-ingredient>` code, to use the `SearchComponent` instead.
+
+Then also comment out the code in `cocktails.component.ts` that is between:
+
+```javascript
+/* Ingredient Search <start> */
+   code
+/* Ingredient Search <end> */
+```
+
+#### Step 1 - Add @Input() to ingredient
+
+Add `@Input()` decorator to the `ingredient` property to the `SearchComponent` in `search.component.ts`.
+
+<div class="solution-start"></div>
+``` javascript
+@Input() ingredient: string;
+```
+<div class="solution-end"></div>
+
+#### Step 2 - Add @Output EventEmitter
+
+Add an `EventEmitter<number>` called `ingredientChange`.
+
+This will work as `(ingredientChange)` event, but also it will enable two-way binding on the `ingredient` property.
+
+<div class="solution-start"></div>
+``` javascript
+@Output() ingredientChange = new EventEmitter<string>();
+```
+<div class="solution-end"></div>
+
+#### Step 3 - Emit value
+
+Update the `selectIngredient` function, so that it `emits` the `ingredientChange` event with the `val`.
+
+<div class="solution-start"></div>
+
+``` javascript
+public selectIngredient(val: string) {
+  this.ingredientChange.emit(val);
+}
+```
+
+<div class="solution-end"></div>
+
+#### Step 3 - Call selectIngredient from the UI
+
+Now we need the selected `Label` in the ListView in `search.component.html` to call `selectIngredient` whenever the user taps on one of the ingredients. 
+
+Add `(tap)="selectIngredient(item)"` to the `Label` inside the ListView.
+
+<div class="solution-start"></div>
+
+``` XML
+<Label 
+  [text]="item"
+  class="list-group-item" [class.selected]="ingredient === item"
+  (tap)="selectIngredient(item)">
+</Label>
+```
+
+<div class="solution-end"></div>
+
+#### Step 4
+
+Test the app to see if this works.
+
+Now upon tapping on a team in the table you should be redirected to a team view, which should display fixtures for that given team.
+
+<div class="exercise-end"></div>

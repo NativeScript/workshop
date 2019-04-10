@@ -5,8 +5,8 @@
   <ListView [items]="ingredients$ | async" class="list-group" height="100%">
     <ng-template let-item="item">
       <StackLayout>
-        <Label [text]="item" class="list-group-item" [class.selected]="ingredient === item"
-          (tap)="selectIngredient(item)"></Label>
+        <Label [text]="item" class="list-group-item" [class.selected]="ingredient === item">
+        </Label>
       </StackLayout>
     </ng-template>
   </ListView>
