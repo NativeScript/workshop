@@ -17,6 +17,7 @@ import { ColorComponent, BlueComponent, RedComponent, RGBComponent } from './col
 
 import { ServiceTestComponent } from './service-test/service-test.component';
 import { CocktailsComponent } from './cocktail/cocktails/cocktails.component';
+import { CocktailItemComponent } from './cocktail/cocktail-item/cocktail-item.component';
 import { SearchComponent } from './cocktail/search/search.component';
 import { RecipeComponent } from './cocktail/recipe/recipe.component';
 
@@ -52,6 +53,7 @@ import { WizardProfileComponent } from './plugins/wizard-profile.component';
         ServiceTestComponent,
         // Components
         CocktailsComponent,
+        CocktailItemComponent,
         SearchComponent,
         RecipeComponent,
 
