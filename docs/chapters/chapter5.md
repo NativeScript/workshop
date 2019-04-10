@@ -618,11 +618,11 @@ Open `cocktails.component.html`, comment out the `GridLayout` that is inside the
 </cocktail-item>
 ```
 
-You will notice that `cocktail-item` expects a `[data]` attribute (which is used to pass over the cocktail object). This will be added in the next exercise.
+You will notice that `cocktail-item` expects a `[data]` attribute (which is used to pass over the cocktail object).
 
 Also `cocktail-item` contains `[nsRouterLink]`, as the navigation configuration should be managed from the *Parent* component (`CocktailsComponent`), not the *Presentation* component.
 
-<div class="solution-start"></div>
+<!-- <div class="solution-start"></div> -->
 
 Now, copy over the commented out `<GridLayout>` template to `cocktail-item.component.html`. But remember to remove the `[nsRouterLink]` property. Then change each `cocktail.` to `data.`
 
@@ -647,7 +647,7 @@ export class CocktailItemComponent {
 }
 ```
 
-<div class="solution-end"></div>
+<!-- <div class="solution-end"></div> -->
 
 Now if you reload the app and select an ingredient, the app should work as before, but this time you have nice separation of how the Drinks ListView should present each item.
 
