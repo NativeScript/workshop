@@ -59,6 +59,24 @@ import { MyHappyService } from './my-happy.service';
 export class AppModule { }
 ```
 
+#### providedIn 
+
+You can also use `provideIn` property in the `@Injectable` decorator, which delegates it to Angular to provide the service in `'root'` or a specific module.
+
+```
+@Injectable({
+  providedIn: 'root'
+})
+export class MyHappyService {
+  
+  public doSomethingFun() {
+    console.log('I am a happy bunny... hop, hop, hop');
+  }
+}
+```
+
+This way you don't have to add it manually to the providers list of your ngModule.
+
 #### Injecting services
 
 <!--Angular docs: https://angular.io/docs/ts/latest/guide/dependency-injection.html-->
@@ -139,20 +157,20 @@ constructor(private http: HttpClient) {
 
 #### HttpClient: calling the service
 
-The http module has a bunch of useful functions like, `get`, `post`, `put`, `delete` and others.
+The http module has a bunch of useful functions like, `get`, `post`, `put`, `delete` and others. <td/>
 Each takes a `url` as a parameter and optional `options`, and then they return an `Observable` with a `Response`.
 
 ``` javascript
-get(url: string, options?: RequestOptionsArgs): Observable<Response>
+get<ResultType>(url: string, options?: RequestOptionsArgs): Observable<Response>
 ```
 
-Example of how to call `get` and `subscribe` to the `Observable` result:
+Example of how to call `get` and `subscribe` to the `Observable` result: <td/>
 Please note that you should always convert the response to json()
 
 ``` javascript
 doSomething() {
-  this.http.get('http://api.someopendata.org/cities') // make the call
-  .subscribe(                                         // subscribe and do something with the result
+  this.http.get<City[]>('http://api.someopendata.org/cities') // make the call
+  .subscribe(                                                 // subscribe and do something with the result
     result => console.log(result.cities),
     error => console.error('Error: ' + error),
     () => console.log('Completed!')
@@ -164,9 +182,9 @@ Example of how to call `get` and convert the `Observable` to a `Promise`:
 
 ``` javascript
 doSomething() {
-  this.http.get('http://api.someopendata.org/cities') // make the call
-  .toPromise()                                        // convert the observable to a promise
-  .then(                                              // then do something with the result
+  this.http.get<City[]>('http://api.someopendata.org/cities') // make the call
+  .toPromise()                                                // convert the observable to a promise
+  .then(                                                      // then do something with the result
     result => console.log(result.cities),
     error => console.error('Error: ' + error)
   )
@@ -185,7 +203,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 let myHeaders = new HttpHeaders();
 myHeaders.append('key', 'value');
 
-this.http.get('http://api.someopendata.org/cities', 
+this.http.get<City[]>('http://api.someopendata.org/cities', 
   { headers: myHeaders })
 ```
 
@@ -203,25 +221,167 @@ let searchParams = new HttpParams();
 searchParams = searchParams.set('mood', 'happy');
 searchParams = searchParams.set('face', 'round');
 
-this.http.get('http://api.someopendata.org/cities', 
+this.http.get<any>('http://api.someopendata.org/cities', 
   { headers: myHeaders, params: searchParams })
 ```
 
-### Exercise: Football Service
+#### Http parsing results
 
-For this exercise we will use `ServiceTestComponent` located in `service-test` folder and `FootballService`, which you can find in `football.service.ts`.
+Very often the response returned from the http service doesn't come in the format that we might need.
 
-If you are using `Playground` then you should head to: [https://play.nativescript.org/?template=nsday-football`](https://play.nativescript.org/?template=nsday-football)
+For example calling:
 
-`ServiceTestComponent` has several buttons, each designed to test a function of the `FootballService` that you will be constructing in this exercise. 
+``` javascript
+const cities$: Observable<any> = this.http.get<any>('http://api.someopendata.org/cities');
+```
 
-The football service is based on [football-data.org API](http://api.football-data.org/documentation)
+Might return an object like:
+
+``` javascript
+{
+  responseCode: 200,
+  data: [
+    'London', 'Paris', 'Amsterdam', 'Warsaw', 'Sofia'
+  ]
+}
+```
+
+While, you might be interested in the output to be formatted as an array of cities. <td/>
+To do that you can use `pipe` with a `map` from `rxjs`, like this:
+
+``` javascript
+const cities$: Observable<string[]> = this.http.get<any>('http://api.someopendata.org/cities')
+  .pipe(
+    map(res => res.data)
+  );
+
+```
+
+In the case where the response comes as a more complex object, like this:
+
+``` javascript
+{
+  responseCode: 200,
+  complexData: [
+    { city: 'London', country: 'England' },
+    { city: 'Paris', country: 'France' },
+    { city: 'Amsterdam', country: 'Netherlands' },
+    { city: 'Warsaw', country: 'Poland' },
+    { city: 'Sofia', country: 'Bulgaria' },
+  ]
+}
+```
+
+You could achieve the same in two steps: <br/>
+
+* First map `complexData` property (like before)
+* Second - use `.map()` on the `data` object, and extract `item.city` (note you can name the `data` and `item` params as anything you want)
+
+Like this:
+
+``` javascript
+const cities$: Observable<string[]> = this.http.get<any>('http://api.someopendata.org/cities')
+  .pipe(
+    map(res => res.complexData),
+    map(data => data.map(item => item.city) )
+  );
+```
+
+Or in one line:
+
+``` javascript
+const cities$: Observable<any> = this.http.get<any>('http://api.someopendata.org/cities')
+  .pipe(
+    map(res => res.complexData.map(item => item.city) ),
+  );
+```
+
+Then you could easily call:
+
+``` javascript
+cities$.subscribe(cities => {
+  console.log(cities); // this will print out an array of strings
+})
+```
+
+#### Subscribe / Unsubscribe
+
+
+Calling `.subscribe()` on an Observable is one of the way to get data out of it. <br/>
+Some of the Observables, like the one from `http.get()` automatically close and clean up, as soon as you receive the result. <br/>
+While other Observables remain active, until you call `.unsubscribe()`. Like this:
+
+``` javascript
+const myItems$: Observable<any> = this.listenToItems();
+
+const subscription: Subscription = myItems$.subscribe(
+  items => // do something with items;
+)
+
+subscription.unsubscribe();
+```
+
+A good place to `subscribe()` is in `ngOnInit()`.
+A good place to `unsubscribe()` is in `ngOnDestroy()`.
+
+> Note, there is no need to call `.unsubscribe()` on Observables returned from the `HttpClient`.
+
+#### Async pipe
+
+Angular has a very clean way of extracting data out of an Observable. It is called `async pipe`. It automatically subscribes to the provided Observable object, and unsubscribes when the component is getting cleaned up.
+
+With the help of the `async pipe` you may never need to explicitly call `subscribe` ever again.
+
+Here is how it works.
+
+* In the component definition, you get an Observable, and assign it to a property:
+
+``` javascript
+@Component({
+  ...
+})
+export class MyComponent implements OnInit {
+  public cities$: Observable<City[]>;
+
+  constructor(public http: HttpClient) {}
+
+  ngOnInit() {
+    this.cities$ = this.http.get('http://api.someopendata.org/cities')
+      .pipe(
+        map(res => res.data)
+      );
+  }
+
+  }
+}
+```
+
+* Then from the component template, you assign your the UI component to the Observable object and `| async` next to it, like this:
+
+``` XML
+<ListView [items]="cities$ | async" class="list-group">
+  <ng-template let-city="item">
+    <StackLayout>
+      <Label [text]="city" class="list-group-item"></Label>
+    </StackLayout>
+  </ng-template>
+</ListView>
+```
+
+In the above example, the listview will be populated with the data returned from the `cities$` observable.
+
+### Exercise: Cocktail Service
+
+For this exercise we will use `ServiceTestComponent` located in `service-test` folder and `CocktailService`, which you can find in `cocktail.service.ts`.
+
+`ServiceTestComponent` has several buttons, each designed to test a function of the `CocktailService` that you will be constructing in this exercise. 
+
+The football service is based on [thecocktaildb.com API](https://www.thecocktaildb.com/api.php)
 
 ![Test Service](images/warmup-service-test.png?raw=true)
 
-
 <h4 class="exercise-start">
-  <b>Exercise</b>: Injecting football service
+  <b>Exercise</b>: Change default the default route to show the Service Test Component
 </h4>
 
 Let's start with changing the default route in `app.routing.ts` to `'/service-test'`:
@@ -232,102 +392,87 @@ Let's start with changing the default route in `app.routing.ts` to `'/service-te
 
 <div class="exercise-end"></div>
 
-This should load an app with a bunch of buttons, but only the first button will provide you with results.
+This should load an app with a bunch of buttons. At this moment pressing each button should result in an error message.
 
 <h4 class="exercise-start">
   <b>Exercise</b>: Implementing the http calls
 </h4>
 
-For your convenience the `http` service is already injected into `FootballService` and the header with `apiKEY` is already configured.
-
 #### Step 1 - Make it work
 
-If you open `football.service.ts` you will notice that `getTeams` and `getLeagueTable` are already implemented, which are the functions required to display the data in the `TablesComponent`.
-
-If you press the `Get PL Table` button or `Get PL Teams`, you should get the data in the terminal.
+When you open `cocktail.service.ts` you will see that there are already a few function in there, however they are not implemented yet.
 
 #### Step 2 - Implement the missing functions
 
-Your job is to implement the remaining functions:
+Your job is to implement these functions:
 
- * `getTeam` - should make a call to: `https://api.football-data.org/v1/teams/{teamId}` with the `teamId` param,
- * `getPlayers` - should make a call to: `https://api.football-data.org/v1/teams/{teamId}/players` with the `teamId` param,
- * `getTeamFixtures` - should make a call to: `https://api.football-data.org/v1/teams/{teamId}/fixtures` with the `teamId` param,
- * `getFixtures` - should make a call to: `https://api.football-data.org/v1/competitions/{competitionId}/fixtures` with the `competitionId` param. Additionally this function should construct `URLSearchParams` for attributes passed in `options`.
-
-To implement the first 3 functions, you can follow the `getTeams` function as the example. 
-To implement `getFixtures`, see `getLeagueTable`, which constructs `URLSearchParams`.
+ 1. `getIngredients()`
+  * make a get call to: `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
+  * you can call get with `IngredientsRawResult` as the expected result type, like this `get<IngredientsRawResult>()`
+  * make sure to `pipe->map` the output to return an array of strings, containing ingredient names.
+ 2. `getCocktails(ingredient: string)`
+   * make a call to: `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin` with the `ingredient` as the `i` parameter.
+   * before you call `get()`, you need to construct `HttpParams` with `ingredient` passed as `i`
+   * you can call `get()` with `CocktailsRawResult` as the expected result type
+   * make sure to `pipe->map` the output to return the drinks array. (Optional) you may want to return an empty array if the output is null
+ 3. `getCocktail(id: string)`
+   * should make a call to: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=13940` with the `id` as the `i` parameter
+   * before you call `get()`, you need to construct `HttpParams` with `id` passed as `i`
+   * you can call `get()` with `CocktailRawResult` as the expected result type
+   * make sure to `pipe->map` the output, to return a `CocktailRecipe` object ( you can use the `CocktailRecipe constructor` on the first item returned in the result]
 
 In each function you will need to follow these steps:
 
  * construct the `url` - you can use the `baseUrl` property as the basis
- * use the `http` service to call `get()`
- * `map` and convert the result to `json`
- * use `FootballFactory` to convert the `Raw` output into the expected objects
+ * construct `HttpParams` if required
+ * use the `http` service to call `get<ResultType>(url, { params: myParams })`
+ * use `pipe` and `map` to parse the result into the correct format 
 
 As you implement each of the functions, you can test them with the buttons in the `Service Test`. If you get the data in the terminal, then you most likely did it right. But if you get an error message, then you need to keep working :)
 
 <div class="solution-start"></div>
 
-#### getTeam
+#### getIngredients
 
 ``` javascript
-public getTeam(teamId: number): Observable<Team> {
-  const url = `${this.baseUrl}/teams/${teamId}`;
+public getIngredients(): Observable<string[]> {
+  const url = `${this.baseUrl}/list.php?i=list`;
 
-  return this.http.get<any>(url, { headers: this.header })
-  .pipe(
-    map(result => FootballFactory.teamFromRaw(result))
-  );
+  return this.http.get<IngredientsRawResult>(url)
+    .pipe(
+      map(result => result.drinks.map(ingredient => ingredient.strIngredient1)),
+      map(ingredients => ingredients.sort())
+    );
 }
 ```
 
-#### getPlayers
+#### getCocktails
 
 ``` javascript
-public getPlayers(teamId: number): Observable<Player[]> {
-  const url = `${this.baseUrl}/teams/${teamId}/players`;
+public getCocktails(ingredient: string): Observable<CocktailOverviewRaw[]> {
+  const url = `${this.baseUrl}/filter.php`;
+  const params = new HttpParams().set('i', ingredient);
 
-  return this.http.get<any>(url, { headers: this.header })
-  .pipe(
-    map(result => FootballFactory.playersFromRaw(result))
-  );
+  return this.http.get<CocktailsRawResult>(url, { params })
+    .pipe(
+      map(result => (result) ? result.drinks : [])
+    );
 }
 ```
 
-#### getTeamFixtures
+#### getCocktail
 
 ``` javascript
-public getTeamFixtures(teamId: number): Observable<Fixture[]> {
-  const url = `${this.baseUrl}/teams/${teamId}/fixtures`;
+public getCocktail(id: string): Observable<CocktailRecipe> {
+  const url = `${this.baseUrl}/lookup.php`;
+  const params = new HttpParams().set('i', id);
 
-  return this.http.get<any>(url, { headers: this.header })
-  .pipe(
-    map(result => FootballFactory.fixturesFromRaw(result))
-  );
-}
-```
-
-#### getFixtures
-
-``` javascript
-public getFixtures(competitionId: number, options: FixtureSearchOptions = {}): Observable<Fixture[]> {
-  const url = `${this.baseUrl}/competitions/${competitionId}/fixtures`;
-
-  let searchParams = new HttpParams();
-  if (options.matchday) {
-    searchParams = searchParams.set('matchday', options.matchday.toString());
-  } else if (options.timeFrame) {
-    searchParams = searchParams.set('timeFrame', options.timeFrame);
-  }
-
-  // alternative way
-  // let searchParams = this.buildSearchParams(options);
-
-  return this.http.get<any>(url, { headers: this.header, params: searchParams })
-  .pipe(
-    map(result => FootballFactory.fixturesFromRaw(result))
-  );
+  return this.http.get<CocktailRawResult>(url, { params })
+    .pipe(
+      map(result =>
+        new CocktailRecipe(result.drinks[0])
+      )
+    );
 }
 ```
 
@@ -440,179 +585,63 @@ Now you can use it like this:
 
 ### Exercise: Creating a presentation component with @Input
 
-For this part of the exercise we will be using all components in the `football` folder.
+For this part of the exercise we will be using all components in the `cocktail` folder.
 
 Change the default route to:
 
 ``` javascript
-{ path: '', redirectTo: '/football', pathMatch: 'full' },
+{ path: '', redirectTo: '/drinks', pathMatch: 'full' },
 ```
 
-And run the application. You should get a view displaying a league table and a tab bar for navigation.
-When you press the `View Fixtures` button, you will get a list of fixtures.
+And run the application. You should get a view displaying a list of ingredients, and if you tap on one you should be presented with a list of cocktails.
+When you tap on a cocktail the app should navigate to the details page.
 
-![League Table](images/warmup-league-table.png?raw=true)
-![Fixtures](images/warmup-fixtures.png?raw=true)
+![Cocktail List](images/warmup-cocktail-list.png?raw=true)
+![Cocktail Details](images/warmup-cocktail-details.png?raw=true)
 
-Your task is to encapsulate the fixture template into a `FixtureComponent` and use it in `CompetitionFixturesComponent` instead of the current fixture template.
+Your task is to implement a Presentation Component called `CocktailItemComponent`, which can be used to display each item in the Cocktails List View, instead of the current XML teplate
 
 <h4 class="exercise-start">
-  <b>Exercise</b>: Create FixtureComponent with @Input
+  <b>Exercise</b>: Create CocktailItemComponent with @Input
 </h4>
 
 #### Step 1 - Replace current fixture template in Competition Fixtures 
 
-The initial structure for `FixtureComponent` is already in place (see `fixture.component.ts`) and added to declarations in `app.module.ts`.
+The initial structure for `CocktailItemComponent` is already in place (see `cocktail-item.component.ts`) and added to declarations in `app.module.ts`.
 
-Open `competition-fixtures.component.html`, comment out the `GridLayout` and then add `<my-fixture [fixture]="fixture"></my-fixture>` in its place.
-
-You will notice that `my-fixture` expects a `[fixture]` attribute. This will be added in the next exercise.
-
-<!-- > **HINT**: Make sure to keep the `GridLayout` commented out—you’ll need it momentarily. -->
-
-<div class="solution-start"></div>
-
-The template in `competition-fixtures.component.html` should look like this:
+Open `cocktails.component.html`, comment out the `GridLayout` that is inside the second `ListView` and then add: <br/>
 
 ``` XML
-<ng-template let-fixture="item">
-  <StackLayout class="list-group-item">
-    <!-- Fixture Template -->
-    <my-fixture [fixture]="fixture"></my-fixture>
-  </StackLayout>
-</ng-template>
+<cocktail-item 
+  [cocktail]="cocktail"
+  [nsRouterLink]="['./recipe', cocktail.idDrink]">
+</cocktail-item>
 ```
 
-<div class="solution-end"></div>
+in its place.
 
-Now if you reload the app and go to `View Fixtures` you should get something like this:
+You will notice that `cocktail-item` expects a `[cocktail]` attribute. This will be added in the next exercise.
 
-![Fixtures](images/warmup-custom-fixtures.png?raw=true)
-
-#### Step 2 - Update FixtureComponent and add @Input for fixture
-
-Head to `fixture.component.ts`.
-
-Currently the `FixtureComponent` has a `fixture` attribute, however in this state there is no way to update the value of the fixture from the `LeagueFixtures` Component.
-
-What we need is to turn the `fixture` into an `@Input` type attribute.
-
-Refer to the solution below if you get stuck.
+Also `cocktail-item` contains `[nsRouterLink]`, as the navigation configuration should be managed from the *Parent* component (`CocktailsComponent`), not the *Presentation* component.
 
 <div class="solution-start"></div>
 
-`FixtureComponent` should look like this:
+Now, copy over the commented out `<GridLayout>` template to `cocktail-item.component.html`. But remember to remove the `[nsRouterLink]` property.
 
-``` javascript
-export class FixtureComponent {
-  @Input() fixture: Fixture;
-
-  public fakeDate: Date = new Date();
-
-  public displayScore(): boolean {
-    // return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY'
-    return false;
-  }
-}
-```
-<div class="solution-end"></div>
-
-#### Step 3 - Update displayScore
-
-You should also update `displayScore()` to use the commented out logic. Basically it is a helper function that is used to define whether we should display the `score` or the `date and time` of the game.
-
-<div class="solution-start"></div>
-
-``` javascript
-public displayScore(): boolean {
-  return this.fixture.status === 'FINISHED' || this.fixture.status === 'IN_PLAY'
-}
-```
-
-<div class="solution-end"></div>
-
-
-#### Step 4 - Update HTML
-
-Head to `fixture.component.html`.
-
-Update all the `Labels` so that they display the data from the fixture attribute. Make sure you take care of `homeTeamName`, `awayTeamName`, `result.goalsHomeTeam`, `result.goalsAwayTeam`, and `date`.
-
-<div class="solution-start"></div>
+Your `cocktail-item.component.html` should look like this:
 
 ``` XML
-<GridLayout rows="auto" columns="*, auto, *" class="list-group-item">  
-  <Label col="0" [text]="fixture.homeTeamName" class="h4 text-right"></Label>
-  
-  <StackLayout col="1"  horizontalAlignment="center" class="m-x-10 h3">
-    <StackLayout *ngIf="displayScore()"  orientation="horizontal">
-      <Label [text]="fixture.result.goalsHomeTeam" class="score m-r-5"></Label>
-      <Label [text]="fixture.result.goalsAwayTeam" class="score"></Label>
-    </StackLayout>
-
-    <StackLayout *ngIf="!displayScore()" class="text-center text-muted h5">
-        <Label [text]="fixture.date | date:'H:m'"></Label>
-        <Label [text]="fixture.date | date:'dd-MMM'" textWrap="true"></Label>
-    </StackLayout>
-  </StackLayout>
-
-  <Label col="2" [text]="fixture.awayTeamName" class="h4 text-left"></Label>
+<GridLayout class="list-group-item" rows="auto" columns="auto, *">
+  <Image [src]="cocktail.strDrinkThumb" width="40" class="thumb img-circle"></Image>
+  <Label col="1" [text]="cocktail.strDrink" class="list-group-item-heading font-sb"></Label>
 </GridLayout>
 ```
 
 <div class="solution-end"></div>
 
-Reload the app. Now the fixtures should be displayed correctly again.
+Now if you reload the app and select an ingredient, the app should work as before, but this time you have nice separation of how the Drinks listview should present each item.
 
-<!-- #### Step 3 (Bonus) - Convert inline styling conditions to functions
-
-The `<StackLayout>` and `<Label>` components in `fixture.component.html` have some logic embedded in `*ngIf` and `[class.in-play]` attributes.
-
-Your task is to move this logic into two functions in `fixture.component.ts` and then call these functions:
-
- * `*ngIf` => `displayScore()`
- * `[class.in-play]` => `inPlay()`
-
-
-<div class="solution-start"></div>
-
-The outer `StackLayout` in `fixture.component.html` should now look like this:
-
-``` XML
-<StackLayout col="1"  horizontalAlignment="center" class="p-l-10 p-r-10 h3">
-  <StackLayout *ngIf="displayScore()"  orientation="horizontal">
-    <Label [text]="fixture.result.goalsHomeTeam" class="score m-r-5" [class.in-play]="inPlay()"></Label>
-    <Label [text]="fixture.result.goalsAwayTeam" class="score" [class.in-play]="inPlay()"></Label>
-  </StackLayout>
-
-  <StackLayout *ngIf="!displayScore()" class="text-center text-muted h5">
-    <Label [text]="fixture.date | date:'H:m'"></Label>
-    <Label [text]="fixture.date | date:'dd-MMM'" textWrap="true"></Label>
-  </StackLayout>
-</StackLayout>
-```
-
-And the following functions should now be defined in your `FixtureComponent`.
-
-#### displayScore
-``` javascript
-public displayScore(): boolean {
-  return this.fixture.status === 'FINISHED' 
-      || this.fixture.status === 'IN_PLAY';
-}
-```
-
-#### inPlay
-``` javascript
-public inPlay(): boolean {
-  return this.fixture.status === 'IN_PLAY';
-}
-```
-
-<div class="solution-end"></div> -->
-
-<div class="exercise-end"></div>
-
+### To be continued here!!!!!!!
 
 ### Components with custom events
 
