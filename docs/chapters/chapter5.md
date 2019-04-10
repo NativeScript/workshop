@@ -609,37 +609,47 @@ Your task is to implement a Presentation Component called `CocktailItemComponent
 
 The initial structure for `CocktailItemComponent` is already in place (see `cocktail-item.component.ts`) and added to declarations in `app.module.ts`.
 
-Open `cocktails.component.html`, comment out the `GridLayout` that is inside the second `ListView` and then add: <br/>
+Open `cocktails.component.html`, comment out the `GridLayout` that is inside the second `ListView` and then add the below code in its place: <br/>
 
 ``` XML
 <cocktail-item 
-  [cocktail]="cocktail"
+  [data]="cocktail"
   [nsRouterLink]="['./recipe', cocktail.idDrink]">
 </cocktail-item>
 ```
 
-in its place.
-
-You will notice that `cocktail-item` expects a `[cocktail]` attribute. This will be added in the next exercise.
+You will notice that `cocktail-item` expects a `[data]` attribute (which is used to pass over the cocktail object). This will be added in the next exercise.
 
 Also `cocktail-item` contains `[nsRouterLink]`, as the navigation configuration should be managed from the *Parent* component (`CocktailsComponent`), not the *Presentation* component.
 
 <div class="solution-start"></div>
 
-Now, copy over the commented out `<GridLayout>` template to `cocktail-item.component.html`. But remember to remove the `[nsRouterLink]` property.
+Now, copy over the commented out `<GridLayout>` template to `cocktail-item.component.html`. But remember to remove the `[nsRouterLink]` property. Then change each `cocktail.` to `data.`
 
 Your `cocktail-item.component.html` should look like this:
 
 ``` XML
 <GridLayout class="list-group-item" rows="auto" columns="auto, *">
-  <Image [src]="cocktail.strDrinkThumb" width="40" class="thumb img-circle"></Image>
-  <Label col="1" [text]="cocktail.strDrink" class="list-group-item-heading font-sb"></Label>
+  <Image [src]="data.strDrinkThumb" width="40" class="thumb img-circle"></Image>
+  <Label col="1" [text]="data.strDrink" class="list-group-item-heading font-sb"></Label>
 </GridLayout>
+```
+
+Finally, in order for the `cocktail-item` to be able to receive `data`, you need to add an `@Input() data: CocktailOverviewRaw` to the Component definition in `cocktail-item.component.ts`.
+
+Your component should look like this:
+
+``` javascript
+export class CocktailItemComponent {
+  @Input() cocktail: CocktailOverviewRaw;
+  
+  constructor() { }
+}
 ```
 
 <div class="solution-end"></div>
 
-Now if you reload the app and select an ingredient, the app should work as before, but this time you have nice separation of how the Drinks listview should present each item.
+Now if you reload the app and select an ingredient, the app should work as before, but this time you have nice separation of how the Drinks ListView should present each item.
 
 ### To be continued here!!!!!!!
 
@@ -808,10 +818,3 @@ Now you can use the `ColorPickerComponent` like this:
 ``` XML
 <color-picker [(color)]="selectedColorFromParentClass"></color-picker>
 ```
-
-### Bonus Component Exercise
-
-Can you implement the missing pieces of the `PlayerComponent`? 
-Your task is to add an `@Input` to capture the player object, then update `TeamComponent`, so that it displayes a list of players instead of fixtures.
-
-Each `PlayerComponent` should display player details like: name, position, jerseyNumber and nationality. 
