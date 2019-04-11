@@ -799,7 +799,7 @@ Add `@Input()` decorator to the `ingredient` property to the `SearchComponent` i
 
 #### Step 2 - Add @Output EventEmitter
 
-Add an `EventEmitter<number>` called `ingredientChange`.
+Add an `EventEmitter<string>` called `ingredientChange`.
 
 This will work as `(ingredientChange)` event, but also it will enable two-way binding on the `ingredient` property.
 
