@@ -611,8 +611,7 @@ Open `cocktails.component.html`, comment out the `GridLayout` that is inside the
 
 ``` XML
 <cocktail-item 
-  [data]="cocktail"
-  [nsRouterLink]="['./recipe', cocktail.idDrink]">
+  [data]="cocktail">
 </cocktail-item>
 ```
 
@@ -629,7 +628,8 @@ Now, copy over the commented out `<GridLayout>` template to `cocktail-item.compo
 Your `cocktail-item.component.html` should look like this:
 
 ``` XML
-<GridLayout class="list-group-item" rows="auto" columns="auto, *">
+<GridLayout class="list-group-item" rows="auto" columns="auto, *"
+  [nsRouterLink]="['./recipe', data.idDrink]">
   <Image [src]="data.strDrinkThumb" width="40" class="thumb img-circle"></Image>
   <Label col="1" [text]="data.strDrink" class="list-group-item-heading font-sb"></Label>
 </GridLayout>
