@@ -643,7 +643,7 @@ Your component should look like this:
 
 ``` javascript
 export class CocktailItemComponent {
-  @Input() cocktail: CocktailOverviewRaw;
+  @Input() data: CocktailOverviewRaw;
   
   constructor() { }
 }
