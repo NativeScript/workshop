@@ -4,8 +4,8 @@ import { Pet, PetFinderService } from 'petfinder-angular-service';
 
 @Component({
   selector: 'my-pet-search-results',
-  templateUrl: './pet-results/pet-results.component.html',
-  styleUrls: ['./pet-results/pet-results.component.css']
+  templateUrl: './pet-results.component.html',
+  styleUrls: ['./pet-results.component.css']
 })
 export class PetResultsComponent implements OnInit{
 

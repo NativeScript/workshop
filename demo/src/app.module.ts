@@ -13,7 +13,8 @@ import { PetResultsComponent } from './pet-results/pet-results.component';
 import { PetFavoritesComponent } from './pet-favorites/pet-favorites.component';
 
 import { SelectModalService } from './select-modal.service';
-import { PetFinderService } from 'petfinder-angular-service';
+import { PetFinderService, API_KEY_TOKEN } from 'petfinder-angular-service';
+
 import { PetStorageService } from './pet-storage.service';
 
 //fonts
@@ -47,7 +48,8 @@ import {TNSFontIconModule } from 'nativescript-ngx-fonticon';
     providers: [
         SelectModalService,
         PetFinderService,
-        PetStorageService
+        PetStorageService,
+        { provide: API_KEY_TOKEN, useValue: 'your_api_key_here' },
     ],
     schemas: [
         NO_ERRORS_SCHEMA

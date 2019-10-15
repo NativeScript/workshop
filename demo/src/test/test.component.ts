@@ -4,7 +4,7 @@ import { Pet, Shelter, Options, PetFinderService } from 'petfinder-angular-servi
 
 @Component({
     selector: 'my-test',
-    templateUrl: './test/test.component.html'
+    templateUrl: './test.component.html'
 })
 export class TestComponent implements OnInit{
   location: string = 'San Francisco, CA';

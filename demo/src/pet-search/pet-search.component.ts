@@ -9,8 +9,8 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 
 @Component({
   selector: 'my-pet-search',
-  templateUrl: './pet-search/pet-search.component.html',
-  styleUrls: ['./pet-search/pet-search.component.css']
+  templateUrl: './pet-search.component.html',
+  styleUrls: ['./pet-search.component.css']
 })
 export class PetSearchComponent implements OnInit{
   public location: string = 'Boston, MA';

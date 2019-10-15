@@ -10,8 +10,8 @@ import { Image } from "tns-core-modules/ui/image";
 
 @Component({
   selector: 'my-pet-details',
-  templateUrl: './pet-details/pet-details.component.html',
-  styleUrls: ['./pet-details/pet-details.component.css']
+  templateUrl: './pet-details.component.html',
+  styleUrls: ['./pet-details.component.css']
 })
 export class PetDetailsComponent implements OnInit{
   public pet: Pet;
