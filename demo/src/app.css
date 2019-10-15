@@ -11,7 +11,7 @@ refer to http://docs.nativescript.org/ui/theme.
 */
 /*@import 'nativescript-theme-core/css/core.light.css';*/
 
-@import '~/platforms.css';
+@import './platforms.css';
 
 Page {
     background-color: #353BA7;

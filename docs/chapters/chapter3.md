@@ -4,7 +4,7 @@ In this lesson we are going to familiarize ourselves with some of the most commo
 
 For this exercise we will use the contents of the `app/profile` folder, which already contains some pieces of the app that we need.
 
-If you are using `Playground` then you should head to: [https://play.nativescript.org/?template=nsday-profile`](https://play.nativescript.org/?template=nsday-profile)
+If you are using `Playground` then you should head to: [https://play.nativescript.org/?template=nsday-profile](https://play.nativescript.org/?template=nsday-profile).
 
 If you open `profile.component.ts` you will notice that our component has an attribute `profile` with some populated values. In the next few steps we will create a screen that will allow us to display and edit these values.
 

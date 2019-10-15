@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { PetFinderFactory, Pet, Shelter, RandomSearchOptions, PetSearchOptions, ShelterSearchOptions, ShelterPetSearchOptions, ShelterSearchByBreedOptions, Options } from 'petfinder-angular-service';
+import { Pet } from 'petfinder-angular-service';
 
-import * as appSettings from "application-settings";
+import * as appSettings from "tns-core-modules/application-settings";
 
 @Injectable()
 export class PetStorageService {

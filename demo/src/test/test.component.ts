@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 import { Pet, Shelter, Options, PetFinderService } from 'petfinder-angular-service';
 
 @Component({
     selector: 'my-test',
-    templateUrl: './test/test.component.html'
+    templateUrl: './test.component.html'
 })
 export class TestComponent implements OnInit{
   location: string = 'San Francisco, CA';

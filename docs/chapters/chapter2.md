@@ -14,7 +14,7 @@ Next, run the project in the preview app.
 tns preview
 ```
 
-or, run the project in an emulator using one of the command below.
+or, run the project in an emulator using one of the commands below.
 
 ```
 tns run ios

@@ -5,21 +5,20 @@ import { Pet, PetFinderService } from 'petfinder-angular-service';
 import { PetStorageService } from '../pet-storage.service';
 
 import * as SocialShare from "nativescript-social-share";
-import platformModule = require("platform");
 
-import { Image } from "ui/image";
+import { Image } from "tns-core-modules/ui/image";
 
 @Component({
   selector: 'my-pet-details',
-  templateUrl: './pet-details/pet-details.component.html',
-  styleUrls: ['./pet-details/pet-details.component.css']
+  templateUrl: './pet-details.component.html',
+  styleUrls: ['./pet-details.component.css']
 })
 export class PetDetailsComponent implements OnInit{
   public pet: Pet;
   public position: number;
   public isFavorite: boolean = false;
 
-  @ViewChild("petImage") img: ElementRef;
+  @ViewChild("petImage", {static: false}) img: ElementRef;
 
   petImage: Image;
 

@@ -61,7 +61,7 @@ export class AppModule { }
 
 #### providedIn 
 
-You can also use `provideIn` property in the `@Injectable` decorator, which delegates it to Angular to provide the service in `'root'` or a specific module.
+You can also use `providedIn` property in the `@Injectable` decorator, which delegates it to Angular to provide the service in `'root'` or a specific module.
 
 ```
 @Injectable({

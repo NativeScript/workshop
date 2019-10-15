@@ -3,12 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PetStorageService } from '../pet-storage.service';
 import { Pet } from 'petfinder-angular-service';
 
-import { Image } from "ui/image";
+import { Image } from "tns-core-modules/ui/image";
 
 @Component({
   selector: 'my-pet-favorites',
-  templateUrl: './pet-favorites/pet-favorites.component.html',
-  styleUrls: ['./pet-favorites/pet-favorites.component.css']
+  templateUrl: './pet-favorites.component.html',
+  styleUrls: ['./pet-favorites.component.css']
 })
 export class PetFavoritesComponent implements OnInit{
   
