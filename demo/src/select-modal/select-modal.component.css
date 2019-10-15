@@ -1,0 +1,21 @@
+.modal {
+  background-color: white;
+}
+
+.animalCard {
+    background-color: #303772;
+    width: 50%;
+    color: white;
+    padding-top: 10;
+    margin-top: 10;
+    border-radius: 3;
+}
+
+.animalImage{
+  padding: 10;
+  margin-top: 10;
+}
+
+.animalLabel{
+  padding: 10;
+}

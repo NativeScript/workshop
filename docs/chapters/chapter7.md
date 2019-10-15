@@ -91,7 +91,7 @@ The NativeScript ListView documentation is available at <https://docs.nativescri
 Make sure to start work in `app.module.ts`. You will need to import the NativeScriptHttpModule:
 
 ```
-import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 ```
 and include that in `imports`. 
 

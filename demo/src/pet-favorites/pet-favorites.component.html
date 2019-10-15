@@ -1,0 +1,16 @@
+<ActionBar title="My Favorites" class="action-bar">
+  <ActionItem (tap)="goHome()" ios.position="right">
+        <Button [text]="'fa-home' | fonticon" class="fa small"></Button>
+    </ActionItem>
+</ActionBar>
+<ScrollView #scroll>
+    <WrapLayout horizontalAlignment="center">      
+        <StackLayout style="margin-left: 10" class="card" width="45%" *ngFor="let pet of pets">
+            <StackLayout horizontalAlignment="center">
+                <Label class="h1" textWrap="true" [text]="pet?.name"></Label>
+                <Label class="h1" textWrap="true" [text]="pet?.age + ' ' +  pet?.breeds"></Label>
+                <Button [text]="'fa-heart' | fonticon" class="fa heart like" (tap)=removeFavorite(pet)></Button>
+            </StackLayout>
+        </StackLayout>           
+    </WrapLayout> 
+</ScrollView>

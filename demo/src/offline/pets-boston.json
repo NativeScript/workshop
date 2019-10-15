@@ -1,0 +1,3746 @@
+{
+  "@encoding": "iso-8859-1",
+  "@version": "1.0",
+  "petfinder": {
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "lastOffset": {
+      "$t": "25"
+    },
+    "pets": {
+      "pet": [
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "noDogs"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "787-313-5653"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "amigosdelosanimalespr@mail.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "30711434"
+          },
+          "shelterPetId": {
+            "$t": "Cholito"
+          },
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Shar Pei"
+              },
+              {
+                "$t": "Labrador Retriever"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Cholito"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "**This dog is located in Amigos de los Animales Shelter**\n\nCholito is a sweet four year old boy and loyal friend to man.  He does not get along with other dogs or cats though.  He's great with older kids ands adults and would be a GREAT hiking partner.  He is fully vetted and ready for his new home with you.\n\nAdoptions for adult dogs is $100 and for Pups and pure bred, $150.  The fee is waved when you live in the states and you pay for transport.\n\nPlease email  amigosdelosanimalespr@mail.com for more information and an application!\n\nWhat is a Sato you might ask?\n\nA Sato is a street dog from Puerto Rico. No two Satos look exactly alike and they all have unique stories, but despite their often rough start in life, Satos are some of the best rescue dogs out there (in our opinion anyway, maybe we are a little biased!) They are the most lovable dogs you will ever rescue and one thing we do know for sure about Satos, people who have adopted Satos LOVE them and agree with us, Satos are the best!!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "PR17"
+          },
+          "lastUpdate": {
+            "$t": "2015-11-07T11:37:59Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37029128"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Hound"
+            }
+          },
+          "name": {
+            "$t": "TRACKER-- gorgeous Treeing Coon Hound!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "TRACKER aka Henry is a fabulous purepred Treeing Coon Hound.  You don't see many like this boy!!!  He's a happy friendly boy--- needs an active lifestyle.  If you are a hound lover, he is a FIND!!  We can put you in touch with his foster mom for more info.... \n\n ADOPTION INQUIRES/ QUESTIONS:  all or text my Uncle Greg at 713 962 6635 or email him at greg.carraway@yahoo.com. My adoption fee include all my shots, spay, microchip, health certificate and transport on Rescue Road Trips or United. My adoption fee is $395\n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "no"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2016-12-21T22:42:21Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Senior"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "35999209"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "American Staffordshire Terrier"
+            }
+          },
+          "name": {
+            "$t": "BIJOU--he has a loving heart!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "My name is DIESEL! I am 60lb, 8 yrs old and I  LOVE WITH ALL MY HEART.  \n\nABOUT DIESEL: His previous owner t; moved and left him behind  in the back yard to fend for himself. : (  The neighbors fed him but animal control came to get him and he was taken to the shelter. HE BECAME A STAFF FAVORITE AT THE SHELTER. . He has a great personality and is always happy to meet new people.  He loves his walks, and belly rubs,and chewies & toys.  He is house broken, and crate trained, HE KNOWS BASIC COMMANDS. and takes his treats very gently gently. \n\n EVERYONE WHO MEETS DIESEL FALLS IN LOVE WITH HIS SWEET TEMPERAMENT AND PERSONALITY.   He listens very well, and loves with all his heart. \n\nADOPTION INQUIRIES/ QUESTIONS: \nCALL OR TEXT  text my Uncle Greg at 713 962 6635 or email him at greg.carraway@yahoo.com. My adoption fee include all my shots, spay, microchip, and transport on Rescue Road Trips. My adoption fee is $395\n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-01-23T02:46:50Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37190719"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Hound"
+              },
+              {
+                "$t": "Pointer"
+              }
+            ]
+          },
+          "name": {
+            "$t": "EDDIE-- he luvs water!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "EDDIE is about a yr old, 65 lbs. He is a sweet natured boy that was rescued about three mos ago .  He and his two siblings were dumped along a river and luckily found and rescued by a kind soul. He is friendly, playful and loves WATER!   He is friendly and sociable  with people and other dogs. He would be good with older children but possibly too much energy for toddlers.  He has a sweet temperament and is not a barker.  Located in Houston Texas....\n\nINQUIRIES:  Call or text Jeanie Royal  at 832-495-1719 or email   Tj.royal14@gmail.com if you have questions or want to request an adoption application.\n\nADOPTION FEE : $395.00  includes all his vetting, neuter, shots, D -worming, microchip, HW test AND  his transport to your state via ground or air travel.  \n\nThank you for  inquiring on a rescue dog!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-12T04:12:54Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "7133045266"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "rhondabarron@earthlink.net"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37391191"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Affenpinscher"
+            }
+          },
+          "name": {
+            "$t": "Alfie, a Fun Loving Curious Boy!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Meet Alfie!\n\nThis cute boy is an affenpinscher mix!   He is about 6 years old and weighs about 17 to 18 lbs.   His temperament is Playful, Adventurous, Fun-loving, Curious, Active, VERY loving.\n\nHe is a VERY loving little boy, he is a lap dog but also very active little boy, Alfie is friendly with all dogs but when it comes to his one on one time with his human he does not want to share the attention.  Alfie LOVES car rides and is great in the car.  Alfie is house trained. He's also good on a leash. He is so friendly he hasn't met a stranger in his life.  He also likes to be picked up and held in arms like a baby.\n\nHe is located in Houston, TX and would come to his new home on professional ground transport.  For an app, please email rhondabarron@earthlink.net"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-10T04:14:40Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37030985"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Pit Bull Terrier"
+              },
+              {
+                "$t": "American Staffordshire Terrier"
+              }
+            ]
+          },
+          "name": {
+            "$t": "ABBEY ROSE--loves life!"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "ABOUT ABBEY ROSE:   She is  an 18 mos old, 45 lb girl with a soft, beautiful velvety coat.   Everyone notices her coat ! She is friendly and enjoys meeting new people. Although she likes kids, she probably has too much energy for small children. She is good with dogs her size or larger but Abbey says: \"no small dogs please--I think they are squirrels!  She is located in Houston Texas   \n\nShe loves to be petted and loved on , however, she also enjoys outings and active playtime.  Everyone who meets Abbey Rose loves her !! \n\nADOPTION QUESTIONS/inquiries :\nCall  or text my Uncle Greg at 713 962 6635 or email him at greg.carraway@yahoo.com. My adoption fee include all my shots, spay, microchip, health certificate and transport on Rescue Road Trips or United. My adoption fee is $395\n\nThanks for your interest in a rescue dog!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-05T16:18:48Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Senior"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37416962"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Papillon"
+              },
+              {
+                "$t": "Dachshund"
+              }
+            ]
+          },
+          "name": {
+            "$t": "MISSY and MANNY"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "BONDED PAIR--  more pictures soon available   \nThis precious little senior pair had to be given up by their owner due to circumstances which forced them to change their life.  They were quickly adopted by someone who saw that they needed help, however come to find out ,  these two little cuties are not friendly to cats !   They  are wonderful loving little dogs  Who need a home that does not include cats. Therefore their new owner is searching for the right place for them.   We hope they can be adopted together since they have been together for many years.\n\nMISSY is an  11 yr old dachshund/ chihuahua mix--  just beautiful with brown and black markings. \nMANNY is an 11yr old Papillon. \n\nADOPTION FEE:  $450.00  includes all their vetting, a health certificate and their transport to your state   \n\nINQUIRIES:   Please call or text Jeanie Royal at 832-495-1719.   Email ppace@mac.com\n\n Thanks for your interest in this precious little pair !!\n\n\n\n\nf you are interested, please call or text my Uncle Greg at 713 962 6635 or email him at greg.carraway@yahoo.com. My adoption fee include all my shots, spay, microchip, health certificate and transport on Rescue Road Trips or United. My adoption fee is $395\n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-14T00:17:56Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "36476462"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Pit Bull Terrier"
+            }
+          },
+          "name": {
+            "$t": "DEACON-LOVER BOY-SEE VIDEO"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Howdy! Caught you looking! My name is Deacon! Am I not gorgeous? I am 55 pound cuddle bear from Texas that loves to give kisses and play! I am a 4 year old red nose pitte that loves meeting new people. I am good with other dogs. I like car rides, especially to McDonalds to get a cheeseburger! I am happy playing or just hanging out watching a movie. I could also be someoneâ\u0080\u0099s hiking buddy or hang out at the local dog park, as I am active, but not hyper. I donâ\u0080\u0099t bark a lot. I love to play, but can be a very mellow dog when I get some lovin. I love to snuggle!\n\nSo what is my story? I was found wondering the streets of Houston, Texas, crying and alone.  I was so hungry and tired, that I just ran into a garage one day looking for some help. I was starving, skin and bones. The pounds are full here, and not alot of dogs make it out alive. I was blessed to be saved off the cold cruel streets by a good Samaritan. I know have a full belly each night and someone to keep me safe. I know I can make someone very happy and I still have a bright future. Can you give me another chance at a forever home? I promise to be a good boy!\n\nIf you are interested, please call or text my Uncle Greg at 713 962 6635 or email him at greg.carraway@yahoo.com. My adoption fee includes all my shots, spay, microchip and transport on Rescue Road Trips. My adoption fee is $250\n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-15T08:14:47Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37028277"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Pit Bull Terrier"
+            }
+          },
+          "name": {
+            "$t": "KING-- Great jagging buddy !"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "ABOUT KING: \nOnly 40 lbs--King is a hunk of handsome who is extremely affectionate. He enjoys adventures with his humans and is always ready to jump in the car to go to the lake or hiking. King is playful and loves to romp with his foster brothers and sisters- littles and bigs. Energetic and fun, King would be well suited for an active individual or family. Crate and house trained, heartworm negative and neutered, Please consider adding this beautiful boy to your family. His foster welcomes updates or questions...\n\nADOPTION INQUIRIES/ QUESTIONS:  Call or text my Uncle Greg at 713 962 6635 or email him at greg.carraway@yahoo.com. My adoption fee include all my shots, spay, microchip, health certificate and transport on Rescue Road Trips or United. My adoption fee is $395\n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-15T08:57:24Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37431925"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Pit Bull Terrier"
+            }
+          },
+          "name": {
+            "$t": "BRUTUS-WHAT A DOLL-SEE VIDEO!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Howdy! Caught you looking! My name is BRUTUS! Am I not gorgeous? I am 50 pound cuddle bear with a heart as big as Texas that loves to cuddle and play! I am 2 years old and I love meeting new people I dont meet a stranger and I am good with kids. I even know a few tricks like sit and shake. See my video! I am happy playing or just hanging out watching a movie. I could also be someoneâ\u0080\u0099s hiking buddy or hang out at the local dog park, as I am active, but not hyper. I am a very mellow dog when I get some lovin! \n\nSo what is my story? I was found on the streets of  Houston, crying and alone. I was blessed to be saved off the cold cruel streets by a good Samaritan. They took me to a locat vet and got me all my shots.  I now have a full belly each night and someone to keep me safe. I know I can make someone very happy and I still have a bright future. Can you give me another chance at a forever home? I promise to be a good boy!\n\n\n\n\n\nIf you are interested, please email Uncle Greg at greg.carraway@yahoo.com. My adoption fee include all my shots, spay, microchip, health certificate and transport on Rescue Road Trips or United. My adoption fee is $395\n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-15T21:46:10Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "781-275-0630"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "clyk9s@gmail.com"
+            },
+            "city": {
+              "$t": "Cummington"
+            },
+            "zip": {
+              "$t": "02101"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Senior"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37147256"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Brittany Spaniel"
+            }
+          },
+          "name": {
+            "$t": "Riley"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Hi everyone â\u0080\u0093 my name is Riley.  Pleased to meet you!\n\nIâ\u0080\u0099m a 10-year old, handsome male Brittany  mix and Iâ\u0080\u0099m looking for a new home to settle into.  My previous owner died and I was left with people that didnâ\u0080\u0099t really want me.  This eventually led me to a shelter.  Going through all those changes has made me a little cautious when meeting new people.  Iâ\u0080\u0099m looking for a family who is older and understands change is unsettling. \n\nMy foster family says Iâ\u0080\u0099m a good companion and have come a long way in a short period of time.  Iâ\u0080\u0099m a medium energy dog that loves a good lap and am nice to be around.   As a 10-year old I come with good behavior skills.  Iâ\u0080\u0099m house trained, an awesome sleeper at night, sit patiently by the door to go out, understand the word â\u0080\u0098noâ\u0080\u0099, can sit, crate trained (you know, the usual).  I do bark to announce those who enter the house and to warn of a strange noise.\n\nI love walks and am good on a leash.  Iâ\u0080\u0099m a nose to the ground kind of guy and will pull a little when I pick up a scent, but can be settled easily.  Iâ\u0080\u0099m respectful of fences and would love a yard to sniff around.  \n\nIâ\u0080\u0099m neutered, up to date with vaccinations, heartworm negative and on prevention. If you would like to learn more about me, I know my foster mom would be happy to chat with you. To get started, please fill out an adoption application at the New England Brittany Rescue website, www.nebrittanyrescue.org. We look forward to hearing from you."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "MA195"
+          },
+          "lastUpdate": {
+            "$t": "2017-01-09T01:08:06Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37268900"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Labrador Retriever"
+            }
+          },
+          "name": {
+            "$t": "JOLIE"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "JOLIE is 5 yrs is beautiful  girl with a personality to match!!   She is a lab mix and has that energetic but mellow temperament. Loves her walks outdoors while at the same time she enjoys being indoors with her human ! She is a bit shy at first but a lovebug once she knows you. Located in HOUSTON TX.  \n\nHER STORY: She is a very lucky girl to be alive--She was discovered starving in the middle of nowhere, by an off road biker.   She is thriving now ! This girl was meant to live --  she will make a loving devoted companion for some lucky individual or family !!\n\nINQUIRIES\nCall or text Jeanie Royal at 832-495-1719. Email to tj.royal14@gmail.com..\n\nADOPTION FEE :  $395.00  includes all shots, spay, microchip, health certificate and transport on Rescue Road Trips or United. \n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "no"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-19T15:02:27Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37459275"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Pointer"
+              },
+              {
+                "$t": "Retriever"
+              }
+            ]
+          },
+          "name": {
+            "$t": "RIVER-- check out his spots!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "RIVER\nRiver is a  gorgeous  one-year-old 45 pound  pointer mix.  He is a gentle sweet boy who will make a very dedicated companion. He still has his puppy-ish  happiness and playfulness, but he is not hyper.   He loves nothing better than to get out on a leash and explore. He would gladly be your jogging or hiking companion.   He would also make a great playmate for another dog.    He will make a wonderful and loyal companion for some lucky individual or family. \nLocated in  HOUSTON TX\n\nADOPTION FEE:  $395 includes all his vetting-neutered, all shots, dewormed, HW test negative, microchip, and health certificate.   That fee also includes his transport to your state.   Will use a transport company which is run by fellow rescuers  so the dogs are in very good hands along the way.\n\nINQUIRIES:  call or text Jeanie Royal at 832-495-1719.   Email tj.royal14@gmail.com \n\n Thanks so much for your interest in a rescue dog !!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-19T18:09:02Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37483064"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Labrador Retriever"
+              },
+              {
+                "$t": "Pointer"
+              }
+            ]
+          },
+          "name": {
+            "$t": "HOPE"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "HOPE is a 1 yr old 45-50lb lab/ pointer mix.  She has a very sweet nature about her and is friendly meeting new people.  She is a bit timid initially but after a treat or two she breaks into a big smile!  She gets along well with other dogs--- she has her young puppy-ish playfulness and energy-- however she is not a hyper dog. She would be glad to be your walking, hiking or jogging partner.  She will make a VERY devoted friend and partner for some lucky individual or family!\nLocated in HOUSTON TX\n\nINQUIRIES:   call or text Jeanie Royal at 832-495-1719,  Email to tj.royal14@gmail.com\n\nADOPTION FEE:  $395.00 INCLUDES ALL HER VETTING-- spay, shots, deworming, HW test neg, microchip and health cewrtificate to travel.  It also includes her travel via ground transport to your state.  We use a transport company fun by fellow rescuers so the dogs are in good hands.\n\nThanks for your inquiry on a rescue dog!!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-22T22:13:58Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37459112"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Cattle Dog"
+              },
+              {
+                "$t": "Terrier"
+              }
+            ]
+          },
+          "name": {
+            "$t": "GYPSY-- little red beauty!"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "GYPSY  is a beautiful 3 yr old 35-40 lb terrier mix.  She is very keen, and alert and ready to go --  but not hyper.   She is just knee-high/ medium size, a great size to hop in the car with you and go places!   She is a friendly sociable little dog and also fine with other dogs. Good on a leash.  She will be an attentive, devoted little partner for some lucky individual or family !  \nLocated in HOUSTON TX\n\nADOPTION FEE:  $395.00.   All vetting has been done - spay /neuter, shots, deworming, HW test, microchip, and health certificate.   The adoption fee also covers the transport to your state.\n\nINQUIRIES:  call or text Jeanie Royal at 832-495-1719 or email to \ntj.royal14@gmail.com\n\nThanks for your interest in a rescue dog !!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-22T22:17:39Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37488318"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Pit Bull Terrier"
+            }
+          },
+          "name": {
+            "$t": "ELLIOTT-- LOVES PEOPLE!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "ELLIOTT  is a young healthy happy boy. Smile as big as Texas! He is a people lover--he will sit on the floor and let kids hug him gladly -- with that comical smile on his face. He gets along with other dogs. He is probably too much happy energy to live in a home with very small dogs.  He's not good with cats.  He would love to be the happy hiker at your side for long walks, hiking or even jogging.  With his big heart, he has lots of love to give to some lucky individual or family.\nLocated in HOUSTON TEXAS\n\nINQUIRIES:  call  or text my Uncle Greg at 713 962 6635 or email him at greg.carraway@yahoo.com. My adoption fee include all my shots, spay, microchip, health certificate and transport on Rescue Road Trips or United. My adoption fee is $395\n\nThank you for listening to my story!"
+          },
+          "mix": {
+            "$t": "no"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-23T16:19:41Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37268197"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Pit Bull Terrier"
+              },
+              {
+                "$t": "American Bulldog"
+              }
+            ]
+          },
+          "name": {
+            "$t": "OLIVER--lots of love to give"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "DOMINIC  is 6 yrs old, 60 lbs. Beautiful with very unique markings. He is  a  gentle, loving, and loyal boy who enjoys people and other animals.  He is energetic and fun loving-loves his walks, but  settles down happy to be comfy in his home! His left eye has vision impairment, he can only see shadows, but it is not painful.  It has always been that way and does not require medication or treatment.  He will make some Lucky person a loyal and devoted companion! \n\nINQUIRIES\nCall or text Jeanie Royal at 832-495-1719. Email to tj.royal14@gmail.com \nADOPTION FEE: $395.00 includes all her vetting plus a microchip and her transportation to your state\n\nThanks  for your interest in a rescue dog !"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-23T16:32:10Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Senior"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "36886858"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Dachshund"
+            }
+          },
+          "name": {
+            "$t": "RED"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "RED is 9 rs young!  He is one cute boy-- just 27 lbs and has a sweet temperament. Loves people and other dogs.  Healthy and  energetic and would reallyt enjoy walks.  He will make someone a wonderful companion.  He was saved from a kill shelter and is located at Betty's Adoptable Sanctuary close to Houston, Texas. His brother, Shorty, is also located at the sanctuary and they may be adopted together or separately\n\nINQUIRIES: call or text Jeanie Royal 832-495-1719. Email:  tj.royal14@gmail.com\n\nADOPTION FEE: $325.00\nIncludes complete vetting and his transport to your state via Rescue Road Trips.\n\nThanks for inquiring on a rescue dog!!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-07T01:42:33Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37359530"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Pit Bull Terrier"
+            }
+          },
+          "name": {
+            "$t": "KIWI-- SEE VIDEO"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "KIWI  is a two yr, 50 pound sweetheart. She is easy-going and happy to meet new people. She gets along with other dogs.  She is full of personality and love. She likes to go for walks.  She would enjoy an active lifestyle, however she likes to settle down and snuggle too. She will make a great companion for some lucky individual !\nLocated in HOUSTON TX\n\nADOPTION FEE:   $395 includes all her bedding-spay, shots, deworming, HW test, microchip, and health certificate.    It also includes her transportation to your state. \n\nINQUIRIES:   Call or text Jeanie royal at 832-495-1719.  Email to \nTJ.royal14@gmail.com \n\n Thanks for your interest in a rescue dog!"
+          },
+          "mix": {
+            "$t": "no"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-24T20:48:05Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "altered"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Senior"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "36886842"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Dachshund"
+            }
+          },
+          "name": {
+            "$t": "SHORTY-- CUTEST SMILE ever!"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "SHORTY is 11 yr-- very healthy--  just passed middle-age for a dog of his breed !  This little dog MELTED  me on my first meeting.  His big smile is pure sunshine !!! He has a sweet temperament and  loves people and other dogs.  He is medium  energy and  of course loves to get out and about on the leash.  He will make someone a devoted companion.   He is located in HOUSTON TX\n\nADOPTION INQUIRIES/ QUESTIONS:   call or text Jeanie Royal 832-495-1719 OR email  tj.royal14@ gmail.com\n\nADOPTION FEE:  $395.00\nIncludes all his vetting and his transport to your state via either ground transport or air\n\nThanks for inquiring on a rescue dog!!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-24T21:05:22Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37359325"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Shepherd"
+              },
+              {
+                "$t": "Husky"
+              }
+            ]
+          },
+          "name": {
+            "$t": "ROSIE"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "ROSIE  ( SEE VIDEO)  is a young shepherd husky mix with gorgeous markings. Very striking !   She is a friendly easy-going girl---happy to meet new people and gets along with other dogs.  She is a smart girl. She will make a wonderful addition  to some Lucky family or individual.\nLocated in HOUSTON TX\n\nADOPTION FEE:  $395.00.   All vetting has been done - spay /neuter, shots, deworming, HW test, microchip, and health certificate.   The adoption fee also covers the transport to your state.\n\nINQUIRIES:  call or text Jeanie Royal at 832-495-1719 or email to \ntj.royal14@gmail.com\n\nThanks for your interest in a rescue dog !!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-24T20:12:59Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37268170"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "German Shepherd Dog"
+            }
+          },
+          "name": {
+            "$t": "LOLA-- sweet  girl!"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "LOLA   She is a beautiful 5 yrd old purebred German Shepherd.  She is a good girl---loving and easy-going. with meeting new people and also children and other dogs. She loves her walks and the outdoors   However, she also loves to be comfy inside with her human.  She is very bonded to her human .  She will make some lucky individual or family a loyal and devoted companopn.\nLocated in HOUSTON TX\n\nADOPTION FEE: $395.00  includes all her vetting-spay, shots, D warming, microchip, and health certificate, and her heartworm meds.  Also includes her transportation to your state \n\nINQUIRIES:\nPlease call or text Jeanie Royal at 832-495-1719. Email to  Ppace@mac.com\n\nThanks  for your interest in a rescue dog !"
+          },
+          "mix": {
+            "$t": "no"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-24T21:24:39Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "specialNeeds"
+              },
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "781-275-0630"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "clyk9s@gmail.com"
+            },
+            "city": {
+              "$t": "Cummington"
+            },
+            "zip": {
+              "$t": "02101"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Adult"
+          },
+          "size": {
+            "$t": "L"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37501689"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Brittany Spaniel"
+            }
+          },
+          "name": {
+            "$t": "Brisco"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Brisco is a 7 year old Brittany Spaniel.   He is orange and white, with a little heart right on top of his head.  Brisco is on the larger side - weighing in at 75 pounds and is about 3 feet tall.  He is completely up to date with his vaccinations, he has flea and tick prevention and is on heart worm medication.     Brisco is a love bug!   He is sedate and very quiet (in 4 years he has barked maybe 10 times - usually at wild animals).    He loves a good walk but is content to lay on the couch most of the day.  He is not aggressive and has a sweet temperament.  He is very curious and food motivated so you have to be sure to watch your trash can!   He is housebroken and crate trained (we only crate him when we are out of the home).     Unfortunately, Brisco recently (and suddenly) lost his vision to SARDS (sudden acquired retinal degeneration syndrome).   This is a permanent condition.  Sadly, our home, which is a split-level and has stairs to get in and out, is no longer the best place for him.    Despite our constant efforts to assist Brisco navigating the stairs, he has developed anxiety.    We also have 3 young children who constantly leave things in his path, and leave cabinets and drawers open, which make it difficult for Brisco to navigate.    \n \nBrisco has been a loved member of our family for 4 years.   The decision to look for a more suitable home for Brisco is heartbreaking, but we need to do what is best for him.   The perfect home for Brisco is one that has no more than 3 stairs to get in and out (he has no problem navigating the outside stairs), does not have young children, does not have a cat.   Brisco is compatible with like dogs - meaning not hyperactive or aggressive.  Also, I am a stay at home mom so Brisco isn't used to being alone for long periods (exceeding 5 hours). \nIf you are interested in adopting this very special boy, please  fill out an adoption application at the New England Brittany Rescue website, www.nebrittanyrescue.org. We look forward to hearing from you."
+          },
+          "mix": {
+            "$t": "no"
+          },
+          "shelterId": {
+            "$t": "MA195"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-25T00:49:35Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "781-275-0630"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "clyk9s@gmail.com"
+            },
+            "city": {
+              "$t": "Cummington"
+            },
+            "zip": {
+              "$t": "02101"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37494088"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Brittany Spaniel"
+            }
+          },
+          "name": {
+            "$t": "Sadie"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Sadie is a beautiful Brittany mix.  She is approximately 3 years old and is a very active girl.  She enjoys going on her walks, and is very alert when a squirrel crosses her path.  Sadie enjoys watching for them through the window too. She is house broken and crate trained but is not always fond of going in her crate so her foster mom makes sure there are plenty of toys in there with her.  She loves to have a toy in her mouth as she runs through the house.  Sadie is very energetic and athletic as she jumps up on doors to look out the window.  Sadie is learning commands, and is is good at \"sit.\" However, continued  training would server her well as she is quite a puller on the leash.  Sadie needs lots of activity so going to the dog park or a place where she can run would be most welcome.\nSadie has been spayed, is up to date with her vaccinations, is heartworm negative and on prevention and is microchipped as well. \n If you are interested in adopting this sweet girl, please fill out an adoption application at the New England Brittany Rescue website, www.nebrittanyrescue.org. We look forward to hearing from you."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "MA195"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-24T02:17:09Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "noCats"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "713-962-6635"
+            },
+            "state": {
+              "$t": "MA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "greg.carraway@yahoo.com"
+            },
+            "city": {
+              "$t": "Boston"
+            },
+            "zip": {
+              "$t": "02201"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Young"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "~/offline/pug-placeholder.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "37259575"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Pit Bull Terrier"
+              },
+              {
+                "$t": "Hound"
+              }
+            ]
+          },
+          "name": {
+            "$t": "LILY-- loves children!"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "LILY  is just 45 lb,  sweet friendly girl.  She is good with other dogs and as you can see she is great with kids.  She is energetic and great on a leash.   She knows commands --sit and stay --and will give kisses for treats. : )    What more could you ask of any dog? She will make a wonderful and devoted partner for some lucky individual or family !\nLocated in HOUSTON TX\n\nINQUIRIES:  call or text Jeanie Royal at 832-495-1719 or email to tj.royal14@gmail.com \n\nADOPTION FEE: $395.00  includes all her vetting and also her ground transport to your state. \n\n Thanks for your interest in a rescue dog !"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "TX1961"
+          },
+          "lastUpdate": {
+            "$t": "2017-02-27T01:27:21Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        }
+      ]
+    },
+    "header": {
+      "timestamp": {
+        "$t": "2017-03-08T09:00:06Z"
+      },
+      "status": {
+        "message": {},
+        "code": {
+          "$t": "100"
+        }
+      },
+      "version": {
+        "$t": "0.1"
+      }
+    },
+    "@xsi:noNamespaceSchemaLocation": "http://api.petfinder.com/schemas/0.9/petfinder.xsd"
+  }
+}

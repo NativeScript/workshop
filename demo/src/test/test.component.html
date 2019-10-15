@@ -1,0 +1,80 @@
+<TabView>
+  <StackLayout *tabItem="{title: 'Breeds'}" class="m-5">
+
+    <Button text="Get Dog Breeds" (tap)="searchBreedList('dog')" class="btn-primary m-2"></Button>
+    <Button text="Get Small Furry Breeds" (tap)="searchBreedList('smallfurry')" class="btn-primary m-2"></Button>
+    <Button text="Get Pig Breeds" (tap)="searchBreedList('pig')" class="btn-primary m-2"></Button>
+    <Button text="Get Barnyard Breeds" (tap)="searchBreedList('barnyard')" class="btn-primary m-2"></Button>
+
+    <Label text="Breeds:" class="text-primary"></Label>
+    <ListView [items]="breeds" class="list-group">
+      <ng-template let-item="item">
+        <Label [text]="item" class="list-group-item"></Label>
+      </ng-template>
+    </ListView>
+  </StackLayout>
+
+  <StackLayout *tabItem="{title: 'Pet'}" class="m-5">
+    <Button text="Get Random Pet" (tap)="getRandomPet()" class="btn-primary m-2"></Button>
+    <Button text="Get Pet: 37173495" (tap)="getPet()" class="btn-primary m-2"></Button>
+    <Button text="Get Pets at location (display first)" (tap)="findPets()" class="btn-primary m-2"></Button>
+    <Button text="Get Shelter Pets (display first)" (tap)="findShelterPets()" class="btn-primary m-2"></Button>
+
+    <DockLayout orientation="horizontal">
+      <Label dock="left" text="Address:" class="text-primary"></Label>
+      <TextField hint="location" [(ngModel)]="location"></TextField>
+    </DockLayout>
+
+    <Label [text]="'id:'   + pet?.id" class="text-center" class="btn-outline text-center"></Label>
+    <Label [text]="'name:'   + pet?.name" class="text-center" class="btn-outline text-center"></Label>
+    <Label [text]="'animal:' + pet?.animal" class="text-center" class="btn-outline text-center"></Label>
+    
+    <Label [text]="'Breeds: (mix:' + pet?.mix + ')' " class="text-primary"></Label>
+    <ListView row="2" [items]="pet?.breeds" class="list-group">
+      <ng-template let-item="item">
+        <Label [text]="item" class="list-group-item"></Label>
+      </ng-template>
+    </ListView>
+
+    <Label text="Pictures:" class="text-primary"></Label>
+    <ScrollView>
+      <WrapLayout orientation="horizontal" itemHeight="200">
+        <Image *ngFor="let item of pet?.media.getImages(3)" [src]="item" stretch="aspectFit"></Image>
+      </WrapLayout>
+    </ScrollView>
+
+    <!--<ListView [items]="pet?.media.getImages(2)" class="list-group">
+      <ng-template let-item="item">
+        <StackLayout orientation="horizontal">
+          <Image [src]="item" stretch="aspectFit" height="200"></Image>
+        </StackLayout>
+      </ng-template>
+    </ListView>-->
+  </StackLayout>
+
+  <StackLayout *tabItem="{title: 'Shelter'}" class="m-5">
+    <Button text="Get Shelter MA09" (tap)="getShelter('MA09')" class="btn-primary m-2"></Button>
+    <Button text="Get Shelters at location" (tap)="findShelters()" class="btn-primary m-2"></Button>
+    <Button text="Get Shelters with Great Dane at location" (tap)="findSheltersByBreed()" class="btn-primary m-2"></Button>
+    
+    <StackLayout orientation="horizontal">
+      <Label text="Address:" class="text-primary"></Label>
+      <TextField hint="location" [(ngModel)]="location"></TextField>
+    </StackLayout>
+
+    <Label [text]="'id:'   + shelter?.id" class="text-center" class="btn-outline text-center"></Label>
+    <Label [text]="'name:'   + shelter?.name" class="text-center" class="btn-outline text-center"></Label>
+    <Label [text]="'email:' + shelter?.email" class="text-center" class="btn-outline text-center"></Label>
+    <Label [text]="'city:' + shelter?.city" class="text-center" class="btn-outline text-center"></Label>
+
+    <Label text="Shelters:" class="text-primary"></Label>
+    <ListView [items]="shelters" (itemTap)="onShelterTap($event)" class="list-group">
+      <ng-template let-item="item">
+        <DockLayout>
+          <Label dock="left" [text]="item.id" class="list-group-item" width="100"></Label>
+          <Label [text]="item.name" class="list-group-item" textWrap="true"></Label>
+        </DockLayout>
+      </ng-template>
+    </ListView>
+  </StackLayout>
+</TabView>
