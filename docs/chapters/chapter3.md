@@ -681,13 +681,16 @@ Here is how your `DataForm` should look like:
   <TKEntityProperty tkDataFormProperty name="dob" displayName="DOB" index="2">
     <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
   </TKEntityProperty>
-  <TKEntityProperty tkDataFormProperty name="codingPower" displayName="Coding Power" index="3">
-    <TKPropertyEditor tkEntityPropertyEditor type="Stepper"></TKPropertyEditor>
+  <TKEntityProperty tkDataFormProperty name="codingPower" displayName="Coding Power" index="4">
+    <TKPropertyEditor tkEntityPropertyEditor type="Slider">
+      <TKPropertyEditorParams tKEditorParams minimum="0" maximum="10"></TKPropertyEditorParams>
+    </TKPropertyEditor>
   </TKEntityProperty>
   <TKEntityProperty tkDataFormProperty name="angularPro" displayName="Angular Pro" index="3">
     <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
   </TKEntityProperty>
 </RadDataForm>
+
 ```
 
 <div class="solution-end"></div>
